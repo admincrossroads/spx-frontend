@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { useContactModal } from "@/lib/contexts/ContactModalContext";
 
 export default function Hero() {
+  const { openModal } = useContactModal();
   const images = [
     "/images/Home-heros/hero-1.jpg",
     "/images/Home-heros/hero-2.jpg",
@@ -85,7 +87,9 @@ export default function Hero() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 max-w-sm">
               <Button
                 size="lg"
-                className="bg-white text-black hover:bg-white/90 w-full"
+                className="bg-white !text-black hover:bg-white/90 hover:!text-black w-full font-semibold"
+                style={{ color: '#000000' }}
+                onClick={openModal}
               >
                 Contact Us
               </Button>

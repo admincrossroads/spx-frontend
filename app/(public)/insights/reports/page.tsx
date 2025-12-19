@@ -1,28 +1,13 @@
 import { getPublicInsights } from '@/lib/api/public-insights';
-import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
-import { formatDate, getImageUrl } from '@/lib/utils/helpers';
-import { FileText, Calendar, User } from 'lucide-react';
-import { InsightImage } from '@/components/ui/insight-image';
+import { InsightsGrid } from '@/components/insights/InsightsGrid';
 
-export default async function ReportsPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ page?: string }>;
-}) {
-  const params = await searchParams;
-  const page = parseInt(params.page || '1', 10);
-
+export default async function ReportsPage() {
+  // Fetch initial 6 insights for the grid
   const { insights, pagination } = await getPublicInsights({
     type: 'report',
-    page,
-    limit: 12,
+    page: 1,
+    limit: 6,
   });
-
-  const typeColors: Record<string, string> = {
-    report: 'bg-green-500',
-  };
 
   return (
     <div className="container mx-auto px-6 py-24">
@@ -33,92 +18,11 @@ export default async function ReportsPage({
         </p>
       </div>
 
-      {insights.length === 0 ? (
-        <div className="text-center py-12">
-          <FileText className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-          <p className="text-muted-foreground">No reports found.</p>
-        </div>
-      ) : (
-        <>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {insights.map((insight) => (
-              <Link 
-                key={insight.id} 
-                href={`/insights/${insight.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
-                  {insight.coverImageUrl && (
-                    <div className="relative h-48 w-full overflow-hidden rounded-t-lg">
-                      <InsightImage
-                        src={getImageUrl(insight.coverImageUrl)}
-                        alt={insight.title}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                  )}
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Badge
-                        className={`${typeColors[insight.type] || 'bg-gray-500'} text-white capitalize`}
-                      >
-                        Report
-                      </Badge>
-                      {insight.publishedAt && (
-                        <span className="text-xs text-muted-foreground flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          {formatDate(insight.publishedAt)}
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2 line-clamp-2">
-                      {insight.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-3 mb-4">
-                      {insight.summary}
-                    </p>
-                    <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <User className="h-4 w-4" />
-                        <span>{insight.author.name}</span>
-                      </div>
-                      {insight.tags.length > 0 && (
-                        <div className="flex gap-1">
-                          {insight.tags.slice(0, 2).map((tag) => (
-                            <Badge key={tag.id} variant="outline" className="text-xs">
-                              {tag.name}
-                            </Badge>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
-
-          {pagination.totalPages > 1 && (
-            <div className="flex justify-center gap-2">
-              {Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map((pageNum) => (
-                <Link
-                  key={pageNum}
-                  href={`/insights/reports?page=${pageNum}`}
-                  className={`px-4 py-2 rounded ${
-                    pageNum === page
-                      ? 'bg-primary text-primary-foreground'
-                      : 'bg-muted hover:bg-muted/80'
-                  }`}
-                >
-                  {pageNum}
-                </Link>
-              ))}
-            </div>
-          )}
-        </>
-      )}
+      <InsightsGrid 
+        type="report"
+        initialInsights={insights} 
+        initialTotal={pagination.total}
+      />
     </div>
   );
 }

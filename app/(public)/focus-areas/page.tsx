@@ -24,28 +24,30 @@ export default function FocusAreas() {
         locally-led solutions and measurable impact.
       </p>
 
-      <div className="grid md:grid-cols-3 gap-10">
-        {areas.map((area) => (
-          <Link key={area.href} href={area.href}>
-            <div className="group cursor-pointer rounded-xl overflow-hidden shadow hover:shadow-lg transition">
-              <div className="relative h-48">
-                <Image
-                  src={area.img}
-                  alt={area.label}
-                  fill
-                  className="object-cover group-hover:scale-105 transition"
-                />
-              </div>
+          <div className="grid md:grid-cols-3 gap-10">
+            {areas.map((area) => (
+              <Link key={area.href} href={area.href}>
+                <div className="group cursor-pointer rounded-xl overflow-hidden shadow hover:shadow-lg transition">
+                  <div className="relative h-48">
+                    <Image
+                      src={area.img}
+                      alt={area.label}
+                      fill
+                      className="object-cover group-hover:scale-105 transition"
+                    />
+                  </div>
 
-              <div className="p-6">
-                <h3 className="text-xl font-semibold group-hover:text-primary transition">
-                  {area.label}
-                </h3>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold group-hover:text-primary transition">
+                      {area.label}
+                    </h3>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

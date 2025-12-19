@@ -37,9 +37,10 @@ type TagFormData = z.infer<typeof tagSchema>;
 
 interface CreateTagDialogProps {
   children: React.ReactNode;
+  onSuccess?: () => void;
 }
 
-export function CreateTagDialog({ children }: CreateTagDialogProps) {
+export function CreateTagDialog({ children, onSuccess }: CreateTagDialogProps) {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string>('');
@@ -80,8 +81,12 @@ export function CreateTagDialog({ children }: CreateTagDialogProps) {
       
       form.reset();
       setOpen(false);
-      // Refresh the page to show new tag
-      window.location.reload();
+      // Call onSuccess instead of reload
+      if (onSuccess) {
+        onSuccess();
+      } else {
+        window.location.reload();
+      }
     } catch (err: any) {
       console.error('Failed to create tag:', err);
       setError(err.message || 'Failed to create tag');

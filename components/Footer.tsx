@@ -56,7 +56,7 @@ export default function Footer() {
         </div>
 
         {/* NAV SECTIONS - HIDDEN ON MOBILE */}
-        <div className="col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 hidden md:grid">
+        <div className="col-span-3 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-7 gap-10 hidden md:grid">
 
           {NAV_ITEMS.map((item) => (
             <div key={item.label}>

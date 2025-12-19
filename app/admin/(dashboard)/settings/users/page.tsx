@@ -1,28 +1,81 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Search, Edit, Trash2, UserPlus, Power, PowerOff, ArrowLeft } from 'lucide-react';
+import { Search, Edit, Trash2, UserPlus, Power, PowerOff, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import { api } from '@/lib/api/client';
 import Link from 'next/link';
 import { User } from '@/types/user';
+
+const LIMIT = 10; // Always 10 users per page
 
 export default function UsersPage() {
   const router = useRouter();
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [total, setTotal] = useState(0);
 
-  const loadUsers = async () => {
+  // Initialize from URL params on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const pageParam = params.get('page');
+      const searchParam = params.get('search');
+      
+      if (pageParam) {
+        const page = parseInt(pageParam, 10);
+        if (page > 0) setCurrentPage(page);
+      }
+      if (searchParam) setSearch(searchParam);
+    }
+  }, []);
+
+  const loadUsers = useCallback(async () => {
     setLoading(true);
     try {
-      const data = await api.get<User[]>('/admin/users');
-      setUsers(data);
+      const params = new URLSearchParams();
+      params.set('page', currentPage.toString());
+      params.set('limit', LIMIT.toString());
+      if (search) {
+        params.set('search', search);
+      }
+      
+      const response = await api.get<{
+        users: User[];
+        pagination: { total: number; page: number; limit: number; totalPages: number };
+      }>(`/admin/users?${params.toString()}`);
+      
+      const actualResponse = (response as any).data || response;
+      const apiTotal = actualResponse.pagination?.total || 0;
+      const returnedUsers = actualResponse.users || actualResponse;
+      
+      const calculatedTotalPages = apiTotal > 0 ? Math.ceil(apiTotal / LIMIT) : 0;
+      
+      setTotal(apiTotal);
+      setTotalPages(calculatedTotalPages);
+      setUsers(Array.isArray(returnedUsers) ? returnedUsers : []);
+      
+      if (currentPage > calculatedTotalPages && calculatedTotalPages > 0) {
+        setCurrentPage(calculatedTotalPages);
+        return;
+      }
+      
+      if (typeof window !== 'undefined') {
+        const newParams = new URLSearchParams();
+        newParams.set('page', currentPage.toString());
+        if (search) {
+          newParams.set('search', search);
+        }
+        router.push(`/admin/settings/users?${newParams.toString()}`, { scroll: false });
+      }
     } catch (error: any) {
       console.error('Failed to load users:', error);
       if (error?.status === 401) {
@@ -31,14 +84,26 @@ export default function UsersPage() {
       } else {
         alert(`Failed to load users: ${error?.message || 'Unknown error'}`);
       }
+      setUsers([]);
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, search, router]);
 
   useEffect(() => {
     loadUsers();
-  }, []);
+  }, [currentPage, loadUsers]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (search !== '') {
+        setCurrentPage(1);
+      }
+      loadUsers();
+    }, 500);
+    
+    return () => clearTimeout(timer);
+  }, [search, loadUsers]);
 
   const handleToggleActive = async (userId: string, currentStatus: boolean) => {
     try {
@@ -59,11 +124,6 @@ export default function UsersPage() {
       console.error('Failed to delete user:', error);
     }
   };
-
-  const filteredUsers = users.filter(user =>
-    user.name.toLowerCase().includes(search.toLowerCase()) ||
-    user.email.toLowerCase().includes(search.toLowerCase())
-  );
 
   const getRoleColor = (role: string) => {
     switch (role) {
@@ -107,6 +167,12 @@ export default function UsersPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="pl-10"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    setCurrentPage(1);
+                    loadUsers();
+                  }
+                }}
               />
             </div>
           </div>
@@ -117,87 +183,149 @@ export default function UsersPage() {
         <CardHeader>
           <CardTitle>Admin Users</CardTitle>
           <CardDescription>
-            {users.length} user{users.length !== 1 ? 's' : ''} total
+            {total} user{total !== 1 ? 's' : ''} total
           </CardDescription>
         </CardHeader>
         <CardContent>
           {loading ? (
             <div className="text-center py-12">Loading users...</div>
-          ) : filteredUsers.length === 0 ? (
+          ) : users.length === 0 ? (
             <div className="text-center py-12 text-muted-foreground">
               {search ? 'No users found matching your search' : 'No users found. Create your first user.'}
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>User</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Role</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Created</TableHead>
-                    <TableHead>Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {filteredUsers.map((user) => (
-                    <TableRow key={user.id}>
-                      <TableCell>
-                        <div className="font-medium">{user.name}</div>
-                      </TableCell>
-                      <TableCell className="font-mono text-sm">{user.email}</TableCell>
-                      <TableCell>
-                        <Badge className={getRoleColor(user.role)} variant="secondary">
-                          {user.role}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant={user.isActive ? "default" : "secondary"}>
-                          {user.isActive ? 'Active' : 'Inactive'}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <div className="text-sm text-muted-foreground">
-                          {new Date(user.createdAt).toLocaleDateString()}
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex items-center gap-2">
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleToggleActive(user.id, user.isActive)}
-                            title={user.isActive ? 'Deactivate user' : 'Activate user'}
-                            className={user.isActive ? 'text-green-600 hover:text-green-700' : 'text-gray-400 hover:text-gray-600'}
-                          >
-                            {user.isActive ? (
-                              <Power className="h-4 w-4" />
-                            ) : (
-                              <PowerOff className="h-4 w-4" />
-                            )}
-                          </Button>
-                          <Link href={`/admin/settings/users/${user.id}/edit`}>
-                            <Button variant="ghost" size="sm">
-                              <Edit className="h-4 w-4" />
-                            </Button>
-                          </Link>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleDelete(user.id)}
-                            className="text-destructive hover:text-destructive"
-                            title="Delete user"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </TableCell>
+            <>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>User</TableHead>
+                      <TableHead>Email</TableHead>
+                      <TableHead>Role</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead>Created</TableHead>
+                      <TableHead>Actions</TableHead>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
+                  </TableHeader>
+                  <TableBody>
+                    {users.map((user) => (
+                      <TableRow key={user.id}>
+                        <TableCell>
+                          <div className="font-medium">{user.name}</div>
+                        </TableCell>
+                        <TableCell className="font-mono text-sm">{user.email}</TableCell>
+                        <TableCell>
+                          <Badge className={getRoleColor(user.role)} variant="secondary">
+                            {user.role}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge variant={user.isActive ? "default" : "secondary"}>
+                            {user.isActive ? 'Active' : 'Inactive'}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <div className="text-sm text-muted-foreground">
+                            {new Date(user.createdAt).toLocaleDateString()}
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-2">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => handleToggleActive(user.id, user.isActive)}
+                              title={user.isActive ? 'Deactivate user' : 'Activate user'}
+                              className={user.isActive ? 'text-green-600 hover:text-green-700' : 'text-gray-400 hover:text-gray-600'}
+                            >
+                              {user.isActive ? (
+                                <Power className="h-4 w-4" />
+                              ) : (
+                                <PowerOff className="h-4 w-4" />
+                              )}
+                            </Button>
+                            <Link href={`/admin/settings/users/${user.id}/edit`}>
+                              <Button variant="ghost" size="sm">
+                                <Edit className="h-4 w-4" />
+                              </Button>
+                            </Link>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => handleDelete(user.id)}
+                              className="text-destructive hover:text-destructive"
+                              title="Delete user"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+
+              {!loading && totalPages > 0 && (
+                <div className="flex items-center justify-between mt-6 pt-6 border-t">
+                  <div className="text-sm text-muted-foreground">
+                    Showing {(currentPage - 1) * LIMIT + 1} to{' '}
+                    {Math.min(currentPage * LIMIT, total)} of {total} users
+                  </div>
+                  
+                  {totalPages > 1 && (
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          if (currentPage > 1) {
+                            setCurrentPage(currentPage - 1);
+                          }
+                        }}
+                        disabled={currentPage === 1}
+                      >
+                        <ChevronLeft className="h-4 w-4 mr-1" />
+                        Previous
+                      </Button>
+                      
+                      <div className="flex items-center gap-1">
+                        {Array.from({ length: totalPages }, (_, i) => {
+                          const pageNum = i + 1;
+                          return (
+                            <Button
+                              key={pageNum}
+                              variant={currentPage === pageNum ? "default" : "outline"}
+                              size="sm"
+                              className="w-8 h-8 p-0"
+                              onClick={() => {
+                                setCurrentPage(pageNum);
+                              }}
+                            >
+                              {pageNum}
+                            </Button>
+                          );
+                        })}
+                      </div>
+                      
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          if (currentPage < totalPages) {
+                            setCurrentPage(currentPage + 1);
+                          }
+                        }}
+                        disabled={currentPage >= totalPages}
+                      >
+                        Next
+                        <ChevronRight className="h-4 w-4 ml-1" />
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              )}
+            </>
           )}
         </CardContent>
       </Card>

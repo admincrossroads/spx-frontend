@@ -1,14 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Search, Edit, Trash2, Eye, EyeOff, Plus } from 'lucide-react';
+import { Search, Edit, Trash2, Eye, EyeOff, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
 import { api } from '@/lib/api/client';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface Insight {
   id: number;
@@ -28,41 +29,105 @@ interface Insight {
   }>;
 }
 
+const LIMIT = 10; // Always 10 insights per page
+
 export default function InsightsPage() {
+  const router = useRouter();
   const [insights, setInsights] = useState<Insight[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [total, setTotal] = useState(0);
+  
+  // Initialize from URL params on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const pageParam = params.get('page');
+      const searchParam = params.get('search');
+      
+      if (pageParam) {
+        const page = parseInt(pageParam, 10);
+        if (page > 0) setCurrentPage(page);
+      }
+      if (searchParam) setSearch(searchParam);
+    }
+  }, []);
 
-  const loadInsights = async () => {
+  const loadInsights = useCallback(async () => {
     setLoading(true);
     try {
+      const params = new URLSearchParams();
+      params.set('page', currentPage.toString());
+      params.set('limit', LIMIT.toString());
+      if (search) {
+        params.set('search', search);
+      }
+      
       const response = await api.get<{
         insights: Insight[];
         pagination: { total: number; page: number; limit: number; totalPages: number };
-      }>(`/admin/insights?page=${currentPage}&limit=10${search ? `&search=${search}` : ''}`);
+      }>(`/admin/insights?${params.toString()}`);
       
-      setInsights(response.insights);
-      setTotalPages(response.pagination.totalPages);
+      const apiTotal = response.pagination?.total || 0;
+      const returnedInsights = response.insights || [];
+      
+      // Calculate total pages: total insights / 10 (always 10 per page)
+      const calculatedTotalPages = apiTotal > 0 ? Math.ceil(apiTotal / LIMIT) : 0;
+      
+      // Update state
+      setTotal(apiTotal);
+      setTotalPages(calculatedTotalPages);
+      setInsights(returnedInsights);
+      
+      // If current page exceeds total pages, go to last valid page
+      if (currentPage > calculatedTotalPages && calculatedTotalPages > 0) {
+        setCurrentPage(calculatedTotalPages);
+        return; // Will reload with correct page
+      }
+      
+      // Update URL
+      if (typeof window !== 'undefined') {
+        const newParams = new URLSearchParams();
+        newParams.set('page', currentPage.toString());
+        if (search) {
+          newParams.set('search', search);
+        } else {
+          newParams.delete('search');
+        }
+        router.push(`/admin/insights?${newParams.toString()}`, { scroll: false });
+      }
     } catch (error) {
       console.error('Failed to load insights:', error);
+      setInsights([]);
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, search, router]);
 
+  // Load insights when page changes
   useEffect(() => {
     loadInsights();
-  }, [currentPage, search]);
+  }, [currentPage, loadInsights]);
+  
+  // Handle search with debounce and reset page
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (search !== '') {
+        setCurrentPage(1);
+      }
+      loadInsights();
+    }, 500);
+    
+    return () => clearTimeout(timer);
+  }, [search, loadInsights]);
 
   const handlePublishToggle = async (publicId: string, currentStatus: boolean) => {
     try {
       if (currentStatus) {
-        // Unpublish
         await api.patch(`/admin/insights/${publicId}`, { isPublished: false });
       } else {
-        // Publish - use the dedicated publish endpoint
         await api.patch(`/admin/insights/${publicId}/publish`);
       }
       loadInsights();
@@ -109,6 +174,12 @@ export default function InsightsPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="pl-10"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    setCurrentPage(1);
+                    loadInsights();
+                  }
+                }}
               />
             </div>
           </div>
@@ -196,6 +267,67 @@ export default function InsightsPage() {
                   ))}
                 </TableBody>
               </Table>
+            </div>
+          )}
+          
+          {/* Pagination Controls */}
+          {!loading && totalPages > 0 && (
+            <div className="flex items-center justify-between mt-6 pt-6 border-t">
+              <div className="text-sm text-muted-foreground">
+                Showing {(currentPage - 1) * LIMIT + 1} to{' '}
+                {Math.min(currentPage * LIMIT, total)} of {total} insights
+              </div>
+              
+              {totalPages > 1 && (
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      if (currentPage > 1) {
+                        setCurrentPage(currentPage - 1);
+                      }
+                    }}
+                    disabled={currentPage === 1}
+                  >
+                    <ChevronLeft className="h-4 w-4 mr-1" />
+                    Previous
+                  </Button>
+                  
+                  <div className="flex items-center gap-1">
+                    {Array.from({ length: totalPages }, (_, i) => {
+                      const pageNum = i + 1;
+                      return (
+                        <Button
+                          key={pageNum}
+                          variant={currentPage === pageNum ? "default" : "outline"}
+                          size="sm"
+                          className="w-8 h-8 p-0"
+                          onClick={() => {
+                            setCurrentPage(pageNum);
+                          }}
+                        >
+                          {pageNum}
+                        </Button>
+                      );
+                    })}
+                  </div>
+                  
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      if (currentPage < totalPages) {
+                        setCurrentPage(currentPage + 1);
+                      }
+                    }}
+                    disabled={currentPage >= totalPages}
+                  >
+                    Next
+                    <ChevronRight className="h-4 w-4 ml-1" />
+                  </Button>
+                </div>
+              )}
             </div>
           )}
         </CardContent>

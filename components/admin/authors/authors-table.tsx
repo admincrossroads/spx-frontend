@@ -34,9 +34,10 @@ import type { Author } from '@/lib/api/authors';
 
 interface AuthorsTableProps {
   authors: Author[];
+  onSuccess?: () => void;
 }
 
-export function AuthorsTable({ authors }: AuthorsTableProps) {
+export function AuthorsTable({ authors, onSuccess }: AuthorsTableProps) {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [selectedAuthor, setSelectedAuthor] = useState<Author | null>(null);
 
@@ -140,7 +141,13 @@ export function AuthorsTable({ authors }: AuthorsTableProps) {
         open={deleteDialogOpen}
         onOpenChange={setDeleteDialogOpen}
         author={selectedAuthor}
-        onSuccess={() => window.location.reload()}
+        onSuccess={() => {
+          if (onSuccess) {
+            onSuccess();
+          } else {
+            window.location.reload();
+          }
+        }}
       />
     </>
   );

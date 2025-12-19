@@ -5,10 +5,12 @@ import { NAV_ITEMS } from "@/components/NavData"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
+import { useContactModal } from "@/lib/contexts/ContactModalContext"
 
 export default function NavDesktop({ scrolled }: { scrolled: boolean }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const { openModal } = useContactModal()
 
   const handleMouseEnter = (index: number) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
@@ -30,8 +32,8 @@ export default function NavDesktop({ scrolled }: { scrolled: boolean }) {
   >
     {/* CONTACT US AS CTA BUTTON */}
     {item.label === "Contact Us" ? (
-      <Link
-        href={item.href}
+      <button
+        onClick={openModal}
         className={cn(
           "px-4 py-2 rounded-full font-medium transition-all shadow-sm",
           scrolled
@@ -40,7 +42,7 @@ export default function NavDesktop({ scrolled }: { scrolled: boolean }) {
         )}
       >
         {item.label}
-      </Link>
+      </button>
     ) : (
       /* NORMAL NAV ITEM */
       <Link

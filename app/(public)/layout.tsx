@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import { ContactModalProvider } from "@/components/contact/ContactModalProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + " bg-white text-slateText"}>
-        <NavBar />
-        {children}
-        <Footer />
+        <ContactModalProvider>
+          <NavBar />
+          {children}
+          <Footer />
+        </ContactModalProvider>
       </body>
     </html>
   );

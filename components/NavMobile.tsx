@@ -8,10 +8,12 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
+import { useContactModal } from "@/lib/contexts/ContactModalContext"
 
 export default function NavMobile({ scrolled }: { scrolled: boolean }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const [isOpen, setIsOpen] = useState(false)
+  const { openModal } = useContactModal()
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index)
@@ -128,9 +130,11 @@ export default function NavMobile({ scrolled }: { scrolled: boolean }) {
 
               {/* CTA BUTTON — ALWAYS STAYS AT THE BOTTOM */}
               <div className="mt-8">
-                <Link
-                  href="/contact"
-                  onClick={() => setIsOpen(false)}
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    openModal();
+                  }}
                   className={cn(
                     "w-full block text-center px-4 py-3 rounded-full font-semibold transition-all shadow-md",
                     scrolled
@@ -139,7 +143,7 @@ export default function NavMobile({ scrolled }: { scrolled: boolean }) {
                   )}
                 >
                   Contact Us
-                </Link>
+                </button>
               </div>
 
             </motion.div>

@@ -44,8 +44,8 @@ export function Sidebar() {
   }
 
   return (
-    <aside className="hidden w-64 border-r bg-background md:block">
-      <div className="flex h-[100%] flex-col">
+    <aside className="sticky top-0 hidden h-screen w-64 border-r bg-background md:block">
+      <div className="flex h-full flex-col">
         <div className="p-6">
           <Link href="/admin" className="flex items-center gap-2">
             <Image
@@ -61,7 +61,7 @@ export function Sidebar() {
           </Link>
         </div>
 
-        <nav className="flex-1 space-y-1 p-4">
+        <nav className="flex-1 space-y-1 overflow-y-auto p-4">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href || 
@@ -85,7 +85,7 @@ export function Sidebar() {
           })}
         </nav>
 
-        <div className="border-t p-4 align-bottom">
+        <div className="border-t p-4">
           <Button
             variant="ghost"
             className="w-full justify-start gap-3"

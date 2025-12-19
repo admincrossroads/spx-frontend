@@ -43,9 +43,10 @@ interface Tag {
 
 interface TagsTableProps {
   tags: Tag[];
+  onSuccess?: () => void;
 }
 
-export function TagsTable({ tags }: TagsTableProps) {
+export function TagsTable({ tags, onSuccess }: TagsTableProps) {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editForm, setEditForm] = useState<{ name: string; slug: string }>({ name: '', slug: '' });
   const [isSaving, setIsSaving] = useState(false);
@@ -75,8 +76,12 @@ export function TagsTable({ tags }: TagsTableProps) {
         slug: editForm.slug,
       });
       setEditingId(null);
-      // Refresh the page
-      window.location.reload();
+      // Call onSuccess instead of reload
+      if (onSuccess) {
+        onSuccess();
+      } else {
+        window.location.reload();
+      }
     } catch (error) {
       console.error('Failed to update tag:', error);
       alert('Failed to update tag');
@@ -227,7 +232,13 @@ export function TagsTable({ tags }: TagsTableProps) {
         open={deleteDialogOpen}
         onOpenChange={setDeleteDialogOpen}
         tag={selectedTag}
-        onSuccess={() => window.location.reload()}
+        onSuccess={() => {
+          if (onSuccess) {
+            onSuccess();
+          } else {
+            window.location.reload();
+          }
+        }}
       />
     </>
   );

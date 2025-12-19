@@ -11,6 +11,7 @@ import Approach from "@/components/home/Approach";
 import FocusAreas from "@/components/home/FocusAreas";
 import FlagshipBloom from "@/components/home/FlagshipBloom";
 import InnovationHub from "@/components/home/InnovationHub";
+import TrendingInsights from "@/components/home/TrendingInsights";
 import ProjectsPreview from "@/components/home/ProjectsPreview";
 import InsightsPreview from "@/components/home/InsightsPreview";
 import Partners from "@/components/home/Partners";
@@ -54,13 +55,15 @@ export default function Home() {
           <GlobalBackground />
 
           <Hero />
-          <Snapshot />
+          <TrendingInsights />
+          <ProjectsPreview />
+
+          {/* <Snapshot /> */}
           <Approach />
           <FocusAreas />
           <FlagshipBloom />
           <InnovationHub />
-          <ProjectsPreview />
-          <InsightsPreview />
+          {/* <InsightsPreview /> */}
           <Partners />
           <CTASection />
         </motion.main>

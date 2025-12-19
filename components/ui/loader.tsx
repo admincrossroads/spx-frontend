@@ -20,7 +20,7 @@ export default function SPXLoader() {
             r="45"
             fill="none"
             stroke="#000000"
-            strokeWidth="6"
+            strokeWidth="8"
             strokeLinecap="round"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
