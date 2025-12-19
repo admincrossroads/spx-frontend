@@ -1,0 +1,22 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import SPXLoader from "@/components/ui/loader";
+
+export default function Loading() {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    // minimum duration for loader (in ms)
+    const timeout = setTimeout(() => setReady(true), 1200);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  // Show loader until delay finishes
+  if (!ready) return <SPXLoader />;
+
+  // Once delay ends, return null (Next.js will swap in real page)
+  return null;
+}
+

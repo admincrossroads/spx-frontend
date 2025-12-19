@@ -1,0 +1,101 @@
+const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY || '';
+
+if (!API_URL) throw new Error('NEXT_PUBLIC_API_URL is not defined');
+if (!API_KEY) throw new Error('NEXT_PUBLIC_API_KEY is not defined');
+
+class ApiError extends Error {
+  constructor(
+    message: string,
+    public status?: number,
+    public data?: any
+  ) {
+    super(message);
+    this.name = 'ApiError';
+  }
+}
+
+export class ApiClient {
+  private async request<T>(
+    endpoint: string,
+    options: RequestInit = {}
+  ): Promise<T> {
+    const url = `${API_URL}${endpoint}`;
+    
+    // Create Headers instance
+    const headers = new Headers(options.headers);
+    headers.set('x-api-key', API_KEY);
+
+    // Don't set Content-Type for FormData
+    if (!(options.body instanceof FormData)) {
+      headers.set('Content-Type', 'application/json');
+    }
+
+    const config: RequestInit = {
+      ...options,
+      headers,
+      credentials: 'include',
+    };
+
+    try {
+      const response = await fetch(url, config);
+      
+      if (!response.ok) {
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch {
+          errorData = await response.text();
+        }
+        
+        throw new ApiError(
+          errorData?.message || `HTTP ${response.status}`,
+          response.status,
+          errorData
+        );
+      }
+
+      // For 204 No Content responses
+      if (response.status === 204) {
+        return {} as T;
+      }
+
+      return await response.json();
+    } catch (error) {
+      if (error instanceof ApiError) throw error;
+      throw new ApiError('Network error', 0, error);
+    }
+  }
+
+  // GET request
+  async get<T>(endpoint: string, options?: RequestInit): Promise<T> {
+    return this.request<T>(endpoint, { method: 'GET', ...options });
+  }
+
+  // POST request
+  async post<T>(endpoint: string, data?: any, options?: RequestInit): Promise<T> {
+    const body = data instanceof FormData ? data : JSON.stringify(data);
+    return this.request<T>(endpoint, { 
+      method: 'POST', 
+      body,
+      ...options 
+    });
+  }
+
+  // PATCH request
+  async patch<T>(endpoint: string, data?: any, options?: RequestInit): Promise<T> {
+    const body = data instanceof FormData ? data : JSON.stringify(data);
+    return this.request<T>(endpoint, { 
+      method: 'PATCH', 
+      body,
+      ...options 
+    });
+  }
+
+  // DELETE request
+  async delete<T>(endpoint: string, options?: RequestInit): Promise<T> {
+    return this.request<T>(endpoint, { method: 'DELETE', ...options });
+  }
+}
+
+export const api = new ApiClient();
