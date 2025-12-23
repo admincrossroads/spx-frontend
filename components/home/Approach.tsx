@@ -25,8 +25,14 @@ export default function Approach() {
   ];
 
   return (
-    <section className="container mx-auto px-6">
-      <div className="flex justify-between items-end mb-8">
+    <section className="main-container">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex justify-between items-end mb-8"
+      >
         <h2 className="text-3xl font-semibold">Our Approach</h2>
 
         <Link
@@ -36,7 +42,7 @@ export default function Approach() {
           Explore All
           <ArrowUpRight className="h-4 w-4 ml-1" />
         </Link>
-      </div>
+      </motion.div>
 
       <div className="grid md:grid-cols-4 gap-6">
         {steps.map((step, i) => (
@@ -44,14 +50,15 @@ export default function Approach() {
             key={step.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1, duration: 0.5 }}
             className="p-6 border rounded-xl bg-background shadow-sm"
           >
-            <p className="h-8 w-8 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-3">
+            <p className="h-8 w-8 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-3 text-sm font-bold">
               {i + 1}
             </p>
-            <h3 className="font-semibold text-sm mb-2">{step.title}</h3>
-            <p className="text-xs text-muted-foreground">{step.desc}</p>
+            <h3 className="font-semibold text-lg mb-2">{step.title}</h3>
+            <p className="text-sm text-muted-foreground">{step.desc}</p>
           </motion.div>
         ))}
       </div>

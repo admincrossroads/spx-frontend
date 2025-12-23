@@ -125,7 +125,7 @@ export default async function InsightDetailPage({
   };
 
   return (
-    <div className="container mx-auto px-6 pt-22">
+    <div className="main-container py-24">
       <Link
         href="/insights"
         className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6"
@@ -134,14 +134,14 @@ export default async function InsightDetailPage({
         Back to Insights
       </Link>
 
-      <div className="grid lg:grid-cols-3 gap-8">
+      <div className="grid lg:grid-cols-3 gap-12">
         {/* Main Content */}
         <article className="lg:col-span-2">
         {/* Header */}
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <Badge
-              className={`${typeColors[insight.type] || 'bg-gray-500'} text-white capitalize`}
+              className={`${typeColors[insight.type] || 'bg-gray-500'} text-white capitalize px-4 py-1.5 text-sm`}
             >
               {typeLabels[insight.type] || insight.type}
             </Badge>
@@ -163,7 +163,7 @@ export default async function InsightDetailPage({
             {insight.tags.length > 0 && (
               <div className="flex gap-2">
                 {insight.tags.map((tag) => (
-                  <Badge key={tag.id} variant="outline">
+                  <Badge key={tag.id} variant="outline" className="px-3 py-1 text-sm">
                     {tag.name}
                   </Badge>
                 ))}
@@ -182,7 +182,7 @@ export default async function InsightDetailPage({
             </div>
           )}
 
-          <p className="text-xl text-muted-foreground mb-8">{insight.summary}</p>
+          <p className="text-xl text-muted-foreground mb-8 leading-relaxed">{insight.summary}</p>
         </header>
 
         {/* Content */}
@@ -210,7 +210,7 @@ export default async function InsightDetailPage({
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Card className="hover:shadow-md transition-shadow cursor-pointer max-w-xs my-6">
+                    <Card className="hover:shadow-md transition-shadow cursor-pointer my-6">
                       {recentInsight.coverImageUrl && (
                         <div className="relative h-32 w-full overflow-hidden rounded-t-lg">
                           <InsightImage
@@ -226,7 +226,7 @@ export default async function InsightDetailPage({
                           <Badge
                             className={`${
                               typeColors[recentInsight.type] || 'bg-gray-500'
-                            } text-white text-xs capitalize`}
+                            } text-white capitalize px-3 py-1 text-sm`}
                           >
                             {typeLabels[recentInsight.type] || recentInsight.type}
                           </Badge>

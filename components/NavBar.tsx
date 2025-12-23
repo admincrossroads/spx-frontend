@@ -30,7 +30,7 @@ export default function Navbar() {
         <a href="/" className="text-2xl font-bold">
           <img 
           src={scrolled ? "/logos/SPX-white.png" : "/logos/SPX.png"}
-          className="h-6 w-auto"
+          className="h-10 w-auto"
           alt="" />
         </a>
 

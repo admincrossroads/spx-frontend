@@ -9,7 +9,7 @@ export default async function InsightsPage() {
   });
 
   return (
-    <div className="container mx-auto px-6 py-12">
+    <div className="main-container section-py">
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Insights & Evidence</h1>
         <p className="text-muted-foreground text-lg">

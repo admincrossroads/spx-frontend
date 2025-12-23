@@ -6,21 +6,23 @@ import Link from "next/link";
 
 export default function Identity() {
   return (
-    <section className="py-24">
-      <div className="container mx-auto px-6 lg:px-12 space-y-24">
+    <section className="section-py">
+      <div className="main-container space-y-24">
 
         {/* INTRO HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto"
+          className="text-center max-w-4xl mx-auto"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Africa-Led Identity
+            An Africa-Led Institution Built for Africa’s Priorities
           </h1>
-          <p className="text-lg text-muted-foreground">
-            The SPX Difference — grounded in African leadership, insight, and real-world experience.
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            Foundational to SPX’s identity is the belief that Africa’s development challenges 
+            and opportunities require institutions with localized knowledge of the 
+            continent’s systems, markets, governance and people.
           </p>
         </motion.div>
 
@@ -37,18 +39,20 @@ export default function Identity() {
           >
             <h2 className="text-3xl font-semibold">Africa-Led at the Core</h2>
 
-            <p>
-              SPX is founded on the principle that Africa’s development must be led 
-              by institutions that understand the continent’s systems from within. 
-              SPX’s identity is shaped by African leadership, local insight, and 
-              the lived experience of working across the agricultural, business, 
-              energy, and innovation landscapes of Ethiopia.
+            <p className="text-justify-custom">
+              With a strong focus on realistic solutions, SPX approaches development 
+              with an Africa-first view that is shaped by real experience and is 
+              grounded in local realities. As global the development landscape shifts, 
+              and traditional implementing partners retreat, SPX represents a new 
+              generation of Africa-based partners able to deliver with precision 
+              and reliability.
             </p>
 
-            <p>
-              This Africa-led foundation enables SPX to design solutions that are 
-              contextually grounded, operationally feasible, and aligned with 
-              long-term national and regional priorities.
+            <p className="text-justify-custom">
+              SPX’s identity is founded on the principle that home-grown institutions 
+              must lead Africa’s growth. Our leadership has strong localized knowledge 
+              and vast experience working across Ethiopia’s agricultural, energy, 
+              and innovation sectors.
             </p>
           </motion.div>
 
@@ -98,7 +102,7 @@ export default function Identity() {
           >
             <h2 className="text-3xl font-semibold">Rooted in African Realities</h2>
 
-            <p>
+            <p className="text-justify-custom">
               SPX’s approach is anchored in first-hand understanding of the realities 
               that shape development outcomes in Africa:
             </p>
@@ -112,7 +116,7 @@ export default function Identity() {
               <li>Regulatory systems and institutional constraints</li>
             </ul>
 
-            <p>
+            <p className="text-justify-custom">
               Rather than interpreting Africa from a distance, SPX engages directly 
               with people, sectors, and systems—designing interventions that work in 
               practice, not just in theory.
@@ -133,7 +137,7 @@ export default function Identity() {
           >
             <h2 className="text-3xl font-semibold">Local Insight, Global Standards</h2>
 
-            <p>
+            <p className="text-justify-custom">
               SPX combines local understanding with international-level analytical, 
               operational, and strategic capability. The organization’s leadership 
               has steered complex ventures in:
@@ -148,7 +152,7 @@ export default function Identity() {
               <li>Skills development & applied science</li>
             </ul>
 
-            <p>
+            <p className="text-justify-custom">
               This blended experience strengthens SPX’s ability to bridge African 
               realities with global best practice.
             </p>
@@ -171,6 +175,44 @@ export default function Identity() {
           </motion.div>
         </div>
 
+        {/* WHAT MAKES SPX DISTINCT */}
+        <div className="bg-muted/30 p-12 rounded-2xl border">
+          <h2 className="text-3xl font-semibold mb-12 text-center">What Makes SPX Distinct</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {[
+              {
+                title: "Africa-Led Insight",
+                desc: "An institution built in Africa, by Africans, for Africa."
+              },
+              {
+                title: "Integrated Model",
+                desc: "Strategy + research + implementation + innovation within one organization."
+              },
+              {
+                title: "Operational Depth",
+                desc: "Proven ability to work in rural, peri-urban, and hard-to-reach environments."
+              },
+              {
+                title: "Innovation Engine",
+                desc: "The Spiral Innovation Club, which incubates African ideas and helps them scale."
+              },
+              {
+                title: "Energy as a Development Enabler",
+                desc: "A commitment to using clean energy as a driver of development, agriculture, skills building, and climate resilience."
+              },
+              {
+                title: "Systems Thinking",
+                desc: "Approaches that focus on long-term transformation, not just short-term project outputs."
+              }
+            ].map((item) => (
+              <div key={item.title} className="space-y-3">
+                <h3 className="text-xl font-bold text-primary">{item.title}</h3>
+                <p className="text-muted-foreground">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* SECTION 4 — NETWORKS + ACCESS */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -183,7 +225,7 @@ export default function Identity() {
             Trusted Local Networks
           </h2>
 
-          <p>
+          <p className="text-justify-custom">
             SPX’s deep roots in Ethiopia provide strong relationships with farmers, 
             cooperatives, community leaders, public institutions, private-sector actors, 
             skills institutions, innovators, and sector experts. These networks enable 
@@ -204,7 +246,7 @@ export default function Identity() {
             Learn How Our Identity Shapes Our Work
           </h3>
           <Link
-            href="/our-approach"
+            href="/approach/advisory"
             className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-full font-medium hover:bg-primary/90 transition-all"
           >
             Explore Our Approach

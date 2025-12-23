@@ -22,11 +22,11 @@ export default function NavDesktop({ scrolled }: { scrolled: boolean }) {
   }
 
   return (
-    <nav className="flex items-center gap-8 relative">
+    <nav className="flex items-center gap-4 min-[1300px]:gap-8 relative">
       {NAV_ITEMS.map((item, index) => (
   <div
     key={item.label}
-    className="relative hover:border-b hover:border-b-2 hover:border-b-black-foreground hover:z-10"
+    className="relative hover:shadow-bottom hover:shadow-bottom-md hover:rounded-md"
     onMouseEnter={() => handleMouseEnter(index)}
     onMouseLeave={handleMouseLeave}
   >
@@ -35,7 +35,7 @@ export default function NavDesktop({ scrolled }: { scrolled: boolean }) {
       <button
         onClick={openModal}
         className={cn(
-          "px-4 py-2 rounded-full font-medium transition-all shadow-sm",
+          "px-3 py-1.5 min-[1300px]:px-4 min-[1300px]:py-2 rounded-full font-medium transition-all hover:bg-primary/55 text-[10.5px] min-[1300px]:text-sm",
           scrolled
             ? "bg-primary-foreground text-primary hover:bg-secondary-foreground hover:text-primary"
             : "bg-primary text-primary-foreground hover:bg-primary/90"
@@ -48,7 +48,7 @@ export default function NavDesktop({ scrolled }: { scrolled: boolean }) {
       <Link
         href={item.href}
         className={cn(
-          "text-sm font-medium transition-colors",
+          "text-[13px] min-[1290px]:text-sm font-medium transition-colors",
           scrolled
             ? "text-primary-foreground hover:text-secondary-foreground"
             : "text-foreground hover:text-primary"

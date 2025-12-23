@@ -173,3 +173,65 @@ button{
 .btn-danger {
   @apply bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700;
 }
+
+.shadow-bottom {
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-light-above {
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+@layer components {
+  .main-container {
+    @apply container mx-auto px-6 md:px-12 lg:px-20 xl:px-24 max-w-7xl;
+  }
+  
+  .section-py {
+    @apply py-16 md:py-24;
+  }
+  
+  .text-justify-custom {
+    @apply text-justify leading-relaxed;
+  }
+
+  /* Animations for Radix UI / Shadcn UI */
+  .animate-in {
+    animation-duration: 300ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-fill-mode: forwards;
+  }
+
+  .fade-in-0 {
+    --tw-enter-opacity: 0;
+    animation-name: enter;
+  }
+
+  .zoom-in-95 {
+    --tw-enter-scale: 0.95;
+    animation-name: enter;
+  }
+
+  .slide-in-from-top-48 {
+    --tw-enter-translate-y: -48%;
+    animation-name: enter;
+  }
+
+  @keyframes enter {
+    from {
+      opacity: var(--tw-enter-opacity, 1);
+      transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0) scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), var(--tw-enter-scale, 1)) rotate(var(--tw-enter-rotate, 0));
+    }
+  }
+
+  @keyframes exit {
+    to {
+      opacity: var(--tw-exit-opacity, 1);
+      transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0) scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), var(--tw-exit-scale, 1)) rotate(var(--tw-exit-rotate, 0));
+    }
+  }
+}

@@ -131,9 +131,9 @@ export default function NavMobile({ scrolled }: { scrolled: boolean }) {
               {/* CTA BUTTON — ALWAYS STAYS AT THE BOTTOM */}
               <div className="mt-8">
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
                     setIsOpen(false);
-                    openModal();
+                    openModal(e);
                   }}
                   className={cn(
                     "w-full block text-center px-4 py-3 rounded-full font-semibold transition-all shadow-md",

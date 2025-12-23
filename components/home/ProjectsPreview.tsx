@@ -52,8 +52,14 @@ export default function ProjectsPreview() {
   ];
 
   return (
-    <section className="container mx-auto px-6">
-      <div className="flex items-center justify-between mb-8">
+    <section className="main-container">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex items-center justify-between mb-8"
+      >
         <div>
           <h2 className="text-3xl font-semibold">Our Projects</h2>
           <p className="text-sm text-muted-foreground mt-2">
@@ -67,7 +73,7 @@ export default function ProjectsPreview() {
           View All
           <ArrowUpRight className="h-4 w-4 ml-1" />
         </Link>
-      </div>
+      </motion.div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((p, i) => (
@@ -75,7 +81,8 @@ export default function ProjectsPreview() {
             key={p.title}
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1, duration: 0.5 }}
             className="rounded-xl border bg-card overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
           >
             <div className="relative h-48 overflow-hidden">
@@ -86,7 +93,7 @@ export default function ProjectsPreview() {
                 className="object-cover group-hover:scale-105 transition-transform duration-300" 
               />
               <div className="absolute top-4 left-4">
-                <span className="bg-primary/90 text-primary-foreground text-xs px-3 py-1 rounded-full font-medium">
+                <span className="bg-primary/90 text-primary-foreground text-sm px-3 py-1 rounded-full font-medium">
                   {p.tag}
                 </span>
               </div>

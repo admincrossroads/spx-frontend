@@ -4,8 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useContactModal } from "@/lib/contexts/ContactModalContext";
 
 export default function PartnersAndAlliances() {
+  const { openModal } = useContactModal();
+
   return (
     <div className="w-full">
 
@@ -17,168 +20,296 @@ export default function PartnersAndAlliances() {
           fill
           className="object-cover brightness-[0.65]"
         />
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-6xl font-semibold"
-          >
-            Partners & Alliances
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mt-4 max-w-2xl text-lg md:text-xl"
-          >
-            Collaboration is at the heart of SPX’s work — bringing together
-            governments, private-sector actors, research institutions, and
-            community organizations to deliver scalable development outcomes.
-          </motion.p>
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
+          <div className="main-container">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-6xl font-semibold"
+            >
+              Partners & Alliances
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mt-4 max-w-3xl mx-auto text-lg md:text-xl"
+            >
+              SPX works with organizations that share a commitment to inclusive and 
+              sustainable development in Africa. Its partnerships span the public 
+              sector, private sector, development community, research institutions, 
+              and innovation ecosystems.
+            </motion.p>
+          </div>
         </div>
       </section>
 
-      {/* SECTION 1 — INSTITUTIONAL PARTNERS */}
-      <section className="py-20 px-6 md:px-16 grid md:grid-cols-2 gap-12 items-center">
+      {/* SECTION 1 — DEVELOPMENT PARTNERS */}
+      <section className="section-py">
+        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl font-semibold mb-6">Development Partnerships</h2>
+            <p className="text-justify-custom text-muted-foreground mb-6">
+              SPX collaborates with international development programs and global 
+              initiatives to design, test, and deliver solutions that are 
+              evidence-based and responsive to real needs.
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium">
+              {[
+                "Clean energy access",
+                "Agricultural transformation",
+                "Youth employment & skills",
+                "Digital inclusion",
+                "Climate resilience",
+                "Business development",
+                "Innovation & applied science",
+                "Market systems development"
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* TEXT */}
-        <div>
-          <h2 className="text-3xl font-semibold mb-6">Institutional Partnerships</h2>
-          <p className="text-muted-foreground leading-relaxed text-justify">
-            SPX maintains strong relationships with national and regional
-            government institutions, enabling alignment with policy priorities,
-            coordination across sectors, and smooth implementation of
-            development initiatives. These partnerships strengthen SPX’s
-            ability to work within existing systems and support public-sector
-            capacity, planning, and delivery.
-          </p>
-        </div>
-
-        {/* IMAGE */}
-        <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-          <Image
-            src="/images/institutional-partners.jpg"
-            alt="Government Partnerships"
-            fill
-            className="object-cover"
-          />
-        </div>
-      </section>
-
-      {/* SECTION 2 — PRIVATE-SECTOR ALLIANCES */}
-      <section className="py-20 px-6 md:px-16 grid md:grid-cols-2 gap-12 items-center">
-
-        {/* IMAGE LEFT */}
-        <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
-          <Image
-            src="/images/private-sector.jpg"
-            alt="Private Sector Alliances"
-            fill
-            className="object-cover"
-          />
-        </div>
-
-        {/* TEXT RIGHT */}
-        <div className="order-1 md:order-2">
-          <h2 className="text-3xl font-semibold mb-6">Private-Sector Alliances</h2>
-          <p className="text-muted-foreground leading-relaxed text-justify">
-            SPX collaborates with agribusinesses, renewable energy companies,
-            technology firms, commercial farms, cooperatives, and enterprises
-            across Ethiopia. These alliances bring market expertise,
-            innovation pathways, and operational know-how that enhance the
-            effectiveness and scalability of SPX’s programs in agriculture,
-            energy, and digital systems.
-          </p>
+          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
+            <Image
+              src="/images/institutional-partners.jpg"
+              alt="Development Partnerships"
+              fill
+              className="object-cover"
+            />
+          </div>
         </div>
       </section>
 
-      {/* SECTION 3 — COMMUNITY & GRASSROOTS PARTNERS */}
-      <section className="py-20 px-6 md:px-16 grid md:grid-cols-2 gap-12 items-center bg-muted/40">
-        
-        {/* TEXT */}
-        <div>
-          <h2 className="text-3xl font-semibold mb-6">Community Partners</h2>
-          <p className="text-muted-foreground leading-relaxed text-justify">
-            At the grassroots level, SPX works closely with farmers,
-            cooperatives, youth groups, women-led enterprises, and local
-            institutions. These community partnerships ensure that programs
-            are grounded in lived realities and that innovation, training,
-            and market tools are accessible to the people who need them most.
-          </p>
-        </div>
+      {/* SECTION 2 — PUBLIC SECTOR */}
+      <section className="section-py bg-muted/40">
+        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
+          <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
+            <Image
+              src="/images/private-sector.jpg"
+              alt="Public Sector Collaboration"
+              fill
+              className="object-cover"
+            />
+          </div>
 
-        {/* IMAGE */}
-        <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-          <Image
-            src="/images/community-partners.jpg"
-            alt="Community Partners"
-            fill
-            className="object-cover"
-          />
-        </div>
-      </section>
-
-      {/* SECTION 4 — RESEARCH, SCIENCE & INNOVATION PARTNERS */}
-      <section className="py-20 px-6 md:px-16 grid md:grid-cols-2 gap-12 items-center">
-
-        {/* IMAGE */}
-        <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-          <Image
-            src="/images/research-partners.jpg"
-            alt="Research and Innovation Partners"
-            fill
-            className="object-cover"
-          />
-        </div>
-
-        {/* TEXT */}
-        <div>
-          <h2 className="text-3xl font-semibold mb-6">
-            Research & Innovation Collaborators
-          </h2>
-          <p className="text-muted-foreground leading-relaxed text-justify">
-            SPX partners with universities, applied science labs, innovation
-            hubs, and technical institutions to develop context-driven
-            research, digital tools, scientific solutions, and prototype
-            technologies. Through the Spiral Innovation Club, SPX works with
-            innovators in applied microbiology, digital agriculture, climate
-            solutions, and circular economy initiatives.
-          </p>
+          <div className="order-1 md:order-2">
+            <h2 className="text-3xl font-semibold mb-6">Public Sector Collaboration</h2>
+            <p className="text-justify-custom text-muted-foreground mb-6">
+              We work closely with national and local institutions across Ethiopia 
+              to support policy implementation, institutional capacity building, 
+              and grassroots program delivery.
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium">
+              {[
+                "Policy implementation",
+                "Institutional building",
+                "Local governance",
+                "Grassroots delivery",
+                "Technical advisory",
+                "Market & sector development",
+                "Renewable energy systems"
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      {/* SECTION 5 — DEVELOPMENT & DONOR PARTNERS */}
-      <section className="py-20 px-6 md:px-16 bg-muted/40">
-        <h2 className="text-3xl font-semibold mb-8 text-center">
-          Development Partners
-        </h2>
-        <p className="text-muted-foreground max-w-3xl mx-auto text-lg leading-relaxed text-justify">
-          SPX collaborates with development organizations, foundations, and
-          donors to co-design integrated programs, support innovation
-          pipelines, accelerate productive-use energy solutions, and scale
-          agricultural and digital systems. These alliances enable SPX to
-          deliver evidence-driven, practical, and high-impact work across
-          Africa’s development landscape.
-        </p>
+      {/* SECTION 3 — PRIVATE SECTOR */}
+      <section className="section-py">
+        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl font-semibold mb-6">Private-Sector Engagement</h2>
+            <p className="text-justify-custom text-muted-foreground mb-6">
+              SPX collaborates with companies to understand market incentives, 
+              value-chain dynamics, and investment opportunities, creating solutions 
+              that are both viable and scalable.
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium">
+              {[
+                "Agriculture & agribusiness",
+                "Energy & renewables",
+                "Digital technology",
+                "Media & communications",
+                "Commercial farming",
+                "Supply chain & logistics",
+                "Market development & trade"
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
+            <Image
+              src="/images/community-partners.jpg"
+              alt="Private Sector Engagement"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4 — ACADEMIC & RESEARCH */}
+      <section className="section-py bg-muted/40">
+        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
+          <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
+            <Image
+              src="/images/research-partners.jpg"
+              alt="Academic & Research Collaboration"
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          <div className="order-1 md:order-2">
+            <h2 className="text-3xl font-semibold mb-6">Academic & Research Collaboration</h2>
+            <p className="text-justify-custom text-muted-foreground mb-6">
+              We engage with research institutions and technical organizations to 
+              gain the evidence and perspective required to develop meaningful solutions.
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium">
+              {[
+                "Applied science",
+                "Microbiology & compost",
+                "Climate-smart agriculture",
+                "Digital ecosystems",
+                "Financial sector analysis",
+                "Policy analysis",
+                "Pilot design & evaluation"
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5 — INNOVATION ECOSYSTEM */}
+      <section className="section-py">
+        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl font-semibold mb-6">Innovation Ecosystem Participation</h2>
+            <p className="text-justify-custom text-muted-foreground mb-6">
+              SPX engages in Africa’s innovation ecosystem through the Spiral 
+              Innovation Club, supporting start-ups and advancing digital tools.
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium">
+              {[
+                "Supporting start-ups",
+                "Innovation challenges",
+                "Facilitating market testing",
+                "Advancing digital tools",
+                "Entrepreneurs & youth engagement"
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
+            <div className="w-full h-full bg-primary/5 flex items-center justify-center">
+              <span className="text-primary font-semibold">Innovation Ecosystem</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6 — MEDIA & DIALOGUE */}
+      <section className="section-py bg-muted/40">
+        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
+          <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
+            <div className="w-full h-full bg-primary/5 flex items-center justify-center">
+              <span className="text-primary font-semibold">Media & Dialogue</span>
+            </div>
+          </div>
+
+          <div className="order-1 md:order-2">
+            <h2 className="text-3xl font-semibold mb-6">Media & Dialogue Platforms</h2>
+            <p className="text-justify-custom text-muted-foreground mb-6">
+              We collaborate on platforms that enhance dialogue on the economy, 
+              elevating national conversations on development priorities.
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium">
+              {[
+                "Economic dialogue",
+                "Public policy discussions",
+                "Industry engagements",
+                "Thought leadership",
+                "Televised panel discussions",
+                "Business intelligence"
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY PARTNERSHIPS MATTER */}
+      <section className="section-py">
+        <div className="main-container">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-semibold mb-8">Why Partnerships Matter to SPX</h2>
+            <div className="grid sm:grid-cols-2 gap-6 text-left">
+              {[
+                "Deliver comprehensive solutions",
+                "Mobilize resources and networks",
+                "Coordinate multi-stakeholder programs",
+                "Engage with communities meaningfully",
+                "Produce high-quality research",
+                "Strengthen public and private institutions",
+                "Scale impactful innovations",
+                "Contribute to national development agendas"
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm border">
+                  <span className="h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                  <span className="text-sm font-medium">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 text-center px-6">
-        <h2 className="text-3xl font-semibold mb-4">
-          Partner with SPX
-        </h2>
-        <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-          SPX works with ambitious partners committed to Africa’s future.
-          Explore how we can collaborate across agriculture, energy, digital
-          innovation, climate resilience, and youth livelihoods.
-        </p>
+      <section className="section-py text-center">
+        <div className="main-container">
+          <h2 className="text-3xl font-semibold mb-4">
+            Partner with SPX
+          </h2>
+          <p className="text-muted-foreground max-w-xl mx-auto mb-8">
+            SPX works with ambitious partners committed to Africa’s future.
+            Explore how we can collaborate across agriculture, energy, digital
+            innovation, climate resilience, and youth livelihoods.
+          </p>
 
-        <Link href="/contact">
-          <Button size="lg" className="rounded-full px-10">
+          <Button size="lg" className="rounded-full px-10" onClick={openModal}>
             Contact Us
           </Button>
-        </Link>
+        </div>
       </section>
 
     </div>

@@ -10,7 +10,7 @@ export default async function ReportsPage() {
   });
 
   return (
-    <div className="container mx-auto px-6 py-24">
+    <div className="main-container section-py">
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Reports</h1>
         <p className="text-muted-foreground text-lg">

@@ -24,115 +24,103 @@ interface Project {
 const projects: Project[] = [
   {
     id: "1",
-    title: "Solar Irrigation Initiative",
-    description: "Expanding access to clean energy for agricultural productivity through solar-powered irrigation systems across rural communities.",
+    title: "Bloom Initiative: Energy-Enabled Livelihoods & Circular Economy",
+    description: "A multi-stakeholder program designed to integrate clean energy, PUE technologies, and circular economy innovations to support rural livelihoods.",
     tag: "Energy",
-    country: "Kenya",
-    region: "East Africa",
+    country: "Ethiopia",
+    region: "Regional",
     status: "active",
     image: "/images/projects/p1.jpg",
     focusArea: "Energy",
-    year: 2023,
+    year: 2024,
   },
   {
     id: "2",
-    title: "Youth Jobs Systems",
-    description: "Building pathways to sustainable employment for young people through skills training and job placement programs.",
-    tag: "Employment",
-    country: "Uganda",
-    region: "East Africa",
+    title: "Digital Advisory for Smallholder Farmers",
+    description: "Integrated digital platforms providing agronomy and market development advice to coffee-growing communities, improving farm productivity and quality management.",
+    tag: "Digital",
+    country: "Ethiopia",
+    region: "Coffee Regions",
     status: "active",
     image: "/images/projects/p2.jpg",
-    focusArea: "Employment",
+    focusArea: "Digital",
     year: 2023,
   },
   {
     id: "3",
-    title: "Digital MEL Platform",
-    description: "Transforming monitoring and evaluation through digital innovation, enabling real-time data collection and analysis.",
-    tag: "Digital",
-    country: "Regional",
-    region: "Pan-African",
+    title: "Applied Science Innovation: Agricultural Waste Transformation",
+    description: "Incubating microbial technologies that accelerate the conversion of agricultural waste into nutrient-rich organic compost for greener farming systems.",
+    tag: "Climate",
+    country: "Ethiopia",
+    region: "National",
     status: "active",
     image: "/images/projects/p3.jpg",
-    focusArea: "Digital",
+    focusArea: "Climate",
     year: 2024,
   },
   {
     id: "4",
-    title: "Climate Resilience Program",
-    description: "Strengthening community resilience to climate change impacts through adaptive agriculture and water management.",
-    tag: "Climate",
+    title: "Coffee Sector Skills Development",
+    description: "Established an international-standard coffee training institute offering professional training in roasting, cupping, and barista skills to strengthen human capital.",
+    tag: "Employment",
     country: "Ethiopia",
-    region: "East Africa",
+    region: "Addis Ababa",
     status: "active",
     image: "/images/projects/p1.jpg",
-    focusArea: "Climate",
+    focusArea: "Employment",
     year: 2023,
   },
   {
     id: "5",
-    title: "Agricultural Innovation Hub",
-    description: "Supporting smallholder farmers with innovative solutions, technology transfer, and market access programs.",
-    tag: "Agriculture",
-    country: "Tanzania",
-    region: "East Africa",
-    status: "completed",
-    image: "/images/projects/p2.jpg",
-    focusArea: "Agriculture",
-    year: 2022,
-  },
-  {
-    id: "6",
-    title: "Governance Strengthening",
-    description: "Enhancing institutional capacity and policy effectiveness through technical assistance and capacity building.",
-    tag: "Governance",
-    country: "Rwanda",
-    region: "East Africa",
-    status: "active",
-    image: "/images/projects/p3.jpg",
-    focusArea: "Governance",
-    year: 2024,
-  },
-  {
-    id: "7",
-    title: "Rural Electrification Program",
-    description: "Bringing clean, reliable electricity to underserved rural communities through mini-grid and solar home systems.",
+    title: "Renewable Energy Operations Support",
+    description: "Providing technical and operational maintenance for wind power assets to ensure the long-term sustainability and reliability of clean energy investments.",
     tag: "Energy",
-    country: "Ghana",
-    region: "West Africa",
+    country: "Ethiopia",
+    region: "National",
     status: "active",
-    image: "/images/projects/p1.jpg",
+    image: "/images/projects/p2.jpg",
     focusArea: "Energy",
     year: 2024,
   },
   {
-    id: "8",
-    title: "Skills Development Initiative",
-    description: "Building technical and vocational skills for youth and adults to improve employment opportunities and economic mobility.",
-    tag: "Employment",
-    country: "Nigeria",
-    region: "West Africa",
-    status: "upcoming",
-    image: "/images/projects/p2.jpg",
-    focusArea: "Employment",
-    year: 2025,
+    id: "6",
+    title: "Research & Sector Analysis",
+    description: "Conducting market research in banking, digital payments, and agricultural value chains to inform evidence-based policy and spark private-sector innovation.",
+    tag: "Research",
+    country: "Ethiopia",
+    region: "National",
+    status: "completed",
+    image: "/images/projects/p3.jpg",
+    focusArea: "Research",
+    year: 2023,
   },
   {
-    id: "9",
-    title: "Digital Financial Services",
-    description: "Expanding access to financial services through mobile money and digital payment solutions in rural areas.",
-    tag: "Digital",
-    country: "Kenya",
-    region: "East Africa",
+    id: "7",
+    title: "Commercial Farm Advisory & Operational Support",
+    description: "Strategic advisory for commercial farms on technology adoption, market linkage development, and system optimization to enhance productivity.",
+    tag: "Agriculture",
+    country: "Ethiopia",
+    region: "Regional",
     status: "active",
-    image: "/images/projects/p3.jpg",
-    focusArea: "Digital",
-    year: 2023,
+    image: "/images/projects/p1.jpg",
+    focusArea: "Agriculture",
+    year: 2024,
+  },
+  {
+    id: "8",
+    title: "Media & Thought Leadership Partnerships",
+    description: "Hosting high-level economic dialogues and televised panels to promote national thought leadership and advance Africa's development discourse.",
+    tag: "Governance",
+    country: "Ethiopia",
+    region: "National",
+    status: "active",
+    image: "/images/projects/p2.jpg",
+    focusArea: "Governance",
+    year: 2024,
   },
 ];
 
-const focusAreas = ["All", "Energy", "Agriculture", "Employment", "Digital", "Climate", "Governance"];
+const focusAreas = ["All", "Energy", "Agriculture", "Employment", "Digital", "Climate", "Governance", "Research"];
 const statuses = ["All", "Active", "Completed", "Upcoming"];
 const regions = ["All", "East Africa", "West Africa", "Pan-African"];
 
@@ -174,8 +162,8 @@ export default function Projects() {
   return (
     <div className="w-full">
       {/* HERO SECTION */}
-      <section className="relative py-20 md:py-32 px-6">
-        <div className="container mx-auto max-w-6xl">
+      <section className="relative section-py">
+        <div className="main-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -195,7 +183,7 @@ export default function Projects() {
       </section>
 
       {/* FILTERS AND SEARCH */}
-      <section className="container mx-auto px-6 mb-12">
+      <section className="main-container mb-12">
         <div className="max-w-6xl mx-auto">
           {/* Search Bar */}
           <div className="relative mb-6">
@@ -208,7 +196,6 @@ export default function Projects() {
               className="pl-10 h-12"
             />
           </div>
-
           {/* Filter Toggle */}
           <div className="flex items-center justify-between mb-6">
             <Button
@@ -223,7 +210,6 @@ export default function Projects() {
               {filteredProjects.length} project{filteredProjects.length !== 1 ? "s" : ""} found
             </p>
           </div>
-
           {/* Filter Options */}
           {showFilters && (
             <motion.div
@@ -288,8 +274,12 @@ export default function Projects() {
       </section>
 
       {/* PROJECTS GRID */}
-      <section className="container mx-auto px-6 mb-20">
+      <section id="portfolio" className="main-container mb-20">
         <div className="max-w-6xl mx-auto">
+          <div id="featured" className="mb-12">
+            <h2 className="text-3xl font-semibold mb-4">Project Portfolio</h2>
+            <p className="text-muted-foreground">Our ongoing and completed initiatives driving impact.</p>
+          </div>
           {filteredProjects.length === 0 ? (
             <div className="text-center py-20">
               <p className="text-lg text-muted-foreground mb-4">
@@ -326,12 +316,12 @@ export default function Projects() {
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-4 left-4 flex gap-2">
-                      <Badge className="bg-primary/90 text-primary-foreground">
+                      <Badge className="bg-primary/90 text-primary-foreground px-3 py-1 text-sm">
                         {project.tag}
                       </Badge>
                       <Badge
                         variant="secondary"
-                        className={getStatusColor(project.status)}
+                        className={`${getStatusColor(project.status)} px-3 py-1 text-sm`}
                       >
                         {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
                       </Badge>
@@ -371,8 +361,28 @@ export default function Projects() {
         </div>
       </section>
 
+      {/* ADDITIONAL SECTIONS */}
+      <section id="impact" className="main-container mb-20 text-center">
+        <div className="max-w-4xl mx-auto p-12 border rounded-xl bg-muted/40">
+          <h2 className="text-3xl font-semibold mb-4">Impact Stories</h2>
+          <p className="text-muted-foreground mb-8">
+            Discover how SPX initiatives are transforming communities and systems across Africa.
+          </p>
+          <div className="grid md:grid-cols-2 gap-6 text-left">
+            <Card className="p-6">
+              <h3 className="font-bold mb-2">Coffee Sector Transformation</h3>
+              <p className="text-sm text-muted-foreground">How our training institute is creating jobs and increasing value for smallholder farmers.</p>
+            </Card>
+            <Card className="p-6">
+              <h3 className="font-bold mb-2">Energy-Enabled Livelihoods</h3>
+              <p className="text-sm text-muted-foreground">The impact of solar-powered processing tools on rural enterprise income.</p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* STATISTICS SECTION */}
-      <section className="container mx-auto px-6 mb-20">
+      <section className="main-container mb-20">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-6 p-8 border rounded-xl bg-card">
             <div className="text-center">

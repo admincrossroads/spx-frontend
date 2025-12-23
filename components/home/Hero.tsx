@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
 import { useContactModal } from "@/lib/contexts/ContactModalContext";
 
 export default function Hero() {
@@ -39,7 +40,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full h-[90vh] overflow-hidden">
+    <section className="relative w-full h-screen overflow-hidden">
 
       {/* IMAGE SLIDER */}
       <div className="absolute inset-0 flex">
@@ -71,10 +72,15 @@ export default function Hero() {
       </div>
 
       {/* TEXT BLOCK WITH GLASS EFFECT */}
-      <div className="relative z-10 h-full flex items-center px-6">
-        <div className="container max-w-2xl">
+      <div className="relative z-10 h-full flex items-center justify-center md:justify-start">
+        <div className="container mx-auto px-4 w-full">
 
-          <div className="backdrop-blur-md bg-black/30 p-8 rounded-2xl shadow-xl border border-white/10">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+            className="backdrop-blur-md bg-black/30 p-8 rounded-2xl shadow-xl border border-white/10 max-w-2xl mx-auto md:mx-0 text-center md:text-left"
+          >
             <h1 className="text-2xl md:text-4xl font-bold text-white leading-tight">
               Africa-Led Strategy, Research, and Innovation for Systems Change.
             </h1>
@@ -84,10 +90,10 @@ export default function Hero() {
               test, and scale solutions that strengthen systems across Africa.
             </p>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 max-w-sm">
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 max-w-sm mx-auto md:mx-0">
               <Button
                 size="lg"
-                className="bg-white !text-black hover:bg-white/90 hover:!text-black w-full font-semibold"
+                className="bg-white !text-black hover:!text-white hover:bg-black/40 w-full font-semibold"
                 style={{ color: '#000000' }}
                 onClick={openModal}
               >
@@ -97,14 +103,36 @@ export default function Hero() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white text-white bg-transparent w-full hover:bg-white/20"
+                className="border-white text-white bg-transparent w-full hover:text-black hover:bg-white/40"
+                onClick={() => router.push('/projects')}
               >
                 Explore Work
               </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
+
+      {/* SCROLL INDICATOR */}
+      <motion.div 
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+      >
+        <motion.div
+          animate={{ y: [0, 12, 0] }}
+          transition={{ 
+            duration: 1.5, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="text-white/80 cursor-pointer"
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+        >
+          <ChevronDown className="w-8 h-8" />
+        </motion.div>
+      </motion.div>
 
     </section>
   );

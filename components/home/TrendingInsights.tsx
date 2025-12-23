@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { InsightImage } from '@/components/ui/insight-image';
 import { getImageUrl } from '@/lib/utils/helpers';
 
@@ -117,8 +118,14 @@ export default function TrendingInsights() {
   }
 
   return (
-    <section className="container mx-auto px-6">
-      <div className="flex items-center justify-between mb-8">
+    <section className="main-container">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex items-center justify-between mb-8"
+      >
         <div>
           <h2 className="text-3xl font-semibold">Trending Now</h2>
           <p className="text-sm text-muted-foreground mt-2">
@@ -131,9 +138,15 @@ export default function TrendingInsights() {
         >
           View All →
         </Link>
-      </div>
+      </motion.div>
 
-      <div className="relative">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="relative"
+      >
         {/* Carousel Container */}
         <div className="relative overflow-hidden rounded-xl">
           <AnimatePresence mode="wait">
@@ -165,7 +178,7 @@ export default function TrendingInsights() {
                   
                   {/* Content Section */}
                   <div className="p-8 flex flex-col justify-center">
-                    <Badge variant="outline" className="mb-4 w-fit capitalize">
+                    <Badge variant="outline" className="mb-4 w-fit capitalize px-4 py-1.5 text-sm">
                       {typeLabels[insights[currentIndex].type] || insights[currentIndex].type}
                     </Badge>
                     <h3 className="text-2xl font-bold mb-4 hover:text-primary transition-colors">
@@ -175,10 +188,15 @@ export default function TrendingInsights() {
                       {insights[currentIndex].summary}
                     </p>
                     {insights[currentIndex].author && (
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground mb-6">
                         By {insights[currentIndex].author.name}
                       </p>
                     )}
+                    <div className="flex justify-end mt-auto">
+                      <Button variant="ghost" size="sm" className="gap-2 text-primary hover:text-primary hover:bg-transparent p-0 h-auto font-semibold">
+                        Read More <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -225,7 +243,13 @@ export default function TrendingInsights() {
         )}
 
         {/* Card Grid Below (for smaller screens or as preview) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6"
+        >
           {insights.slice(0, 4).map((insight, index) => (
             <motion.button
               key={insight.id}
@@ -246,7 +270,7 @@ export default function TrendingInsights() {
                   />
                 </div>
               )}
-              <Badge variant="outline" className="text-xs mb-1 capitalize">
+              <Badge variant="outline" className="text-sm mb-1 capitalize px-3 py-1">
                 {typeLabels[insight.type] || insight.type}
               </Badge>
               <h4 className="text-xs font-semibold line-clamp-2">
@@ -254,8 +278,8 @@ export default function TrendingInsights() {
               </h4>
             </motion.button>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

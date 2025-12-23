@@ -1,9 +1,14 @@
 export const NAV_ITEMS = [
+  // {
+  //   label: "Home",
+  //   href: "/",
+  //   submenu: []
+  // },
   {
     label: "About SPX",
     href: "/about/who-we-are",
     submenu: [
-      { label: "Who We Are", href: "/about/who-we-are/" },
+      { label: "Who We Are", href: "/about/who-we-are" },
       { label: "Vision & Mission", href: "/about/vision-mission" },
       { label: "Africa-Led Identity", href: "/about/identity" },
       { label: "Leadership & Team", href: "/about/leadership" },
@@ -15,10 +20,10 @@ export const NAV_ITEMS = [
     label: "Our Approach",
     href: "/approach/advisory",
     submenu: [
-      { label: "Strategic Advisory", href: "/approach/advisory" },
-      { label: "Research & Evidence", href: "/approach/research" },
-      { label: "Program Delivery", href: "/approach/program-delivery" },
-      { label: "Innovation & Enterprise", href: "/approach/innovation" },
+      { label: "Strategic Advisory & Systems Design", href: "/approach/advisory" },
+      { label: "Research, Data & Evidence", href: "/approach/research" },
+      { label: "Program Delivery & Field Operations", href: "/approach/program-delivery" },
+      { label: "Innovation & Enterprise Development", href: "/approach/innovation" },
       { label: "MEL", href: "/approach/mel" },
       { label: "Digital Transformation", href: "/approach/digital" },
     ]
@@ -29,16 +34,21 @@ export const NAV_ITEMS = [
     submenu: [
       { label: "Energy for Development", href: "/focus-areas/energy" },
       { label: "Agriculture & Food Systems", href: "/focus-areas/agriculture" },
-      { label: "Employment & Skills", href: "/focus-areas/employment" },
-      { label: "Digital Transformation", href: "/focus-areas/digital" },
+      { label: "Employment, Skills & Livelihoods", href: "/focus-areas/employment" },
+      { label: "Digital Transformation & Inclusion", href: "/focus-areas/digital" },
       { label: "Climate & Circular Economy", href: "/focus-areas/climate" },
-      { label: "Governance & Institutions", href: "/focus-areas/governance" }
+      { label: "Governance & Institutional Strengthening", href: "/focus-areas/governance" }
     ]
   },
   {
     label: "Projects & Impact",
     href: "/projects",
-    submenu: []
+    submenu: [
+      { label: "Featured Projects", href: "/projects#featured" },
+      { label: "Project Portfolio", href: "/projects#portfolio" },
+      { label: "Impact Stories", href: "/projects#impact" },
+      { label: "MEL Approach", href: "/approach/mel" }
+    ]
   },
   {
     label: "Insights",
@@ -53,7 +63,24 @@ export const NAV_ITEMS = [
   {
     label: "Innovation Hub",
     href: "/innovation",
-    submenu: []
+    submenu: [
+      { label: "Spiral Innovation Club", href: "/innovation#club" },
+      { label: "Enterprise Incubation", href: "/innovation#incubation" },
+      { label: "Applied Science Innovations", href: "/innovation#science" },
+      { label: "Digital Solutions", href: "/innovation#digital" },
+      { label: "Skills & Sector Capacity", href: "/innovation#skills" },
+      { label: "Innovation Challenges", href: "/innovation#challenges" }
+    ]
+  },
+  {
+    label: "Work With Us",
+    href: "/work-with-us",
+    submenu: [
+      { label: "Careers & Internships", href: "/work-with-us#careers" },
+      { label: "Consultant Roster", href: "/work-with-us#roster" },
+      { label: "Partnership Opportunities", href: "/work-with-us#partnerships" },
+      { label: "Vendor Registration", href: "/work-with-us#vendors" }
+    ]
   },
   {
     label: "Contact Us",

@@ -15,8 +15,16 @@ export default function FocusAreas() {
   ];
 
   return (
-    <section className="container mx-auto px-6">
-      <h2 className="text-3xl font-semibold mb-8">Focus Areas</h2>
+    <section className="main-container">
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-3xl font-semibold mb-8"
+      >
+        Focus Areas
+      </motion.h2>
 
       <div className="grid md:grid-cols-3 gap-6">
         {areas.map((a, i) => (
@@ -24,18 +32,19 @@ export default function FocusAreas() {
             key={a.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1, duration: 0.5 }}
             className="rounded-xl overflow-hidden border bg-card cursor-pointer hover:shadow-lg transition"
           >
             <Link href={a.href}>
-              <div className="relative h-40">
+              <div className="relative h-48">
                 <Image src={a.img} alt={a.title} fill className="object-cover" />
-                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 bg-black/40 hover:bg-black/20 transition-colors" />
               </div>
 
-              <div className="p-5">
-                <h3 className="font-semibold text-sm">{a.title}</h3>
-                <p className="text-xs text-muted-foreground mt-1">
+              <div className="p-6">
+                <h3 className="font-semibold text-lg">{a.title}</h3>
+                <p className="text-sm text-muted-foreground mt-2">
                   Learn more →
                 </p>
               </div>

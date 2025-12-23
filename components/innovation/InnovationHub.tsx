@@ -24,101 +24,68 @@ interface Innovation {
 const innovations: Innovation[] = [
   {
     id: "1",
-    title: "Soil Health Monitoring System",
-    description: "Digital platform for real-time soil health assessment and recommendations for smallholder farmers.",
+    title: "Microbial Solutions for Composting",
+    description: "Developing and testing beneficial bacteria that accelerate the conversion of coffee pulp and agricultural waste into nutrient-rich organic compost.",
     category: "applied-research",
     status: "active",
     image: "/images/projects/p1.jpg",
-    focusArea: "Agriculture",
+    focusArea: "Climate",
     location: "Ethiopia",
     year: 2024,
   },
   {
     id: "2",
-    title: "Solar Cold Storage Units",
-    description: "Solar-powered cold storage solutions for post-harvest management and reducing food waste.",
-    category: "applied-research",
-    status: "pilot",
-    image: "/images/projects/p2.jpg",
-    focusArea: "Energy",
-    location: "Kenya",
-    year: 2024,
-  },
-  {
-    id: "3",
-    title: "AgriTech Startup Incubator",
-    description: "Supporting early-stage agricultural technology startups with mentorship, funding, and market access.",
-    category: "enterprise-support",
+    title: "Smallholder Digital Advisory Platform",
+    description: "A digital system providing real-time agronomy, market, and quality management advice to coffee-growing communities.",
+    category: "digital-tools",
     status: "active",
-    image: "/images/projects/p3.jpg",
+    image: "/images/projects/p2.jpg",
     focusArea: "Agriculture",
-    location: "Tanzania",
+    location: "National",
     year: 2023,
   },
   {
-    id: "4",
-    title: "Digital MEL Dashboard",
-    description: "Comprehensive monitoring, evaluation, and learning platform for real-time project tracking and insights.",
-    category: "digital-tools",
+    id: "3",
+    title: "Enterprise Incubation Program",
+    description: "Supporting early-stage ventures in agritech, clean energy, and circular economy through technical mentorship and field-testing access.",
+    category: "enterprise-support",
     status: "active",
+    image: "/images/projects/p3.jpg",
+    focusArea: "Employment",
+    location: "Regional",
+    year: 2024,
+  },
+  {
+    id: "4",
+    title: "Market Linkage & Information System",
+    description: "Digital tools designed to improve market transparency and help smallholders and MSMEs connect more effectively with buyers.",
+    category: "digital-tools",
+    status: "pilot",
     image: "/images/projects/p1.jpg",
     focusArea: "Digital",
-    location: "Regional",
+    location: "National",
     year: 2024,
   },
   {
     id: "5",
-    title: "Waste-to-Value Research",
-    description: "Applied research on converting agricultural waste into valuable products and energy sources.",
-    category: "applied-research",
-    status: "active",
-    image: "/images/projects/p2.jpg",
-    focusArea: "Climate",
-    location: "Rwanda",
-    year: 2024,
-  },
-  {
-    id: "6",
-    title: "Renewable Energy Ventures",
-    description: "Incubating and supporting clean energy enterprises focused on mini-grids and solar solutions.",
+    title: "Coffee Training Institute",
+    description: "An international-standard institute building specialized skills in coffee roasting, sensory evaluation, and quality grading.",
     category: "enterprise-support",
     status: "active",
-    image: "/images/projects/p3.jpg",
-    focusArea: "Energy",
-    location: "Ghana",
+    image: "/images/projects/p2.jpg",
+    focusArea: "Employment",
+    location: "Addis Ababa",
     year: 2023,
   },
   {
-    id: "7",
-    title: "Digital Market Platform",
-    description: "Connecting smallholder farmers with buyers through a digital marketplace and logistics support.",
-    category: "digital-tools",
-    status: "pilot",
-    image: "/images/projects/p1.jpg",
-    focusArea: "Agriculture",
-    location: "Uganda",
-    year: 2024,
-  },
-  {
-    id: "8",
-    title: "Microbial Solutions Lab",
-    description: "Research facility developing microbial solutions for soil health and crop productivity.",
-    category: "applied-research",
-    status: "active",
-    image: "/images/projects/p2.jpg",
-    focusArea: "Agriculture",
-    location: "Ethiopia",
-    year: 2024,
-  },
-  {
-    id: "9",
-    title: "Climate Data Analytics",
-    description: "Advanced analytics platform for climate risk assessment and adaptation planning.",
-    category: "digital-tools",
+    id: "6",
+    title: "Innovation Challenges & Hackathons",
+    description: "Hosting sector-specific challenges to identify and support African-born solutions to local development bottlenecks.",
+    category: "enterprise-support",
     status: "active",
     image: "/images/projects/p3.jpg",
-    focusArea: "Climate",
-    location: "Regional",
+    focusArea: "Governance",
+    location: "National",
     year: 2024,
   },
 ];
@@ -131,7 +98,7 @@ const categories = [
 ];
 
 const statuses = ["All", "Active", "Completed", "Pilot"];
-const focusAreas = ["All", "Energy", "Agriculture", "Employment", "Digital", "Climate", "Governance"];
+const focusAreas = ["All", "Energy", "Agriculture", "Employment", "Digital", "Climate", "Governance", "Research"];
 
 export default function InnovationHub() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -176,8 +143,8 @@ export default function InnovationHub() {
   return (
     <div className="w-full">
       {/* HERO SECTION */}
-      <section className="relative py-20 md:py-32 px-6">
-        <div className="container mx-auto max-w-6xl">
+      <section className="relative section-py">
+        <div className="main-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -197,15 +164,15 @@ export default function InnovationHub() {
       </section>
 
       {/* THREE MAIN AREAS */}
-      <section className="container mx-auto px-6 mb-20">
+      <section id="areas" className="main-container mb-20">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="border-2 hover:border-primary transition-colors">
+            <Card id="science" className="border-2 hover:border-primary transition-colors">
               <CardHeader>
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <Lightbulb className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>Applied Research</CardTitle>
+                <CardTitle>Applied Science Innovations</CardTitle>
                 <CardDescription>
                   Pilots, field testing, and implementation research
                 </CardDescription>
@@ -218,12 +185,12 @@ export default function InnovationHub() {
               </CardContent>
             </Card>
 
-            <Card className="border-2 hover:border-primary transition-colors">
+            <Card id="incubation" className="border-2 hover:border-primary transition-colors">
               <CardHeader>
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <Building2 className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>Enterprise Support</CardTitle>
+                <CardTitle>Enterprise Incubation</CardTitle>
                 <CardDescription>
                   Supporting ventures tackling systemic bottlenecks
                 </CardDescription>
@@ -236,12 +203,12 @@ export default function InnovationHub() {
               </CardContent>
             </Card>
 
-            <Card className="border-2 hover:border-primary transition-colors">
+            <Card id="digital" className="border-2 hover:border-primary transition-colors">
               <CardHeader>
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <Database className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>Digital & Data Tools</CardTitle>
+                <CardTitle>Digital Solutions</CardTitle>
                 <CardDescription>
                   Dashboards, MEL tools, and digital systems
                 </CardDescription>
@@ -258,7 +225,7 @@ export default function InnovationHub() {
       </section>
 
       {/* FILTERS AND SEARCH */}
-      <section className="container mx-auto px-6 mb-12">
+      <section className="main-container mb-12">
         <div className="max-w-6xl mx-auto">
           {/* Search Bar */}
           <div className="relative mb-6">
@@ -271,7 +238,6 @@ export default function InnovationHub() {
               className="pl-10 h-12"
             />
           </div>
-
           {/* Filter Toggle */}
           <div className="flex items-center justify-between mb-6">
             <Button
@@ -286,7 +252,6 @@ export default function InnovationHub() {
               {filteredInnovations.length} innovation{filteredInnovations.length !== 1 ? "s" : ""} found
             </p>
           </div>
-
           {/* Filter Options */}
           {showFilters && (
             <motion.div
@@ -356,8 +321,16 @@ export default function InnovationHub() {
       </section>
 
       {/* INNOVATIONS GRID */}
-      <section className="container mx-auto px-6 mb-20">
+      <section id="club" className="main-container mb-20">
         <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+            <div>
+              <h2 className="text-3xl font-semibold">Spiral Innovation Club</h2>
+              <p className="text-muted-foreground mt-2">
+                Our platform for developing ideas that arise from Africa’s challenges.
+              </p>
+            </div>
+          </div>
           {filteredInnovations.length === 0 ? (
             <div className="text-center py-20">
               <p className="text-lg text-muted-foreground mb-4">
@@ -394,12 +367,12 @@ export default function InnovationHub() {
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
-                      <Badge className="bg-primary/90 text-primary-foreground">
+                      <Badge className="bg-primary/90 text-primary-foreground px-3 py-1 text-sm">
                         {getCategoryLabel(innovation.category)}
                       </Badge>
                       <Badge
                         variant="secondary"
-                        className={getStatusColor(innovation.status)}
+                        className={`${getStatusColor(innovation.status)} px-3 py-1 text-sm`}
                       >
                         {innovation.status.charAt(0).toUpperCase() + innovation.status.slice(1)}
                       </Badge>
@@ -424,7 +397,7 @@ export default function InnovationHub() {
                           </>
                         )}
                       </div>
-                      <Badge variant="outline" className="text-xs">
+                      <Badge variant="outline" className="text-sm px-3 py-1">
                         {innovation.focusArea}
                       </Badge>
                     </div>
@@ -436,8 +409,48 @@ export default function InnovationHub() {
         </div>
       </section>
 
+      {/* ADDITIONAL SECTIONS */}
+      <section id="skills" className="main-container mb-20">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center p-8 border rounded-xl bg-card">
+          <div>
+            <h2 className="text-3xl font-semibold mb-6">Skills & Sector Capacity</h2>
+            <p className="text-muted-foreground leading-relaxed text-justify mb-6">
+              SPX runs a coffee training institute that supports coffee professionals build the skills 
+              needed for the global market. This initiative strengthens Ethiopia’s coffee sector by 
+              improving the knowledge needed for value addition and global competitiveness.
+            </p>
+            <ul className="space-y-3">
+              {["Roasting training", "Sensory evaluation & cupping", "Barista & hospitality skills", "Quality grading & inspection"].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <div className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  <span className="text-sm font-medium">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
+            <Image src="/images/leadership.jpg" alt="Coffee Training" fill className="object-cover" />
+          </div>
+        </div>
+      </section>
+
+      <section id="challenges" className="main-container mb-20 text-center">
+        <div className="max-w-4xl mx-auto p-12 border rounded-xl bg-primary/5">
+          <h2 className="text-3xl font-semibold mb-4">Innovation Challenges</h2>
+          <p className="text-muted-foreground mb-8">
+            The Innovation Hub hosts and supports hackathons, sector dialogues, and 
+            community-based design processes to explore opportunities in key sectors.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Badge variant="outline" className="px-4 py-2">Hackathons</Badge>
+            <Badge variant="outline" className="px-4 py-2">Sector Dialogues</Badge>
+            <Badge variant="outline" className="px-4 py-2">Product Demonstrations</Badge>
+          </div>
+        </div>
+      </section>
+
       {/* STATISTICS SECTION */}
-      <section className="container mx-auto px-6 mb-20">
+      <section className="main-container mb-20">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-6 p-8 border rounded-xl bg-card">
             <div className="text-center">
@@ -469,7 +482,7 @@ export default function InnovationHub() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="container mx-auto px-6 mb-20">
+      <section className="main-container mb-20">
         <div className="max-w-4xl mx-auto text-center p-12 border rounded-xl bg-muted/40">
           <h2 className="text-3xl font-semibold mb-4">
             Partner with SPX Innovation Hub

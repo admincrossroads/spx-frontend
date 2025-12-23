@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from "framer-motion";
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 const typeLabels: Record<string, string> = {
   blog: 'Blog',
@@ -107,15 +109,20 @@ export default function InsightsPreview() {
             className="p-6 border rounded-xl bg-card shadow-sm hover:shadow-md transition-shadow"
           >
             <Link href={`/insights/${insight.slug}`}>
-              <Badge variant="outline" className="mb-2 capitalize">
+              <Badge variant="outline" className="mb-2 capitalize px-3 py-1 text-sm">
                 {typeLabels[insight.type] || insight.type}
               </Badge>
               <h3 className="font-semibold text-sm mb-2 hover:text-primary transition-colors">
                 {insight.title}
               </h3>
-              <p className="text-xs text-muted-foreground line-clamp-3">
+              <p className="text-xs text-muted-foreground line-clamp-3 mb-4">
                 {insight.summary}
               </p>
+              <div className="flex justify-end mt-auto">
+                <Button variant="ghost" size="sm" className="gap-2 text-primary hover:text-primary hover:bg-transparent p-0 h-auto font-medium">
+                  Read More <ArrowRight className="h-4 w-4" />
+                </Button>
+              </div>
             </Link>
           </motion.div>
         ))}

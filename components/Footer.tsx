@@ -2,9 +2,13 @@
 
 import Link from "next/link"
 import { NAV_ITEMS } from "@/components/NavData"
-import { Facebook, Twitter, Linkedin, Youtube } from "lucide-react"
+import { FaLinkedinIn, FaXTwitter, FaYoutube } from "react-icons/fa6"
+import { useContactModal } from "@/lib/contexts/ContactModalContext"
+import { Button } from "@/components/ui/button"
 
 export default function Footer() {
+  const { openModal } = useContactModal()
+
   return (
     <footer className="border-t bg-background mt-20 xl:px-20">
 
@@ -34,13 +38,13 @@ export default function Footer() {
           {/* SOCIAL ICONS */}
           <div className="flex gap-4 mt-4 justify-center md:justify-start">
             <Link href="https://linkedin.com" target="_blank">
-              <Linkedin className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
+              <FaLinkedinIn className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
             </Link>
             <Link href="https://twitter.com" target="_blank">
-              <Twitter className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
+              <FaXTwitter className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
             </Link>
             <Link href="https://youtube.com" target="_blank">
-              <Youtube className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
+              <FaYoutube className="w-5 h-5 text-muted-foreground hover:text-primary transition-colors" />
             </Link>
           </div>
 
@@ -55,38 +59,41 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* NAV SECTIONS - HIDDEN ON MOBILE */}
-        <div className="col-span-3 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-7 gap-10 hidden md:grid">
+        {/* NAV SECTIONS */}
+        <div className="col-span-1 md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-2 items-start align-center">
 
-          {NAV_ITEMS.map((item) => (
-            <div key={item.label}>
+          {NAV_ITEMS.filter(item => ["About SPX", "Insights"].includes(item.label)).map((item) => (
+            <div key={item.label} className="hidden md:block">
               <p className="font-semibold mb-3 text-foreground">{item.label}</p>
 
               <ul className="flex flex-col gap-2">
-                {item.submenu.length > 0 ? (
-                  item.submenu.map((sub) => (
-                    <li key={sub.label}>
-                      <Link
-                        href={sub.href}
-                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        {sub.label}
-                      </Link>
-                    </li>
-                  ))
-                ) : (
-                  <li>
+                {item.submenu.map((sub) => (
+                  <li key={sub.label}>
                     <Link
-                      href={item.href}
+                      href={sub.href}
                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
                     >
-                      Visit {item.label}
+                      {sub.label}
                     </Link>
                   </li>
-                )}
+                ))}
               </ul>
             </div>
           ))}
+
+          {/* CONTACT US SECTION - ALWAYS VISIBLE */}
+          <div className="flex flex-col items-center md:items-start">
+            <p className="font-semibold mb-3 text-foreground hidden md:block">Contact Us</p>
+            <Button 
+              onClick={openModal}
+              className="rounded-full px-8 bg-primary text-white hover:bg-primary/90 w-fit"
+            >
+              Get in Touch
+            </Button>
+            <p className="text-xs text-muted-foreground mt-4 max-w-[200px] text-center md:text-left">
+              Have a project or inquiry? Our team is ready to collaborate.
+            </p>
+          </div>
 
         </div>
 

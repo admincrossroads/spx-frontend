@@ -1,20 +1,38 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function Partners() {
   return (
-    <section className="container mx-auto px-6">
-      <h2 className="text-3xl font-semibold mb-6">Partners</h2>
+    <section className="main-container">
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-3xl font-semibold mb-8"
+      >
+        Partners
+      </motion.h2>
 
-      <div className="flex gap-10 overflow-hidden py-6 border rounded-xl bg-muted/40">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="flex gap-10 overflow-hidden py-10 border rounded-2xl bg-muted/20"
+      >
         <div className="flex gap-10 animate-[slide_30s_linear_infinite]">
           {Array.from({ length: 10 }).map((_, idx) => (
             <div
               key={idx}
-              className="h-10 w-32 bg-slate-300 rounded-md flex items-center justify-center text-xs font-semibold"
+              className="h-12 w-40 bg-slate-300 rounded-lg flex items-center justify-center text-xs font-semibold text-slate-500"
             >
-              Logo
+              Partner Logo
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

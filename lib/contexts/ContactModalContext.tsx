@@ -4,7 +4,8 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 
 interface ContactModalContextType {
   isOpen: boolean;
-  openModal: () => void;
+  origin: { x: number; y: number } | null;
+  openModal: (e?: React.MouseEvent | { x: number; y: number }) => void;
   closeModal: () => void;
 }
 
@@ -12,12 +13,29 @@ const ContactModalContext = createContext<ContactModalContextType | undefined>(u
 
 export function ContactModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [origin, setOrigin] = useState<{ x: number; y: number } | null>(null);
 
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
+  const openModal = (e?: React.MouseEvent | { x: number; y: number }) => {
+    if (e) {
+      if ('clientX' in e) {
+        setOrigin({ x: e.clientX, y: e.clientY });
+      } else {
+        setOrigin(e);
+      }
+    } else {
+      setOrigin(null);
+    }
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    // Delay clearing origin to allow exit animation to use it if needed
+    setTimeout(() => setOrigin(null), 300);
+  };
 
   return (
-    <ContactModalContext.Provider value={{ isOpen, openModal, closeModal }}>
+    <ContactModalContext.Provider value={{ isOpen, origin, openModal, closeModal }}>
       {children}
     </ContactModalContext.Provider>
   );

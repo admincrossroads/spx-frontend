@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { formatDate, getImageUrl } from '@/lib/utils/helpers';
-import { FileText, Calendar, User, Loader2 } from 'lucide-react';
+import { FileText, Calendar, User, Loader2, ArrowRight } from 'lucide-react';
 import { InsightImage } from '@/components/ui/insight-image';
 import { api } from '@/lib/api/client';
 
@@ -150,7 +150,7 @@ export function InsightsGrid({ type, initialInsights = [], initialTotal = 0 }: I
               <CardContent className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Badge
-                    className={`${typeColors[insight.type] || 'bg-gray-500'} text-white capitalize`}
+                    className={`${typeColors[insight.type] || 'bg-gray-500'} text-white capitalize px-4 py-1.5 text-sm transform-[translateY(-15px)]`}
                   >
                     {typeLabels[insight.type] || insight.type}
                   </Badge>
@@ -167,7 +167,7 @@ export function InsightsGrid({ type, initialInsights = [], initialTotal = 0 }: I
                 <p className="text-sm text-muted-foreground line-clamp-3 mb-4">
                   {insight.summary}
                 </p>
-                <div className="flex items-center justify-between text-sm">
+                <div className="flex items-center justify-between text-sm mb-6">
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <User className="h-4 w-4" />
                     <span>{insight.author.name}</span>
@@ -175,12 +175,17 @@ export function InsightsGrid({ type, initialInsights = [], initialTotal = 0 }: I
                   {insight.tags.length > 0 && (
                     <div className="flex gap-1">
                       {insight.tags.slice(0, 2).map((tag) => (
-                        <Badge key={tag.id} variant="outline" className="text-xs">
+                        <Badge key={tag.id} variant="outline" className="text-sm px-3 py-1">
                           {tag.name}
                         </Badge>
                       ))}
                     </div>
                   )}
+                </div>
+                <div className="flex justify-end mt-auto">
+                  <Button variant="ghost" size="sm" className="gap-2 hover:underline text-primary hover:text-primary hover:bg-transparent p-0 h-auto">
+                    Read More <ArrowRight className="h-4 w-4" />
+                  </Button>
                 </div>
               </CardContent>
             </Card>

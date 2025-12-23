@@ -10,7 +10,7 @@ export default async function BlogsPage() {
   });
 
   return (
-    <div className="container mx-auto px-6 py-24">
+    <div className="main-container section-py">
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">Blogs</h1>
         <p className="text-muted-foreground text-lg">
