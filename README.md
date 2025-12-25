@@ -3,7 +3,6 @@
 A modern, full-featured website for Spiralytix (SPX), an Africa-led development institution. Built with Next.js 16, TypeScript, and Tailwind CSS, featuring a public-facing website and a comprehensive admin dashboard for content management.
 
 ## 📋 Table of Contents
-
 - [Overview](#overview)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
