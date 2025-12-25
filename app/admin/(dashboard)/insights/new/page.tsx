@@ -465,9 +465,22 @@ export default function CreateInsightPage() {
                       type="button"
                       variant="outline"
                       onClick={async () => {
+                        const isValid = await form.trigger();
+                        if (!isValid) {
+                          return;
+                        }
                         const currentValues = form.getValues();
                         form.setValue('isPublished', false);
-                        await onSubmit({ ...currentValues, isPublished: false });
+                        // Type assertion: form.getValues() returns input type, but after validation/trigger it should match output type
+                        const values: InsightFormValues = {
+                          ...currentValues,
+                          authorId: Number(currentValues.authorId) || 0,
+                          tags: Array.isArray(currentValues.tags) 
+                            ? currentValues.tags.map(t => Number(t)).filter(n => !isNaN(n))
+                            : [],
+                          isPublished: false,
+                        };
+                        await onSubmit(values);
                       }}
                       disabled={isSubmitting}
                     >

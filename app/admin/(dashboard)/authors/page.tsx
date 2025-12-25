@@ -7,16 +7,9 @@ import { Input } from '@/components/ui/input';
 import { Plus, Users, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { AuthorsTable } from '@/components/admin/authors/authors-table';
 import { api } from '@/lib/api/client';
+import type { Author } from '@/lib/api/authors';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-
-interface Author {
-  id: number;
-  name: string;
-  bio?: string;
-  imageUrl?: string;
-  createdAt: string;
-}
 
 const LIMIT = 10; // Always 10 authors per page
 

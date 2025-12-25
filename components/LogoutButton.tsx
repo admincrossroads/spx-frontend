@@ -1,15 +1,27 @@
 'use client';
 
-import { useTransition } from 'react';
-import { logoutAction } from '@/app/admin/login/actions';
+import { useState } from 'react';
+import { authApi } from '@/lib/api/auth';
 
 export function LogoutButton() {
-  const [isPending, startTransition] = useTransition();
+  const [isPending, setIsPending] = useState(false);
 
-  const handleLogout = () => {
-    startTransition(async () => {
-      await logoutAction();
-    });
+  const handleLogout = async () => {
+    try {
+      setIsPending(true);
+      await authApi.logout();
+      // Clear any local storage/cookies
+      document.cookie = 'token=; Path=/; Max-Age=0; SameSite=Lax';
+      // Force hard redirect to ensure clean state
+      window.location.href = '/admin/login';
+    } catch (error: any) {
+      console.error('Logout failed:', error);
+      // Even if logout API fails, clear local state and redirect
+      document.cookie = 'token=; Path=/; Max-Age=0; SameSite=Lax';
+      window.location.href = '/admin/login';
+    } finally {
+      setIsPending(false);
+    }
   };
 
   return (
