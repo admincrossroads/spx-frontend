@@ -1,0 +1,25 @@
+{
+  "name": "SPX – Africa-Led Strategy, Research, and Implementation",
+  "short_name": "SPX",
+  "description": "SPX is an Africa-based consulting, research, and implementation firm advancing development through energy access, market systems, innovation, and locally grounded solutions.",
+  "icons": [
+    {
+      "src": "/logos/SPX.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logos/SPX.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#0A3C78",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "orientation": "portrait-primary"
+}
+

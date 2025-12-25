@@ -10,12 +10,13 @@ export default function Research() {
     <div className="w-full">
 
       {/* HERO */}
-      <section className="relative h-[55vh] w-full">
+      <section className="relative h-[55vh] w-full overflow-hidden">
         <Image
-          src="/images/research-hero.jpg"
+          src="/images/xtras/image12.webp"
           alt="Research & Evidence"
           fill
           className="object-cover brightness-[0.55]"
+          priority
         />
 
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
@@ -64,7 +65,7 @@ export default function Research() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/research-1.jpg"
+              src="/images/about/image6.webp"
               alt="Applied Research"
               fill
               className="object-cover"
@@ -78,7 +79,7 @@ export default function Research() {
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
             <Image
-              src="/images/research-2.jpg"
+              src="/images/about/image7.webp"
               alt="Field Assessments"
               fill
               className="object-cover"
@@ -123,7 +124,7 @@ export default function Research() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/research-3.jpg"
+              src="/images/approach/image5.webp"
               alt="Data Analytics"
               fill
               className="object-cover"

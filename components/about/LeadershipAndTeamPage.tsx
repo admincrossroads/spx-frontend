@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
@@ -13,20 +12,14 @@ export default function LeadershipAndTeamPage() {
     <div className="w-full">
 
       {/* HERO */}
-      <section className="relative h-[60vh] w-full">
-        <Image
-          src="/images/leadership.jpg"
-          alt="SPX Leadership"
-          fill
-          className="object-cover brightness-[0.55]"
-        />
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
+      <section className="relative h-[60vh] w-full bg-primary/10">
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
           <div className="main-container">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-6xl font-semibold"
+              className="text-4xl md:text-6xl font-semibold text-primary"
             >
               Leadership & Team
             </motion.h1>
@@ -34,7 +27,7 @@ export default function LeadershipAndTeamPage() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="mt-4 max-w-2xl mx-auto text-lg md:text-xl"
+              className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground"
             >
               SPX’s leadership team combines experience from the private sector, 
               development work, innovation, and hands-on operations.
@@ -57,13 +50,8 @@ export default function LeadershipAndTeamPage() {
             </p>
           </div>
 
-          <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
-            <Image
-              src="/images/founder.jpg"
-              alt="Founder"
-              fill
-              className="object-cover"
-            />
+          <div className="relative h-80 rounded-lg bg-muted flex items-center justify-center border-2 border-dashed border-muted-foreground/20">
+            <span className="text-muted-foreground/40 font-medium">Founder Photo Placeholder</span>
           </div>
         </div>
       </section>
@@ -71,13 +59,8 @@ export default function LeadershipAndTeamPage() {
       {/* SENIOR MANAGEMENT */}
       <section className="section-py">
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-80 rounded-lg overflow-hidden shadow-lg order-2 md:order-1">
-            <Image
-              src="/images/senior-management.jpg"
-              alt="Senior Management"
-              fill
-              className="object-cover"
-            />
+          <div className="relative h-80 rounded-lg bg-muted flex items-center justify-center border-2 border-dashed border-muted-foreground/20 order-2 md:order-1">
+            <span className="text-muted-foreground/40 font-medium">Management Photo Placeholder</span>
           </div>
 
           <div className="order-1 md:order-2">
@@ -143,13 +126,8 @@ export default function LeadershipAndTeamPage() {
             </p>
           </div>
 
-          <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
-            <Image
-              src="/images/innovation-team.jpg"
-              alt="Innovation Team"
-              fill
-              className="object-cover"
-            />
+          <div className="relative h-80 rounded-lg bg-muted flex items-center justify-center border-2 border-dashed border-muted-foreground/20">
+            <span className="text-muted-foreground/40 font-medium">Innovation Team Placeholder</span>
           </div>
         </div>
       </section>
@@ -157,13 +135,8 @@ export default function LeadershipAndTeamPage() {
       {/* FIELD TEAM */}
       <section className="section-py bg-muted/40">
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
-            <Image
-              src="/images/field-team.jpg"
-              alt="Field Team"
-              fill
-              className="object-cover"
-            />
+          <div className="relative h-80 rounded-lg bg-muted flex items-center justify-center border-2 border-dashed border-muted-foreground/20">
+            <span className="text-muted-foreground/40 font-medium">Field Team Placeholder</span>
           </div>
 
           <div>

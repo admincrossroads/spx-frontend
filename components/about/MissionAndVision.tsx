@@ -6,23 +6,34 @@ import Link from "next/link";
 
 export default function VisionAndMission() {
   return (
-    <section className="section-py">
-      <div className="main-container space-y-24">
+    <div className="w-full">
+      {/* HERO HEADER */}
+      <section className="relative h-[55vh] w-full overflow-hidden">
+        <Image
+          src="/images/about/image8.webp"
+          alt="Vision & Mission"
+          fill
+          className="object-cover brightness-[0.45]"
+          priority
+        />
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="main-container"
+          >
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Vision & Mission
+            </h1>
+            <p className="text-xl opacity-90 leading-relaxed max-w-3xl mx-auto">
+              The philosophical and strategic foundation of SPX.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* HEADER SECTION */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Vision & Mission
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            The philosophical and strategic foundation of SPX.
-          </p>
-        </motion.div>
+      <div className="main-container space-y-24 mt-20">
 
         {/* VISION SECTION */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -32,11 +43,10 @@ export default function VisionAndMission() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="w-full h-[380px] bg-muted rounded-xl relative overflow-hidden"
+            className="relative w-full h-[380px] bg-muted rounded-xl overflow-hidden"
           >
-            {/* Replace with shutterstock image */}
             <Image
-              src="/images/placeholder-vision.jpg"
+              src="/images/xtras/image5.webp"
               alt="Vision Image"
               fill
               className="object-cover opacity-90"
@@ -92,49 +102,49 @@ export default function VisionAndMission() {
 
             <ul className="space-y-4 list-decimal pl-6">
               <li>
-                <strong>Applying Africa-led insight to development challenges</strong> — 
+                <strong>Applying Africa-led insight to development challenges</strong> : 
                 Leveraging contextual understanding, local networks, and industry 
                 experience to design solutions that are relevant, feasible, and sustainable.
               </li>
 
               <li>
-                <strong>Integrating strategy, research, implementation, and innovation</strong> — 
+                <strong>Integrating strategy, research, implementation, and innovation</strong> :  
                 Creating a comprehensive development model that combines evidence, 
                 design, field delivery, learning, and scale.
               </li>
 
               <li>
-                <strong>Positioning clean energy as a driver of economic transformation</strong> — 
+                <strong>Positioning clean energy as a driver of economic transformation</strong> : 
                 Supporting households, farmers, and enterprises to adopt energy-powered 
                 solutions that increase productivity and resilience.
               </li>
 
               <li>
-                <strong>Strengthening agriculture and food systems</strong> — 
+                <strong>Strengthening agriculture and food systems</strong> : 
                 Improving productivity, quality, and market access across rural value 
                 chains through advisory and digital tools.
               </li>
 
               <li>
-                <strong>Expanding opportunities for youth and communities</strong> — 
+                <strong>Expanding opportunities for youth and communities</strong> :  
                 Developing skills, entrepreneurship pathways, and sector-specific 
                 training that increase employment and income.
               </li>
 
               <li>
-                <strong>Advancing digital inclusion and market transparency</strong> — 
+                <strong>Advancing digital inclusion and market transparency</strong> :  
                 Deploying digital platforms that connect farmers, MSMEs, and 
                 institutions to information, markets, finance, and opportunities.
               </li>
 
               <li>
-                <strong>Supporting climate resilience and circular economy models</strong> — 
+                <strong>Supporting climate resilience and circular economy models</strong> :  
                 Promoting sustainable practices, waste-to-value innovations, and 
                 environmentally sustainable systems.
               </li>
 
               <li>
-                <strong>Strengthening institutions and governance systems</strong> — 
+                <strong>Strengthening institutions and governance systems</strong> : 
                 Building the capacity of public and private institutions to deliver 
                 and scale development initiatives.
               </li>
@@ -147,10 +157,10 @@ export default function VisionAndMission() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="w-full h-[420px] bg-muted rounded-xl relative overflow-hidden"
+            className="relative w-full h-[420px] bg-muted rounded-xl overflow-hidden"
           >
             <Image
-              src="/images/placeholder-mission.jpg"
+              src="/images/about/image1.webp"
               alt="Mission Image"
               fill
               className="object-cover opacity-90"
@@ -209,9 +219,9 @@ export default function VisionAndMission() {
               ))}
             </ul>
           </div>
-          <div className="w-full h-[300px] bg-muted rounded-xl relative overflow-hidden grayscale">
+          <div className="relative w-full h-[300px] bg-muted rounded-xl overflow-hidden grayscale">
             <Image
-              src="/images/placeholder-aspiration.jpg"
+              src="/images/xtras/image4.webp"
               alt="Long Term Aspiration"
               fill
               className="object-cover opacity-80"
@@ -225,7 +235,7 @@ export default function VisionAndMission() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mt-20"
+          className="text-center pb-20"
         >
           <h3 className="text-2xl font-semibold mb-4">
             Learn More About Our Work
@@ -243,6 +253,6 @@ export default function VisionAndMission() {
         </motion.div>
 
       </div>
-    </section>
+    </div>
   );
 }

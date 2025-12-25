@@ -28,7 +28,7 @@ const innovations: Innovation[] = [
     description: "Developing and testing beneficial bacteria that accelerate the conversion of coffee pulp and agricultural waste into nutrient-rich organic compost.",
     category: "applied-research",
     status: "active",
-    image: "/images/projects/p1.jpg",
+    image: "/images/innovation/shutterstock_1817852297.webp",
     focusArea: "Climate",
     location: "Ethiopia",
     year: 2024,
@@ -39,7 +39,7 @@ const innovations: Innovation[] = [
     description: "A digital system providing real-time agronomy, market, and quality management advice to coffee-growing communities.",
     category: "digital-tools",
     status: "active",
-    image: "/images/projects/p2.jpg",
+    image: "/images/innovation/shutterstock_2231928525.webp",
     focusArea: "Agriculture",
     location: "National",
     year: 2023,
@@ -50,7 +50,7 @@ const innovations: Innovation[] = [
     description: "Supporting early-stage ventures in agritech, clean energy, and circular economy through technical mentorship and field-testing access.",
     category: "enterprise-support",
     status: "active",
-    image: "/images/projects/p3.jpg",
+    image: "/images/innovation/shutterstock_2339445835.webp",
     focusArea: "Employment",
     location: "Regional",
     year: 2024,
@@ -61,7 +61,7 @@ const innovations: Innovation[] = [
     description: "Digital tools designed to improve market transparency and help smallholders and MSMEs connect more effectively with buyers.",
     category: "digital-tools",
     status: "pilot",
-    image: "/images/projects/p1.jpg",
+    image: "/images/innovation/shutterstock_2373948353.webp",
     focusArea: "Digital",
     location: "National",
     year: 2024,
@@ -72,7 +72,7 @@ const innovations: Innovation[] = [
     description: "An international-standard institute building specialized skills in coffee roasting, sensory evaluation, and quality grading.",
     category: "enterprise-support",
     status: "active",
-    image: "/images/projects/p2.jpg",
+    image: "/images/xtras/image10.webp",
     focusArea: "Employment",
     location: "Addis Ababa",
     year: 2023,
@@ -83,7 +83,7 @@ const innovations: Innovation[] = [
     description: "Hosting sector-specific challenges to identify and support African-born solutions to local development bottlenecks.",
     category: "enterprise-support",
     status: "active",
-    image: "/images/projects/p3.jpg",
+    image: "/images/xtras/image30.webp",
     focusArea: "Governance",
     location: "National",
     year: 2024,
@@ -143,18 +143,26 @@ export default function InnovationHub() {
   return (
     <div className="w-full">
       {/* HERO SECTION */}
-      <section className="relative section-py">
-        <div className="main-container">
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+        <Image
+          src="/images/innovation/shutterstock_2596948973.webp"
+          alt="Innovation Hub"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="main-container relative z-10 text-center text-white">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            className="max-w-3xl mx-auto"
           >
             <h1 className="text-4xl md:text-6xl font-semibold mb-6">
               SPX Innovation Hub
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground">
+            <p className="text-lg md:text-xl text-white/90">
               Turning science, technology, and enterprise ideas into practical,
               scalable development solutions across Africa. We support applied research,
               enterprise development, and digital innovation.
@@ -164,7 +172,7 @@ export default function InnovationHub() {
       </section>
 
       {/* THREE MAIN AREAS */}
-      <section id="areas" className="main-container mb-20">
+      <section id="areas" className="main-container mb-20  pt-12">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-6">
             <Card id="science" className="border-2 hover:border-primary transition-colors">
@@ -429,7 +437,7 @@ export default function InnovationHub() {
             </ul>
           </div>
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image src="/images/leadership.jpg" alt="Coffee Training" fill className="object-cover" />
+            <Image src="/images/xtras/image4.webp" alt="Coffee Training" fill className="object-cover" />
           </div>
         </div>
       </section>

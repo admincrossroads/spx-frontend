@@ -4,12 +4,12 @@ import Image from "next/image";
 
 export default function FocusAreas() {
   const areas = [
-    { label: "Energy for Development", href: "/focus-areas/energy", img: "/images/focus/energy-hero.jpg" },
-    { label: "Agriculture & Food Systems", href: "/focus-areas/agriculture", img: "/images/focus/agri-hero.jpg" },
-    { label: "Employment & Skills", href: "/focus-areas/employment", img: "/images/focus/employment-hero.jpg" },
-    { label: "Digital Transformation", href: "/focus-areas/digital", img: "/images/focus/digital-hero.jpg" },
-    { label: "Climate & Circular Economy", href: "/focus-areas/climate", img: "/images/focus/climate-hero.jpg" },
-    { label: "Governance & Institutions", href: "/focus-areas/governance", img: "/images/focus/governance-hero.jpg" },
+    { label: "Energy for Development", href: "/focus-areas/energy", img: "/images/xtras/image36.webp" },
+    { label: "Agriculture & Food Systems", href: "/focus-areas/agriculture", img: "/images/focus/image6.webp" },
+    { label: "Employment & Skills", href: "/focus-areas/employment", img: "/images/approach/image2.webp" },
+    { label: "Digital Transformation", href: "/focus-areas/digital", img: "/images/approach/image5.webp" },
+    { label: "Climate & Circular Economy", href: "/focus-areas/climate", img: "/images/xtras/image17.webp" },
+    { label: "Governance & Institutions", href: "/focus-areas/governance", img: "/images/xtras/image30.webp" },
   ];
 
   return (

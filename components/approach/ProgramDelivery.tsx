@@ -10,12 +10,13 @@ export default function ProgramDelivery() {
     <div className="w-full">
 
       {/* HERO */}
-      <section className="relative h-[55vh] w-full">
+      <section className="relative h-[55vh] w-full overflow-hidden">
         <Image
-          src="/images/program-delivery-hero.jpg"
+          src="/images/approach/image3.webp"
           alt="Program Delivery"
           fill
           className="object-cover brightness-[0.55]"
+          priority
         />
 
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
@@ -66,7 +67,7 @@ export default function ProgramDelivery() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/program-agriculture.jpg"
+              src="/images/xtras/image2.webp"
               alt="Community Engagement"
               fill
               className="object-cover"
@@ -80,7 +81,7 @@ export default function ProgramDelivery() {
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
             <Image
-              src="/images/program-energy.jpg"
+              src="/images/focus/image11.webp"
               alt="Operational Logistics"
               fill
               className="object-cover"
@@ -128,7 +129,7 @@ export default function ProgramDelivery() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/program-youth.jpg"
+              src="/images/approach/image2.webp"
               alt="Youth Programs"
               fill
               className="object-cover"

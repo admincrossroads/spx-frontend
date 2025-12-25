@@ -118,26 +118,44 @@ export default function TrendingInsights() {
   }
 
   return (
-    <section className="main-container">
+    <section className="container mx-auto px-6 md:px-6 min-[1300px]:px-4 py-20">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex items-center justify-between mb-8"
+        className="mb-12"
       >
-        <div>
-          <h2 className="text-3xl font-semibold">Trending Now</h2>
-          <p className="text-sm text-muted-foreground mt-2">
-            Explore our most popular insights
-          </p>
+        {/* Elegant divider line */}
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: "60px" }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+          className="h-[2px] bg-primary mb-6"
+        />
+        
+        <div className="flex items-end justify-between">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-3">Trending Now</h2>
+            <p className="text-lg text-muted-foreground">
+              Explore our most popular insights
+            </p>
+          </div>
+          <Link
+            href="/insights"
+            className="text-primary hover:text-primary/80 text-sm font-medium transition-colors flex items-center gap-1 group"
+          >
+            View All
+            <motion.span
+              className="inline-block"
+              animate={{ x: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              →
+            </motion.span>
+          </Link>
         </div>
-        <Link
-          href="/insights"
-          className="text-primary hover:underline text-sm font-medium"
-        >
-          View All →
-        </Link>
       </motion.div>
 
       <motion.div 
@@ -248,9 +266,9 @@ export default function TrendingInsights() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6"
+          className="grid grid-cols-3 md:grid-cols-5 gap-4 mt-6"
         >
-          {insights.slice(0, 4).map((insight, index) => (
+          {insights.slice(0, 5).map((insight, index) => (
             <motion.button
               key={insight.id}
               onClick={() => goToSlide(index)}

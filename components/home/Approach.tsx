@@ -25,23 +25,40 @@ export default function Approach() {
   ];
 
   return (
-    <section className="main-container">
+    <section className="container mx-auto px-6 md:px-6 min-[1300px]:px-4 py-20">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex justify-between items-end mb-8"
+        className="mb-12"
       >
-        <h2 className="text-3xl font-semibold">Our Approach</h2>
+        {/* Elegant divider line */}
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: "60px" }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+          className="h-[2px] bg-primary mb-6"
+        />
+        
+        <div className="flex justify-between items-end">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">Our Approach</h2>
 
-        <Link
-          href="/approach"
-          className="flex items-center text-primary text-sm hover:underline"
-        >
-          Explore All
-          <ArrowUpRight className="h-4 w-4 ml-1" />
-        </Link>
+          <Link
+            href="/approach/advisory"
+            className="flex items-center text-primary hover:text-primary/80 text-sm font-medium transition-colors group"
+          >
+            Explore All
+            <motion.span
+              className="inline-block ml-1"
+              animate={{ x: [0, 4, 0], y: [0, -4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ArrowUpRight className="h-4 w-4" />
+            </motion.span>
+          </Link>
+        </div>
       </motion.div>
 
       <div className="grid md:grid-cols-4 gap-6">
@@ -52,13 +69,15 @@ export default function Approach() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
-            className="p-6 border rounded-xl bg-background shadow-sm"
+            className="p-8 border rounded-2xl bg-background shadow-sm hover:shadow-md transition-all duration-300 group"
           >
-            <p className="h-8 w-8 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-3 text-sm font-bold">
+            <motion.div
+              className="h-12 w-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4 text-base font-bold group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300"
+            >
               {i + 1}
-            </p>
-            <h3 className="font-semibold text-lg mb-2">{step.title}</h3>
-            <p className="text-sm text-muted-foreground">{step.desc}</p>
+            </motion.div>
+            <h3 className="font-semibold text-xl mb-3 group-hover:text-primary transition-colors">{step.title}</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
           </motion.div>
         ))}
       </div>

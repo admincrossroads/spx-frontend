@@ -10,12 +10,13 @@ export default function Energy() {
     <div className="w-full">
 
       {/* HERO */}
-      <section className="relative h-[55vh] w-full">
+      <section className="relative h-[55vh] w-full overflow-hidden">
         <Image
-          src="/images/focus/energy-hero.jpg"
+          src="/images/xtras/image36.webp"
           alt="Energy for Development"
           fill
           className="object-cover brightness-[0.55]"
+          priority
         />
 
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
@@ -69,7 +70,7 @@ export default function Energy() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/focus/energy-1.jpg"
+              src="/images/xtras/image5.webp"
               alt="Energy Work"
               fill
               className="object-cover"
@@ -83,7 +84,7 @@ export default function Energy() {
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
             <Image
-              src="/images/focus/energy-2.jpg"
+              src="/images/projects/image3.webp"
               alt="Bloom Project"
               fill
               className="object-cover"
@@ -123,7 +124,7 @@ export default function Energy() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/focus/energy-3.jpg"
+              src="/images/hero/image6.webp"
               alt="Energy for Enterprises"
               fill
               className="object-cover"

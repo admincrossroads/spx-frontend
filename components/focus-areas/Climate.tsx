@@ -10,12 +10,13 @@ export default function Climate() {
     <div>
 
       {/* HERO */}
-      <section className="relative h-[55vh]">
+      <section className="relative h-[55vh] w-full overflow-hidden">
         <Image
-          src="/images/focus/climate-hero.jpg"
+          src="/images/xtras/image17.webp"
           fill
           className="object-cover brightness-[0.55]"
           alt="Climate & Circular Economy"
+          priority
         />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center">
           <div className="main-container">
@@ -55,7 +56,7 @@ export default function Climate() {
             </ul>
           </div>
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image src="/images/focus/climate-1.jpg" fill className="object-cover" alt="Climate Work" />
+            <Image src="/images/xtras/image16.webp" fill className="object-cover" alt="Climate Work" />
           </div>
         </div>
       </section>
@@ -64,7 +65,7 @@ export default function Climate() {
       <section className="section-py bg-muted/40">
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden order-2 md:order-1 shadow-md">
-            <Image src="/images/focus/climate-2.jpg" fill className="object-cover" alt="Embedded Experience" />
+            <Image src="/images/xtras/image4.webp" fill className="object-cover" alt="Embedded Experience" />
           </div>
           <div className="order-1 md:order-2">
             <h2 className="text-3xl font-semibold mb-6">Climate-First Integration</h2>
@@ -93,7 +94,7 @@ export default function Climate() {
             </p>
           </div>
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image src="/images/focus/climate-3.jpg" fill className="object-cover" alt="" />
+            <Image src="/images/about/image8.webp" fill className="object-cover" alt="" />
           </div>
         </div>
       </section>

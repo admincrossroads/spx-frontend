@@ -17,6 +17,7 @@ import InsightsPreview from "@/components/home/InsightsPreview";
 import Partners from "@/components/home/Partners";
 import CTASection from "@/components/home/CTASection";
 import GlobalBackground from "@/components/background/GlobalBackground";
+import CogwheelAnimation from "@/components/home/CogwheelAnimation";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -53,6 +54,7 @@ export default function Home() {
           className="relative flex flex-col gap-20 md:gap-28"
         >
           <GlobalBackground />
+          <CogwheelAnimation />
 
           <Hero />
           <TrendingInsights />

@@ -10,14 +10,15 @@ export default function Advisory() {
     <div className="w-full">
 
       {/* HERO */}
-      <section className="relative h-[55vh] w-full">
+      <section className="relative h-[55vh] w-full overflow-hidden">
         <Image
-          src="/images/advisory-hero.jpg"
+          src="/images/about/image5.webp"
           alt="Strategic Advisory"
           fill
           className="object-cover brightness-[0.55]"
+          priority
         />
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white pt-12">
           <div className="main-container">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -63,7 +64,7 @@ export default function Advisory() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/advisory-1.jpg"
+              src="/images/focus/image8.webp"
               alt="Market Systems"
               fill
               className="object-cover"
@@ -77,7 +78,7 @@ export default function Advisory() {
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
             <Image
-              src="/images/advisory-2.jpg"
+              src="/images/xtras/image12.webp"
               alt="Policy & Regulatory"
               fill
               className="object-cover"
@@ -113,7 +114,7 @@ export default function Advisory() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/advisory-3.jpg"
+              src="/images/xtras/image9.webp"
               alt="Institutional Strengthening"
               fill
               className="object-cover"

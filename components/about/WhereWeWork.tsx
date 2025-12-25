@@ -12,7 +12,7 @@ export default function WhereWeWork() {
       {/* HERO */}
       <section className="relative h-[55vh] w-full">
         <Image
-          src="/images/where-we-work-hero.jpg"
+          src="/images/xtras/image31.webp"
           alt="Where We Work"
           fill
           className="object-cover brightness-[0.55]"
@@ -75,8 +75,8 @@ export default function WhereWeWork() {
           {/* IMAGE */}
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/ethiopia-map.jpg"
-              alt="Map of Ethiopia"
+              src="/images/xtras/image21.webp"
+              alt="Core Base"
               fill
               className="object-cover"
             />
@@ -90,7 +90,7 @@ export default function WhereWeWork() {
           {/* IMAGE LEFT */}
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
             <Image
-              src="/images/regions.jpg"
+              src="/images/xtras/image22.webp"
               alt="Regional Work"
               fill
               className="object-cover"
@@ -144,7 +144,7 @@ export default function WhereWeWork() {
           {/* IMAGE */}
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/community-work.jpg"
+              src="/images/xtras/image25.webp"
               alt="Community Work"
               fill
               className="object-cover"
@@ -192,7 +192,7 @@ export default function WhereWeWork() {
           <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
             <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
               <Image
-                src="/images/research-partners.jpg"
+                src="/images/xtras/image24.webp"
                 alt="Remote Engagement"
                 fill
                 className="object-cover"

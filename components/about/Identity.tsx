@@ -6,25 +6,34 @@ import Link from "next/link";
 
 export default function Identity() {
   return (
-    <section className="section-py">
-      <div className="main-container space-y-24">
+    <div className="w-full">
+      {/* HERO HEADER - Added background image */}
+      <section className="relative h-[55vh] w-full">
+        <Image
+          src="/images/about/image2.webp"
+          alt="Africa-Led Identity"
+          fill
+          className="object-cover brightness-[0.45]"
+        />
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="main-container"
+          >
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              An Africa-Led Institution
+            </h1>
+            <p className="text-xl opacity-90 leading-relaxed max-w-4xl mx-auto">
+              Built for Africa’s priorities, with localized knowledge of the 
+              continent’s systems, markets, governance and people.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* INTRO HEADER */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            An Africa-Led Institution Built for Africa’s Priorities
-          </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            Foundational to SPX’s identity is the belief that Africa’s development challenges 
-            and opportunities require institutions with localized knowledge of the 
-            continent’s systems, markets, governance and people.
-          </p>
-        </motion.div>
+      <div className="main-container space-y-24 mt-20">
 
         {/* SECTION 1 — AFRICA-LED PRINCIPLE */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -65,7 +74,7 @@ export default function Identity() {
             className="w-full h-[380px] rounded-xl bg-muted relative overflow-hidden"
           >
             <Image
-              src="/images/identity-context.jpg"
+              src="/images/xtras/image2.webp"
               alt="Africa-Led Identity"
               fill
               className="object-cover opacity-90"
@@ -85,7 +94,7 @@ export default function Identity() {
             className="w-full h-[420px] rounded-xl bg-muted relative overflow-hidden"
           >
             <Image
-              src="/images/identity-rooted.jpg"
+              src="/images/xtras/image6.webp"
               alt="Rooted in Context"
               fill
               className="object-cover opacity-90"
@@ -167,7 +176,7 @@ export default function Identity() {
             className="w-full h-[380px] rounded-xl bg-muted relative overflow-hidden"
           >
             <Image
-              src="/images/identity-global.jpg"
+              src="/images/xtras/image8.webp"
               alt="Global Standards"
               fill
               className="object-cover opacity-90"
@@ -240,7 +249,7 @@ export default function Identity() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="text-center pb-20"
         >
           <h3 className="text-2xl font-semibold mb-4">
             Learn How Our Identity Shapes Our Work
@@ -254,6 +263,6 @@ export default function Identity() {
         </motion.div>
 
       </div>
-    </section>
+    </div>
   );
 }

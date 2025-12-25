@@ -10,12 +10,13 @@ export default function MEL() {
     <div className="w-full">
 
       {/* HERO */}
-      <section className="relative h-[55vh] w-full">
+      <section className="relative h-[55vh] w-full overflow-hidden">
         <Image
-          src="/images/mel-hero.jpg"
+          src="/images/xtras/image28.webp"
           alt="Monitoring, Evaluation & Learning"
           fill
           className="object-cover brightness-[0.55]"
+          priority
         />
 
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
@@ -69,7 +70,7 @@ export default function MEL() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/mel-1.jpg"
+              src="/images/xtras/image38.webp"
               alt="MEL Capabilities"
               fill
               className="object-cover"
@@ -83,7 +84,7 @@ export default function MEL() {
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
             <Image
-              src="/images/mel-2.jpg"
+              src="/images/xtras/image26.webp"
               alt="Learning Loops"
               fill
               className="object-cover"
@@ -118,7 +119,7 @@ export default function MEL() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/mel-3.jpg"
+              src="/images/xtras/image27.webp"
               alt="Data for Learning"
               fill
               className="object-cover"

@@ -15,7 +15,7 @@ export default function PartnersAndAlliances() {
       {/* HERO */}
       <section className="relative h-[55vh] w-full">
         <Image
-          src="/images/partners.jpg"
+          src="/images/about/image3.webp"
           alt="Partners & Alliances"
           fill
           className="object-cover brightness-[0.65]"
@@ -76,7 +76,7 @@ export default function PartnersAndAlliances() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/institutional-partners.jpg"
+              src="/images/xtras/image12.webp"
               alt="Development Partnerships"
               fill
               className="object-cover"
@@ -90,7 +90,7 @@ export default function PartnersAndAlliances() {
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
             <Image
-              src="/images/private-sector.jpg"
+              src="/images/xtras/image15.webp"
               alt="Public Sector Collaboration"
               fill
               className="object-cover"
@@ -154,7 +154,7 @@ export default function PartnersAndAlliances() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/community-partners.jpg"
+              src="/images/xtras/image10.webp"
               alt="Private Sector Engagement"
               fill
               className="object-cover"
@@ -168,7 +168,7 @@ export default function PartnersAndAlliances() {
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
             <Image
-              src="/images/research-partners.jpg"
+              src="/images/about/image6.webp"
               alt="Academic & Research Collaboration"
               fill
               className="object-cover"
@@ -227,9 +227,12 @@ export default function PartnersAndAlliances() {
           </div>
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <div className="w-full h-full bg-primary/5 flex items-center justify-center">
-              <span className="text-primary font-semibold">Innovation Ecosystem</span>
-            </div>
+            <Image
+              src="/images/xtras/image8.webp"
+              alt="Innovation Ecosystem"
+              fill
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
@@ -238,9 +241,12 @@ export default function PartnersAndAlliances() {
       <section className="section-py bg-muted/40">
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
-            <div className="w-full h-full bg-primary/5 flex items-center justify-center">
-              <span className="text-primary font-semibold">Media & Dialogue</span>
-            </div>
+            <Image
+              src="/images/about/image5.webp"
+              alt="Media & Dialogue"
+              fill
+              className="object-cover"
+            />
           </div>
 
           <div className="order-1 md:order-2">

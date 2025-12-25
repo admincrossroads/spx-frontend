@@ -10,12 +10,13 @@ export default function Digital() {
     <div className="w-full">
 
       {/* HERO */}
-      <section className="relative h-[55vh] w-full">
+      <section className="relative h-[55vh] w-full overflow-hidden">
         <Image
-          src="/images/digital-hero.jpg"
+          src="/images/approach/image5.webp"
           alt="Digital Transformation"
           fill
           className="object-cover brightness-[0.55]"
+          priority
         />
 
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
@@ -68,7 +69,7 @@ export default function Digital() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/digital-1.jpg"
+              src="/images/xtras/image27.webp"
               alt="Systems Support"
               fill
               className="object-cover"
@@ -82,7 +83,7 @@ export default function Digital() {
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
             <Image
-              src="/images/digital-2.jpg"
+              src="/images/xtras/image38.webp"
               alt="Data & Insights"
               fill
               className="object-cover"
@@ -118,7 +119,7 @@ export default function Digital() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/digital-3.jpg"
+              src="/images/focus/image1.webp"
               alt="Digital Inclusion"
               fill
               className="object-cover"

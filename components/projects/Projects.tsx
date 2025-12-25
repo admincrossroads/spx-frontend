@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView, useMotionValue, useSpring, useMotionValueEvent, useTransform } from "framer-motion";
 import { ArrowUpRight, Search, Filter } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 interface Project {
   id: string;
@@ -30,7 +31,7 @@ const projects: Project[] = [
     country: "Ethiopia",
     region: "Regional",
     status: "active",
-    image: "/images/projects/p1.jpg",
+    image: "/images/projects/image3.webp",
     focusArea: "Energy",
     year: 2024,
   },
@@ -42,7 +43,7 @@ const projects: Project[] = [
     country: "Ethiopia",
     region: "Coffee Regions",
     status: "active",
-    image: "/images/projects/p2.jpg",
+    image: "/images/projects/image23.webp",
     focusArea: "Digital",
     year: 2023,
   },
@@ -54,7 +55,7 @@ const projects: Project[] = [
     country: "Ethiopia",
     region: "National",
     status: "active",
-    image: "/images/projects/p3.jpg",
+    image: "/images/projects/image1.webp",
     focusArea: "Climate",
     year: 2024,
   },
@@ -66,7 +67,7 @@ const projects: Project[] = [
     country: "Ethiopia",
     region: "Addis Ababa",
     status: "active",
-    image: "/images/projects/p1.jpg",
+    image: "/images/projects/image14.webp",
     focusArea: "Employment",
     year: 2023,
   },
@@ -78,7 +79,7 @@ const projects: Project[] = [
     country: "Ethiopia",
     region: "National",
     status: "active",
-    image: "/images/projects/p2.jpg",
+    image: "/images/xtras/image36.webp",
     focusArea: "Energy",
     year: 2024,
   },
@@ -90,7 +91,7 @@ const projects: Project[] = [
     country: "Ethiopia",
     region: "National",
     status: "completed",
-    image: "/images/projects/p3.jpg",
+    image: "/images/xtras/image1.webp",
     focusArea: "Research",
     year: 2023,
   },
@@ -102,7 +103,7 @@ const projects: Project[] = [
     country: "Ethiopia",
     region: "Regional",
     status: "active",
-    image: "/images/projects/p1.jpg",
+    image: "/images/xtras/image2.webp",
     focusArea: "Agriculture",
     year: 2024,
   },
@@ -114,7 +115,7 @@ const projects: Project[] = [
     country: "Ethiopia",
     region: "National",
     status: "active",
-    image: "/images/projects/p2.jpg",
+    image: "/images/xtras/image3.webp",
     focusArea: "Governance",
     year: 2024,
   },
@@ -123,6 +124,94 @@ const projects: Project[] = [
 const focusAreas = ["All", "Energy", "Agriculture", "Employment", "Digital", "Climate", "Governance", "Research"];
 const statuses = ["All", "Active", "Completed", "Upcoming"];
 const regions = ["All", "East Africa", "West Africa", "Pan-African"];
+
+// Animated Counter Component
+function AnimatedCounter({ value, duration = 2 }: { value: number; duration?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const count = useMotionValue(0);
+  const rounded = useSpring(count, {
+    damping: 60,
+    stiffness: 100,
+  });
+  const displayValue = useTransform(rounded, (latest) => Math.round(latest));
+  const [currentValue, setCurrentValue] = useState(0);
+
+  useEffect(() => {
+    if (isInView) {
+      count.set(value);
+    } else {
+      count.set(0);
+    }
+  }, [isInView, value, count]);
+
+  useMotionValueEvent(displayValue, "change", (latest) => {
+    setCurrentValue(latest);
+  });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div className="text-3xl font-bold text-primary mb-2">
+        {currentValue}
+      </motion.div>
+    </motion.div>
+  );
+}
+
+// Better approach - using a simpler counter
+function Counter({ value, duration = 5 }: { value: number; duration?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) {
+      setDisplayValue(0);
+      return;
+    }
+
+    let startTime: number | null = null;
+    const startValue = 0;
+    const endValue = value;
+
+    const animate = (currentTime: number) => {
+      if (startTime === null) startTime = currentTime;
+      const elapsed = (currentTime - startTime) / 1000; // Convert to seconds
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const current = Math.floor(startValue + (endValue - startValue) * easeOutQuart);
+
+      setDisplayValue(current);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setDisplayValue(endValue);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [isInView, value, duration]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.5 }}
+      className="text-3xl font-bold text-primary mb-2"
+    >
+      {displayValue}
+    </motion.div>
+  );
+}
 
 export default function Projects() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -162,18 +251,26 @@ export default function Projects() {
   return (
     <div className="w-full">
       {/* HERO SECTION */}
-      <section className="relative section-py">
-        <div className="main-container">
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+        <Image
+          src="/images/xtras/image5.webp"
+          alt="Our Projects"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="main-container relative z-10 text-center text-white">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            className="max-w-3xl mx-auto"
           >
             <h1 className="text-4xl md:text-6xl font-semibold mb-6">
               Our Projects
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground">
+            <p className="text-lg md:text-xl text-white/90">
               Impactful initiatives driving development across Africa. Explore our
               portfolio of projects spanning energy, agriculture, employment, digital
               transformation, climate resilience, and governance.
@@ -369,13 +466,23 @@ export default function Projects() {
             Discover how SPX initiatives are transforming communities and systems across Africa.
           </p>
           <div className="grid md:grid-cols-2 gap-6 text-left">
-            <Card className="p-6">
-              <h3 className="font-bold mb-2">Coffee Sector Transformation</h3>
-              <p className="text-sm text-muted-foreground">How our training institute is creating jobs and increasing value for smallholder farmers.</p>
+            <Card className="p-0 overflow-hidden">
+              <div className="relative h-48">
+                <Image src="/images/projects/image14.webp" fill className="object-cover" alt="Coffee Sector" />
+              </div>
+              <div className="p-6">
+                <h3 className="font-bold mb-2">Coffee Sector Transformation</h3>
+                <p className="text-sm text-muted-foreground">How our training institute is creating jobs and increasing value for smallholder farmers.</p>
+              </div>
             </Card>
-            <Card className="p-6">
-              <h3 className="font-bold mb-2">Energy-Enabled Livelihoods</h3>
-              <p className="text-sm text-muted-foreground">The impact of solar-powered processing tools on rural enterprise income.</p>
+            <Card className="p-0 overflow-hidden">
+              <div className="relative h-48">
+                <Image src="/images/projects/image1.webp" fill className="object-cover" alt="Bloom Project" />
+              </div>
+              <div className="p-6">
+                <h3 className="font-bold mb-2">Energy-Enabled Livelihoods</h3>
+                <p className="text-sm text-muted-foreground">The impact of solar-powered processing tools on rural enterprise income.</p>
+              </div>
             </Card>
           </div>
         </div>
@@ -386,27 +493,19 @@ export default function Projects() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-6 p-8 border rounded-xl bg-card">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">
-                {projects.length}
-              </div>
+              <Counter value={projects.length} />
               <div className="text-sm text-muted-foreground">Total Projects</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">
-                {projects.filter((p) => p.status === "active").length}
-              </div>
+              <Counter value={projects.filter((p) => p.status === "active").length} />
               <div className="text-sm text-muted-foreground">Active Projects</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">
-                {new Set(projects.map((p) => p.country)).size}
-              </div>
+              <Counter value={new Set(projects.map((p) => p.country)).size} />
               <div className="text-sm text-muted-foreground">Countries</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">
-                {new Set(projects.map((p) => p.focusArea)).size}
-              </div>
+              <Counter value={new Set(projects.map((p) => p.focusArea)).size} />
               <div className="text-sm text-muted-foreground">Focus Areas</div>
             </div>
           </div>

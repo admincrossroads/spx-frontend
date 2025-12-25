@@ -9,12 +9,13 @@ export default function WhoWeAre() {
   return (
     <div className="w-full">
       {/* HERO */}
-      <section className="relative h-[55vh] w-full">
+      <section className="relative h-[55vh] w-full overflow-hidden">
         <Image
-          src="/images/leadership.jpg"
+          src="/images/about/image4.webp"
           alt="Who We Are"
           fill
           className="object-cover brightness-[0.55]"
+          priority
         />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
           <div className="main-container">
@@ -30,7 +31,7 @@ export default function WhoWeAre() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="mt-4 max-w-2xl mx-auto text-lg md:text-xl"
+              className="mt-4 max-w-2xl mx-auto text-lg md:text-xl opacity-90"
             >
               An Africa-led development institution committed to designing and delivering
               practical solutions that strengthen livelihoods and build resilient systems.
@@ -66,10 +67,10 @@ export default function WhoWeAre() {
             {/* IMAGE AND LOOKING AHEAD */}
             <div className="flex flex-col items-center">
               {/* IMAGE PLACEHOLDER */}
-              <div className="w-full h-[320px] bg-muted rounded-xl shadow-lg flex items-center justify-center overflow-hidden">
+              <div className="relative w-full h-[320px] bg-muted rounded-xl shadow-lg flex items-center justify-center overflow-hidden">
                 <Image
-                  src="/images/leadership.jpg"
-                  alt="Team / Field Work"
+                  src="/images/xtras/image9.webp"
+                  alt="Team Collaboration"
                   fill
                   className="object-cover"
                 />
@@ -97,7 +98,7 @@ export default function WhoWeAre() {
           <h2 className="text-3xl font-semibold mb-4">
             Learn More About Our Organization
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto mb-8">
+          <p className="text-muted-foreground max-w-xl mx-auto mb-8 text-lg">
             Explore our vision, mission, leadership, and Africa-led identity.
           </p>
           <Link href="/about/vision-mission">

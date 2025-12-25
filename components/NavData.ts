@@ -45,8 +45,8 @@ export const NAV_ITEMS = [
     href: "/projects",
     submenu: [
       { label: "Featured Projects", href: "/projects#featured" },
-      { label: "Project Portfolio", href: "/projects#portfolio" },
-      { label: "Impact Stories", href: "/projects#impact" },
+      // { label: "Project Portfolio", href: "/projects#portfolio" },
+      // { label: "Impact Stories", href: "/projects#impact" },
       { label: "MEL Approach", href: "/approach/mel" }
     ]
   },
@@ -62,14 +62,14 @@ export const NAV_ITEMS = [
   },
   {
     label: "Innovation Hub",
-    href: "/innovation",
+    href: "/innovation#club",
     submenu: [
-      { label: "Spiral Innovation Club", href: "/innovation#club" },
-      { label: "Enterprise Incubation", href: "/innovation#incubation" },
-      { label: "Applied Science Innovations", href: "/innovation#science" },
-      { label: "Digital Solutions", href: "/innovation#digital" },
-      { label: "Skills & Sector Capacity", href: "/innovation#skills" },
-      { label: "Innovation Challenges", href: "/innovation#challenges" }
+      // { label: "Spiral Innovation Club", href: "/innovation#club" },
+      // { label: "Enterprise Incubation", href: "/innovation#incubation" },
+      // { label: "Applied Science Innovations", href: "/innovation#science" },
+      // { label: "Digital Solutions", href: "/innovation#digital" },
+      // { label: "Skills & Sector Capacity", href: "/innovation#skills" },
+      // { label: "Innovation Challenges", href: "/innovation#challenges" }
     ]
   },
   {

@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Send, CheckCircle2, XCircle } from 'lucide-react';
+import { Send, CheckCircle2, XCircle, Phone, Mail, MapPin } from 'lucide-react';
 import { useContactModal } from '@/lib/contexts/ContactModalContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
@@ -145,6 +145,61 @@ export function ContactModal() {
             </motion.div>
           </DialogHeader>
           
+          {/* Address Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.4 }}
+            className="mb-6 pb-6 border-b border-gray-700"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* Phone */}
+              <div className="flex items-start gap-3">
+                <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400">
+                  <Phone className="h-4 w-4" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400 mb-1">Phone</p>
+                  <a 
+                    href="tel:+251911234567" 
+                    className="text-white hover:text-blue-400 transition-colors text-sm font-medium"
+                  >
+                    +251 911 234 567
+                  </a>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-start gap-3">
+                <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400">
+                  <Mail className="h-4 w-4" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400 mb-1">Email</p>
+                  <a 
+                    href="mailto:info@spx.com" 
+                    className="text-white hover:text-blue-400 transition-colors text-sm font-medium"
+                  >
+                    info@spx.com
+                  </a>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="flex items-start gap-3">
+                <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400">
+                  <MapPin className="h-4 w-4" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400 mb-1">Location</p>
+                  <p className="text-white text-sm font-medium">
+                    Addis Ababa, ET
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+          
           {submitStatus === 'success' && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
@@ -245,14 +300,14 @@ export function ContactModal() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <button
+              {/* <button
                 type="button"
                 onClick={closeModal}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium h-10 px-4 py-2 border border-gray-600 bg-transparent text-white hover:bg-gray-800 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-600"
                 style={{ color: '#ffffff', backgroundColor: 'transparent' }}
               >
                 Cancel
-              </button>
+              </button> */}
               <Button
                 type="submit"
                 disabled={isSubmitting}
@@ -262,7 +317,6 @@ export function ContactModal() {
                   'Sending...'
                 ) : (
                   <>
-                    <Send className="h-4 w-4 mr-2" />
                     Send
                   </>
                 )}

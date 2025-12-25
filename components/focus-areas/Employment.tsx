@@ -10,12 +10,13 @@ export default function Employment() {
     <div className="w-full">
 
       {/* HERO */}
-      <section className="relative h-[55vh]">
+      <section className="relative h-[55vh] w-full overflow-hidden">
         <Image
-          src="/images/focus/employment-hero.jpg"
+          src="/images/approach/image2.webp"
           fill
           className="object-cover brightness-[0.55]"
           alt="Employment & Skills"
+          priority
         />
         <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center">
           <div className="main-container">
@@ -55,7 +56,7 @@ export default function Employment() {
             </ul>
           </div>
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image src="/images/focus/employment-1.jpg" fill className="object-cover" alt="Skills Development" />
+            <Image src="/images/xtras/image12.webp" fill className="object-cover" alt="Skills Development" />
           </div>
         </div>
       </section>
@@ -64,7 +65,7 @@ export default function Employment() {
       <section className="section-py bg-muted/40">
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden order-2 md:order-1 shadow-md">
-            <Image src="/images/focus/employment-2.jpg" fill className="object-cover" alt="Embedded Experience" />
+            <Image src="/images/focus/image1.webp" fill className="object-cover" alt="Embedded Experience" />
           </div>
           <div className="order-1 md:order-2">
             <h2 className="text-3xl font-semibold mb-6">Leadership in Skills</h2>
@@ -94,7 +95,7 @@ export default function Employment() {
             </p>
           </div>
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image src="/images/focus/employment-3.jpg" fill className="object-cover" alt="" />
+            <Image src="/images/xtras/image10.webp" fill className="object-cover" alt="" />
           </div>
         </div>
       </section>

@@ -10,12 +10,13 @@ export default function Innovation() {
     <div className="w-full">
 
       {/* HERO */}
-      <section className="relative h-[55vh] w-full">
+      <section className="relative h-[55vh] w-full overflow-hidden">
         <Image
-          src="/images/innovation-hero.jpg"
+          src="/images/xtras/image27.webp"
           alt="Innovation & Enterprise"
           fill
           className="object-cover brightness-[0.55]"
+          priority
         />
 
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
@@ -66,7 +67,7 @@ export default function Innovation() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/innovation-1.jpg"
+              src="/images/xtras/image8.webp"
               alt="Incubation"
               fill
               className="object-cover"
@@ -80,7 +81,7 @@ export default function Innovation() {
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
             <Image
-              src="/images/innovation-2.jpg"
+              src="/images/focus/image6.webp"
               alt="Applied Science"
               fill
               className="object-cover"
@@ -126,7 +127,7 @@ export default function Innovation() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/innovation-3.jpg"
+              src="/images/xtras/image28.webp"
               alt="Digital Platforms"
               fill
               className="object-cover"
