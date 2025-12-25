@@ -48,13 +48,13 @@ export default function CTASection() {
             >
               Contact Us
             </Button>
-            <Button
+            {/* <Button
               size="lg"
               variant="outline"
               className="border-2 border-white text-white bg-transparent hover:bg-white/10 w-full sm:w-[200px] rounded-full font-semibold px-8 py-6 text-base transition-all duration-300 hover:scale-105 active:scale-95"
             >
               Download Overview
-            </Button>
+            </Button> */}
           </div>
         </div>
       </motion.div>

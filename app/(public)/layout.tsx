@@ -12,7 +12,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "SPX – Africa-Led Strategy, Research, and Implementation",
+  title: "SPX - Africa-Led Strategy, Research, and Implementation",
   description: "SPX is an Africa-based consulting, research, and implementation firm advancing development through energy access, market systems, innovation, and locally grounded solutions. We work with governments, DFIs, foundations, and the private sector to design and deliver transformative programs across Africa.",
   manifest: "/manifest.json",
   icons: {

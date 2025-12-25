@@ -142,7 +142,7 @@ export default function Hero() {
             <div className="mb-6">
               <AnimatedText
                 text="Africa-Led Strategy, Research, and Innovation for Systems Change."
-                className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight tracking-tight drop-shadow-lg"
+                className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight tracking-tight drop-shadow-lg"
               />
             </div>
 
