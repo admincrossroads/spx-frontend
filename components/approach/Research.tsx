@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ImageTextCard from "@/components/ui/image-text-card";
 
 export default function Research() {
   return (
@@ -45,91 +46,92 @@ export default function Research() {
 
       {/* BLOCK 1 — APPLIED RESEARCH */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">Applied Research & Sector Studies</h2>
-            <p className="text-justify-custom text-muted-foreground mb-6">
-              SPX conducts sector studies and applied research across agriculture, 
-              finance, energy, and digital ecosystems. Our work generates evidence 
-              rooted in African realities, supporting the design of practical and 
-              scalable development programs.
-            </p>
-            <div className="p-6 bg-primary/5 rounded-xl border border-primary/10">
-              <h3 className="font-bold text-primary mb-2">Team Experience Integrated</h3>
-              <p className="text-sm text-muted-foreground">
-                Our team has carried out research on Ethiopia’s banking and financial 
-                systems, market transitions, and sector competitiveness.
-              </p>
-            </div>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/about/image6.webp"
-              alt="Applied Research"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/about/image6.webp",
+              alt: "Applied Research",
+            }}
+            title="Applied Research & Sector Studies"
+            content={
+              <>
+                <p>
+                  SPX conducts sector studies and applied research across agriculture, 
+                  finance, energy, and digital ecosystems. Our work generates evidence 
+                  rooted in African realities, supporting the design of practical and 
+                  scalable development programs.
+                </p>
+                <div className="p-6 bg-primary/5 rounded-xl border border-primary/10 mt-4">
+                  <h3 className="font-bold text-primary mb-2">Team Experience Integrated</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Our team has carried out research on Ethiopia's banking and financial 
+                    systems, market transitions, and sector competitiveness.
+                  </p>
+                </div>
+              </>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 2 — FIELD ASSESSMENTS */}
       <section className="section-py bg-muted/40">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
-            <Image
-              src="/images/about/image7.webp"
-              alt="Field Assessments"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="order-1 md:order-2">
-            <h2 className="text-3xl font-semibold mb-6">Field Assessments & Surveys</h2>
-            <p className="text-justify-custom text-muted-foreground mb-6">
-              We gather insights from communities and enterprises that help shape 
-              markets and programs. Our field capabilities include:
-            </p>
-            <ul className="space-y-3">
-              {[
-                "Baseline, midline & endline studies",
-                "Evaluations & learning analysis",
-                "Impact measurement",
-                "Market surveys"
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  <span className="text-sm font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/about/image7.webp",
+              alt: "Field Assessments",
+            }}
+            title="Field Assessments & Surveys"
+            content={
+              <>
+                <p>
+                  We gather insights from communities and enterprises that help shape 
+                  markets and programs. Our field capabilities include:
+                </p>
+                <ul className="space-y-3 mt-4">
+                  {[
+                    "Baseline, midline & endline studies",
+                    "Evaluations & learning analysis",
+                    "Impact measurement",
+                    "Market surveys"
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-3">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <span className="text-sm font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+            imagePosition="left"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 3 — DATA ANALYTICS */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">Data Analytics & Insights</h2>
-            <p className="text-justify-custom text-muted-foreground">
-              SPX turns raw data into clear, usable insights for partners. We 
-              deploy digital tools for data collection, monitoring, and performance 
-              tracking, ensuring transparency and real-time learning across 
-              development programs.
-            </p>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/approach/image5.webp"
-              alt="Data Analytics"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/approach/image5.webp",
+              alt: "Data Analytics",
+            }}
+            title="Data Analytics & Insights"
+            content={
+              <p>
+                SPX turns raw data into clear, usable insights for partners. We 
+                deploy digital tools for data collection, monitoring, and performance 
+                tracking, ensuring transparency and real-time learning across 
+                development programs.
+              </p>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 

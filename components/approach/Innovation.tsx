@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ImageTextCard from "@/components/ui/image-text-card";
 
 export default function Innovation() {
   return (
@@ -45,94 +46,93 @@ export default function Innovation() {
 
       {/* BLOCK 1 — INCUBATION */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">
-              Startup Incubation & Acceleration
-            </h2>
-            <p className="text-justify-custom text-muted-foreground mb-6">
-              Supporting early-stage enterprises in agritech, energy access, 
-              circular economy, and digital solutions. We help innovators validate 
-              solutions within real-world communities and ecosystems.
-            </p>
-            <div className="p-6 bg-primary/5 rounded-xl border border-primary/10">
-              <h3 className="font-bold text-primary mb-2">Team Experience Integrated</h3>
-              <p className="text-sm text-muted-foreground">
-                SPX’s innovation work is enhanced by our experience in establishing 
-                coffee training institutes and spinning off ventures that address 
-                skills and employment gaps.
-              </p>
-            </div>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/xtras/image8.webp"
-              alt="Incubation"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/xtras/image8.webp",
+              alt: "Incubation",
+            }}
+            title="Startup Incubation & Acceleration"
+            content={
+              <>
+                <p>
+                  Supporting early-stage enterprises in agritech, energy access, 
+                  circular economy, and digital solutions. We help innovators validate 
+                  solutions within real-world communities and ecosystems.
+                </p>
+                <div className="p-6 bg-primary/5 rounded-xl border border-primary/10 mt-4">
+                  <h3 className="font-bold text-primary mb-2">Team Experience Integrated</h3>
+                  <p className="text-sm text-muted-foreground">
+                    SPX's innovation work is enhanced by our experience in establishing 
+                    coffee training institutes and spinning off ventures that address 
+                    skills and employment gaps.
+                  </p>
+                </div>
+              </>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 2 — APPLIED SCIENCE */}
       <section className="section-py bg-muted/40">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
-            <Image
-              src="/images/focus/image6.webp"
-              alt="Applied Science"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="order-1 md:order-2">
-            <h2 className="text-3xl font-semibold mb-6">Applied Science Innovations</h2>
-            <p className="text-justify-custom text-muted-foreground mb-6">
-              Developing technologies such as microbial solutions for composting 
-              and waste-to-value production. We use science to solve Ethiopia’s 
-              development challenges.
-            </p>
-            <ul className="space-y-3">
-              {[
-                "Microbial composting solutions",
-                "Waste-to-value production",
-                "Soil health technologies",
-                "Market testing & piloting"
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  <span className="text-sm font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/focus/image6.webp",
+              alt: "Applied Science",
+            }}
+            title="Applied Science Innovations"
+            content={
+              <>
+                <p>
+                  Developing technologies such as microbial solutions for composting 
+                  and waste-to-value production. We use science to solve Ethiopia's 
+                  development challenges.
+                </p>
+                <ul className="space-y-3 mt-4">
+                  {[
+                    "Microbial composting solutions",
+                    "Waste-to-value production",
+                    "Soil health technologies",
+                    "Market testing & piloting"
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-3">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <span className="text-sm font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+            imagePosition="left"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 3 — DIGITAL PLATFORMS */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">Digital Platforms</h2>
-            <p className="text-justify-custom text-muted-foreground">
-              Designing solutions that provide smallholders and MSMEs with 
-              advisory, market access, and productivity tools. We have extensive 
-              experience in developing digital platforms for farmers that move 
-              smoothly from insight to execution.
-            </p>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/xtras/image28.webp"
-              alt="Digital Platforms"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/xtras/image28.webp",
+              alt: "Digital Platforms",
+            }}
+            title="Digital Platforms"
+            content={
+              <p>
+                Designing solutions that provide smallholders and MSMEs with 
+                advisory, market access, and productivity tools. We have extensive 
+                experience in developing digital platforms for farmers that move 
+                smoothly from insight to execution.
+              </p>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ImageTextCard from "@/components/ui/image-text-card";
 
 export default function MEL() {
   return (
@@ -45,86 +46,83 @@ export default function MEL() {
 
       {/* BLOCK 1 — CAPABILITIES */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">MEL Capabilities</h2>
-            <p className="text-justify-custom text-muted-foreground mb-6">
-              We build data-driven systems that ensure programs remain grounded in 
-              field realities. Our structured learning loops turn evidence into 
-              adaptive programming and improved delivery.
-            </p>
-            <ul className="space-y-4">
-              {[
-                "Results frameworks & theory of change",
-                "Performance monitoring systems",
-                "Impact measurement & qualitative assessments",
-                "Data dashboard development"
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm border">
-                  <span className="h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                  <span className="text-sm font-medium">{item}</span>
-                </div>
-              ))}
-            </ul>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/xtras/image38.webp"
-              alt="MEL Capabilities"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/xtras/image38.webp",
+              alt: "MEL Capabilities",
+            }}
+            title="MEL Capabilities"
+            content={
+              <>
+                <p>
+                  We build data-driven systems that ensure programs remain grounded in 
+                  field realities. Our structured learning loops turn evidence into 
+                  adaptive programming and improved delivery.
+                </p>
+                <ul className="space-y-3 mt-4">
+                  {[
+                    "Results frameworks & theory of change",
+                    "Performance monitoring systems",
+                    "Impact measurement & qualitative assessments",
+                    "Data dashboard development"
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm border">
+                      <span className="h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                      <span className="text-sm font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 2 — LEARNING LOOPS */}
       <section className="section-py bg-muted/40">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
-            <Image
-              src="/images/xtras/image26.webp"
-              alt="Learning Loops"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="order-1 md:order-2">
-            <h2 className="text-3xl font-semibold mb-6">Learning Loops</h2>
-
-            <p className="text-justify-custom text-muted-foreground">
-              SPX incorporates structured learning loops into program cycles—
-              turning evidence into adaptive programming, improved delivery, and
-              strengthened systems. This enables strategic decision-making based on
-              real-time insights.
-            </p>
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/xtras/image26.webp",
+              alt: "Learning Loops",
+            }}
+            title="Learning Loops"
+            content={
+              <p>
+                SPX incorporates structured learning loops into program cycles— 
+                turning evidence into adaptive programming, improved delivery, and
+                strengthened systems. This enables strategic decision-making based on
+                real-time insights.
+              </p>
+            }
+            imagePosition="left"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 3 — DATA & EVIDENCE */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">Data-Driven Improvement</h2>
-
-            <p className="text-justify-custom text-muted-foreground">
-              MEL outputs feed back into program design, institutional strengthening,
-              research, and strategy—ensuring that SPX and its partners deliver
-              interventions that evolve with changing realities and real-world needs.
-            </p>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/xtras/image27.webp"
-              alt="Data for Learning"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/xtras/image27.webp",
+              alt: "Data for Learning",
+            }}
+            title="Data-Driven Improvement"
+            content={
+              <p>
+                MEL outputs feed back into program design, institutional strengthening,
+                research, and strategy—ensuring that SPX and its partners deliver
+                interventions that evolve with changing realities and real-world needs.
+              </p>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 

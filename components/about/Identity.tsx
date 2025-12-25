@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import ImageTextCard from "@/components/ui/image-text-card";
 
 export default function Identity() {
   return (
@@ -33,161 +34,105 @@ export default function Identity() {
         </div>
       </section>
 
-      <div className="main-container space-y-24 mt-20">
+      <div className="main-container space-y-16 mt-16">
 
         {/* SECTION 1 — AFRICA-LED PRINCIPLE */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
-          {/* TEXT */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="space-y-6 text-lg text-justify leading-relaxed"
-          >
-            <h2 className="text-3xl font-semibold">Africa-Led at the Core</h2>
-
-            <p className="text-justify-custom">
-              With a strong focus on realistic solutions, SPX approaches development 
-              with an Africa-first view that is shaped by real experience and is 
-              grounded in local realities. As global the development landscape shifts, 
-              and traditional implementing partners retreat, SPX represents a new 
-              generation of Africa-based partners able to deliver with precision 
-              and reliability.
-            </p>
-
-            <p className="text-justify-custom">
-              SPX’s identity is founded on the principle that home-grown institutions 
-              must lead Africa’s growth. Our leadership has strong localized knowledge 
-              and vast experience working across Ethiopia’s agricultural, energy, 
-              and innovation sectors.
-            </p>
-          </motion.div>
-
-          {/* IMAGE */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="w-full h-[380px] rounded-xl bg-muted relative overflow-hidden"
-          >
-            <Image
-              src="/images/xtras/image2.webp"
-              alt="Africa-Led Identity"
-              fill
-              className="object-cover opacity-90"
-            />
-          </motion.div>
-        </div>
+        <ImageTextCard
+          image={{
+            src: "/images/xtras/image2.webp",
+            alt: "Africa-Led Identity",
+          }}
+          title="Africa-Led at the Core"
+          content={
+            <>
+              <p>
+                With a strong focus on realistic solutions, SPX approaches development 
+                with an Africa-first view that is shaped by real experience and is 
+                grounded in local realities. As global the development landscape shifts, 
+                and traditional implementing partners retreat, SPX represents a new 
+                generation of Africa-based partners able to deliver with precision 
+                and reliability.
+              </p>
+              <p>
+                SPX's identity is founded on the principle that home-grown institutions 
+                must lead Africa's growth. Our leadership has strong localized knowledge 
+                and vast experience working across Ethiopia's agricultural, energy, 
+                and innovation sectors.
+              </p>
+            </>
+          }
+          imagePosition="right"
+          imageSize="large"
+        />
 
         {/* SECTION 2 — ROOTED IN CONTEXT */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-
-          {/* IMAGE LEFT */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="w-full h-[420px] rounded-xl bg-muted relative overflow-hidden"
-          >
-            <Image
-              src="/images/xtras/image6.webp"
-              alt="Rooted in Context"
-              fill
-              className="object-cover opacity-90"
-            />
-          </motion.div>
-
-          {/* TEXT RIGHT */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="space-y-6 text-lg leading-relaxed text-justify"
-          >
-            <h2 className="text-3xl font-semibold">Rooted in African Realities</h2>
-
-            <p className="text-justify-custom">
-              SPX’s approach is anchored in first-hand understanding of the realities 
-              that shape development outcomes in Africa:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-3">
-              <li>Community dynamics and social structures</li>
-              <li>Market incentives and behavior</li>
-              <li>Agricultural production systems</li>
-              <li>Political economy considerations</li>
-              <li>Cultural norms and adoption patterns</li>
-              <li>Regulatory systems and institutional constraints</li>
-            </ul>
-
-            <p className="text-justify-custom">
-              Rather than interpreting Africa from a distance, SPX engages directly 
-              with people, sectors, and systems—designing interventions that work in 
-              practice, not just in theory.
-            </p>
-          </motion.div>
-        </div>
+        <ImageTextCard
+          image={{
+            src: "/images/xtras/image6.webp",
+            alt: "Rooted in Context",
+          }}
+          title="Rooted in African Realities"
+          content={
+            <>
+              <p>
+                SPX's approach is anchored in first-hand understanding of the realities 
+                that shape development outcomes in Africa:
+              </p>
+              <ul className="list-disc pl-6 space-y-3 my-4">
+                <li>Community dynamics and social structures</li>
+                <li>Market incentives and behavior</li>
+                <li>Agricultural production systems</li>
+                <li>Political economy considerations</li>
+                <li>Cultural norms and adoption patterns</li>
+                <li>Regulatory systems and institutional constraints</li>
+              </ul>
+              <p>
+                Rather than interpreting Africa from a distance, SPX engages directly 
+                with people, sectors, and systems—designing interventions that work in 
+                practice, not just in theory.
+              </p>
+            </>
+          }
+          imagePosition="left"
+          imageSize="full"
+        />
 
         {/* SECTION 3 — LOCAL INSIGHT + GLOBAL STANDARDS */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
-          {/* TEXT */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="space-y-6 text-lg text-justify leading-relaxed"
-          >
-            <h2 className="text-3xl font-semibold">Local Insight, Global Standards</h2>
-
-            <p className="text-justify-custom">
-              SPX combines local understanding with international-level analytical, 
-              operational, and strategic capability. The organization’s leadership 
-              has steered complex ventures in:
-            </p>
-
-            <ul className="list-disc pl-6 space-y-3">
-              <li>Agribusiness & agricultural operations</li>
-              <li>Ecotourism & hospitality</li>
-              <li>Media & communications</li>
-              <li>Digital technology platforms</li>
-              <li>Renewable energy systems</li>
-              <li>Skills development & applied science</li>
-            </ul>
-
-            <p className="text-justify-custom">
-              This blended experience strengthens SPX’s ability to bridge African 
-              realities with global best practice.
-            </p>
-          </motion.div>
-
-          {/* IMAGE */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="w-full h-[380px] rounded-xl bg-muted relative overflow-hidden"
-          >
-            <Image
-              src="/images/xtras/image8.webp"
-              alt="Global Standards"
-              fill
-              className="object-cover opacity-90"
-            />
-          </motion.div>
-        </div>
+        <ImageTextCard
+          image={{
+            src: "/images/xtras/image8.webp",
+            alt: "Global Standards",
+          }}
+          title="Local Insight, Global Standards"
+          content={
+            <>
+              <p>
+                SPX combines local understanding with international-level analytical, 
+                operational, and strategic capability. The organization's leadership 
+                has steered complex ventures in:
+              </p>
+              <ul className="list-disc pl-6 space-y-3 my-4">
+                <li>Agribusiness & agricultural operations</li>
+                <li>Ecotourism & hospitality</li>
+                <li>Media & communications</li>
+                <li>Digital technology platforms</li>
+                <li>Renewable energy systems</li>
+                <li>Skills development & applied science</li>
+              </ul>
+              <p>
+                This blended experience strengthens SPX's ability to bridge African 
+                realities with global best practice.
+              </p>
+            </>
+          }
+          imagePosition="right"
+          imageSize="large"
+        />
 
         {/* WHAT MAKES SPX DISTINCT */}
-        <div className="bg-muted/30 p-12 rounded-2xl border">
-          <h2 className="text-3xl font-semibold mb-12 text-center">What Makes SPX Distinct</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="bg-muted/30 p-8 lg:p-12 rounded-2xl border">
+          <h2 className="text-3xl font-semibold mb-8 text-center">What Makes SPX Distinct</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 title: "Africa-Led Insight",
@@ -228,7 +173,7 @@ export default function Identity() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-lg leading-relaxed text-justify space-y-6"
+          className="max-w-4xl mx-auto text-lg leading-relaxed text-justify space-y-4"
         >
           <h2 className="text-3xl font-semibold text-center">
             Trusted Local Networks
@@ -249,7 +194,7 @@ export default function Identity() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center pb-20"
+          className="text-center pb-12"
         >
           <h3 className="text-2xl font-semibold mb-4">
             Learn How Our Identity Shapes Our Work

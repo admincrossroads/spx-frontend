@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ImageTextCard from "@/components/ui/image-text-card";
 
 export default function Digital() {
   return (
@@ -45,86 +46,81 @@ export default function Digital() {
 
       {/* BLOCK 1 — SYSTEMS SUPPORT */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">Systems & Operations Support</h2>
-            <p className="text-justify-custom text-muted-foreground mb-6">
-              We provide technical expertise to integrate digital tools into existing 
-              workflows, enhancing efficiency and data management across programs.
-            </p>
-            <ul className="space-y-4">
-              {[
-                "Digital tools for field operations",
-                "Data management systems",
-                "Digital workflows for rural programs",
-                "Platform integrations"
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm border">
-                  <span className="h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                  <span className="text-sm font-medium">{item}</span>
-                </div>
-              ))}
-            </ul>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/xtras/image27.webp"
-              alt="Systems Support"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/xtras/image27.webp",
+              alt: "Systems Support",
+            }}
+            title="Systems & Operations Support"
+            content={
+              <>
+                <p>
+                  We provide technical expertise to integrate digital tools into existing 
+                  workflows, enhancing efficiency and data management across programs.
+                </p>
+                <ul className="space-y-3 mt-4">
+                  {[
+                    "Digital tools for field operations",
+                    "Data management systems",
+                    "Digital workflows for rural programs",
+                    "Platform integrations"
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm border">
+                      <span className="h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                      <span className="text-sm font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 2 — DATA & INSIGHTS */}
       <section className="section-py bg-muted/40">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
-            <Image
-              src="/images/xtras/image38.webp"
-              alt="Data & Insights"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="order-1 md:order-2">
-            <h2 className="text-3xl font-semibold mb-6">
-              Data & Market Intelligence
-            </h2>
-
-            <p className="text-justify-custom text-muted-foreground">
-              SPX uses digital tools to collect, analyze, and visualize data—
-              enhancing decision-making, monitoring, and transparency across
-              development programs and market systems.
-            </p>
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/xtras/image38.webp",
+              alt: "Data & Insights",
+            }}
+            title="Data & Market Intelligence"
+            content={
+              <p>
+                SPX uses digital tools to collect, analyze, and visualize data— 
+                enhancing decision-making, monitoring, and transparency across
+                development programs and market systems.
+              </p>
+            }
+            imagePosition="left"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 3 — DIGITAL INCLUSION */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">Digital Inclusion</h2>
-
-            <p className="text-justify-custom text-muted-foreground">
-              SPX supports youth, cooperatives, and small enterprises to access
-              digital skills and tools, enabling them to participate in modern
-              markets and strengthen their economic opportunities.
-            </p>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/focus/image1.webp"
-              alt="Digital Inclusion"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/focus/image1.webp",
+              alt: "Digital Inclusion",
+            }}
+            title="Digital Inclusion"
+            content={
+              <p>
+                SPX supports youth, cooperatives, and small enterprises to access
+                digital skills and tools, enabling them to participate in modern
+                markets and strengthen their economic opportunities.
+              </p>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 

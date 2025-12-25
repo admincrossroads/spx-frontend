@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ImageTextCard from "@/components/ui/image-text-card";
 
 export default function Energy() {
   return (
@@ -45,91 +46,91 @@ export default function Energy() {
 
       {/* BLOCK 1 — WHAT WE DO */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">SPX’s Energy Work</h2>
-            <p className="text-justify-custom text-muted-foreground mb-6">
-              We implement initiatives that integrate clean energy technologies with 
-              agriculture, micro-enterprise development, and rural livelihoods.
-            </p>
-            <ul className="space-y-3">
-              {[
-                "Productive Use of Energy (PUE)",
-                "Distributed renewable solutions",
-                "Energy for agriculture & MSMEs",
-                "Off-grid & mini-grid applications",
-                "Energy & climate resilience"
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  <span className="text-sm font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/xtras/image5.webp"
-              alt="Energy Work"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/xtras/image5.webp",
+              alt: "Energy Work",
+            }}
+            title="SPX's Energy Work"
+            content={
+              <>
+                <p>
+                  We implement initiatives that integrate clean energy technologies with 
+                  agriculture, micro-enterprise development, and rural livelihoods.
+                </p>
+                <ul className="space-y-3 mt-4">
+                  {[
+                    "Productive Use of Energy (PUE)",
+                    "Distributed renewable solutions",
+                    "Energy for agriculture & MSMEs",
+                    "Off-grid & mini-grid applications",
+                    "Energy & climate resilience"
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-3">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <span className="text-sm font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 2 — BLOOM PROJECT */}
       <section className="section-py bg-muted/40">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
-            <Image
-              src="/images/projects/image3.webp"
-              alt="Bloom Project"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="order-1 md:order-2">
-            <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-4">
-              FLAGSHIP INITIATIVE
-            </div>
-            <h2 className="text-3xl font-semibold mb-6">The Bloom Project</h2>
-            <p className="text-justify-custom text-muted-foreground">
-              The Bloom Project is a multi-stakeholder program designed to integrate 
-              clean energy, PUE technologies, and circular economy innovations to 
-              support rural livelihoods. Bloom demonstrates SPX’s ability to deliver 
-              energy-focused, context-appropriate projects that connect agriculture, 
-              climate, and community needs.
-            </p>
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/projects/image3.webp",
+              alt: "Bloom Project",
+            }}
+            title="The Bloom Project"
+            content={
+              <>
+                <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-4">
+                  FLAGSHIP INITIATIVE
+                </div>
+                <p>
+                  The Bloom Project is a multi-stakeholder program designed to integrate 
+                  clean energy, PUE technologies, and circular economy innovations to 
+                  support rural livelihoods. Bloom demonstrates SPX's ability to deliver 
+                  energy-focused, context-appropriate projects that connect agriculture, 
+                  climate, and community needs.
+                </p>
+              </>
+            }
+            imagePosition="left"
+            imageSize="medium"
+            contentClassName="space-y-4"
+          />
         </div>
       </section>
 
       {/* BLOCK 3 */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">
-              Energy for Agriculture & Enterprises
-            </h2>
-            <p className="text-justify-custom text-muted-foreground">
-              Clean energy drives agricultural productivity and rural enterprise
-              growth. SPX integrates energy access with market development,
-              institutional strengthening, and technical training—ensuring systems
-              are sustainable and economically viable.
-            </p>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/hero/image6.webp"
-              alt="Energy for Enterprises"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/hero/image6.webp",
+              alt: "Energy for Enterprises",
+            }}
+            title="Energy for Agriculture & Enterprises"
+            content={
+              <p>
+                Clean energy drives agricultural productivity and rural enterprise
+                growth. SPX integrates energy access with market development,
+                institutional strengthening, and technical training—ensuring systems
+                are sustainable and economically viable.
+              </p>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import ImageTextCard from "@/components/ui/image-text-card";
 
 export default function VisionAndMission() {
   return (
@@ -33,145 +34,104 @@ export default function VisionAndMission() {
         </div>
       </section>
 
-      <div className="main-container space-y-24 mt-20">
+      <div className="main-container space-y-16 mt-16">
 
         {/* VISION SECTION */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* IMAGE */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="relative w-full h-[380px] bg-muted rounded-xl overflow-hidden"
-          >
-            <Image
-              src="/images/xtras/image5.webp"
-              alt="Vision Image"
-              fill
-              className="object-cover opacity-90"
-            />
-          </motion.div>
-
-          {/* TEXT */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="space-y-6 text-lg leading-relaxed text-justify"
-          >
-            <h2 className="text-3xl font-semibold mb-4">Our Vision</h2>
-
-            <p className="text-justify-custom">
-              SPX envisions an Africa where people, institutions, and markets thrive 
-              through inclusive growth, clean energy access, resilient food systems, 
-              and innovation-driven economic transformation.
-            </p>
-            <p className="text-justify-custom">
-              The firm seeks to contribute to a continent shaped by African leadership, 
-              strengthened by evidence, and powered by solutions that are practical, 
-              scalable, and grounded in local realities.
-            </p>
-            <p className="text-justify-custom">
-              SPX aims to be a leading Africa-based development institution—bridging 
-              strategy, research, implementation, and innovation—to drive sustainable 
-              impact across the region.
-            </p>
-          </motion.div>
-        </div>
+        <ImageTextCard
+          image={{
+            src: "/images/xtras/image5.webp",
+            alt: "Vision Image",
+          }}
+          title="Our Vision"
+          content={
+            <>
+              <p>
+                SPX envisions an Africa where people, institutions, and markets thrive 
+                through inclusive growth, clean energy access, resilient food systems, 
+                and innovation-driven economic transformation.
+              </p>
+              <p>
+                The firm seeks to contribute to a continent shaped by African leadership, 
+                strengthened by evidence, and powered by solutions that are practical, 
+                scalable, and grounded in local realities.
+              </p>
+              <p>
+                SPX aims to be a leading Africa-based development institution—bridging 
+                strategy, research, implementation, and innovation—to drive sustainable 
+                impact across the region.
+              </p>
+            </>
+          }
+          imagePosition="left"
+          imageSize="large"
+        />
 
         {/* MISSION SECTION */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
-          {/* TEXT FIRST */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="space-y-6 text-lg leading-relaxed text-justify"
-          >
-            <h2 className="text-3xl font-semibold mb-4">Our Mission</h2>
-
-            <p className="text-justify-custom">
-              SPX’s mission is to design and deliver integrated development 
-              solutions that unlock opportunity, strengthen livelihoods, and 
-              build resilient systems across Africa.
-            </p>
-
-            <ul className="space-y-4 list-decimal pl-6">
-              <li>
-                <strong>Applying Africa-led insight to development challenges</strong> : 
-                Leveraging contextual understanding, local networks, and industry 
-                experience to design solutions that are relevant, feasible, and sustainable.
-              </li>
-
-              <li>
-                <strong>Integrating strategy, research, implementation, and innovation</strong> :  
-                Creating a comprehensive development model that combines evidence, 
-                design, field delivery, learning, and scale.
-              </li>
-
-              <li>
-                <strong>Positioning clean energy as a driver of economic transformation</strong> : 
-                Supporting households, farmers, and enterprises to adopt energy-powered 
-                solutions that increase productivity and resilience.
-              </li>
-
-              <li>
-                <strong>Strengthening agriculture and food systems</strong> : 
-                Improving productivity, quality, and market access across rural value 
-                chains through advisory and digital tools.
-              </li>
-
-              <li>
-                <strong>Expanding opportunities for youth and communities</strong> :  
-                Developing skills, entrepreneurship pathways, and sector-specific 
-                training that increase employment and income.
-              </li>
-
-              <li>
-                <strong>Advancing digital inclusion and market transparency</strong> :  
-                Deploying digital platforms that connect farmers, MSMEs, and 
-                institutions to information, markets, finance, and opportunities.
-              </li>
-
-              <li>
-                <strong>Supporting climate resilience and circular economy models</strong> :  
-                Promoting sustainable practices, waste-to-value innovations, and 
-                environmentally sustainable systems.
-              </li>
-
-              <li>
-                <strong>Strengthening institutions and governance systems</strong> : 
-                Building the capacity of public and private institutions to deliver 
-                and scale development initiatives.
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* IMAGE */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="relative w-full h-[420px] bg-muted rounded-xl overflow-hidden"
-          >
-            <Image
-              src="/images/about/image1.webp"
-              alt="Mission Image"
-              fill
-              className="object-cover opacity-90"
-            />
-          </motion.div>
-        </div>
+        <ImageTextCard
+          image={{
+            src: "/images/about/image1.webp",
+            alt: "Mission Image",
+          }}
+          title="Our Mission"
+          content={
+            <>
+              <p>
+                SPX's mission is to design and deliver integrated development 
+                solutions that unlock opportunity, strengthen livelihoods, and 
+                build resilient systems across Africa.
+              </p>
+              <ul className="space-y-4 list-decimal pl-6 my-4">
+                <li>
+                Applying Africa-led insight to development challenges : 
+                  Leveraging contextual understanding, local networks, and industry 
+                  experience to design solutions that are relevant, feasible, and sustainable.
+                </li>
+                <li>
+                  Integrating strategy, research, implementation, and innovation :  
+                  Creating a comprehensive development model that combines evidence, 
+                  design, field delivery, learning, and scale.
+                </li>
+                <li>
+                  Positioning clean energy as a driver of economic transformation : 
+                  Supporting households, farmers, and enterprises to adopt energy-powered 
+                  solutions that increase productivity and resilience.
+                </li>
+                <li>
+                  Strengthening agriculture and food systems : 
+                  Improving productivity, quality, and market access across rural value 
+                  chains through advisory and digital tools.
+                </li>
+                <li>
+                  Expanding opportunities for youth and communities :  
+                  Developing skills, entrepreneurship pathways, and sector-specific 
+                  training that increase employment and income.
+                </li>
+                <li>
+                  Advancing digital inclusion and market transparency :  
+                  Deploying digital platforms that connect farmers, MSMEs, and 
+                  institutions to information, markets, finance, and opportunities.
+                </li>
+                <li>
+                  Supporting climate resilience and circular economy models : 
+                  Promoting sustainable practices, waste-to-value innovations, and 
+                  environmentally sustainable systems.
+                </li>
+                <li>
+                  Strengthening institutions and governance systems : 
+                  Building the capacity of public and private institutions to deliver 
+                  and scale development initiatives.
+                </li>
+              </ul>
+            </>
+          }
+          imagePosition="bottom"
+          imageSize="full"
+        />
 
         {/* GUIDING PRINCIPLES */}
-        <div className="bg-muted/30 p-12 rounded-2xl border">
-          <h2 className="text-3xl font-semibold mb-8 text-center">What Guides SPX</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+        <div className="bg-muted/30 p-8 lg:p-12 rounded-2xl border">
+          <h2 className="text-3xl font-semibold mb-6 text-center">What Guides SPX</h2>
+          <div className="grid md:grid-cols-3 gap-6">
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-primary">Africa First</h3>
               <p className="text-muted-foreground text-justify-custom">
@@ -197,37 +157,38 @@ export default function VisionAndMission() {
         </div>
 
         {/* LONG TERM ASPIRATION */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h2 className="text-3xl font-semibold">SPX’s Long-Term Aspiration</h2>
-            <p className="text-lg text-muted-foreground">
-              SPX seeks to grow as a trusted partner capable of:
-            </p>
-            <ul className="space-y-3 list-none">
-              {[
-                "Influencing development policy",
-                "Delivering multi-country programs",
-                "Incubating new enterprises",
-                "Advancing scientific and digital innovations",
-                "Producing high-quality research",
-                "Contributing to global development dialogue"
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="h-2 w-2 rounded-full bg-primary" />
-                  <span className="text-lg">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="relative w-full h-[300px] bg-muted rounded-xl overflow-hidden grayscale">
-            <Image
-              src="/images/xtras/image4.webp"
-              alt="Long Term Aspiration"
-              fill
-              className="object-cover opacity-80"
-            />
-          </div>
-        </div>
+        <ImageTextCard
+          image={{
+            src: "/images/xtras/image4.webp",
+            alt: "Long Term Aspiration",
+          }}
+          title="SPX's Long-Term Aspiration"
+          content={
+            <>
+              <p className="text-lg mb-4">
+                SPX seeks to grow as a trusted partner capable of:
+              </p>
+              <ul className="space-y-3 list-none">
+                {[
+                  "Influencing development policy",
+                  "Delivering multi-country programs",
+                  "Incubating new enterprises",
+                  "Advancing scientific and digital innovations",
+                  "Producing high-quality research",
+                  "Contributing to global development dialogue"
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3">
+                    <span className="h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          }
+          imagePosition="right"
+          imageSize="medium"
+          imageClassName="grayscale opacity-80"
+        />
 
         {/* CTA BLOCK */}
         <motion.div
@@ -235,7 +196,7 @@ export default function VisionAndMission() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center pb-20"
+          className="text-center pb-12"
         >
           <h3 className="text-2xl font-semibold mb-4">
             Learn More About Our Work

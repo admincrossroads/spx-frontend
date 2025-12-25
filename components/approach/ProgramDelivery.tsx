@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ImageTextCard from "@/components/ui/image-text-card";
 
 export default function ProgramDelivery() {
   return (
@@ -45,96 +46,92 @@ export default function ProgramDelivery() {
 
       {/* BLOCK 1 — COMMUNITY ENGAGEMENT */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">
-              Stakeholder & Community Engagement
-            </h2>
-            <p className="text-justify-custom text-muted-foreground mb-6">
-              Working closely with rural households, cooperatives, and local 
-              institutions to ensure programs are contextually appropriate. Our 
-              strength lies in coordinating multi-stakeholder initiatives and 
-              facilitating public–private collaboration.
-            </p>
-            <div className="p-6 bg-primary/5 rounded-xl border border-primary/10">
-              <h3 className="font-bold text-primary mb-2">Team Experience Integrated</h3>
-              <p className="text-sm text-muted-foreground">
-                Our team includes leaders with experience running large-scale 
-                operations and coordinating complex field activities across Ethiopia.
-              </p>
-            </div>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/xtras/image2.webp"
-              alt="Community Engagement"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/xtras/image2.webp",
+              alt: "Community Engagement",
+            }}
+            title="Stakeholder & Community Engagement"
+            content={
+              <>
+                <p>
+                  Working closely with rural households, cooperatives, and local 
+                  institutions to ensure programs are contextually appropriate. Our 
+                  strength lies in coordinating multi-stakeholder initiatives and 
+                  facilitating public–private collaboration.
+                </p>
+                <div className="p-6 bg-primary/5 rounded-xl border border-primary/10 mt-4">
+                  <h3 className="font-bold text-primary mb-2">Team Experience Integrated</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Our team includes leaders with experience running large-scale 
+                    operations and coordinating complex field activities across Ethiopia.
+                  </p>
+                </div>
+              </>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 2 — OPERATIONAL LOGISTICS */}
       <section className="section-py bg-muted/40">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
-            <Image
-              src="/images/focus/image11.webp"
-              alt="Operational Logistics"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="order-1 md:order-2">
-            <h2 className="text-3xl font-semibold mb-6">Operational Logistics & Scale</h2>
-            <p className="text-justify-custom text-muted-foreground mb-6">
-              We manage large-scale implementation involving procurement, mobilization, 
-              and technical installations across multiple sites.
-            </p>
-            <ul className="space-y-3">
-              {[
-                "Value chain interventions (Coffee & Horticulture)",
-                "Multi-site project management (Bloom Initiative)",
-                "Technical demonstrations & installations",
-                "Field monitoring & verification"
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  <span className="text-sm font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/focus/image11.webp",
+              alt: "Operational Logistics",
+            }}
+            title="Operational Logistics & Scale"
+            content={
+              <>
+                <p>
+                  We manage large-scale implementation involving procurement, mobilization, 
+                  and technical installations across multiple sites.
+                </p>
+                <ul className="space-y-3 mt-4">
+                  {[
+                    "Value chain interventions (Coffee & Horticulture)",
+                    "Multi-site project management (Bloom Initiative)",
+                    "Technical demonstrations & installations",
+                    "Field monitoring & verification"
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-3">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <span className="text-sm font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+            imagePosition="left"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 3 — YOUTH & ENTERPRISE */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">
-              Youth Skills & Enterprise Delivery
-            </h2>
-
-            <p className="text-justify-custom text-muted-foreground">
-              SPX designs training pathways and enterprise incubation programs that
-              equip youth with practical skills across agritech, digital tools,
-              renewable energy, and small business development—strengthening local
-              economies and employment outcomes.
-            </p>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/approach/image2.webp"
-              alt="Youth Programs"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/approach/image2.webp",
+              alt: "Youth Programs",
+            }}
+            title="Youth Skills & Enterprise Delivery"
+            content={
+              <p>
+                SPX designs training pathways and enterprise incubation programs that
+                equip youth with practical skills across agritech, digital tools,
+                renewable energy, and small business development—strengthening local
+                economies and employment outcomes.
+              </p>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 

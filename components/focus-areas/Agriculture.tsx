@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ImageTextCard from "@/components/ui/image-text-card";
 
 export default function Agriculture() {
   return (
@@ -33,78 +34,97 @@ export default function Agriculture() {
 
       {/* BLOCK 1 — WORK INCLUDES */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">SPX’s Agriculture Work</h2>
-            <p className="text-justify-custom text-muted-foreground mb-6">
-              We support various actors in the agriculture value chain, including 
-              farmers, cooperatives, and agribusinesses, to improve production 
-              and market systems.
-            </p>
-            <ul className="space-y-3">
-              {[
-                "Value chain development (Coffee & Horticulture)",
-                "Farmer productivity & extension services",
-                "Market access & trade solutions",
-                "Agribusiness support & advisory",
-                "Climate-smart agriculture"
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <div className="h-1.5 w-1.5 rounded-full bg-primary" />
-                  <span className="text-sm font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image src="/images/focus/image11.webp" fill className="object-cover" alt="Agriculture Work" />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/focus/image11.webp",
+              alt: "Agriculture Work",
+            }}
+            title="SPX's Agriculture Work"
+            content={
+              <>
+                <p>
+                  We support various actors in the agriculture value chain, including 
+                  farmers, cooperatives, and agribusinesses, to improve production 
+                  and market systems.
+                </p>
+                <ul className="space-y-3 mt-4">
+                  {[
+                    "Value chain development (Coffee & Horticulture)",
+                    "Farmer productivity & extension services",
+                    "Market access & trade solutions",
+                    "Agribusiness support & advisory",
+                    "Climate-smart agriculture"
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-3">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <span className="text-sm font-medium">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 2 — EMBEDDED EXPERIENCE */}
       <section className="section-py bg-muted/40">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-80 rounded-xl overflow-hidden order-2 md:order-1 shadow-md">
-            <Image src="/images/focus/image5.webp" fill className="object-cover" alt="Embedded Experience" />
-          </div>
-          <div className="order-1 md:order-2">
-            <h2 className="text-3xl font-semibold mb-6">Embedded Experience</h2>
-            <p className="text-justify-custom text-muted-foreground mb-6">
-              Our agricultural capability is reinforced by years of direct involvement 
-              in Ethiopia’s pivotal sectors and on-the-ground implementation.
-            </p>
-            <div className="space-y-4">
-              {[
-                "Digital platforms for free extension advice",
-                "Composting innovations (Waste-to-Value)",
-                "Operational advisory for commercial farms",
-                "Coffee training institute for value-addition"
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm border">
-                  <span className="h-2 w-2 rounded-full bg-primary flex-shrink-0" />
-                  <span className="text-sm font-medium">{item}</span>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/focus/image5.webp",
+              alt: "Embedded Experience",
+            }}
+            title="Embedded Experience"
+            content={
+              <>
+                <p>
+                  Our agricultural capability is reinforced by years of direct involvement 
+                  in Ethiopia's pivotal sectors and on-the-ground implementation.
+                </p>
+                <div className="space-y-3 mt-4">
+                  {[
+                    "Digital platforms for free extension advice",
+                    "Composting innovations (Waste-to-Value)",
+                    "Operational advisory for commercial farms",
+                    "Coffee training institute for value-addition"
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-3 p-3 bg-white rounded-lg shadow-sm border">
+                      <span className="h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                      <span className="text-sm font-medium">{item}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
+              </>
+            }
+            imagePosition="left"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 3 */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">Agri-Enterprise Development</h2>
-            <p className="text-justify-custom text-muted-foreground">
-              Through business support, market development, and technology adoption,
-              SPX helps small and growing agribusinesses scale sustainably. Our work
-              connects local enterprises to financing, training, and digital tools.
-            </p>
-          </div>
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image src="/images/focus/image4.webp" fill className="object-cover" alt="" />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/focus/image4.webp",
+              alt: "Agri-Enterprise Development",
+            }}
+            title="Agri-Enterprise Development"
+            content={
+              <p>
+                Through business support, market development, and technology adoption,
+                SPX helps small and growing agribusinesses scale sustainably. Our work
+                connects local enterprises to financing, training, and digital tools.
+              </p>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 

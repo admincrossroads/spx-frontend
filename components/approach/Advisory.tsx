@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ImageTextCard from "@/components/ui/image-text-card";
 
 export default function Advisory() {
   return (
@@ -44,82 +45,77 @@ export default function Advisory() {
 
       {/* BLOCK 1 — MSD */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">
-              Market Systems Development (MSD)
-            </h2>
-            <p className="text-justify-custom text-muted-foreground mb-6">
-              Designing interventions that strengthen value chains, support market 
-              linkages, and improve economic opportunity for farmers, MSMEs, and youth.
-            </p>
-            <div className="p-6 bg-primary/5 rounded-xl border border-primary/10">
-              <h3 className="font-bold text-primary mb-2">Team Experience Integrated</h3>
-              <p className="text-sm text-muted-foreground">
-                SPX’s advisory work is strengthened by leaders who have run large 
-                private-sector operations, managed commercial farms, and led national institutions.
-              </p>
-            </div>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/focus/image8.webp"
-              alt="Market Systems"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/focus/image8.webp",
+              alt: "Market Systems",
+            }}
+            title="Market Systems Development (MSD)"
+            content={
+              <>
+                <p>
+                  Designing interventions that strengthen value chains, support market 
+                  linkages, and improve economic opportunity for farmers, MSMEs, and youth.
+                </p>
+                <div className="p-6 bg-primary/5 rounded-xl border border-primary/10 mt-4">
+                  <h3 className="font-bold text-primary mb-2">Team Experience Integrated</h3>
+                  <p className="text-sm text-muted-foreground">
+                    SPX's advisory work is strengthened by leaders who have run large 
+                    private-sector operations, managed commercial farms, and led national institutions.
+                  </p>
+                </div>
+              </>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 2 — POLICY & REGULATORY */}
       <section className="section-py bg-muted/40">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md order-2 md:order-1">
-            <Image
-              src="/images/xtras/image12.webp"
-              alt="Policy & Regulatory"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="order-1 md:order-2">
-            <h2 className="text-3xl font-semibold mb-6">
-              Policy & Regulatory Support
-            </h2>
-            <p className="text-justify-custom text-muted-foreground">
-              Providing structured analysis and recommendations that help 
-              institutions shape policies aligned with inclusive and sustainable 
-              development. We support strategies across agriculture, energy-enabled 
-              livelihoods, and digital inclusion.
-            </p>
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/xtras/image12.webp",
+              alt: "Policy & Regulatory",
+            }}
+            title="Policy & Regulatory Support"
+            content={
+              <p>
+                Providing structured analysis and recommendations that help 
+                institutions shape policies aligned with inclusive and sustainable 
+                development. We support strategies across agriculture, energy-enabled 
+                livelihoods, and digital inclusion.
+              </p>
+            }
+            imagePosition="left"
+            imageSize="medium"
+          />
         </div>
       </section>
 
       {/* BLOCK 3 — INSTITUTIONAL STRENGTHENING */}
       <section className="section-py">
-        <div className="main-container grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-semibold mb-6">Institutional Strengthening</h2>
-            <p className="text-justify-custom text-muted-foreground">
-              Strengthening the capabilities of public and private institutions 
-              through systems design, process optimization, and performance 
-              frameworks. This ensures interventions are aligned with both economic 
-              incentives and government priorities.
-            </p>
-          </div>
-
-          <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image
-              src="/images/xtras/image9.webp"
-              alt="Institutional Strengthening"
-              fill
-              className="object-cover"
-            />
-          </div>
+        <div className="main-container">
+          <ImageTextCard
+            image={{
+              src: "/images/xtras/image9.webp",
+              alt: "Institutional Strengthening",
+            }}
+            title="Institutional Strengthening"
+            content={
+              <p>
+                Strengthening the capabilities of public and private institutions 
+                through systems design, process optimization, and performance 
+                frameworks. This ensures interventions are aligned with both economic 
+                incentives and government priorities.
+              </p>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
         </div>
       </section>
 

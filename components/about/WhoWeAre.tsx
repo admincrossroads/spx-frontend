@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ImageTextCard from "@/components/ui/image-text-card";
 
 export default function WhoWeAre() {
   return (
@@ -42,58 +43,51 @@ export default function WhoWeAre() {
 
       {/* MAIN CONTENT */}
       <section className="section-py">
-        <div className="main-container">
-
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* TEXT BLOCK */}
-            <div className="space-y-6 text-lg leading-relaxed">
-              <p className="text-justify-custom">
-                SPX is an Africa-focused research, strategy, and implementation firm 
-                working in energy, agriculture, economic transformation and digital 
-                systems. Based in Ethiopia, SPX combines on-the-ground experience with 
-                strong analytics and project execution. We help partners drive 
-                inclusive and sustainable development across the continent.
-              </p>
-
-              <p className="text-justify-custom">
-                SPX brings advisory work, applied research, program delivery, 
-                innovation support, and enterprise development together under one roof. 
-                This integrated approach allows SPX to move smoothly from insight to 
-                design to implementation, making sure good ideas turn into real 
-                results on the ground.
-              </p>
-            </div>
-            
-            {/* IMAGE AND LOOKING AHEAD */}
-            <div className="flex flex-col items-center">
-              {/* IMAGE PLACEHOLDER */}
-              <div className="relative w-full h-[320px] bg-muted rounded-xl shadow-lg flex items-center justify-center overflow-hidden">
-                <Image
-                  src="/images/xtras/image9.webp"
-                  alt="Team Collaboration"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              {/* Looking Ahead */}
-              <div className="border-l-4 pl-4 border-primary mt-6 w-full">
-                <h3 className="text-xl font-semibold mb-2">Looking Ahead</h3>
-                <p className="text-justify-custom">
-                  SPX is dedicated to contributing to the next generation of development 
-                  institutions. Institutions that are technically rigorous, connected 
-                  to local communities and are built for the long-run. SPX continues to 
-                  expand its work across energy, agriculture, employment, digital 
-                  transformation, and climate resilience, partnering with organizations 
-                  that share its commitment to a more inclusive and sustainable Africa.
+        <div className="main-container space-y-16">
+          <ImageTextCard
+            image={{
+              src: "/images/xtras/image9.webp",
+              alt: "Team Collaboration",
+            }}
+            content={
+              <>
+                <p>
+                  SPX is an Africa-focused research, strategy, and implementation firm 
+                  working in energy, agriculture, economic transformation and digital 
+                  systems. Based in Ethiopia, SPX combines on-the-ground experience with 
+                  strong analytics and project execution. We help partners drive 
+                  inclusive and sustainable development across the continent.
                 </p>
-              </div>
-            </div>
+                <p>
+                  SPX brings advisory work, applied research, program delivery, 
+                  innovation support, and enterprise development together under one roof. 
+                  This integrated approach allows SPX to move smoothly from insight to 
+                  design to implementation, making sure good ideas turn into real 
+                  results on the ground.
+                </p>
+              </>
+            }
+            imagePosition="right"
+            imageSize="medium"
+          />
+
+          {/* Looking Ahead */}
+          <div className="border-l-4 pl-6 border-primary">
+            <h3 className="text-xl font-semibold mb-4">Looking Ahead</h3>
+            <p className="text-justify-custom text-muted-foreground">
+              SPX is dedicated to contributing to the next generation of development 
+              institutions. Institutions that are technically rigorous, connected 
+              to local communities and are built for the long-run. SPX continues to 
+              expand its work across energy, agriculture, employment, digital 
+              transformation, and climate resilience, partnering with organizations 
+              that share its commitment to a more inclusive and sustainable Africa.
+            </p>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section-py text-center px-6">
+      <section className="section-py text-center">
         <div className="main-container">
           <h2 className="text-3xl font-semibold mb-4">
             Learn More About Our Organization
