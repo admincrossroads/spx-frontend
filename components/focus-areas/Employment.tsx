@@ -56,7 +56,7 @@ export default function Employment() {
             </ul>
           </div>
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image src="/images/xtras/image12.webp" fill className="object-cover" alt="Skills Development" />
+            <Image src="/images/focus/image1.webp" fill className="object-cover" alt="Skills Development" />
           </div>
         </div>
       </section>
@@ -65,7 +65,7 @@ export default function Employment() {
       <section className="section-py bg-muted/40">
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden order-2 md:order-1 shadow-md">
-            <Image src="/images/focus/image1.webp" fill className="object-cover" alt="Embedded Experience" />
+            <Image src="/images/xtras/image12.webp" fill className="object-cover" alt="Embedded Experience" />
           </div>
           <div className="order-1 md:order-2">
             <h2 className="text-3xl font-semibold mb-6">Leadership in Skills</h2>
