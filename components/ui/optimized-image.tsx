@@ -32,12 +32,9 @@ export function OptimizedImage({
     setIsLoading(false);
     setHasError(true);
   };
-
-  // Extract className from imageProps to handle it separately for the Image component
-  const { className: imageClassName, ...restImageProps } = imageProps;
   
   return (
-    <div className={cn('relative', className)}>
+    <div className="relative">
       {showSkeleton && isLoading && (
         <ImageSkeleton
           className={cn('absolute inset-0', skeletonClassName)}
@@ -45,11 +42,11 @@ export function OptimizedImage({
       )}
       {!hasError && (
         <Image
-          {...restImageProps}
+          {...imageProps}
           className={cn(
             'transition-opacity duration-300',
             isLoading ? 'opacity-0' : 'opacity-100',
-            imageClassName
+            className
           )}
           onLoad={handleLoad}
           onError={handleError}

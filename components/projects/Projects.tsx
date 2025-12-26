@@ -252,7 +252,7 @@ export default function Projects() {
     <div className="w-full">
       {/* HERO SECTION */}
       <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
-        <Image
+        <OptimizedImage
           src="/images/xtras/image5.webp"
           alt="Our Projects"
           fill
