@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import Link from "next/link";
 import ImageTextCard from "@/components/ui/image-text-card";
 
@@ -10,7 +10,7 @@ export default function Identity() {
     <div className="w-full">
       {/* HERO HEADER - Added background image */}
       <section className="relative h-[55vh] w-full">
-        <Image
+        <OptimizedImage
           src="/images/about/image2.webp"
           alt="Africa-Led Identity"
           fill

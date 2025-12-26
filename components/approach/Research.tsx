@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ export default function Research() {
 
       {/* HERO */}
       <section className="relative h-[55vh] w-full overflow-hidden">
-        <Image
+        <OptimizedImage
           src="/images/xtras/image12.webp"
           alt="Research & Evidence"
           fill

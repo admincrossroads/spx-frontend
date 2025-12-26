@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,7 @@ export default function WhoWeAre() {
     <div className="w-full">
       {/* HERO */}
       <section className="relative h-[55vh] w-full overflow-hidden">
-        <Image
+        <OptimizedImage
           src="/images/about/image4.webp"
           alt="Who We Are"
           fill

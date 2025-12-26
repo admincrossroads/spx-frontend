@@ -24,11 +24,14 @@ function renderContentBlock(block: {
     case 'image':
       return (
         <div className="my-6">
-          <img
-            src={getImageUrl(block.data.url)}
-            alt={block.data.alt || ''}
-            className="w-full rounded-lg"
-          />
+          <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+            <InsightImage
+              src={getImageUrl(block.data.url)}
+              alt={block.data.alt || ''}
+              className="w-full h-full rounded-lg"
+              loading="lazy"
+            />
+          </div>
           {block.data.caption && (
             <p className="text-sm text-muted-foreground mt-2 text-center">
               {block.data.caption}

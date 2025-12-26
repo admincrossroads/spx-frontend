@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
@@ -105,7 +105,7 @@ export default function Hero() {
             }}
             className="absolute inset-0"
           >
-            <Image
+            <OptimizedImage
               src={images[index]}
               alt="Hero Background"
               fill

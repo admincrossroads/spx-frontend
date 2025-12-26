@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import { motion } from "framer-motion";
 import { Search, Filter, Lightbulb, Building2, Database } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -437,7 +437,7 @@ export default function InnovationHub() {
             </ul>
           </div>
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image src="/images/xtras/image4.webp" alt="Coffee Training" fill className="object-cover" />
+            <OptimizedImage src="/images/xtras/image4.webp" alt="Coffee Training" fill className="object-cover" />
           </div>
         </div>
       </section>

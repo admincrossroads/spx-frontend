@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -104,7 +104,7 @@ export default function ProjectsPreview() {
             whileHover={{ y: -4 }}
           >
             <div className="relative h-48 overflow-hidden">
-              <Image 
+              <OptimizedImage 
                 src={p.img} 
                 alt={p.title} 
                 fill 

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -48,7 +48,7 @@ export default function FocusAreas() {
           >
             <Link href={a.href}>
               <div className="relative h-56 overflow-hidden">
-                <Image 
+                <OptimizedImage 
                   src={a.img} 
                   alt={a.title} 
                   fill 

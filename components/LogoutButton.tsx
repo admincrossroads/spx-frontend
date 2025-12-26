@@ -10,13 +10,15 @@ export function LogoutButton() {
     try {
       setIsPending(true);
       await authApi.logout();
-      // Clear any local storage/cookies
+      // Clear localStorage and cookies
+      localStorage.removeItem('token');
       document.cookie = 'token=; Path=/; Max-Age=0; SameSite=Lax';
       // Force hard redirect to ensure clean state
       window.location.href = '/admin/login';
     } catch (error: any) {
       console.error('Logout failed:', error);
       // Even if logout API fails, clear local state and redirect
+      localStorage.removeItem('token');
       document.cookie = 'token=; Path=/; Max-Age=0; SameSite=Lax';
       window.location.href = '/admin/login';
     } finally {

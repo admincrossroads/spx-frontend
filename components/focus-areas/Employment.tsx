@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,7 @@ export default function Employment() {
 
       {/* HERO */}
       <section className="relative h-[55vh] w-full overflow-hidden">
-        <Image
+        <OptimizedImage
           src="/images/approach/image2.webp"
           fill
           className="object-cover brightness-[0.55]"
@@ -56,7 +56,7 @@ export default function Employment() {
             </ul>
           </div>
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image src="/images/focus/image1.webp" fill className="object-cover" alt="Skills Development" />
+            <OptimizedImage src="/images/focus/image1.webp" fill className="object-cover" alt="Skills Development" />
           </div>
         </div>
       </section>
@@ -65,7 +65,7 @@ export default function Employment() {
       <section className="section-py bg-muted/40">
         <div className="main-container grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-80 rounded-xl overflow-hidden order-2 md:order-1 shadow-md">
-            <Image src="/images/xtras/image12.webp" fill className="object-cover" alt="Embedded Experience" />
+            <OptimizedImage src="/images/xtras/image12.webp" fill className="object-cover" alt="Embedded Experience" />
           </div>
           <div className="order-1 md:order-2">
             <h2 className="text-3xl font-semibold mb-6">Leadership in Skills</h2>
@@ -95,7 +95,7 @@ export default function Employment() {
             </p>
           </div>
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <Image src="/images/xtras/image10.webp" fill className="object-cover" alt="" />
+            <OptimizedImage src="/images/xtras/image10.webp" fill className="object-cover" alt="" />
           </div>
         </div>
       </section>

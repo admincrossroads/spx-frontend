@@ -26,6 +26,14 @@ export class ApiClient {
     const headers = new Headers(options.headers);
     headers.set('x-api-key', API_KEY);
 
+    // Add token from localStorage if available (client-side only)
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`);
+      }
+    }
+
     // Don't set Content-Type for FormData
     if (!(options.body instanceof FormData)) {
       headers.set('Content-Type', 'application/json');

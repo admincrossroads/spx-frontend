@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { OptimizedImage } from "./optimized-image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
@@ -63,11 +63,12 @@ export default function ImageTextCard({
         image.className
       )}
     >
-      <Image
+      <OptimizedImage
         src={image.src}
         alt={image.alt}
         fill
         className="object-cover"
+        showSkeleton={true}
       />
     </motion.div>
   );

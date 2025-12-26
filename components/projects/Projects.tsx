@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import { motion, useInView, useMotionValue, useSpring, useMotionValueEvent, useTransform } from "framer-motion";
 import { ArrowUpRight, Search, Filter } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -406,7 +406,7 @@ export default function Projects() {
                 >
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden">
-                    <Image
+                    <OptimizedImage
                       src={project.image}
                       alt={project.title}
                       fill
@@ -468,7 +468,7 @@ export default function Projects() {
           <div className="grid md:grid-cols-2 gap-6 text-left">
             <Card className="p-0 overflow-hidden">
               <div className="relative h-48">
-                <Image src="/images/projects/image14.webp" fill className="object-cover" alt="Coffee Sector" />
+                <OptimizedImage src="/images/projects/image14.webp" fill className="object-cover" alt="Coffee Sector" />
               </div>
               <div className="p-6">
                 <h3 className="font-bold mb-2">Coffee Sector Transformation</h3>
@@ -477,7 +477,7 @@ export default function Projects() {
             </Card>
             <Card className="p-0 overflow-hidden">
               <div className="relative h-48">
-                <Image src="/images/projects/image1.webp" fill className="object-cover" alt="Bloom Project" />
+                <OptimizedImage src="/images/projects/image1.webp" fill className="object-cover" alt="Bloom Project" />
               </div>
               <div className="p-6">
                 <h3 className="font-bold mb-2">Energy-Enabled Livelihoods</h3>

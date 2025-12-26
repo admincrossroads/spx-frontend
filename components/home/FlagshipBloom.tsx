@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -55,7 +55,7 @@ export default function FlagshipBloom() {
           transition={{ duration: 0.6 }}
           className="relative h-96 rounded-3xl overflow-hidden shadow-xl group"
         >
-          <Image
+          <OptimizedImage
             src="/images/projects/image3.webp"
             alt="BLOOM"
             fill

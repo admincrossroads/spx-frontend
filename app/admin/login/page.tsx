@@ -41,18 +41,30 @@ export default function LoginPage() {
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
   useEffect(() => {
-    // Check if already authenticated
+    // Check if already authenticated by checking localStorage
     async function checkAuth() {
       try {
-        const response = await fetch('/api/auth/check');
-        const data = await response.json();
-        
-        if (data.authenticated) {
-          router.push('/admin');
-          return;
+        const token = localStorage.getItem('token');
+        if (token) {
+          // Verify token is still valid
+          const response = await fetch('/api/auth/check', {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+            },
+          });
+          const data = await response.json();
+          
+          if (data.authenticated) {
+            router.push('/admin');
+            return;
+          } else {
+            // Token is invalid, clear it
+            localStorage.removeItem('token');
+          }
         }
       } catch (error) {
         console.error('Auth check failed:', error);
+        localStorage.removeItem('token');
       } finally {
         setIsCheckingAuth(false);
       }
@@ -74,7 +86,8 @@ export default function LoginPage() {
       setIsLoading(true);
       setError('');
 
-      // Clear any stale cookies before login
+      // Clear any stale localStorage and cookies before login
+      localStorage.removeItem('token');
       document.cookie = 'token=; Path=/; Max-Age=0; SameSite=Lax';
 
       // Log login attempt (without password)
@@ -101,6 +114,11 @@ export default function LoginPage() {
 
       const data = await response.json();
       console.log('Login successful:', { user: data.user?.email });
+
+      // Store token in localStorage
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+      }
 
       // Success - redirect to admin
       window.location.href = '/admin';
