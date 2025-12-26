@@ -1,0 +1,106 @@
+{
+  "node": {
+    "404fa085d75cd022597f526cabbc7df8c3393db539": {
+      "workers": {
+        "app/(public)/insights/[slug]/page": {
+          "moduleId": 64820,
+          "async": false,
+          "exportedName": "getPublicInsights",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/blogs/page": {
+          "moduleId": 59837,
+          "async": false,
+          "exportedName": "getPublicInsights",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/page": {
+          "moduleId": 36583,
+          "async": false,
+          "exportedName": "getPublicInsights",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/policy-briefs/page": {
+          "moduleId": 62030,
+          "async": false,
+          "exportedName": "getPublicInsights",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/publications/page": {
+          "moduleId": 78855,
+          "async": false,
+          "exportedName": "getPublicInsights",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/reports/page": {
+          "moduleId": 35588,
+          "async": false,
+          "exportedName": "getPublicInsights",
+          "filename": "lib/api/public-insights.ts"
+        }
+      },
+      "layer": {
+        "app/(public)/insights/[slug]/page": "rsc",
+        "app/(public)/insights/blogs/page": "rsc",
+        "app/(public)/insights/page": "rsc",
+        "app/(public)/insights/policy-briefs/page": "rsc",
+        "app/(public)/insights/publications/page": "rsc",
+        "app/(public)/insights/reports/page": "rsc"
+      },
+      "filename": "lib/api/public-insights.ts",
+      "exportedName": "getPublicInsights"
+    },
+    "40cc71f229b7650b957d6979534e2f0936396e1891": {
+      "workers": {
+        "app/(public)/insights/[slug]/page": {
+          "moduleId": 64820,
+          "async": false,
+          "exportedName": "getPublicInsightBySlug",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/blogs/page": {
+          "moduleId": 59837,
+          "async": false,
+          "exportedName": "getPublicInsightBySlug",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/page": {
+          "moduleId": 36583,
+          "async": false,
+          "exportedName": "getPublicInsightBySlug",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/policy-briefs/page": {
+          "moduleId": 62030,
+          "async": false,
+          "exportedName": "getPublicInsightBySlug",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/publications/page": {
+          "moduleId": 78855,
+          "async": false,
+          "exportedName": "getPublicInsightBySlug",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/reports/page": {
+          "moduleId": 35588,
+          "async": false,
+          "exportedName": "getPublicInsightBySlug",
+          "filename": "lib/api/public-insights.ts"
+        }
+      },
+      "layer": {
+        "app/(public)/insights/[slug]/page": "rsc",
+        "app/(public)/insights/blogs/page": "rsc",
+        "app/(public)/insights/page": "rsc",
+        "app/(public)/insights/policy-briefs/page": "rsc",
+        "app/(public)/insights/publications/page": "rsc",
+        "app/(public)/insights/reports/page": "rsc"
+      },
+      "filename": "lib/api/public-insights.ts",
+      "exportedName": "getPublicInsightBySlug"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "wYYakC1i8Y2j9mAe3FsDSBrM/CcKhlrgyOeCHzlZOdY="
+}

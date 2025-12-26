@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../app/admin/%28dashboard%29/settings/users/layout.tsx"],"sourcesContent":["export default function UsersLayout({\r\n    children,\r\n  }: {\r\n    children: React.ReactNode;\r\n  }) {\r\n    return <>{children}</>;\r\n  }"],"names":[],"mappings":"uDAAe,SAAS,EAAY,UAChC,CAAQ,CAGT,EACC,MAAO,CAAA,EAAA,EAAA,GAAA,EAAA,EAAA,QAAA,CAAA,UAAG,GACZ"}

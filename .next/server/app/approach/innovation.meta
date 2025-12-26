@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(public)/layout,_N_T_/(public)/approach/layout,_N_T_/(public)/approach/innovation/layout,_N_T_/(public)/approach/innovation/page,_N_T_/approach/innovation"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHB1YmxpYyk/approach/innovation/__PAGE__",
+    "/!KHB1YmxpYyk/approach/innovation",
+    "/!KHB1YmxpYyk/approach",
+    "/!KHB1YmxpYyk",
+    "/_index",
+    "/_head"
+  ]
+}

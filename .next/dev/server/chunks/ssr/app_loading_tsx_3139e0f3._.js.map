@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Victus/Documents/Spiralytix/Website/spiralytix-site/app/loading.tsx"],"sourcesContent":["\"use client\";\r\n\r\nimport { useEffect, useState } from \"react\";\r\nimport SPXLoader from \"@/components/ui/loader\";\r\n\r\nexport default function Loading() {\r\n  const [ready, setReady] = useState(false);\r\n\r\n  useEffect(() => {\r\n    // minimum duration for loader (in ms)\r\n    const timeout = setTimeout(() => setReady(true), 1200);\r\n\r\n    return () => clearTimeout(timeout);\r\n  }, []);\r\n\r\n  // Show loader until delay finishes\r\n  if (!ready) return <SPXLoader />;\r\n\r\n  // Once delay ends, return null (Next.js will swap in real page)\r\n  return null;\r\n}\r\n"],"names":[],"mappings":";;;;;AAEA;AACA;AAHA;;;;AAKe,SAAS;IACtB,MAAM,CAAC,OAAO,SAAS,GAAG,IAAA,iNAAQ,EAAC;IAEnC,IAAA,kNAAS,EAAC;QACR,sCAAsC;QACtC,MAAM,UAAU,WAAW,IAAM,SAAS,OAAO;QAEjD,OAAO,IAAM,aAAa;IAC5B,GAAG,EAAE;IAEL,mCAAmC;IACnC,IAAI,CAAC,OAAO,qBAAO,8OAAC,sIAAS;;;;;IAE7B,gEAAgE;IAChE,OAAO;AACT"}}]
+}

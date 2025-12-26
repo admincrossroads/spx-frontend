@@ -1,0 +1,172 @@
+[00:00:01.304] Server  LOG      ✓ Ready in 1030ms
+[00:00:04.673] Server  LOG      ○ Compiling /admin/login ...
+[00:00:08.074] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:11.008] Browser LOG     Login attempt for: admin@spxinsights.com
+[00:00:11.196] Browser ERROR   Login error: {}
+[00:00:17.968] Server  LOG        Reload env: .env
+[00:00:18.054] Server  LOG      ✓ Compiled in 27ms
+[00:11:59.321] Browser LOG     Login attempt for: admin@spxinsights.com
+[00:12:01.680] Browser ERROR   Login error: {}
+[00:23:39.941] Browser LOG     Login attempt for: admin@spxinsights.com
+[00:23:40.323] Browser LOG     Login successful: {"user":"admin@spxinsights.com"}
+[00:23:42.477] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:23:42.966] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:29:40.405] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:40.740] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:29:43.099] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:31:19.761] Server  LOG      ✓ Compiled in 100ms
+[00:31:33.529] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:31:36.286] Browser LOG     Login attempt for: admin@spxinsights.com
+[00:31:36.430] Browser LOG     Login successful: {"user":"admin@spxinsights.com"}
+[00:31:36.860] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:31:37.273] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:31:56.444] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:31:59.807] Browser LOG     Login attempt for: admin@spxinsights.com
+[00:31:59.916] Browser LOG     Login successful: {"user":"admin@spxinsights.com"}
+[00:32:00.293] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:00.495] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:32:46.798] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:37:27.128] Server  LOG      ✓ Compiled in 141ms
+[01:14:12.366] Browser LOG     Login attempt for: admin@spxinsights.com
+[01:14:12.521] Browser LOG     Login successful: {"user":"admin@spxinsights.com"}
+[01:14:12.966] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:13.201] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:19:45.097] Browser ERROR   %s is an async Client Component. Only Server Components can be async at the moment. This error is often caused by accidentally adding `'use client'` to a module that was originally written for the server. <AdminDashboard>
+[01:19:45.097] Browser ERROR   unhandledRejection: ReferenceError: getAuthToken is not defined
+[01:19:45.097] Browser ERROR   A component was suspended by an uncached promise. Creating promises inside a Client Component or hook is not yet supported, except via a Suspense-compatible library or framework.
+[01:19:45.097] Browser ERROR   unhandledRejection: ReferenceError: getAuthToken is not defined
+[01:19:45.097] Browser ERROR   unhandledRejection: ReferenceError: getAuthToken is not defined
+[01:19:45.097] Browser ERROR   A component was suspended by an uncached promise. Creating promises inside a Client Component or hook is not yet supported, except via a Suspense-compatible library or framework.
+[01:19:45.097] Browser ERROR   uncaughtError: ReferenceError: getAuthToken is not defined
+[01:19:48.890] Server  LOG      ✓ Compiled in 157ms
+[01:19:49.000] Browser ERROR   ./app/admin/(dashboard)/page.tsx:216:2
+Parsing ecmascript source code failed
+  214 |     </div>
+  215 |   );
+> 216 | }
+      |  ^
+
+Expected '}', got '<eof>'
+
+Import traces:
+  Client Component Browser:
+    ./app/admin/(dashboard)/page.tsx [Client Component Browser]
+    ./app/admin/(dashboard)/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/admin/(dashboard)/page.tsx [Client Component SSR]
+    ./app/admin/(dashboard)/page.tsx [Server Component]
+[01:19:58.523] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:19:59.183] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:19:59.554] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:20:01.871] Server  LOG      ✓ Compiled in 141ms
+[01:20:18.449] Server  LOG      ✓ Compiled in 170ms
+[01:20:27.659] Server  LOG      ✓ Compiled in 159ms
+[01:20:51.477] Server  LOG      ✓ Compiled in 180ms
+[01:22:05.752] Server  LOG      ✓ Compiled in 328ms
+[01:22:17.088] Server  LOG      ✓ Compiled in 169ms
+[01:22:22.968] Server  LOG      ✓ Compiled in 183ms
+[01:22:38.242] Server  LOG      ✓ Compiled in 331ms
+[01:23:34.232] Server  LOG      ✓ Compiled in 144ms
+[01:23:37.109] Server  LOG      ✓ Compiled in 123ms
+[01:24:05.080] Server  LOG      ✓ Compiled in 195ms
+[01:28:52.531] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:30:21.666] Browser LOG     Login attempt for: admin@spxinsights.com
+[01:30:21.801] Browser LOG     Login successful: {"user":"admin@spxinsights.com"}
+[01:30:22.295] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:30:25.283] Browser LOG     Login attempt for: admin@spxinsights.com
+[01:30:25.300] Browser LOG     Login successful: {"user":"admin@spxinsights.com"}
+[01:30:25.756] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:30:30.767] Browser LOG     Login attempt for: admin@spxinsights.com
+[01:30:30.807] Browser LOG     Login successful: {"user":"admin@spxinsights.com"}
+[01:30:31.251] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:30:46.422] Browser LOG     Login attempt for: admin@spxinsights.com
+[01:30:46.530] Browser LOG     Login successful: {"user":"admin@spxinsights.com"}
+[01:30:46.952] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:30:48.426] Browser LOG     Login attempt for: admin@spxinsights.com
+[01:30:48.435] Browser LOG     Login successful: {"user":"admin@spxinsights.com"}
+[01:30:48.811] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:31:53.659] Browser LOG     Login attempt for: admin@spxinsights.com
+[01:31:53.717] Browser LOG     Login successful: {"user":"admin@spxinsights.com"}
+[01:31:54.095] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:32:03.667] Browser LOG     Login attempt for: dave@spx.com
+[01:32:03.695] Browser LOG     Login successful: {"user":"dave@spx.com"}
+[01:32:04.086] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:33:45.010] Server  LOG      ✓ Compiled in 211ms
+[01:34:11.587] Server  LOG      ✓ Compiled in 177ms
+[01:35:05.321] Browser LOG     Login attempt for: dave@spx.com
+[01:35:05.397] Browser LOG     Login successful: {"user":"dave@spx.com"}
+[01:35:06.202] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:35:06.597] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:35:06.597] Browser ERROR   Failed to load user: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:35:11.695] Browser ERROR   Failed to load insights: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:35:11.695] Browser ERROR   Failed to load insights: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:35:12.154] Browser ERROR   Failed to load insights: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:35:18.156] Browser ERROR   Failed to load authors: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:35:18.156] Browser ERROR   Failed to load authors: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:35:18.584] Browser ERROR   Failed to load authors: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:35:21.576] Browser ERROR   Failed to load tags: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:35:21.576] Browser ERROR   Failed to load tags: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:35:22.099] Browser ERROR   Failed to load tags: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:35:26.780] Browser ERROR   Failed to load users: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:35:27.810] Browser ERROR   Failed to load users: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:35:28.629] Browser ERROR   Failed to load users: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:35:49.559] Browser LOG     Login attempt for: dave@spx.com
+[01:35:49.680] Browser LOG     Login successful: {"user":"dave@spx.com"}
+[01:35:50.183] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:35:50.524] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:35:50.524] Browser ERROR   Failed to load user: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:36:24.449] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:36:24.822] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:36:24.822] Browser ERROR   Failed to load user: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:36:40.621] Browser ERROR   Failed to load insights: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:36:40.621] Browser ERROR   Failed to load insights: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:36:41.099] Browser ERROR   Failed to load insights: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:36:46.843] Browser ERROR   Failed to load tags: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:36:46.843] Browser ERROR   Failed to load tags: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:36:47.201] Browser ERROR   Failed to load tags: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:38:24.780] Browser ERROR   Failed to load users: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:38:24.780] Browser ERROR   Failed to load users: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:38:26.148] Browser ERROR   Failed to load users: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:39:22.578] Server  LOG      ✓ Compiled in 198ms
+[01:39:25.313] Server  LOG      ✓ Compiled in 118ms
+[01:40:29.175] Server  LOG      ✓ Compiled in 162ms
+[01:40:29.411] Server  LOG      ✓ Compiled in 106ms
+[01:41:18.951] Server  LOG      ✓ Compiled in 172ms
+[01:41:39.421] Server  LOG      ✓ Compiled in 220ms
+[01:41:54.717] Server  LOG      ✓ Compiled in 171ms
+[01:42:00.544] Server  LOG      ✓ Compiled in 172ms
+[01:43:55.363] Browser LOG     Login attempt for: dave@spx.com
+[01:43:55.595] Browser LOG     Login successful: {"user":"dave@spx.com"}
+[01:43:56.579] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:43:57.082] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:43:57.082] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:43:57.082] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:43:57.082] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:43:57.082] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:43:57.082] Browser ERROR   [API Client] 401 Unauthorized: {"allHeaders":{"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc5YjU1ZDdiLTZlZDgtNDUxMC1hYTBkLWIxZmY0NDgyZWEyOSIsImVtYWlsIjoiZGF2ZUBzcHguY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzY2NzM2MjE5LCJleHAiOjE3NjY4MjI2MTl9.wOQtUH7BRnQRaDA34gzl2p21ApfQqhMhfSjBTeUXpUE","content-type":"application/json","x-api-key":"spx-1234567890abcdef"},"authHeaderValue":"Bearer eyJhbGciOiJIUzI1NiIsInR...","endpoint":"/auth/me","hasAuthHeader":true,"hasToken":true,"tokenLength":237,"url":"http://localhost:5000/api/v1/auth/me"}
+[01:43:57.088] Browser ERROR   [API Client] 401 Unauthorized: {"allHeaders":{"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc5YjU1ZDdiLTZlZDgtNDUxMC1hYTBkLWIxZmY0NDgyZWEyOSIsImVtYWlsIjoiZGF2ZUBzcHguY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzY2NzM2MjE5LCJleHAiOjE3NjY4MjI2MTl9.wOQtUH7BRnQRaDA34gzl2p21ApfQqhMhfSjBTeUXpUE","content-type":"application/json","x-api-key":"spx-1234567890abcdef"},"authHeaderValue":"Bearer eyJhbGciOiJIUzI1NiIsInR...","endpoint":"/admin/insights?limit=50","hasAuthHeader":true,"hasToken":false,"tokenLength":0,"url":"http://localhost:5000/api/v1/admin/insights?limit=50"}
+[01:43:57.093] Browser ERROR   [API Client] 401 Unauthorized: {"allHeaders":{"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc5YjU1ZDdiLTZlZDgtNDUxMC1hYTBkLWIxZmY0NDgyZWEyOSIsImVtYWlsIjoiZGF2ZUBzcHguY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzY2NzM2MjE5LCJleHAiOjE3NjY4MjI2MTl9.wOQtUH7BRnQRaDA34gzl2p21ApfQqhMhfSjBTeUXpUE","content-type":"application/json","x-api-key":"spx-1234567890abcdef"},"authHeaderValue":"Bearer eyJhbGciOiJIUzI1NiIsInR...","endpoint":"/admin/authors","hasAuthHeader":true,"hasToken":false,"tokenLength":0,"url":"http://localhost:5000/api/v1/admin/authors"}
+[01:43:57.100] Browser ERROR   [API Client] 401 Unauthorized: {"allHeaders":{"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc5YjU1ZDdiLTZlZDgtNDUxMC1hYTBkLWIxZmY0NDgyZWEyOSIsImVtYWlsIjoiZGF2ZUBzcHguY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzY2NzM2MjE5LCJleHAiOjE3NjY4MjI2MTl9.wOQtUH7BRnQRaDA34gzl2p21ApfQqhMhfSjBTeUXpUE","content-type":"application/json","x-api-key":"spx-1234567890abcdef"},"authHeaderValue":"Bearer eyJhbGciOiJIUzI1NiIsInR...","endpoint":"/admin/tags","hasAuthHeader":true,"hasToken":false,"tokenLength":0,"url":"http://localhost:5000/api/v1/admin/tags"}
+[01:43:57.485] Browser ERROR   Failed to load user: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[01:43:57.879] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:45:02.230] Browser LOG     Login attempt for: dave@spx.com
+[01:45:02.359] Browser LOG     Login successful: {"user":"dave@spx.com"}
+[01:45:02.802] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:45:03.193] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:03.193] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[01:45:03.193] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:03.193] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:03.193] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:06.183] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:06.183] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:06.710] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:09.939] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:09.939] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:10.303] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:13.440] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:13.440] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:13.709] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:16.865] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:16.865] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[01:45:17.429] Browser LOG     [API Client] Adding Authorization header with token length: 237

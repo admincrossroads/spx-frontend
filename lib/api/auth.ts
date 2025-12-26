@@ -37,7 +37,7 @@ export class AuthApi {
    * Logout user and clear localStorage token
    */
   async logout(): Promise<{ message: string }> {
-    const response = await api.post('/auth/logout');
+    const response = await api.post<{ message: string }>('/auth/logout');
     // Clear token from localStorage
     if (typeof window !== 'undefined') {
       localStorage.removeItem('token');

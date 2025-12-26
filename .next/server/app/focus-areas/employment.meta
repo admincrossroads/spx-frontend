@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(public)/layout,_N_T_/(public)/focus-areas/layout,_N_T_/(public)/focus-areas/employment/layout,_N_T_/(public)/focus-areas/employment/page,_N_T_/focus-areas/employment"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHB1YmxpYyk/focus-areas/employment/__PAGE__",
+    "/!KHB1YmxpYyk/focus-areas/employment",
+    "/!KHB1YmxpYyk/focus-areas",
+    "/!KHB1YmxpYyk",
+    "/_index",
+    "/_head"
+  ]
+}

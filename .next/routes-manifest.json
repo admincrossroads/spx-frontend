@@ -1,0 +1,341 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/admin/authors/[id]",
+      "regex": "^/admin/authors/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/admin/authors/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/admin/insights/[publicId]/edit",
+      "regex": "^/admin/insights/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPpublicId": "nxtPpublicId"
+      },
+      "namedRegex": "^/admin/insights/(?<nxtPpublicId>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/admin/settings/users/[id]/edit",
+      "regex": "^/admin/settings/users/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/admin/settings/users/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/insights/[slug]",
+      "regex": "^/insights/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/insights/(?<nxtPslug>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/about/identity",
+      "regex": "^/about/identity(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about/identity(?:/)?$"
+    },
+    {
+      "page": "/about/leadership",
+      "regex": "^/about/leadership(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about/leadership(?:/)?$"
+    },
+    {
+      "page": "/about/locations",
+      "regex": "^/about/locations(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about/locations(?:/)?$"
+    },
+    {
+      "page": "/about/partners",
+      "regex": "^/about/partners(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about/partners(?:/)?$"
+    },
+    {
+      "page": "/about/vision-mission",
+      "regex": "^/about/vision\\-mission(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about/vision\\-mission(?:/)?$"
+    },
+    {
+      "page": "/about/who-we-are",
+      "regex": "^/about/who\\-we\\-are(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about/who\\-we\\-are(?:/)?$"
+    },
+    {
+      "page": "/admin",
+      "regex": "^/admin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin(?:/)?$"
+    },
+    {
+      "page": "/admin/authors",
+      "regex": "^/admin/authors(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/authors(?:/)?$"
+    },
+    {
+      "page": "/admin/authors/new",
+      "regex": "^/admin/authors/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/authors/new(?:/)?$"
+    },
+    {
+      "page": "/admin/insights",
+      "regex": "^/admin/insights(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/insights(?:/)?$"
+    },
+    {
+      "page": "/admin/insights/new",
+      "regex": "^/admin/insights/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/insights/new(?:/)?$"
+    },
+    {
+      "page": "/admin/login",
+      "regex": "^/admin/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/login(?:/)?$"
+    },
+    {
+      "page": "/admin/settings",
+      "regex": "^/admin/settings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/settings(?:/)?$"
+    },
+    {
+      "page": "/admin/settings/users",
+      "regex": "^/admin/settings/users(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/settings/users(?:/)?$"
+    },
+    {
+      "page": "/admin/settings/users/new",
+      "regex": "^/admin/settings/users/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/settings/users/new(?:/)?$"
+    },
+    {
+      "page": "/admin/tags",
+      "regex": "^/admin/tags(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/tags(?:/)?$"
+    },
+    {
+      "page": "/api/auth/check",
+      "regex": "^/api/auth/check(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/auth/check(?:/)?$"
+    },
+    {
+      "page": "/api/auth/session",
+      "regex": "^/api/auth/session(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/auth/session(?:/)?$"
+    },
+    {
+      "page": "/approach/advisory",
+      "regex": "^/approach/advisory(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/approach/advisory(?:/)?$"
+    },
+    {
+      "page": "/approach/digital",
+      "regex": "^/approach/digital(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/approach/digital(?:/)?$"
+    },
+    {
+      "page": "/approach/innovation",
+      "regex": "^/approach/innovation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/approach/innovation(?:/)?$"
+    },
+    {
+      "page": "/approach/mel",
+      "regex": "^/approach/mel(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/approach/mel(?:/)?$"
+    },
+    {
+      "page": "/approach/program-delivery",
+      "regex": "^/approach/program\\-delivery(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/approach/program\\-delivery(?:/)?$"
+    },
+    {
+      "page": "/approach/research",
+      "regex": "^/approach/research(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/approach/research(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/focus-areas",
+      "regex": "^/focus\\-areas(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/focus\\-areas(?:/)?$"
+    },
+    {
+      "page": "/focus-areas/agriculture",
+      "regex": "^/focus\\-areas/agriculture(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/focus\\-areas/agriculture(?:/)?$"
+    },
+    {
+      "page": "/focus-areas/climate",
+      "regex": "^/focus\\-areas/climate(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/focus\\-areas/climate(?:/)?$"
+    },
+    {
+      "page": "/focus-areas/digital",
+      "regex": "^/focus\\-areas/digital(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/focus\\-areas/digital(?:/)?$"
+    },
+    {
+      "page": "/focus-areas/employment",
+      "regex": "^/focus\\-areas/employment(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/focus\\-areas/employment(?:/)?$"
+    },
+    {
+      "page": "/focus-areas/energy",
+      "regex": "^/focus\\-areas/energy(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/focus\\-areas/energy(?:/)?$"
+    },
+    {
+      "page": "/focus-areas/governance",
+      "regex": "^/focus\\-areas/governance(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/focus\\-areas/governance(?:/)?$"
+    },
+    {
+      "page": "/innovation",
+      "regex": "^/innovation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/innovation(?:/)?$"
+    },
+    {
+      "page": "/insights",
+      "regex": "^/insights(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/insights(?:/)?$"
+    },
+    {
+      "page": "/insights/blogs",
+      "regex": "^/insights/blogs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/insights/blogs(?:/)?$"
+    },
+    {
+      "page": "/insights/policy-briefs",
+      "regex": "^/insights/policy\\-briefs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/insights/policy\\-briefs(?:/)?$"
+    },
+    {
+      "page": "/insights/publications",
+      "regex": "^/insights/publications(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/insights/publications(?:/)?$"
+    },
+    {
+      "page": "/insights/reports",
+      "regex": "^/insights/reports(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/insights/reports(?:/)?$"
+    },
+    {
+      "page": "/privacy",
+      "regex": "^/privacy(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/privacy(?:/)?$"
+    },
+    {
+      "page": "/projects",
+      "regex": "^/projects(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/projects(?:/)?$"
+    },
+    {
+      "page": "/work-with-us",
+      "regex": "^/work\\-with\\-us(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/work\\-with\\-us(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

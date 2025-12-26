@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(public)/layout,_N_T_/(public)/approach/layout,_N_T_/(public)/approach/digital/layout,_N_T_/(public)/approach/digital/page,_N_T_/approach/digital"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHB1YmxpYyk/approach/digital/__PAGE__",
+    "/!KHB1YmxpYyk/approach/digital",
+    "/!KHB1YmxpYyk/approach",
+    "/!KHB1YmxpYyk",
+    "/_index",
+    "/_head"
+  ]
+}
