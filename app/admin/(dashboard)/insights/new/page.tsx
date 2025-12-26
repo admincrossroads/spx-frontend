@@ -215,7 +215,7 @@ export default function CreateInsightPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <InsightEditor blocks={blocks} onChange={setBlocks} publicId={publicId} />
+                  <InsightEditor blocks={blocks} onChange={setBlocks} publicId={publicId} type={form.watch('type') as 'blog' | 'report' | 'publication' | 'policy-brief'} />
                 </CardContent>
               </Card>
             </div>
@@ -421,6 +421,7 @@ export default function CreateInsightPage() {
                           </FormControl>
                           <ImageUpload
                             uploadKey={publicId}
+                            type={form.watch('type') as 'blog' | 'report' | 'publication' | 'policy-brief'}
                             onUploadComplete={(url) => field.onChange(url)}
                             folder="insights"
                             disabled={isSubmitting}

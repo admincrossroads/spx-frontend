@@ -24,15 +24,15 @@ import {
   TableBlockData,
   SubTopicBlockData
 } from '@/types/insights';
-import { getImageUrl } from '@/lib/utils/helpers';
 
 interface InsightEditorProps {
   blocks: InsightBlock[];
   onChange: (blocks: InsightBlock[]) => void;
   publicId?: string;
+  type?: 'blog' | 'report' | 'publication' | 'policy-brief';
 }
 
-export default function InsightEditor({ blocks, onChange, publicId }: InsightEditorProps) {
+export default function InsightEditor({ blocks, onChange, publicId, type }: InsightEditorProps) {
   const [previewIndex, setPreviewIndex] = useState<number | null>(null);
 
   const addBlock = useCallback((type: BlockType) => {
@@ -92,7 +92,7 @@ export default function InsightEditor({ blocks, onChange, publicId }: InsightEdi
 
     const blockComponents = {
       text: <TextBlock {...commonProps} data={commonProps.data as TextBlockData} />,
-      image: <ImageBlock {...commonProps} data={commonProps.data as ImageBlockData} publicId={publicId} />,
+      image: <ImageBlock {...commonProps} data={commonProps.data as ImageBlockData} publicId={publicId} type={type} />,
       video: <VideoBlock {...commonProps} data={commonProps.data as VideoBlockData} />,
       link: <LinkBlock {...commonProps} data={commonProps.data as LinkBlockData} />,
       quote: <QuoteBlock {...commonProps} data={commonProps.data as QuoteBlockData} />,
@@ -158,7 +158,7 @@ export default function InsightEditor({ blocks, onChange, publicId }: InsightEdi
         return imgData.url ? (
           <div>
             <img 
-              src={getImageUrl(imgData.url)} 
+              src={imgData.url} 
               alt={imgData.alt || ''} 
               className="max-w-full rounded"
               onError={(e) => {

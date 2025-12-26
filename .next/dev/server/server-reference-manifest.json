@@ -1,5 +1,78 @@
 {
-  "node": {},
+  "node": {
+    "400e46c2f055c43930cafe3a96f4e195027ddd041e": {
+      "workers": {
+        "app/(public)/insights/[slug]/page": {
+          "moduleId": "[project]/.next-internal/server/app/(public)/insights/[slug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getPublicInsights",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/blogs/page": {
+          "moduleId": "[project]/.next-internal/server/app/(public)/insights/blogs/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getPublicInsights",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/page": {
+          "moduleId": "[project]/.next-internal/server/app/(public)/insights/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getPublicInsights",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/reports/page": {
+          "moduleId": "[project]/.next-internal/server/app/(public)/insights/reports/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getPublicInsights",
+          "filename": "lib/api/public-insights.ts"
+        }
+      },
+      "layer": {
+        "app/(public)/insights/[slug]/page": "rsc",
+        "app/(public)/insights/blogs/page": "rsc",
+        "app/(public)/insights/page": "rsc",
+        "app/(public)/insights/reports/page": "rsc"
+      },
+      "filename": "lib/api/public-insights.ts",
+      "exportedName": "getPublicInsights"
+    },
+    "40a9020227a423cf1faacd9eeba691ac65a6995c80": {
+      "workers": {
+        "app/(public)/insights/[slug]/page": {
+          "moduleId": "[project]/.next-internal/server/app/(public)/insights/[slug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getPublicInsightBySlug",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/blogs/page": {
+          "moduleId": "[project]/.next-internal/server/app/(public)/insights/blogs/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getPublicInsightBySlug",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/page": {
+          "moduleId": "[project]/.next-internal/server/app/(public)/insights/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getPublicInsightBySlug",
+          "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/reports/page": {
+          "moduleId": "[project]/.next-internal/server/app/(public)/insights/reports/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getPublicInsightBySlug",
+          "filename": "lib/api/public-insights.ts"
+        }
+      },
+      "layer": {
+        "app/(public)/insights/[slug]/page": "rsc",
+        "app/(public)/insights/blogs/page": "rsc",
+        "app/(public)/insights/page": "rsc",
+        "app/(public)/insights/reports/page": "rsc"
+      },
+      "filename": "lib/api/public-insights.ts",
+      "exportedName": "getPublicInsightBySlug"
+    }
+  },
   "edge": {},
   "encryptionKey": "1xV2W4dF58gvLaVRZbgNgzpOyh3KbJcFrcUkZc9fHjM="
 }

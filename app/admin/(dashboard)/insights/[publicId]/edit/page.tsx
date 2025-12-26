@@ -270,10 +270,11 @@ export default function EditInsightPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <InsightEditor 
+                  <InsightEditor
                     blocks={blocks} 
                     onChange={setBlocks}
                     publicId={publicId}
+                    type={form.watch('type') as 'blog' | 'report' | 'publication' | 'policy-brief'}
                   />
                 </CardContent>
               </Card>
@@ -460,6 +461,7 @@ export default function EditInsightPage() {
                           </FormControl>
                           <ImageUpload
                             uploadKey={publicId}
+                            type={form.watch('type') as 'blog' | 'report' | 'publication' | 'policy-brief'}
                             onUploadComplete={(url) => field.onChange(url)}
                             folder="insights"
                             disabled={isSubmitting}
