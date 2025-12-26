@@ -1,6 +1,8 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { getAuthToken } from '@/lib/auth/session';
-import { cookies } from 'next/headers';
+import { api } from '@/lib/api/client';
 import { 
   BarChart3, 
   FileText, 
@@ -9,34 +11,6 @@ import {
   Calendar,
   TrendingUp 
 } from 'lucide-react';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-
-async function fetchWithAuth(endpoint: string) {
-  const cookieStore = await cookies();
-  const token = cookieStore.get('token')?.value;
-
-  if (!token) {
-    throw new Error('No authentication token provided');
-  }
-
-  const response = await fetch(`${API_URL}${endpoint}`, {
-    headers: {
-      'x-api-key': API_KEY!,
-      'Cookie': `token=${token}`,
-      'Content-Type': 'application/json',
-    },
-    credentials: 'include',
-    cache: 'no-store',
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch: ${response.status}`);
-  }
-
-  return response.json();
-}
 
 function formatTimeAgo(dateString: string): string {
   const date = new Date(dateString);
@@ -58,72 +32,84 @@ function formatTimeAgo(dateString: string): string {
   }
 }
 
-export default async function AdminDashboard() {
-  const token = await getAuthToken();
-  
-  // Fetch all data in parallel
-  let totalInsights = 0;
-  let publishedInsights = 0;
-  let authorsCount = 0;
-  let tagsCount = 0;
-  let recentActivities: Array<{ action: string; title: string; time: string }> = [];
+export default function AdminDashboard() {
+  const [totalInsights, setTotalInsights] = useState(0);
+  const [publishedInsights, setPublishedInsights] = useState(0);
+  const [authorsCount, setAuthorsCount] = useState(0);
+  const [tagsCount, setTagsCount] = useState(0);
+  const [recentActivities, setRecentActivities] = useState<Array<{ action: string; title: string; time: string }>>([]);
+  const [loading, setLoading] = useState(true);
 
-  try {
-    const [insightsData, authorsData, tagsData] = await Promise.all([
-      fetchWithAuth('/admin/insights?limit=50').catch(() => ({ insights: [], pagination: { total: 0 } })),
-      fetchWithAuth('/admin/authors').catch(() => []),
-      fetchWithAuth('/admin/tags').catch(() => []),
-    ]);
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const [insightsData, authorsData, tagsData] = await Promise.all([
+          api.get<any>('/admin/insights?limit=50').catch(() => ({ insights: [], pagination: { total: 0 } })),
+          api.get<any[]>('/admin/authors').catch(() => []),
+          api.get<any[]>('/admin/tags').catch(() => []),
+        ]);
 
-    // Calculate insights stats
-    const insights = insightsData?.insights || (Array.isArray(insightsData) ? insightsData : []);
-    
-    if (insights.length > 0) {
-      totalInsights = insightsData.pagination?.total || insights.length;
-      publishedInsights = insights.filter((insight: any) => insight.isPublished).length;
-
-      // Generate recent activities from insights
-      const activities: Array<{ action: string; title: string; time: string; timestamp: number }> = [];
-      
-      insights.forEach((insight: any) => {
-        // Add published activity if recently published
-        if (insight.isPublished && insight.publishedAt) {
-          activities.push({
-            action: 'Published',
-            title: insight.title,
-            time: formatTimeAgo(insight.publishedAt),
-            timestamp: new Date(insight.publishedAt).getTime(),
-          });
-        }
+        // Calculate insights stats
+        const insights = insightsData?.insights || (Array.isArray(insightsData) ? insightsData : []);
         
-        // Add updated activity if recently updated (and not just published)
-        if (insight.updatedAt) {
-          const updatedAt = new Date(insight.updatedAt).getTime();
-          const publishedAt = insight.publishedAt ? new Date(insight.publishedAt).getTime() : 0;
-          // Only add if updated more than 1 minute after published (to avoid duplicates)
-          if (!insight.publishedAt || (updatedAt - publishedAt > 60000)) {
-            activities.push({
-              action: 'Updated',
-              title: insight.title,
-              time: formatTimeAgo(insight.updatedAt),
-              timestamp: updatedAt,
-            });
-          }
-        }
-      });
+        if (insights.length > 0) {
+          setTotalInsights(insightsData.pagination?.total || insights.length);
+          setPublishedInsights(insights.filter((insight: any) => insight.isPublished).length);
 
-      // Sort by most recent and take top 5
-      activities.sort((a, b) => b.timestamp - a.timestamp);
-      recentActivities = activities.slice(0, 5).map(({ timestamp, ...rest }) => rest);
+          // Generate recent activities from insights
+          const activities: Array<{ action: string; title: string; time: string; timestamp: number }> = [];
+          
+          insights.forEach((insight: any) => {
+            // Add published activity if recently published
+            if (insight.isPublished && insight.publishedAt) {
+              activities.push({
+                action: 'Published',
+                title: insight.title,
+                time: formatTimeAgo(insight.publishedAt),
+                timestamp: new Date(insight.publishedAt).getTime(),
+              });
+            }
+            
+            // Add updated activity if recently updated (and not just published)
+            if (insight.updatedAt) {
+              const updatedAt = new Date(insight.updatedAt).getTime();
+              const publishedAt = insight.publishedAt ? new Date(insight.publishedAt).getTime() : 0;
+              // Only add if updated more than 1 minute after published (to avoid duplicates)
+              if (!insight.publishedAt || (updatedAt - publishedAt > 60000)) {
+                activities.push({
+                  action: 'Updated',
+                  title: insight.title,
+                  time: formatTimeAgo(insight.updatedAt),
+                  timestamp: updatedAt,
+                });
+              }
+            }
+          });
+
+          // Sort by most recent and take top 5
+          activities.sort((a, b) => b.timestamp - a.timestamp);
+          setRecentActivities(activities.slice(0, 5).map(({ timestamp, ...rest }) => rest));
+        }
+
+        // Get counts
+        setAuthorsCount(Array.isArray(authorsData) ? authorsData.length : 0);
+        setTagsCount(Array.isArray(tagsData) ? tagsData.length : 0);
+      } catch (error: any) {
+        console.error('Failed to fetch dashboard stats:', error);
+        // If 401, redirect to login (handled by API client, but check here too)
+        if (error?.status === 401) {
+          localStorage.removeItem('token');
+          window.location.href = '/admin/login';
+          return;
+        }
+        // Use fallback values if fetch fails
+      } finally {
+        setLoading(false);
+      }
     }
 
-    // Get counts
-    authorsCount = Array.isArray(authorsData) ? authorsData.length : 0;
-    tagsCount = Array.isArray(tagsData) ? tagsData.length : 0;
-  } catch (error) {
-    console.error('Failed to fetch dashboard stats:', error);
-    // Use fallback values if fetch fails
-  }
+    loadData();
+  }, []);
   
   const stats = [
     { label: 'Total Insights', value: totalInsights.toString(), icon: FileText, change: '—' },
@@ -131,6 +117,19 @@ export default async function AdminDashboard() {
     { label: 'Authors', value: authorsCount.toString(), icon: Users, change: '—' },
     { label: 'Tags', value: tagsCount.toString(), icon: Tag, change: '—' },
   ];
+
+  if (loading) {
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-center py-12">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+            <p className="mt-2 text-sm text-muted-foreground">Loading dashboard...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">

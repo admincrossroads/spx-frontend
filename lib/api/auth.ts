@@ -22,17 +22,27 @@ export interface LoginResponse {
 
 export class AuthApi {
   /**
-   * Login user and set httpOnly cookie via backend
+   * Login user and store token in localStorage
    */
   async login(data: LoginRequest): Promise<LoginResponse> {
-    return api.post<LoginResponse>('/auth/login', data);
+    const response = await api.post<LoginResponse>('/auth/login', data);
+    // Store token in localStorage
+    if (response.token && typeof window !== 'undefined') {
+      localStorage.setItem('token', response.token);
+    }
+    return response;
   }
 
   /**
-   * Logout user and clear cookie
+   * Logout user and clear localStorage token
    */
   async logout(): Promise<{ message: string }> {
-    return api.post('/auth/logout');
+    const response = await api.post('/auth/logout');
+    // Clear token from localStorage
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('token');
+    }
+    return response;
   }
 
   /**

@@ -73,9 +73,8 @@ export function Topbar() {
             <DropdownMenuItem 
               className="text-destructive"
               onClick={() => {
-                // Clear localStorage and cookie, then redirect
+                // Clear localStorage, then redirect
                 localStorage.removeItem('token');
-                document.cookie = 'token=; Path=/; Max-Age=0';
                 window.location.href = '/admin/login';
               }}
             >

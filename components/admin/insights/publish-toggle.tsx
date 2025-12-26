@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
-import { publishInsight, unpublishInsight } from '@/lib/actions/insights';
+import { api } from '@/lib/api/client';
 
 interface Insight {
   publicId: string;
@@ -24,15 +24,15 @@ export function PublishToggle({ insight, onToggle }: PublishToggleProps) {
       setIsToggling(true);
       
       if (insight.isPublished) {
-        await unpublishInsight(insight.publicId);
+        await api.patch(`/admin/insights/${insight.publicId}`, { isPublished: false });
       } else {
-        await publishInsight(insight.publicId);
+        await api.patch(`/admin/insights/${insight.publicId}/publish`);
       }
       
       onToggle?.();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to toggle publish status:', error);
-      alert('Failed to update publish status');
+      alert(error?.data?.message || error?.message || 'Failed to update publish status');
     } finally {
       setIsToggling(false);
     }

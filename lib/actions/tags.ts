@@ -1,21 +1,16 @@
 'use server';
 
-import { cookies } from 'next/headers';
-
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
-async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
-  const cookieStore = await cookies();
-  const token = cookieStore.get('token')?.value;
-
+async function fetchWithAuth(endpoint: string, token: string, options: RequestInit = {}) {
   if (!token) {
     throw new Error('No authentication token provided');
   }
 
   const headers = new Headers(options.headers);
   headers.set('x-api-key', API_KEY!);
-  headers.set('Cookie', `token=${token}`);
+  headers.set('Authorization', `Bearer ${token}`);
 
   if (!(options.body instanceof FormData)) {
     headers.set('Content-Type', 'application/json');
@@ -24,7 +19,6 @@ async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
   const response = await fetch(`${API_URL}${endpoint}`, {
     ...options,
     headers,
-    credentials: 'include',
   });
 
   if (!response.ok) {
@@ -35,9 +29,9 @@ async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
   return response.json();
 }
 
-export async function getTags() {
+export async function getTags(token: string) {
   try {
-    return await fetchWithAuth('/admin/tags', {
+    return await fetchWithAuth('/admin/tags', token, {
       cache: 'no-store',
     });
   } catch (error) {
@@ -46,9 +40,9 @@ export async function getTags() {
   }
 }
 
-export async function getTagById(id: number) {
+export async function getTagById(id: number, token: string) {
   try {
-    return await fetchWithAuth(`/admin/tags/${id}`, {
+    return await fetchWithAuth(`/admin/tags/${id}`, token, {
       cache: 'no-store',
     });
   } catch (error) {
@@ -57,22 +51,22 @@ export async function getTagById(id: number) {
   }
 }
 
-export async function createTag(data: { name: string; slug: string }) {
-  return await fetchWithAuth('/admin/tags', {
+export async function createTag(data: { name: string; slug: string }, token: string) {
+  return await fetchWithAuth('/admin/tags', token, {
     method: 'POST',
     body: JSON.stringify(data),
   });
 }
 
-export async function updateTag(id: number, data: { name?: string; slug?: string }) {
-  return await fetchWithAuth(`/admin/tags/${id}`, {
+export async function updateTag(id: number, data: { name?: string; slug?: string }, token: string) {
+  return await fetchWithAuth(`/admin/tags/${id}`, token, {
     method: 'PATCH',
     body: JSON.stringify(data),
   });
 }
 
-export async function deleteTag(id: number) {
-  return await fetchWithAuth(`/admin/tags/${id}`, {
+export async function deleteTag(id: number, token: string) {
+  return await fetchWithAuth(`/admin/tags/${id}`, token, {
     method: 'DELETE',
   });
 }

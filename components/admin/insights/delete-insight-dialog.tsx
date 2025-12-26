@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import { AlertCircle, Trash2 } from 'lucide-react';
-import { deleteInsight } from '@/lib/actions/insights';
+import { api } from '@/lib/api/client';
 
 interface Insight {
   id: number;
@@ -45,13 +45,13 @@ export function DeleteInsightDialog({
       setIsDeleting(true);
       setError('');
 
-      await deleteInsight(insight.publicId);
+      await api.delete(`/admin/insights/${insight.publicId}`);
       
       onSuccess?.();
       onOpenChange(false);
     } catch (err: any) {
       console.error('Failed to delete insight:', err);
-      setError(err.message || 'Failed to delete insight');
+      setError(err?.data?.message || err?.message || 'Failed to delete insight');
     } finally {
       setIsDeleting(false);
     }

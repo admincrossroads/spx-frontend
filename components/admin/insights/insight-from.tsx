@@ -28,7 +28,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Card, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { User, FileText, Image as ImageIcon, Hash } from 'lucide-react';
-import { createInsight, updateInsight } from '@/lib/actions/insights';
+import { api } from '@/lib/api/client';
 import type { Insight } from '@/lib/api/insights';
 
 const insightSchema = z.object({
@@ -123,14 +123,13 @@ export function InsightForm({ insight, mode = 'create' }: InsightFormProps) {
 
     try {
       if (mode === 'create') {
-        await createInsight(data);
+        await api.post('/admin/insights', data);
       } else if (insight) {
-        await updateInsight(insight.publicId, data);
+        await api.patch(`/admin/insights/${insight.publicId}`, data);
       }
       router.push('/admin/insights');
-      router.refresh();
     } catch (err: any) {
-      setError(err.message || 'Failed to save insight');
+      setError(err?.data?.message || err?.message || 'Failed to save insight');
     } finally {
       setIsSubmitting(false);
     }

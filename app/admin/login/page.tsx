@@ -43,29 +43,67 @@ export default function LoginPage() {
   useEffect(() => {
     // Check if already authenticated by checking localStorage
     async function checkAuth() {
+      // #region agent log
+      fetch('http://127.0.0.1:7242/ingest/0e73c4c4-a4df-4393-a81c-190a7eb59970',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:45',message:'checkAuth entry',data:{timestamp:Date.now()},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
+      // #endregion
       try {
+        // #region agent log
+        const hasLocalStorage = typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+        fetch('http://127.0.0.1:7242/ingest/0e73c4c4-a4df-4393-a81c-190a7eb59970',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:48',message:'localStorage availability check',data:{hasLocalStorage,windowDefined:typeof window !== 'undefined'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
+        // #endregion
         const token = localStorage.getItem('token');
+        // #region agent log
+        fetch('http://127.0.0.1:7242/ingest/0e73c4c4-a4df-4393-a81c-190a7eb59970',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:50',message:'Token retrieved from localStorage',data:{tokenExists:!!token,tokenLength:token?.length || 0},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
+        // #endregion
         if (token) {
+          // #region agent log
+          fetch('http://127.0.0.1:7242/ingest/0e73c4c4-a4df-4393-a81c-190a7eb59970',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:52',message:'Before auth check API call',data:{hasToken:true},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+          // #endregion
           // Verify token is still valid
           const response = await fetch('/api/auth/check', {
             headers: {
               'Authorization': `Bearer ${token}`,
             },
           });
+          // #region agent log
+          fetch('http://127.0.0.1:7242/ingest/0e73c4c4-a4df-4393-a81c-190a7eb59970',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:58',message:'Auth check API response received',data:{status:response.status,statusText:response.statusText,ok:response.ok},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+          // #endregion
           const data = await response.json();
+          // #region agent log
+          fetch('http://127.0.0.1:7242/ingest/0e73c4c4-a4df-4393-a81c-190a7eb59970',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:60',message:'Auth check response parsed',data:{authenticated:data.authenticated,hasData:!!data},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+          // #endregion
           
           if (data.authenticated) {
-            router.push('/admin');
+            // #region agent log
+            fetch('http://127.0.0.1:7242/ingest/0e73c4c4-a4df-4393-a81c-190a7eb59970',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:62',message:'About to call router.replace',data:{authenticated:true},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+            // #endregion
+            router.replace('/admin');
+            // #region agent log
+            fetch('http://127.0.0.1:7242/ingest/0e73c4c4-a4df-4393-a81c-190a7eb59970',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:64',message:'router.replace called',data:{},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+            // #endregion
             return;
           } else {
+            // #region agent log
+            fetch('http://127.0.0.1:7242/ingest/0e73c4c4-a4df-4393-a81c-190a7eb59970',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:66',message:'Token invalid, clearing localStorage',data:{authenticated:false},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+            // #endregion
             // Token is invalid, clear it
             localStorage.removeItem('token');
           }
+        } else {
+          // #region agent log
+          fetch('http://127.0.0.1:7242/ingest/0e73c4c4-a4df-4393-a81c-190a7eb59970',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:70',message:'No token found in localStorage',data:{},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
+          // #endregion
         }
-      } catch (error) {
+      } catch (error: any) {
+        // #region agent log
+        fetch('http://127.0.0.1:7242/ingest/0e73c4c4-a4df-4393-a81c-190a7eb59970',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:72',message:'Auth check error caught',data:{errorMessage:error?.message,errorName:error?.name,errorStack:error?.stack?.substring(0,200)},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+        // #endregion
         console.error('Auth check failed:', error);
         localStorage.removeItem('token');
       } finally {
+        // #region agent log
+        fetch('http://127.0.0.1:7242/ingest/0e73c4c4-a4df-4393-a81c-190a7eb59970',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'login/page.tsx:76',message:'checkAuth finally block',data:{},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+        // #endregion
         setIsCheckingAuth(false);
       }
     }
@@ -86,9 +124,8 @@ export default function LoginPage() {
       setIsLoading(true);
       setError('');
 
-      // Clear any stale localStorage and cookies before login
+      // Clear any stale localStorage before login
       localStorage.removeItem('token');
-      document.cookie = 'token=; Path=/; Max-Age=0; SameSite=Lax';
 
       // Log login attempt (without password)
       console.log('Login attempt for:', values.email);
@@ -99,7 +136,7 @@ export default function LoginPage() {
           'Content-Type': 'application/json',
           'x-api-key': process.env.NEXT_PUBLIC_API_KEY || '',
         },
-        credentials: 'include',
+        credentials: 'omit',
         body: JSON.stringify(values),
       });
 
@@ -240,7 +277,7 @@ export default function LoginPage() {
     'Sign In'
   )}
               </Button>
-            <Button
+            {/* <Button
                 className="w-full"
                 disabled={isLoading}
                 onClick={backToWebsite}
@@ -253,7 +290,7 @@ export default function LoginPage() {
   ) : (
     'Back to Website'
   )}
-              </Button>
+              </Button> */}
             
             </form>
           </Form>

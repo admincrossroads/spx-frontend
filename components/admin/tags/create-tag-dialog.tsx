@@ -25,7 +25,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Plus, Hash } from 'lucide-react';
-import { createTag } from '@/lib/actions/tags';
+import { api } from '@/lib/api/client';
 
 const tagSchema = z.object({
   name: z.string().min(1, 'Name is required').max(50, 'Name is too long'),
@@ -77,7 +77,7 @@ export function CreateTagDialog({ children, onSuccess }: CreateTagDialogProps) {
       setIsSubmitting(true);
       setError('');
 
-      await createTag(values);
+      await api.post('/admin/tags', values);
       
       form.reset();
       setOpen(false);
@@ -89,7 +89,7 @@ export function CreateTagDialog({ children, onSuccess }: CreateTagDialogProps) {
       }
     } catch (err: any) {
       console.error('Failed to create tag:', err);
-      setError(err.message || 'Failed to create tag');
+      setError(err?.data?.message || err?.message || 'Failed to create tag');
     } finally {
       setIsSubmitting(false);
     }

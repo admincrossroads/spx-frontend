@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import { AlertCircle, Trash2 } from 'lucide-react';
-import { deleteAuthor } from '@/lib/actions/authors';
+import { api } from '@/lib/api/client';
 import type { Author } from '@/lib/api/authors';
 
 interface DeleteAuthorDialogProps {
@@ -39,7 +39,7 @@ export function DeleteAuthorDialog({
       setIsDeleting(true);
       setError('');
 
-      await deleteAuthor(author.id as number); // Cast to number if needed
+      await api.delete(`/admin/authors/${author.id}`);
       
       // Close dialog
       onOpenChange(false);
@@ -53,7 +53,7 @@ export function DeleteAuthorDialog({
       }
     } catch (err: any) {
       console.error('Failed to delete author:', err);
-      setError(err.message || 'Failed to delete author');
+      setError(err?.data?.message || err?.message || 'Failed to delete author');
     } finally {
       setIsDeleting(false);
     }

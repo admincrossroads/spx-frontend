@@ -1,22 +1,18 @@
 'use server';
 
-import { cookies } from 'next/headers';
 import type { InsightsFilters } from '@/lib/api/insights';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
-async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
-  const cookieStore = await cookies();
-  const token = cookieStore.get('token')?.value;
-
+async function fetchWithAuth(endpoint: string, token: string, options: RequestInit = {}) {
   if (!token) {
     throw new Error('No authentication token provided');
   }
 
   const headers = new Headers(options.headers);
   headers.set('x-api-key', API_KEY!);
-  headers.set('Cookie', `token=${token}`);
+  headers.set('Authorization', `Bearer ${token}`);
 
   if (!(options.body instanceof FormData)) {
     headers.set('Content-Type', 'application/json');
@@ -25,7 +21,6 @@ async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
   const response = await fetch(`${API_URL}${endpoint}`, {
     ...options,
     headers,
-    credentials: 'include',
   });
 
   if (!response.ok) {
@@ -36,7 +31,7 @@ async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
   return response.json();
 }
 
-export async function getInsights(filters: InsightsFilters = {}) {
+export async function getInsights(token: string, filters: InsightsFilters = {}) {
   try {
     const params = new URLSearchParams();
     
@@ -49,7 +44,7 @@ export async function getInsights(filters: InsightsFilters = {}) {
     const query = params.toString();
     const endpoint = query ? `/admin/insights?${query}` : '/admin/insights';
     
-    return await fetchWithAuth(endpoint, {
+    return await fetchWithAuth(endpoint, token, {
       cache: 'no-store',
     });
   } catch (error) {
@@ -58,9 +53,9 @@ export async function getInsights(filters: InsightsFilters = {}) {
   }
 }
 
-export async function getInsightByPublicId(publicId: string) {
+export async function getInsightByPublicId(publicId: string, token: string) {
   try {
-    return await fetchWithAuth(`/admin/insights/${publicId}`, {
+    return await fetchWithAuth(`/admin/insights/${publicId}`, token, {
       cache: 'no-store',
     });
   } catch (error) {
@@ -69,46 +64,44 @@ export async function getInsightByPublicId(publicId: string) {
   }
 }
 
-export async function createInsight(data: any) {
-  return await fetchWithAuth('/admin/insights', {
+export async function createInsight(data: any, token: string) {
+  return await fetchWithAuth('/admin/insights', token, {
     method: 'POST',
     body: JSON.stringify(data),
   });
 }
 
-export async function updateInsight(publicId: string, data: any) {
-  return await fetchWithAuth(`/admin/insights/${publicId}`, {
+export async function updateInsight(publicId: string, data: any, token: string) {
+  return await fetchWithAuth(`/admin/insights/${publicId}`, token, {
     method: 'PATCH',
     body: JSON.stringify(data),
   });
 }
 
-export async function deleteInsight(publicId: string) {
-  return await fetchWithAuth(`/admin/insights/${publicId}`, {
+export async function deleteInsight(publicId: string, token: string) {
+  return await fetchWithAuth(`/admin/insights/${publicId}`, token, {
     method: 'DELETE',
   });
 }
 
-export async function publishInsight(publicId: string) {
-  return await fetchWithAuth(`/admin/insights/${publicId}/publish`, {
+export async function publishInsight(publicId: string, token: string) {
+  return await fetchWithAuth(`/admin/insights/${publicId}/publish`, token, {
     method: 'PATCH',
   });
 }
 
-export async function unpublishInsight(publicId: string) {
-  return await updateInsight(publicId, { isPublished: false });
+export async function unpublishInsight(publicId: string, token: string) {
+  return await updateInsight(publicId, { isPublished: false }, token);
 }
 
 // File upload (direct to backend)
 export async function uploadInsightImage(
   publicId: string,
-  file: File
+  file: File,
+  token: string
 ): Promise<{ url: string }> {
   const formData = new FormData();
   formData.append('file', file);
-
-  const cookieStore = await cookies();
-  const token = cookieStore.get('token')?.value;
 
   if (!token) {
     throw new Error('No authentication token provided');
@@ -118,7 +111,7 @@ export async function uploadInsightImage(
     method: 'POST',
     headers: {
       'x-api-key': API_KEY!,
-      'Cookie': `token=${token}`,
+      'Authorization': `Bearer ${token}`,
     },
     body: formData,
   });

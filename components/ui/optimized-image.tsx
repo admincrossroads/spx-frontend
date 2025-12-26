@@ -34,7 +34,7 @@ export function OptimizedImage({
   };
   
   return (
-    <div className="relative">
+    <div className="relative h-full w-full">
       {showSkeleton && isLoading && (
         <ImageSkeleton
           className={cn('absolute inset-0', skeletonClassName)}

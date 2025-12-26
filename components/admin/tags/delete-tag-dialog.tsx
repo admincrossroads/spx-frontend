@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import { AlertCircle, Trash2 } from 'lucide-react';
-import { deleteTag } from '@/lib/actions/tags';
+import { api } from '@/lib/api/client';
 
 interface Tag {
   id: number;
@@ -44,13 +44,13 @@ export function DeleteTagDialog({
       setIsDeleting(true);
       setError('');
 
-      await deleteTag(tag.id);
+      await api.delete(`/admin/tags/${tag.id}`);
       
       onSuccess?.();
       onOpenChange(false);
     } catch (err: any) {
       console.error('Failed to delete tag:', err);
-      setError(err.message || 'Failed to delete tag');
+      setError(err?.data?.message || err?.message || 'Failed to delete tag');
     } finally {
       setIsDeleting(false);
     }

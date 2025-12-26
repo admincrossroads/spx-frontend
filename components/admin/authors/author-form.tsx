@@ -21,7 +21,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Card, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label'; // Add this import
 import { User, Upload, X } from 'lucide-react';
-import { createAuthor, updateAuthor } from '@/lib/actions/authors';
+import { api } from '@/lib/api/client';
 import type { Author } from '@/lib/api/authors';
 
 const authorSchema = z.object({
@@ -55,38 +55,35 @@ export function AuthorForm({ author, mode = 'create' }: AuthorFormProps) {
   });
 
   async function onSubmit(values: AuthorFormData) {
-  try {
-    setIsSubmitting(true);
-    setError('');
+    try {
+      setIsSubmitting(true);
+      setError('');
 
-    if (mode === 'create') {
-      await createAuthor({
-        name: values.name,
-        bio: values.bio || undefined,
-        imageUrl: values.imageUrl || undefined,
-      });
-      router.push('/admin/authors');
-      router.refresh();
-    } else if (author) {
-      // Always send all fields for update (backend handles partial updates)
-      const updateData: any = {
-        name: values.name,
-        bio: values.bio || null,
-        imageUrl: values.imageUrl || null,
-      };
-      
-      console.log('Updating author with data:', updateData);
-      await updateAuthor(author.id, updateData);
-      router.push('/admin/authors');
-      router.refresh();
+      if (mode === 'create') {
+        await api.post('/admin/authors', {
+          name: values.name,
+          bio: values.bio || undefined,
+          imageUrl: values.imageUrl || undefined,
+        });
+        router.push('/admin/authors');
+      } else if (author) {
+        // Always send all fields for update (backend handles partial updates)
+        const updateData: any = {
+          name: values.name,
+          bio: values.bio || null,
+          imageUrl: values.imageUrl || null,
+        };
+        
+        await api.patch(`/admin/authors/${author.id}`, updateData);
+        router.push('/admin/authors');
+      }
+    } catch (err: any) {
+      console.error('Failed to save author:', err);
+      setError(err?.data?.message || err?.message || 'Failed to save author');
+    } finally {
+      setIsSubmitting(false);
     }
-  } catch (err: any) {
-    console.error('Failed to save author:', err);
-    setError(err.message || 'Failed to save author');
-  } finally {
-    setIsSubmitting(false);
   }
-}
 
   function handleImageUrlChange(url: string) {
     form.setValue('imageUrl', url);

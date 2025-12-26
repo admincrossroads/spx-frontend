@@ -5,16 +5,9 @@ const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 export async function GET(request: NextRequest) {
   try {
-    // Try to get token from Authorization header first (localStorage flow)
+    // Get token from Authorization header (localStorage flow)
     const authHeader = request.headers.get('Authorization');
-    let token: string | undefined;
-    
-    if (authHeader && authHeader.startsWith('Bearer ')) {
-      token = authHeader.substring(7);
-    } else {
-      // Fallback to cookie for backward compatibility
-      token = request.cookies.get('token')?.value;
-    }
+    const token = authHeader?.startsWith('Bearer ') ? authHeader.substring(7) : null;
 
     if (!token) {
       return NextResponse.json({ authenticated: false });
@@ -31,7 +24,6 @@ export async function GET(request: NextRequest) {
       headers: {
         'x-api-key': API_KEY,
         'Authorization': `Bearer ${token}`,
-        'Cookie': `token=${token}`, // Include cookie as fallback
       },
       cache: 'no-store',
     });

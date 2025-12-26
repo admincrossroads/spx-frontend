@@ -2,25 +2,10 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  
-  // Only protect dashboard routes (not login)
-  const isDashboardRoute = pathname.startsWith('/admin') && 
-                          !pathname.startsWith('/admin/login');
-  
-  if (!isDashboardRoute) {
-    return NextResponse.next();
-  }
-
-  // Check for auth cookie
-  const token = request.cookies.get('token')?.value;
-
-  // If no token, redirect to login
-  if (!token) {
-    const loginUrl = new URL('/admin/login', request.url);
-    return NextResponse.redirect(loginUrl);
-  }
-
+  // This proxy is not being used as middleware
+  // Auth is handled client-side via localStorage
+  // Since middleware runs server-side and can't access localStorage,
+  // we let client-side components handle authentication redirects
   return NextResponse.next();
 }
 

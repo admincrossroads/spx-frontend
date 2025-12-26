@@ -1,27 +1,16 @@
 'use server';
 
-import { cookies } from 'next/headers';
-
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
-async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
-  const cookieStore = await cookies();
-  const token = cookieStore.get('token')?.value;
-
+async function fetchWithAuth(endpoint: string, token: string, options: RequestInit = {}) {
   if (!token) {
-    console.error('No authentication token found');
     throw new Error('No authentication token provided');
   }
-
-  // Check what API_URL contains
-  console.log('API_URL:', API_URL);
-  console.log('Endpoint:', endpoint);
-  console.log('Full URL:', `${API_URL}${endpoint}`);
   
   const headers = new Headers(options.headers);
   headers.set('x-api-key', API_KEY!);
-  headers.set('Cookie', `token=${token}`);
+  headers.set('Authorization', `Bearer ${token}`);
 
   if (!(options.body instanceof FormData)) {
     headers.set('Content-Type', 'application/json');
@@ -31,16 +20,10 @@ async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
     const response = await fetch(`${API_URL}${endpoint}`, {
       ...options,
       headers,
-      credentials: 'include',
     });
 
-    console.log('Response status:', response.status);
-    
     if (!response.ok) {
-      console.log('Response not OK, checking error...');
       const errorText = await response.text();
-      console.log('Error response:', errorText);
-      
       let errorData;
       try {
         errorData = JSON.parse(errorText);
@@ -51,18 +34,16 @@ async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
       throw new Error(errorData.message || `HTTP ${response.status}`);
     }
 
-    const data = await response.json();
-    console.log('Response data:', data);
-    return data;
+    return await response.json();
   } catch (error) {
     console.error('Fetch error:', error);
     throw error;
   }
 }
 
-export async function getAuthors() {
+export async function getAuthors(token: string) {
   try {
-    return await fetchWithAuth('/admin/authors', {
+    return await fetchWithAuth('/admin/authors', token, {
       cache: 'no-store',
     });
   } catch (error) {
@@ -71,25 +52,26 @@ export async function getAuthors() {
   }
 }
 
-export async function getAuthorById(id: number) {
+export async function getAuthorById(id: number, token: string) {
   try {
-    console.log('getAuthorById called with ID:', id);
-    const author = await fetchWithAuth(`/admin/authors/${id}`, {
+    return await fetchWithAuth(`/admin/authors/${id}`, token, {
       cache: 'no-store',
     });
-    console.log('getAuthorById result:', author);
-    return author;
   } catch (error) {
     console.error(`Failed to fetch author ${id}:`, error);
     throw error;
   }
 }
-export async function createAuthor(data: {
-  name: string;
-  bio?: string;
-  imageUrl?: string;
-}) {
-  return await fetchWithAuth('/admin/authors', {
+
+export async function createAuthor(
+  data: {
+    name: string;
+    bio?: string;
+    imageUrl?: string;
+  },
+  token: string
+) {
+  return await fetchWithAuth('/admin/authors', token, {
     method: 'POST',
     body: JSON.stringify(data),
   });
@@ -101,7 +83,8 @@ export async function updateAuthor(
     name?: string;
     bio?: string | null;
     imageUrl?: string | null;
-  }
+  },
+  token: string
 ) {
   // Remove empty fields to avoid sending undefined
   const payload: any = {};
@@ -110,15 +93,14 @@ export async function updateAuthor(
   if (data.bio !== undefined) payload.bio = data.bio;
   if (data.imageUrl !== undefined) payload.imageUrl = data.imageUrl;
   
-  return await fetchWithAuth(`/admin/authors/${id}`, {
+  return await fetchWithAuth(`/admin/authors/${id}`, token, {
     method: 'PATCH',
     body: JSON.stringify(payload),
   });
 }
 
-
-export async function deleteAuthor(id: number) {
-  return await fetchWithAuth(`/admin/authors/${id}`, {
+export async function deleteAuthor(id: number, token: string) {
+  return await fetchWithAuth(`/admin/authors/${id}`, token, {
     method: 'DELETE',
   });
 }

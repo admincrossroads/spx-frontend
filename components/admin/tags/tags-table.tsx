@@ -30,7 +30,7 @@ import {
   Hash
 } from 'lucide-react';
 import { DeleteTagDialog } from './delete-tag-dialog';
-import { updateTag } from '@/lib/actions/tags';
+import { api } from '@/lib/api/client';
 import { formatDate } from '@/lib/utils/helpers';
 
 interface Tag {
@@ -71,7 +71,7 @@ export function TagsTable({ tags, onSuccess }: TagsTableProps) {
 
     try {
       setIsSaving(true);
-      await updateTag(id, {
+      await api.patch(`/admin/tags/${id}`, {
         name: editForm.name,
         slug: editForm.slug,
       });
@@ -82,9 +82,9 @@ export function TagsTable({ tags, onSuccess }: TagsTableProps) {
       } else {
         window.location.reload();
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to update tag:', error);
-      alert('Failed to update tag');
+      alert(error?.data?.message || error?.message || 'Failed to update tag');
     } finally {
       setIsSaving(false);
     }
