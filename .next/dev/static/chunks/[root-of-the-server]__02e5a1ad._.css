@@ -489,6 +489,18 @@
     background-color: var(--background);
     color: var(--foreground);
   }
+
+  article p:not(:first-child), section p:not(:first-child), .prose p:not(:first-child) {
+    text-indent: 1.5em;
+  }
+
+  h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p, ul + p, ol + p, blockquote + p, img + p, figure + p, article > p:first-child, section > p:first-child, .prose > p:first-child, .prose h1 + p, .prose h2 + p, .prose h3 + p, .prose h4 + p, .prose h5 + p, .prose h6 + p, .prose ul + p, .prose ol + p, .prose blockquote + p, .prose img + p, .prose figure + p {
+    text-indent: 0;
+  }
+
+  p.text-sm, p.text-xs, p[class*="caption"], p[class*="label"], p[class*="helper"], p[class*="muted"], p[class*="error"] {
+    text-indent: 0 !important;
+  }
 }
 
 @layer components {
@@ -564,6 +576,80 @@
     text-align: justify;
     --tw-leading: var(--leading-relaxed);
     line-height: var(--leading-relaxed);
+  }
+
+  .ProseMirror {
+    --tw-outline-style: none;
+    outline-style: none;
+  }
+
+  .ProseMirror p.is-editor-empty:first-child:before {
+    content: attr(data-placeholder);
+    pointer-events: none;
+    float: left;
+    height: calc(var(--spacing) * 0);
+    color: var(--muted-foreground);
+  }
+
+  .ProseMirror p {
+    margin-bottom: calc(var(--spacing) * 4);
+  }
+
+  .ProseMirror p:last-child {
+    margin-bottom: calc(var(--spacing) * 0);
+  }
+
+  .ProseMirror h2 {
+    margin-top: calc(var(--spacing) * 6);
+    margin-bottom: calc(var(--spacing) * 4);
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .ProseMirror h3 {
+    margin-top: calc(var(--spacing) * 4);
+    margin-bottom: calc(var(--spacing) * 3);
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .ProseMirror ul, .ProseMirror ol {
+    margin-block: calc(var(--spacing) * 4);
+    padding-left: calc(var(--spacing) * 6);
+  }
+
+  .ProseMirror ul {
+    list-style-type: disc;
+  }
+
+  .ProseMirror ol {
+    list-style-type: decimal;
+  }
+
+  .ProseMirror li {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
+
+  .ProseMirror blockquote {
+    margin-block: calc(var(--spacing) * 4);
+    border-left-style: var(--tw-border-style);
+    border-left-width: 4px;
+    border-color: var(--primary);
+    padding-left: calc(var(--spacing) * 4);
+    font-style: italic;
+  }
+
+  .ProseMirror strong {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .ProseMirror em {
+    font-style: italic;
   }
 
   .animate-in {
@@ -853,6 +939,10 @@
 
   .-mx-1 {
     margin-inline: calc(var(--spacing) * -1);
+  }
+
+  .mx-1 {
+    margin-inline: calc(var(--spacing) * 1);
   }
 
   .mx-auto {
@@ -1313,6 +1403,10 @@
 
   .w-max {
     width: max-content;
+  }
+
+  .w-px {
+    width: 1px;
   }
 
   .max-w-2xl {
@@ -1791,6 +1885,16 @@
     }
   }
 
+  .border-destructive\/50 {
+    border-color: var(--destructive);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-destructive\/50 {
+      border-color: color-mix(in oklab, var(--destructive) 50%, transparent);
+    }
+  }
+
   .border-gray-600 {
     border-color: var(--color-gray-600);
   }
@@ -2001,6 +2105,20 @@
 
   .bg-card {
     background-color: var(--card);
+  }
+
+  .bg-destructive {
+    background-color: var(--destructive);
+  }
+
+  .bg-destructive\/10 {
+    background-color: var(--destructive);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-destructive\/10 {
+      background-color: color-mix(in oklab, var(--destructive) 10%, transparent);
+    }
   }
 
   .bg-foreground {
@@ -2810,6 +2928,14 @@
     color: var(--card-foreground);
   }
 
+  .text-destructive {
+    color: var(--destructive);
+  }
+
+  .text-destructive-foreground {
+    color: var(--destructive-foreground);
+  }
+
   .text-foreground {
     color: var(--foreground);
   }
@@ -3385,6 +3511,30 @@
   }
 
   @media (hover: hover) {
+    .hover\:bg-destructive\/80:hover {
+      background-color: var(--destructive);
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-destructive\/80:hover {
+        background-color: color-mix(in oklab, var(--destructive) 80%, transparent);
+      }
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:bg-destructive\/90:hover {
+      background-color: var(--destructive);
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-destructive\/90:hover {
+        background-color: color-mix(in oklab, var(--destructive) 90%, transparent);
+      }
+    }
+  }
+
+  @media (hover: hover) {
     .hover\:bg-foreground:hover {
       background-color: var(--foreground);
     }
@@ -3537,6 +3687,12 @@
   @media (hover: hover) {
     .hover\:text-blue-400:hover {
       color: var(--color-blue-400);
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:text-destructive:hover {
+      color: var(--destructive);
     }
   }
 
@@ -4223,6 +4379,10 @@
     border-color: var(--color-blue-800);
   }
 
+  .dark\:border-destructive:is(.dark *) {
+    border-color: var(--destructive);
+  }
+
   .dark\:border-green-800:is(.dark *) {
     border-color: var(--color-green-800);
   }
@@ -4372,6 +4532,10 @@
     flex-shrink: 0;
   }
 
+  .\[\&\>svg\]\:text-destructive > svg {
+    color: var(--destructive);
+  }
+
   .\[\&\>svg\]\:text-foreground > svg {
     color: var(--foreground);
   }
@@ -4414,6 +4578,8 @@
   --card-foreground: #121212;
   --popover: #fcfcfc;
   --popover-foreground: #121212;
+  --destructive: #d40924;
+  --destructive-foreground: #f8f8f8;
 }
 
 @supports (color: lab(0% 0 0)) {
@@ -4435,6 +4601,8 @@
     --card-foreground: lab(5.26802% 0 0);
     --popover: lab(98.84% 0 0);
     --popover-foreground: lab(5.26802% 0 0);
+    --destructive: lab(45.5382% 69.8881 46.2994);
+    --destructive-foreground: lab(97.68% -.0000298023 .0000119209);
   }
 }
 
@@ -4456,6 +4624,8 @@
   --card-foreground: #f8f8f8;
   --popover: #121b29;
   --popover-foreground: #f8f8f8;
+  --destructive: #f94144;
+  --destructive-foreground: #f8f8f8;
 }
 
 @supports (color: lab(0% 0 0)) {
@@ -4477,6 +4647,8 @@
     --card-foreground: lab(97.68% -.0000298023 .0000119209);
     --popover: lab(9.3565% -.346214 -10.7561);
     --popover-foreground: lab(97.68% -.0000298023 .0000119209);
+    --destructive: lab(57.1752% 69.5963 43.0458);
+    --destructive-foreground: lab(97.68% -.0000298023 .0000119209);
   }
 }
 

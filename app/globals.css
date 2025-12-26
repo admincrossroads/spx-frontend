@@ -29,6 +29,9 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
 
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -68,6 +71,10 @@
 
   --popover: oklch(0.99 0 0);
   --popover-foreground: oklch(0.18 0 0);
+  
+  /* --- ERROR/DESTRUCTIVE --- */
+  --destructive: oklch(0.55 0.22 25); /* red */
+  --destructive-foreground: oklch(0.98 0 0); /* white */
 }
 
 /* ------------------ DARK MODE ------------------ */
@@ -97,6 +104,10 @@
 
   --popover: oklch(0.22 0.03 260);
   --popover-foreground: oklch(0.98 0 0);
+  
+  /* --- ERROR/DESTRUCTIVE --- */
+  --destructive: oklch(0.65 0.22 25); /* lighter red for dark mode */
+  --destructive-foreground: oklch(0.98 0 0); /* white */
 }
 
 /* ------------------ BASE LAYER ------------------ */
@@ -107,6 +118,37 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Paragraph indentation - only for content paragraphs in articles, sections, and prose */
+  article p:not(:first-child),
+  section p:not(:first-child),
+  .prose p:not(:first-child) {
+    text-indent: 1.5em;
+  }
+  
+  /* Don't indent first paragraph after headings, lists, blockquotes, images, etc. */
+  h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p,
+  ul + p, ol + p, blockquote + p,
+  img + p, figure + p,
+  article > p:first-child,
+  section > p:first-child,
+  .prose > p:first-child,
+  .prose h1 + p, .prose h2 + p, .prose h3 + p,
+  .prose h4 + p, .prose h5 + p, .prose h6 + p,
+  .prose ul + p, .prose ol + p, .prose blockquote + p,
+  .prose img + p, .prose figure + p {
+    text-indent: 0;
+  }
+  
+  /* Don't indent captions, labels, error messages, helper text, small text */
+  p.text-sm, p.text-xs,
+  p[class*="caption"],
+  p[class*="label"],
+  p[class*="helper"],
+  p[class*="muted"],
+  p[class*="error"] {
+    text-indent: 0 !important;
   }
 }
 
@@ -197,6 +239,57 @@ button{
   
   .text-justify-custom {
     @apply text-justify leading-relaxed;
+  }
+
+  /* TipTap Editor Styles */
+  .ProseMirror {
+    @apply outline-none;
+  }
+
+  .ProseMirror p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    @apply float-left text-muted-foreground pointer-events-none h-0;
+  }
+
+  .ProseMirror p {
+    @apply mb-4 last:mb-0;
+  }
+
+  .ProseMirror h2 {
+    @apply text-2xl font-bold mt-6 mb-4;
+  }
+
+  .ProseMirror h3 {
+    @apply text-xl font-bold mt-4 mb-3;
+  }
+
+  .ProseMirror ul,
+  .ProseMirror ol {
+    @apply my-4 pl-6;
+  }
+
+  .ProseMirror ul {
+    @apply list-disc;
+  }
+
+  .ProseMirror ol {
+    @apply list-decimal;
+  }
+
+  .ProseMirror li {
+    @apply mb-2;
+  }
+
+  .ProseMirror blockquote {
+    @apply border-l-4 border-primary pl-4 italic my-4;
+  }
+
+  .ProseMirror strong {
+    @apply font-bold;
+  }
+
+  .ProseMirror em {
+    @apply italic;
   }
 
   /* Animations for Radix UI / Shadcn UI */

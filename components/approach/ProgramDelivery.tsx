@@ -136,7 +136,7 @@ export default function ProgramDelivery() {
       </section>
 
       {/* CTA */}
-      <section className="section-py text-center">
+      {/* <section className="section-py text-center">
         <div className="main-container">
           <h2 className="text-3xl font-semibold mb-4">Explore Our Approach</h2>
           <p className="text-muted-foreground max-w-xl mx-auto mb-8">
@@ -150,7 +150,7 @@ export default function ProgramDelivery() {
             </Button>
           </Link>
         </div>
-      </section>
+      </section> */}
 
     </div>
   );

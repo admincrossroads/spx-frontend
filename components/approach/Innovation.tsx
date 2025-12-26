@@ -49,7 +49,7 @@ export default function Innovation() {
         <div className="main-container">
           <ImageTextCard
             image={{
-              src: "/images/xtras/image8.webp",
+              src: "/images/xtras/image9.webp",
               alt: "Incubation",
             }}
             title="Startup Incubation & Acceleration"
@@ -137,7 +137,7 @@ export default function Innovation() {
       </section>
 
       {/* CTA */}
-      <section className="section-py text-center">
+      {/* <section className="section-py text-center">
         <div className="main-container">
           <h2 className="text-3xl font-semibold mb-4">Explore All Approach Areas</h2>
 
@@ -152,7 +152,7 @@ export default function Innovation() {
             </Button>
           </Link>
         </div>
-      </section>
+      </section> */}
 
     </div>
   );

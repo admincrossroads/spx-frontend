@@ -136,7 +136,7 @@ export default function Research() {
       </section>
 
       {/* CTA */}
-      <section className="section-py text-center">
+      {/* <section className="section-py text-center">
         <div className="main-container">
           <h2 className="text-3xl font-semibold mb-4">
             Explore Our Full Approach
@@ -153,7 +153,7 @@ export default function Research() {
             </Button>
           </Link>
         </div>
-      </section>
+      </section> */}
 
     </div>
   );

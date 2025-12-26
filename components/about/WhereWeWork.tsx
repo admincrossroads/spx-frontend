@@ -153,7 +153,7 @@ export default function WhereWeWork() {
         <div className="main-container space-y-16">
           <ImageTextCard
             image={{
-              src: "/images/xtras/image24.webp",
+              src: "/images/xtras/image39.webp",
               alt: "Africa-Focused Outlook",
             }}
             title="Africa-Focused Outlook"
@@ -205,7 +205,7 @@ export default function WhereWeWork() {
 
           <ImageTextCard
             image={{
-              src: "/images/xtras/image24.webp",
+              src: "/images/projects/image24.webp",
               alt: "Continental Networks",
             }}
             title="Building Continental Networks"

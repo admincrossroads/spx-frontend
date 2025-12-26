@@ -127,7 +127,7 @@ export default function MEL() {
       </section>
 
       {/* CTA */}
-      <section className="section-py text-center">
+      {/* <section className="section-py text-center">
         <div className="main-container">
           <h2 className="text-3xl font-semibold mb-4">Explore More From Our Approach</h2>
 
@@ -142,7 +142,7 @@ export default function MEL() {
             </Button>
           </Link>
         </div>
-      </section>
+      </section> */}
 
     </div>
   );

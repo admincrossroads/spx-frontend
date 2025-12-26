@@ -228,7 +228,7 @@ export default function PartnersAndAlliances() {
 
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
             <Image
-              src="/images/xtras/image8.webp"
+              src="/images/xtras/image1.webp"
               alt="Innovation Ecosystem"
               fill
               className="object-cover"

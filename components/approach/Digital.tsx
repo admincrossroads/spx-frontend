@@ -49,7 +49,7 @@ export default function Digital() {
         <div className="main-container">
           <ImageTextCard
             image={{
-              src: "/images/xtras/image27.webp",
+              src: "/images/innovation/shutterstock_2596948973.webp",
               alt: "Systems Support",
             }}
             title="Systems & Operations Support"
@@ -125,7 +125,7 @@ export default function Digital() {
       </section>
 
       {/* CTA */}
-      <section className="section-py text-center">
+      {/* <section className="section-py text-center">
         <div className="main-container">
           <h2 className="text-3xl font-semibold mb-4">See Our Full Approach</h2>
 
@@ -140,7 +140,7 @@ export default function Digital() {
             </Button>
           </Link>
         </div>
-      </section>
+      </section> */}
 
     </div>
   );

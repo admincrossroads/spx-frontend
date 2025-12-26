@@ -2157,42 +2157,42 @@ function ProjectsPreview() {
             title: "Solar Irrigation Initiative",
             img: "/images/projects/image3.webp",
             tag: "Energy",
-            country: "Kenya",
+            country: "",
             description: "Expanding access to clean energy for agricultural productivity"
         },
         {
             title: "Youth Jobs Systems",
             img: "/images/xtras/image11.webp",
             tag: "Employment",
-            country: "Uganda",
+            country: "",
             description: "Building pathways to sustainable employment for young people"
         },
         {
             title: "Digital MEL Platform",
             img: "/images/xtras/image36.webp",
             tag: "Digital",
-            country: "Regional",
+            country: "",
             description: "Transforming monitoring and evaluation through digital innovation"
         },
         {
             title: "Climate Resilience Program",
             img: "/images/xtras/image39.webp",
             tag: "Climate",
-            country: "Ethiopia",
+            country: "",
             description: "Strengthening community resilience to climate change impacts"
         },
         {
             title: "Agricultural Innovation Hub",
             img: "/images/xtras/image42.webp",
             tag: "Agriculture",
-            country: "Tanzania",
+            country: "",
             description: "Supporting smallholder farmers with innovative solutions"
         },
         {
             title: "Governance Strengthening",
             img: "/images/xtras/image16.webp",
             tag: "Governance",
-            country: "Rwanda",
+            country: "",
             description: "Enhancing institutional capacity and policy effectiveness"
         }
     ];

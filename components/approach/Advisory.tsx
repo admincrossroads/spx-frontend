@@ -48,7 +48,7 @@ export default function Advisory() {
         <div className="main-container">
           <ImageTextCard
             image={{
-              src: "/images/focus/image8.webp",
+              src: "/images/focus/image1.webp",
               alt: "Market Systems",
             }}
             title="Market Systems Development (MSD)"
@@ -78,7 +78,7 @@ export default function Advisory() {
         <div className="main-container">
           <ImageTextCard
             image={{
-              src: "/images/xtras/image12.webp",
+              src: "/images/xtras/image31.webp",
               alt: "Policy & Regulatory",
             }}
             title="Policy & Regulatory Support"
@@ -101,7 +101,7 @@ export default function Advisory() {
         <div className="main-container">
           <ImageTextCard
             image={{
-              src: "/images/xtras/image9.webp",
+              src: "/images/xtras/image13.webp",
               alt: "Institutional Strengthening",
             }}
             title="Institutional Strengthening"
@@ -120,7 +120,7 @@ export default function Advisory() {
       </section>
 
       {/* CTA */}
-      <section className="section-py text-center">
+      {/* <section className="section-py text-center">
         <div className="main-container">
           <h2 className="text-3xl font-semibold mb-4">
             Explore More From Our Approach
@@ -136,7 +136,7 @@ export default function Advisory() {
             </Button>
           </Link>
         </div>
-      </section>
+      </section> */}
 
     </div>
   );

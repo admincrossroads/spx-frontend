@@ -12,7 +12,7 @@ export default function DigitalFA() {
       {/* HERO */}
       <section className="relative h-[55vh] w-full overflow-hidden">
         <OptimizedImage
-          src="/images/focus/image4.webp"
+          src="/images/xtras/image27.webp"
           fill
           className="object-cover brightness-[0.55]"
           alt="Digital Transformation"
@@ -41,7 +41,7 @@ export default function DigitalFA() {
             </p>
           </div>
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <OptimizedImage src="/images/focus/image11.webp" fill className="object-cover" alt="" />
+            <OptimizedImage src="/images/xtras/image28.webp" fill className="object-cover" alt="" />
           </div>
         </div>
       </section>
@@ -72,7 +72,7 @@ export default function DigitalFA() {
             </p>
           </div>
           <div className="relative h-80 rounded-xl overflow-hidden shadow-md">
-            <OptimizedImage src="/images/projects/image2.webp" fill className="object-cover" alt="" />
+            <OptimizedImage src="/images/projects/image24.webp" fill className="object-cover" alt="" />
           </div>
         </div>
       </section>
