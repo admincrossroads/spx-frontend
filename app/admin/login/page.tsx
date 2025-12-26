@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -178,10 +179,6 @@ export default function LoginPage() {
     );
   }
 
-  function backToWebsite() {
-    window.location.href = '/';
-  }
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-4">
       <Card className="w-full max-w-md shadow-xl">
@@ -277,20 +274,13 @@ export default function LoginPage() {
     'Sign In'
   )}
               </Button>
-            {/* <Button
-                className="w-full"
-                disabled={isLoading}
-                onClick={backToWebsite}
+
+              <Link
+                href="/"
+                className="block w-full text-center text-sm text-muted-foreground hover:text-foreground underline mt-4"
               >
-                {isLoading ? (
-    <>
-      <LoadingSpinner size="sm" className="mr-2" />
-      Loading...
-    </>
-  ) : (
-    'Back to Website'
-  )}
-              </Button> */}
+                Back to Website
+              </Link>
             
             </form>
           </Form>

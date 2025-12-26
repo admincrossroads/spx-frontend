@@ -1,9 +1,6 @@
 {
-  "/admin/(dashboard)/authors/page": "app/admin/(dashboard)/authors/page.js",
-  "/admin/(dashboard)/insights/page": "app/admin/(dashboard)/insights/page.js",
+  "/(public)/page": "app/(public)/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/admin/(dashboard)/page": "app/admin/(dashboard)/page.js",
-  "/admin/(dashboard)/settings/users/page": "app/admin/(dashboard)/settings/users/page.js",
-  "/admin/(dashboard)/tags/page": "app/admin/(dashboard)/tags/page.js",
-  "/admin/login/page": "app/admin/login/page.js",
-  "/api/auth/check/route": "app/api/auth/check/route.js"
+  "/admin/login/page": "app/admin/login/page.js"
 }
