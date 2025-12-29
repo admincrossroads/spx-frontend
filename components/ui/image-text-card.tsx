@@ -69,6 +69,7 @@ export default function ImageTextCard({
         fill
         className="object-cover"
         showSkeleton={true}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
       />
     </motion.div>
   );

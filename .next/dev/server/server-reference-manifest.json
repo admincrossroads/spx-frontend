@@ -2,72 +2,44 @@
   "node": {
     "402703210032617a538e7d6d8165dd5bdc6c280916": {
       "workers": {
-        "app/(public)/insights/[slug]/page": {
-          "moduleId": "[project]/.next-internal/server/app/(public)/insights/[slug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getPublicInsights",
-          "filename": "lib/api/public-insights.ts"
-        },
         "app/(public)/insights/blogs/page": {
           "moduleId": "[project]/.next-internal/server/app/(public)/insights/blogs/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "getPublicInsights",
           "filename": "lib/api/public-insights.ts"
         },
-        "app/(public)/insights/page": {
-          "moduleId": "[project]/.next-internal/server/app/(public)/insights/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getPublicInsights",
-          "filename": "lib/api/public-insights.ts"
-        },
-        "app/(public)/insights/policy-briefs/page": {
-          "moduleId": "[project]/.next-internal/server/app/(public)/insights/policy-briefs/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+        "app/(public)/insights/reports/page": {
+          "moduleId": "[project]/.next-internal/server/app/(public)/insights/reports/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "getPublicInsights",
           "filename": "lib/api/public-insights.ts"
         }
       },
       "layer": {
-        "app/(public)/insights/[slug]/page": "rsc",
         "app/(public)/insights/blogs/page": "rsc",
-        "app/(public)/insights/page": "rsc",
-        "app/(public)/insights/policy-briefs/page": "rsc"
+        "app/(public)/insights/reports/page": "rsc"
       },
       "filename": "lib/api/public-insights.ts",
       "exportedName": "getPublicInsights"
     },
     "40887a078a3841341e58e6b6e0fb9d25d2285bec39": {
       "workers": {
-        "app/(public)/insights/[slug]/page": {
-          "moduleId": "[project]/.next-internal/server/app/(public)/insights/[slug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getPublicInsightBySlug",
-          "filename": "lib/api/public-insights.ts"
-        },
         "app/(public)/insights/blogs/page": {
           "moduleId": "[project]/.next-internal/server/app/(public)/insights/blogs/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "getPublicInsightBySlug",
           "filename": "lib/api/public-insights.ts"
         },
-        "app/(public)/insights/page": {
-          "moduleId": "[project]/.next-internal/server/app/(public)/insights/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "getPublicInsightBySlug",
-          "filename": "lib/api/public-insights.ts"
-        },
-        "app/(public)/insights/policy-briefs/page": {
-          "moduleId": "[project]/.next-internal/server/app/(public)/insights/policy-briefs/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+        "app/(public)/insights/reports/page": {
+          "moduleId": "[project]/.next-internal/server/app/(public)/insights/reports/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "getPublicInsightBySlug",
           "filename": "lib/api/public-insights.ts"
         }
       },
       "layer": {
-        "app/(public)/insights/[slug]/page": "rsc",
         "app/(public)/insights/blogs/page": "rsc",
-        "app/(public)/insights/page": "rsc",
-        "app/(public)/insights/policy-briefs/page": "rsc"
+        "app/(public)/insights/reports/page": "rsc"
       },
       "filename": "lib/api/public-insights.ts",
       "exportedName": "getPublicInsightBySlug"

@@ -1,19 +1,8 @@
 {
-  "/(public)/about/identity/page": "app/(public)/about/identity/page.js",
-  "/(public)/about/leadership/page": "app/(public)/about/leadership/page.js",
-  "/(public)/about/locations/page": "app/(public)/about/locations/page.js",
-  "/(public)/about/partners/page": "app/(public)/about/partners/page.js",
-  "/(public)/about/vision-mission/page": "app/(public)/about/vision-mission/page.js",
   "/(public)/about/who-we-are/page": "app/(public)/about/who-we-are/page.js",
-  "/(public)/approach/research/page": "app/(public)/approach/research/page.js",
-  "/(public)/insights/[slug]/page": "app/(public)/insights/[slug]/page.js",
   "/(public)/insights/blogs/page": "app/(public)/insights/blogs/page.js",
-  "/(public)/insights/page": "app/(public)/insights/page.js",
-  "/(public)/insights/policy-briefs/page": "app/(public)/insights/policy-briefs/page.js",
+  "/(public)/insights/reports/page": "app/(public)/insights/reports/page.js",
   "/(public)/page": "app/(public)/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/admin/(dashboard)/insights/new/page": "app/admin/(dashboard)/insights/new/page.js",
-  "/admin/(dashboard)/insights/page": "app/admin/(dashboard)/insights/page.js",
-  "/admin/(dashboard)/page": "app/admin/(dashboard)/page.js",
-  "/admin/login/page": "app/admin/login/page.js"
+  "/(public)/projects/page": "app/(public)/projects/page.js",
+  "/_not-found/page": "app/_not-found/page.js"
 }

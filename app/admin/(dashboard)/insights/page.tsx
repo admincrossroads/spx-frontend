@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -10,6 +10,8 @@ import { Search, Edit, Trash2, Eye, EyeOff, Plus, ChevronLeft, ChevronRight } fr
 import { api } from '@/lib/api/client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useAdminInsights, adminInsightKeys } from '@/lib/hooks/queries/useAdminInsights';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface Insight {
   id: number;
@@ -33,12 +35,10 @@ const LIMIT = 10; // Always 10 insights per page
 
 export default function InsightsPage() {
   const router = useRouter();
-  const [insights, setInsights] = useState<Insight[]>([]);
-  const [loading, setLoading] = useState(true);
+  const queryClient = useQueryClient();
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [total, setTotal] = useState(0);
+  const [debouncedSearch, setDebouncedSearch] = useState('');
   
   // Initialize from URL params on mount
   useEffect(() => {
@@ -51,77 +51,50 @@ export default function InsightsPage() {
         const page = parseInt(pageParam, 10);
         if (page > 0) setCurrentPage(page);
       }
-      if (searchParam) setSearch(searchParam);
+      if (searchParam) {
+        setSearch(searchParam);
+        setDebouncedSearch(searchParam);
+      }
     }
   }, []);
 
-  const loadInsights = useCallback(async () => {
-    setLoading(true);
-    try {
-      const params = new URLSearchParams();
-      params.set('page', currentPage.toString());
-      params.set('limit', LIMIT.toString());
-      if (search) {
-        params.set('search', search);
-      }
-      
-      const response = await api.get<{
-        insights: Insight[];
-        pagination: { total: number; page: number; limit: number; totalPages: number };
-      }>(`/admin/insights?${params.toString()}`);
-      
-      const apiTotal = response.pagination?.total || 0;
-      const returnedInsights = response.insights || [];
-      
-      // Calculate total pages: total insights / 10 (always 10 per page)
-      const calculatedTotalPages = apiTotal > 0 ? Math.ceil(apiTotal / LIMIT) : 0;
-      
-      // Update state
-      setTotal(apiTotal);
-      setTotalPages(calculatedTotalPages);
-      setInsights(returnedInsights);
-      
-      // If current page exceeds total pages, go to last valid page
-      if (currentPage > calculatedTotalPages && calculatedTotalPages > 0) {
-        setCurrentPage(calculatedTotalPages);
-        return; // Will reload with correct page
-      }
-      
-      // Update URL
-      if (typeof window !== 'undefined') {
-        const newParams = new URLSearchParams();
-        newParams.set('page', currentPage.toString());
-        if (search) {
-          newParams.set('search', search);
-        } else {
-          newParams.delete('search');
-        }
-        router.push(`/admin/insights?${newParams.toString()}`, { scroll: false });
-      }
-    } catch (error) {
-      console.error('Failed to load insights:', error);
-      setInsights([]);
-    } finally {
-      setLoading(false);
-    }
-  }, [currentPage, search, router]);
-
-  // Load insights when page changes
-  useEffect(() => {
-    loadInsights();
-  }, [currentPage, loadInsights]);
-  
-  // Handle search with debounce and reset page
+  // Debounce search
   useEffect(() => {
     const timer = setTimeout(() => {
+      setDebouncedSearch(search);
       if (search !== '') {
         setCurrentPage(1);
       }
-      loadInsights();
     }, 500);
     
     return () => clearTimeout(timer);
-  }, [search, loadInsights]);
+  }, [search]);
+
+  // Use React Query to fetch insights
+  const { data, isLoading, refetch } = useAdminInsights({
+    page: currentPage,
+    limit: LIMIT,
+    search: debouncedSearch || undefined,
+  });
+
+  const insights = data?.insights || [];
+  const total = data?.pagination?.total || 0;
+  const totalPages = data?.pagination?.totalPages || 0;
+  const loading = isLoading;
+
+  // Update URL when page or search changes
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const newParams = new URLSearchParams();
+      newParams.set('page', currentPage.toString());
+      if (debouncedSearch) {
+        newParams.set('search', debouncedSearch);
+      } else {
+        newParams.delete('search');
+      }
+      router.push(`/admin/insights?${newParams.toString()}`, { scroll: false });
+    }
+  }, [currentPage, debouncedSearch, router]);
 
   const handlePublishToggle = async (publicId: string, currentStatus: boolean) => {
     try {
@@ -130,7 +103,9 @@ export default function InsightsPage() {
       } else {
         await api.patch(`/admin/insights/${publicId}/publish`);
       }
-      loadInsights();
+      // Invalidate and refetch insights
+      queryClient.invalidateQueries({ queryKey: adminInsightKeys.all });
+      refetch();
     } catch (error: any) {
       console.error('Failed to toggle publish status:', error);
       const errorMessage = error?.data?.message || error?.message || 'Failed to update publish status';
@@ -143,7 +118,9 @@ export default function InsightsPage() {
     
     try {
       await api.delete(`/admin/insights/${publicId}`);
-      loadInsights();
+      // Invalidate and refetch insights
+      queryClient.invalidateQueries({ queryKey: adminInsightKeys.all });
+      refetch();
     } catch (error) {
       console.error('Failed to delete insight:', error);
     }
@@ -177,7 +154,7 @@ export default function InsightsPage() {
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     setCurrentPage(1);
-                    loadInsights();
+                    setDebouncedSearch(search);
                   }
                 }}
               />

@@ -161,6 +161,7 @@ export default function InsightEditor({ blocks, onChange, publicId, type }: Insi
               src={imgData.url} 
               alt={imgData.alt || ''} 
               className="max-w-full rounded"
+              loading="lazy"
               onError={(e) => {
                 const img = e.target as HTMLImageElement;
                 // Only hide if image actually failed to load (check naturalWidth and complete)

@@ -39,6 +39,8 @@ import InsightEditor from '../components/InsightEditor';
 import ImageUpload from '../components/imageUpload';
 import type { InsightBlock, InsightFormInput, InsightFormValues } from '@/types/insights';
 import { insightFormSchema } from '@/types/insights';
+import { useAuthors } from '@/lib/hooks/queries/useAuthors';
+import { useTags } from '@/lib/hooks/queries/useTags';
 
 const createUploadKey = () => {
   if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
@@ -52,9 +54,11 @@ export default function CreateInsightPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [blocks, setBlocks] = useState<InsightBlock[]>([]);
-  const [authors, setAuthors] = useState<any[]>([]);
-  const [tags, setTags] = useState<any[]>([]);
   const [publicId] = useState<string>(createUploadKey);
+  
+  // Use React Query to fetch authors and tags
+  const { data: authors = [] } = useAuthors();
+  const { data: tags = [] } = useTags();
 
   const form = useForm<InsightFormInput, any, InsightFormValues>({
     resolver: zodResolver(insightFormSchema),
@@ -71,23 +75,7 @@ export default function CreateInsightPage() {
     mode: 'onSubmit',
   });
 
-  // Load authors and tags on mount
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const [authorsData, tagsData] = await Promise.all([
-          api.get<any[]>('/admin/authors'),
-          api.get<any[]>('/admin/tags'),
-        ]);
-        setAuthors(authorsData);
-        setTags(tagsData);
-      } catch (error) {
-        console.error('Failed to load data:', error);
-      }
-    };
-
-    loadData();
-  }, []);
+  // Authors and tags are now fetched via React Query hooks above
 
   const generateSlug = (title: string) => {
     return title

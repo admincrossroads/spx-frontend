@@ -116,8 +116,16 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    /* Prevent layout shift during font load */
+    font-display: swap;
+  }
   body {
     @apply bg-background text-foreground;
+    /* Prevent layout shift */
+    min-height: 100vh;
+    /* Prevent font loading shift */
+    font-display: swap;
   }
   
   /* Paragraph indentation - only for content paragraphs in articles, sections, and prose */

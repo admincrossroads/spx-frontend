@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -8,7 +8,8 @@ import { Button } from '@/components/ui/button';
 import { formatDate, getImageUrl } from '@/lib/utils/helpers';
 import { FileText, Calendar, User, Loader2, ArrowRight } from 'lucide-react';
 import { InsightImage } from '@/components/ui/insight-image';
-import { api } from '@/lib/api/client';
+import { usePublicInsights } from '@/lib/hooks/queries/useInsights';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface Insight {
   id: number;
@@ -57,65 +58,79 @@ const typeColors: Record<string, string> = {
 };
 
 export function InsightsGrid({ type, initialInsights = [], initialTotal = 0 }: InsightsGridProps) {
-  const [insights, setInsights] = useState<Insight[]>(initialInsights.slice(0, INITIAL_LIMIT));
+  const queryClient = useQueryClient();
+  const [displayedCount, setDisplayedCount] = useState(INITIAL_LIMIT);
+  
+  // Fetch initial insights with React Query
+  const { data: initialData, isLoading: initialLoading } = usePublicInsights(
+    { type, page: 1, limit: INITIAL_LIMIT },
+    { initialData: initialInsights.length > 0 ? { insights: initialInsights, pagination: { total: initialTotal, page: 1, limit: INITIAL_LIMIT, totalPages: Math.ceil(initialTotal / INITIAL_LIMIT) } } : undefined }
+  );
+  
+  // Get all displayed insights from cache or current query
+  const displayedInsights = useMemo(() => {
+    const allInsights: Insight[] = [];
+    let currentPage = 1;
+    const limit = INITIAL_LIMIT;
+    
+    // Start with initial data
+    if (initialData?.insights) {
+      allInsights.push(...initialData.insights);
+    }
+    
+    // Fetch additional pages from cache if available
+    while (allInsights.length < displayedCount) {
+      currentPage++;
+      const cacheKey = ['insights', 'list', { type, page: currentPage, limit }];
+      const cachedData = queryClient.getQueryData<{ insights: Insight[]; pagination: any }>(cacheKey);
+      
+      if (cachedData?.insights) {
+        allInsights.push(...cachedData.insights);
+      } else {
+        break;
+      }
+    }
+    
+    return allInsights.slice(0, displayedCount);
+  }, [initialData, displayedCount, type, queryClient]);
+  
+  const total = initialData?.pagination?.total || initialTotal;
+  const hasMore = displayedInsights.length < total;
   const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(initialTotal > INITIAL_LIMIT);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [total, setTotal] = useState(initialTotal);
 
-  const loadMore = useCallback(async () => {
+  // Load more insights
+  const loadMore = async () => {
     if (loading || !hasMore) return;
-
+    
     setLoading(true);
     try {
-      const params = new URLSearchParams();
-      params.set('isPublished', 'true');
-      if (type) params.set('type', type);
+      const offset = displayedCount;
+      const pageToLoad = Math.floor(offset / LOAD_MORE_LIMIT) + 1;
       
-      // We've loaded 'insights.length' items so far
-      // The next items to load start at index 'insights.length'
-      // With standard pagination (1-based), if we use limit 3:
-      // - Page 1 (limit 3): items 1-3 (indices 0-2)
-      // - Page 2 (limit 3): items 4-6 (indices 3-5)
-      // - Page 3 (limit 3): items 7-9 (indices 6-8)
-      // So if we've loaded 6 items (indices 0-5), we need page 3 to get items 7-9
-      // Formula: page = Math.floor(offset / limit) + 1
-      const offset = insights.length;
-      const nextPage = Math.floor(offset / LOAD_MORE_LIMIT) + 1;
-      params.set('page', nextPage.toString());
-      params.set('limit', LOAD_MORE_LIMIT.toString());
-
-      const response = await api.get<{
-        insights: Insight[];
-        pagination: { total: number; page: number; limit: number; totalPages: number };
-      }>(`/insights?${params.toString()}`);
-
-      const newInsights = response.insights || [];
-      const responseTotal = response.pagination?.total || total;
+      // Prefetch the next page using React Query
+      const { fetchPublicInsights } = await import('@/lib/api/public-insights-client');
+      const nextData = await fetchPublicInsights({
+        type,
+        page: pageToLoad,
+        limit: LOAD_MORE_LIMIT,
+      });
       
-      if (newInsights.length > 0) {
-        const updatedInsights = [...insights, ...newInsights];
-        setInsights(updatedInsights);
-        setTotal(responseTotal);
-        setHasMore(updatedInsights.length < responseTotal);
-        setCurrentPage(nextPage);
-      } else {
-        setHasMore(false);
-      }
+      // Set the query data in cache
+      queryClient.setQueryData(
+        ['insights', 'list', { type, page: pageToLoad, limit: LOAD_MORE_LIMIT }],
+        nextData
+      );
+      
+      // Update displayed count
+      setDisplayedCount(prev => prev + LOAD_MORE_LIMIT);
     } catch (error) {
       console.error('Failed to load more insights:', error);
-      setHasMore(false);
     } finally {
       setLoading(false);
     }
-  }, [loading, hasMore, insights, type, total]);
+  };
 
-  // Update hasMore when insights change
-  useEffect(() => {
-    setHasMore(insights.length < total);
-  }, [insights.length, total]);
-
-  if (insights.length === 0) {
+  if (displayedInsights.length === 0 && !loading) {
     return (
       <div className="text-center py-12">
         <FileText className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
@@ -129,19 +144,20 @@ export function InsightsGrid({ type, initialInsights = [], initialTotal = 0 }: I
   return (
     <>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {insights.map((insight, index) => (
+        {displayedInsights.map((insight, index) => (
           <Link 
             key={insight.id} 
             href={`/insights/${insight.slug}`}
           >
             <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
               {insight.coverImageUrl && (
-                <div className="relative h-48 w-full overflow-hidden rounded-t-lg">
+                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-t-lg">
                   <InsightImage
                     src={getImageUrl(insight.coverImageUrl)}
                     alt={insight.title}
                     className="w-full h-full"
                     loading={index < 3 ? "eager" : "lazy"}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
               )}

@@ -6,7 +6,7 @@ type AppRouteHandlerRoutes = "/api/auth/check" | "/api/auth/session"
 type PageRoutes = never
 type LayoutRoutes = "/" | "/admin" | "/admin/login" | "/admin/settings" | "/admin/settings/users"
 type RedirectRoutes = never
-type RewriteRoutes = never
+type RewriteRoutes = "/favicon.ico"
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes | AppRouteHandlerRoutes
 
 
@@ -39,6 +39,7 @@ interface ParamMap {
   "/approach/mel": {}
   "/approach/program-delivery": {}
   "/approach/research": {}
+  "/favicon.ico": {}
   "/focus-areas": {}
   "/focus-areas/agriculture": {}
   "/focus-areas/climate": {}

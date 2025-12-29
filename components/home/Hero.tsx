@@ -151,7 +151,8 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
-              className="text-lg md:text-xl text-foreground/90 leading-relaxed mb-10 drop-shadow-md"
+              className="text-lg md:text-xl text-foreground/90 leading-relaxed mb-10 drop-shadow-md text-left"
+              style={{ textIndent: 0 }}
             >
               SPX partners with governments, funders, and enterprises to design,
               test, and scale solutions that strengthen systems across Africa.

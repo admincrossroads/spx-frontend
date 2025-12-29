@@ -34,6 +34,7 @@
         3840
       ],
       "imageSizes": [
+        16,
         32,
         48,
         64,
@@ -47,8 +48,9 @@
       "loaderFile": "",
       "domains": [],
       "disableStaticImages": false,
-      "minimumCacheTTL": 14400,
+      "minimumCacheTTL": 60,
       "formats": [
+        "image/avif",
         "image/webp"
       ],
       "maximumRedirects": 3,
@@ -68,12 +70,17 @@
           "hostname": "localhost",
           "port": "5000",
           "pathname": "/uploads/**"
+        },
+        {
+          "protocol": "https",
+          "hostname": "awakilofiles.nyc3.digitaloceanspaces.com",
+          "pathname": "/**"
         }
       ],
       "qualities": [
         75
       ],
-      "unoptimized": true
+      "unoptimized": false
     },
     "devIndicators": {
       "position": "bottom-left"
@@ -95,7 +102,9 @@
       "keepAlive": true
     },
     "logging": {},
-    "compiler": {},
+    "compiler": {
+      "removeConsole": true
+    },
     "expireTime": 31536000,
     "staticPageGenerationTimeout": 60,
     "modularizeImports": {
@@ -305,7 +314,17 @@
     "turbopack": {
       "root": "C:\\Users\\Victus\\Documents\\Spiralytix\\Website\\spiralytix-site"
     },
-    "distDirRoot": ".next"
+    "distDirRoot": ".next",
+    "_originalRewrites": {
+      "beforeFiles": [],
+      "afterFiles": [
+        {
+          "source": "/favicon.ico",
+          "destination": "/logos/favicon.png"
+        }
+      ],
+      "fallback": []
+    }
   },
   "appDir": "C:\\Users\\Victus\\Documents\\Spiralytix\\Website\\spiralytix-site",
   "relativeAppDir": "",

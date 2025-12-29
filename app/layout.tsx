@@ -3,11 +3,14 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { Suspense } from "react";
 import PageTransitionLoader from "@/components/loading/PageTransitionLoader";
+import { QueryProvider } from "@/lib/providers/QueryProvider";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-montserrat",
+  display: "swap", // Prevent layout shift during font load
+  preload: true,
 });
 
 const siteUrl = "https://spxafrica.com";
@@ -31,14 +34,14 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   icons: {
     icon: [
-      { url: "/logos/SPX-white.png", type: "image/png" },
+      { url: "/logos/favicon.png", type: "image/png" },
       { url: "/logos/SPX-white.png", sizes: "32x32", type: "image/png" },
       { url: "/logos/SPX-white.png", sizes: "16x16", type: "image/png" },
     ],
     apple: [
       { url: "/logos/SPX-white.png", sizes: "180x180", type: "image/png" },
     ],
-    shortcut: "/logos/SPX-white.png",
+    shortcut: "/logos/favicon.png",
   },
   openGraph: {
     type: "website",
@@ -75,11 +78,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${montserrat.className} bg-white text-slateText`}>
-        <Suspense fallback={null}>
-          <PageTransitionLoader />
-        </Suspense>
-        {children}
+      <body 
+        className={`${montserrat.className} bg-white text-slateText`}
+        suppressHydrationWarning
+      >
+        <QueryProvider>
+          <Suspense fallback={null}>
+            <PageTransitionLoader />
+          </Suspense>
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );

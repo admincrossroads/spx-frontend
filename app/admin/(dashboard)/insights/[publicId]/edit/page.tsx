@@ -36,18 +36,29 @@ import InsightEditor from '../../components/InsightEditor';
 import { InsightBlock, InsightFormInput, InsightFormValues, insightFormSchema } from '@/types/insights';
 import ImageUpload from '../../components/imageUpload';
 import Link from 'next/link';
+import { useAuthors } from '@/lib/hooks/queries/useAuthors';
+import { useTags } from '@/lib/hooks/queries/useTags';
+import { useAdminInsight } from '@/lib/hooks/queries/useAdminInsights';
 
 export default function EditInsightPage() {
   const router = useRouter();
   const params = useParams();
   const publicId = params.publicId as string;
   
-  const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [blocks, setBlocks] = useState<InsightBlock[]>([]);
-  const [authors, setAuthors] = useState<any[]>([]);
-  const [tags, setTags] = useState<any[]>([]);
-  const [insight, setInsight] = useState<any>(null);
+  
+  // Use React Query to fetch data
+  const { data: insight, isLoading, error } = useAdminInsight(publicId);
+  const { data: authors = [] } = useAuthors();
+  const { data: tags = [] } = useTags();
+  
+  // Redirect if insight not found
+  useEffect(() => {
+    if (error || (insight === null && !isLoading)) {
+      router.push('/admin/insights');
+    }
+  }, [error, insight, isLoading, router]);
 
   const form = useForm<InsightFormInput, any, InsightFormValues>({
     resolver: zodResolver(insightFormSchema),
@@ -63,48 +74,26 @@ export default function EditInsightPage() {
     } as InsightFormInput,
   });
 
+  // Set form values when insight data loads
   useEffect(() => {
-    const loadData = async () => {
-      setIsLoading(true);
-      try {
-        const [insightData, authorsData, tagsData] = await Promise.all([
-          api.get<any>(`/admin/insights/${publicId}`),
-          api.get<any[]>('/admin/authors'),
-          api.get<any[]>('/admin/tags'),
-        ]);
+    if (insight) {
+      form.reset({
+        title: insight.title,
+        slug: insight.slug,
+        summary: insight.summary,
+        type: insight.type,
+        authorId: insight.author?.id ?? insight.authorId ?? 0,
+        tags: insight.tags?.map((tag: any) => tag.id) || [],
+        coverImageUrl: insight.coverImageUrl || '',
+        isPublished: insight.isPublished || false,
+      } as InsightFormInput);
 
-        setInsight(insightData);
-        setAuthors(authorsData);
-        setTags(tagsData);
-        
-        // Set form values
-        form.reset({
-          title: insightData.title,
-          slug: insightData.slug,
-          summary: insightData.summary,
-          type: insightData.type,
-          authorId: insightData.author?.id ?? insightData.authorId ?? 0,
-          tags: insightData.tags?.map((tag: any) => tag.id) || [],
-          coverImageUrl: insightData.coverImageUrl || '',
-          isPublished: insightData.isPublished || false,
-        } as InsightFormInput);
-
-        // Set content blocks
-        if (insightData.content && Array.isArray(insightData.content)) {
-          setBlocks(insightData.content);
-        }
-      } catch (error) {
-        console.error('Failed to load data:', error);
-        router.push('/admin/insights');
-      } finally {
-        setIsLoading(false);
+      // Set content blocks
+      if (insight.content && Array.isArray(insight.content)) {
+        setBlocks(insight.content);
       }
-    };
-
-    if (publicId) {
-      loadData();
     }
-  }, [publicId, form, router]);
+  }, [insight, form]);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const title = e.target.value;

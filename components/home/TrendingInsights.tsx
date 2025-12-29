@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { InsightImage } from '@/components/ui/insight-image';
 import { getImageUrl } from '@/lib/utils/helpers';
+import { usePublicInsights } from '@/lib/hooks/queries/useInsights';
 
 const typeLabels: Record<string, string> = {
   blog: 'Blog',
@@ -31,60 +32,12 @@ interface Insight {
 }
 
 export default function TrendingInsights() {
-  const [insights, setInsights] = useState<Insight[]>([]);
-  const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    let mounted = true;
-
-    async function fetchTrendingInsights() {
-      try {
-        const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
-        const API_KEY = process.env.NEXT_PUBLIC_API_KEY || '';
-        
-        const headers: HeadersInit = {
-          'Content-Type': 'application/json',
-        };
-        
-        if (API_KEY) {
-          headers['x-api-key'] = API_KEY;
-        }
-        
-        // Fetch top 5 published insights (sorted by published date)
-        const response = await fetch(`${API_URL}/insights?isPublished=true&limit=5`, {
-          method: 'GET',
-          headers,
-          cache: 'no-store',
-        });
-
-        if (!response.ok) {
-          throw new Error(`Failed to fetch insights: ${response.status}`);
-        }
-
-        const data = await response.json();
-        
-        if (mounted) {
-          setInsights(data.insights || []);
-        }
-      } catch (error) {
-        console.error('Failed to fetch trending insights:', error);
-        if (mounted) {
-          setInsights([]);
-        }
-      } finally {
-        if (mounted) {
-          setLoading(false);
-        }
-      }
-    }
-
-    fetchTrendingInsights();
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  
+  // Use React Query to fetch insights
+  const { data, isLoading } = usePublicInsights({ limit: 5 });
+  const insights = data?.insights || [];
+  const loading = isLoading;
 
   // Auto-rotate carousel
   useEffect(() => {
@@ -182,12 +135,13 @@ export default function TrendingInsights() {
                 <div className="grid md:grid-cols-2 gap-6 bg-card border rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
                   {/* Image Section */}
                   {insights[currentIndex].coverImageUrl && (
-                    <div className="relative h-64 md:h-full min-h-[300px]">
+                    <div className="relative w-full aspect-[4/3] md:aspect-auto md:h-full md:min-h-[300px]">
                       <InsightImage
                         src={getImageUrl(insights[currentIndex].coverImageUrl)}
                         alt={insights[currentIndex].title}
                         className="w-full h-full object-cover"
                         loading="eager"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                       />
                     </div>
                   )}
@@ -277,12 +231,13 @@ export default function TrendingInsights() {
               whileTap={{ scale: 0.98 }}
             >
               {insight.coverImageUrl && (
-                <div className="relative h-24 mb-2 rounded overflow-hidden">
+                <div className="relative w-full aspect-square mb-2 rounded overflow-hidden">
                   <InsightImage
                     src={getImageUrl(insight.coverImageUrl)}
                     alt={insight.title}
                     className="w-full h-full object-cover"
                     loading="lazy"
+                    sizes="(max-width: 768px) 33vw, 20vw"
                   />
                 </div>
               )}

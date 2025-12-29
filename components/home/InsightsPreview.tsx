@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from "framer-motion";
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { usePublicInsights } from '@/lib/hooks/queries/useInsights';
 
 const typeLabels: Record<string, string> = {
   blog: 'Blog',
@@ -23,61 +23,10 @@ interface Insight {
 }
 
 export default function InsightsPreview() {
-  const [insights, setInsights] = useState<Insight[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let mounted = true;
-
-    async function fetchInsights() {
-      try {
-        const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
-        const API_KEY = process.env.NEXT_PUBLIC_API_KEY || '';
-        
-        const headers: HeadersInit = {
-          'Content-Type': 'application/json',
-        };
-        
-        // Add API key if available (required for backend)
-        if (API_KEY) {
-          headers['x-api-key'] = API_KEY;
-        }
-        
-        const response = await fetch(`${API_URL}/insights?isPublished=true&limit=3`, {
-          method: 'GET',
-          headers,
-          cache: 'no-store', // Client-side fetch doesn't support Next.js cache options
-        });
-
-        if (!response.ok) {
-          const errorText = await response.text();
-          console.error('Failed to fetch insights:', response.status, errorText);
-          throw new Error(`Failed to fetch insights: ${response.status}`);
-        }
-
-        const data = await response.json();
-        
-        if (mounted) {
-          setInsights(data.insights || []);
-        }
-      } catch (error) {
-        console.error('Failed to fetch insights:', error);
-        if (mounted) {
-          setInsights([]);
-        }
-      } finally {
-        if (mounted) {
-          setLoading(false);
-        }
-      }
-    }
-
-    fetchInsights();
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  // Use React Query to fetch insights
+  const { data, isLoading } = usePublicInsights({ limit: 3 });
+  const insights = data?.insights || [];
+  const loading = isLoading;
 
   if (loading) {
     return null;

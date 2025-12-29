@@ -9,9 +9,20 @@ interface InsightImageProps {
   alt: string;
   className?: string;
   loading?: 'lazy' | 'eager';
+  width?: number;
+  height?: number;
+  sizes?: string;
 }
 
-export function InsightImage({ src, alt, className = '', loading = 'lazy' }: InsightImageProps) {
+export function InsightImage({ 
+  src, 
+  alt, 
+  className = '', 
+  loading = 'lazy',
+  width,
+  height,
+  sizes
+}: InsightImageProps) {
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -59,11 +70,15 @@ export function InsightImage({ src, alt, className = '', loading = 'lazy' }: Ins
           ref={imgRef}
           src={src}
           alt={alt}
+          width={width}
+          height={height}
+          sizes={sizes}
           className={cn(
             'w-full h-full object-cover transition-opacity duration-300',
             isImageLoaded ? 'opacity-100' : 'opacity-0'
           )}
           loading={loading}
+          decoding="async"
           onLoad={handleLoad}
           onError={handleError}
         />

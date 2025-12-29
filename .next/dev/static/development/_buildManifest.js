@@ -1,6 +1,11 @@
 self.__BUILD_MANIFEST = {
   "__rewrites": {
-    "afterFiles": [],
+    "afterFiles": [
+      {
+        "source": "/favicon.ico",
+        "destination": "/logos/favicon.png"
+      }
+    ],
     "beforeFiles": [],
     "fallback": []
   },

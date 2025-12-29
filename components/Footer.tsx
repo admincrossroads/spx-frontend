@@ -2,7 +2,10 @@
 
 import Link from "next/link"
 import { NAV_ITEMS } from "@/components/NavData"
-import { FaLinkedinIn, FaXTwitter, FaYoutube } from "react-icons/fa6"
+// Import only the icons we need to reduce bundle size
+import { FaLinkedinIn } from "react-icons/fa6"
+import { FaXTwitter } from "react-icons/fa6"
+import { FaYoutube } from "react-icons/fa6"
 import { useContactModal } from "@/lib/contexts/ContactModalContext"
 import { Button } from "@/components/ui/button"
 
@@ -22,7 +25,15 @@ export default function Footer() {
         {/* LOGO + ABOUT */}
         <div className="col-span-1 flex flex-col items-center md:items-start gap-4">
           <Link href="/" className="text-3xl font-bold text-primary">
-            <img src="/logos/SPX.png" alt="SPX logo" className="h-24" />
+            <img 
+              src="/logos/SPX.png" 
+              alt="SPX logo" 
+              className="h-24 w-auto" 
+              width={96}
+              height={96}
+              loading="eager"
+              decoding="async"
+            />
           </Link>
 
           <p className="
