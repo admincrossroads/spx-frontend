@@ -1,15 +1,48 @@
 {
   "app": {
+    "[project]/app/(public)/about/identity/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
+    ],
+    "[project]/app/(public)/about/leadership/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
+    ],
+    "[project]/app/(public)/about/locations/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
+    ],
+    "[project]/app/(public)/about/partners/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
+    ],
+    "[project]/app/(public)/about/vision-mission/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
+    ],
+    "[project]/app/(public)/about/who-we-are/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
+    ],
+    "[project]/app/(public)/approach/research/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
+    ],
     "[project]/app/(public)/insights/[slug]/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
     ],
+    "[project]/app/(public)/insights/blogs/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
+    ],
     "[project]/app/(public)/insights/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
+    ],
+    "[project]/app/(public)/insights/policy-briefs/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
     ],
     "[project]/app/(public)/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
     ],
     "[project]/app/_not-found/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
+    ],
+    "[project]/app/admin/(dashboard)/insights/new/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
+    ],
+    "[project]/app/admin/(dashboard)/insights/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2"
     ],
     "[project]/app/admin/(dashboard)/page": [

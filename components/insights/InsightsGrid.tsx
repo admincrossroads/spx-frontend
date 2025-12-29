@@ -129,7 +129,7 @@ export function InsightsGrid({ type, initialInsights = [], initialTotal = 0 }: I
   return (
     <>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {insights.map((insight) => (
+        {insights.map((insight, index) => (
           <Link 
             key={insight.id} 
             href={`/insights/${insight.slug}`}
@@ -140,8 +140,8 @@ export function InsightsGrid({ type, initialInsights = [], initialTotal = 0 }: I
                   <InsightImage
                     src={getImageUrl(insight.coverImageUrl)}
                     alt={insight.title}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
+                    className="w-full h-full"
+                    loading={index < 3 ? "eager" : "lazy"}
                   />
                 </div>
               )}

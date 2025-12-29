@@ -1,6 +1,111 @@
-[00:00:01.170] Server  LOG      ✓ Ready in 903ms
-[00:00:07.753] Server  LOG      ○ Compiling /admin/login ...
-[00:00:12.815] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+[00:00:43.658] Server  LOG      ✓ Ready in 27.5s
+[00:00:46.685] Server  LOG      ○ Compiling / ...
+[00:01:00.618] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:01:00.618] Browser WARN    Image with src "/logos/SPX.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:01:10.059] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&page=1&limit=6"
+[00:01:10.120] Server  LOG     Response status: 200
+[00:01:10.134] Server  LOG     Fetched insights count: 6
+[00:01:23.404] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&page=1&limit=6"
+[00:01:23.729] Server  LOG     Response status: 200
+[00:01:23.736] Server  LOG     Fetched insights count: 6
+[00:01:33.218] Browser WARN    [API Client] No token found in localStorage for endpoint: /auth/me
+[00:01:33.218] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:33.218] Browser ERROR   [API Client] 401 Unauthorized: {"allHeaders":{"content-type":"application/json","x-api-key":"spx-1234567890abcdef"},"authHeaderValue":"undefined...","endpoint":"/auth/me","hasAuthHeader":false,"hasToken":false,"tokenLength":0,"url":"http://localhost:5000/api/v1/auth/me"}
+[00:01:33.245] Browser WARN    [API Client] No token found in localStorage for endpoint: /admin/insights?limit=50
+[00:01:33.245] Browser WARN    [API Client] No token found in localStorage for endpoint: /admin/authors
+[00:01:33.245] Browser WARN    [API Client] No token found in localStorage for endpoint: /admin/tags
+[00:01:33.245] Browser ERROR   [API Client] 401 Unauthorized: {"allHeaders":{"content-type":"application/json","x-api-key":"spx-1234567890abcdef"},"authHeaderValue":"undefined...","endpoint":"/admin/insights?limit=50","hasAuthHeader":false,"hasToken":false,"tokenLength":0,"url":"http://localhost:5000/api/v1/admin/insights?limit=50"}
+[00:01:33.246] Browser ERROR   [API Client] 401 Unauthorized: {"allHeaders":{"content-type":"application/json","x-api-key":"spx-1234567890abcdef"},"authHeaderValue":"undefined...","endpoint":"/admin/authors","hasAuthHeader":false,"hasToken":false,"tokenLength":0,"url":"http://localhost:5000/api/v1/admin/authors"}
+[00:01:33.249] Browser ERROR   [API Client] 401 Unauthorized: {"allHeaders":{"content-type":"application/json","x-api-key":"spx-1234567890abcdef"},"authHeaderValue":"undefined...","endpoint":"/admin/tags","hasAuthHeader":false,"hasToken":false,"tokenLength":0,"url":"http://localhost:5000/api/v1/admin/tags"}
+[00:01:33.361] Browser ERROR   Failed to load user: {"data":{"error":"Authentication required","message":"No authentication token provided"},"name":"ApiError","status":401}
+[00:01:36.618] Browser LOG     Login attempt for: dave@spx.com
+[00:01:36.760] Browser LOG     Login successful: {"user":"dave@spx.com"}
+[00:01:37.218] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:01:37.218] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:37.218] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:01:37.218] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:01:37.218] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:01:42.768] Server  LOG      ○ Compiling /admin/insights/new ...
+[00:01:46.464] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:01:46.465] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:46.465] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:01:46.465] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:05:21.591] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:05:26.202] Browser LOG     Image loaded successfully: {"height":192,"naturalHeight":1024,"naturalWidth":1536,"url":"https://awakilofiles.nyc3.digitaloceanspaces.com/SPX-Insights/policy/a9162c02-728c-484f-abf4-4240c3269409/a9162c02-728c-484f-abf4-4240c3269409-policy-brief-1766984635839.png","width":288}
+[00:05:45.592] Browser LOG     Submitting data: {
+  "title": "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap",
+  "slug": "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap",
+  "summary": "Digital sovereignty is a major priority in the new roadmap through homegrown platforms, sovereign cloud, data localization, and regional interoperability.",
+  "type": "policy-brief",
+  "content": [
+    {
+      "id": "text-1766984540194-qdgiaakwd",
+      "type": "text",
+      "data": {
+        "html": ""
+      }
+    },
+    {
+      "id": "text-1766984556304-c5o0fiptp",
+      "type": "text",
+      "data": {
+        "html": ""
+      }
+    },
+    {
+      "id": "image-1766984621331-ux403wnd9",
+      "type": "image",
+      "data": {
+        "url": "https://awakilofiles.nyc3.digitaloceanspaces.com/SPX-Insights/policy/a9162c02-728c-484f-abf4-4240c3269409/a9162c02-728c-484f-abf4-4240c3269409-policy-brief-1766984635839.png",
+        "caption": "",
+        "alt": ""
+      }
+    },
+    {
+      "id": "text-1766984647574-rh79ltdbm",
+      "type": "text",
+      "data": {
+        "html": ""
+      }
+    }
+  ],
+  "authorId": 27,
+  "tags": [
+    26
+  ],
+  "coverImageUrl": "https://awakilofiles.nyc3.digitaloceanspaces.com/SPX-Insights/policy/eb12a8a6-a11c-49b6-855b-b25d38c40b0b/eb12a8a6-a11c-49b6-855b-b25d38c40b0b-policy-brief-1766754520274.png",
+  "isPublished": true,
+  "publicId": "a9162c02-728c-484f-abf4-4240c3269409"
+}
+[00:05:45.592] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:05:46.074] Browser LOG     Response: {"author":{"bio":"Investment strategist focusing on global markets and portfolio management.","id":27,"imageUrl":null,"name":"Michael Strategist"},"authorId":27,"content":[{"data":{"html":""},"id":"text-1766984540194-qdgiaakwd","type":"text"},{"data":{"html":""},"id":"text-1766984556304-c5o0fiptp","type":"text"},{"data":{"alt":"","caption":"","url":"https://awakilofiles.nyc3.digitaloceanspaces.com/SPX-Insights/policy/a9162c02-728c-484f-abf4-4240c3269409/a9162c02-728c-484f-abf4-4240c3269409-policy-brief-1766984635839.png"},"id":"image-1766984621331-ux403wnd9","type":"image"},{"data":{"html":""},"id":"text-1766984647574-rh79ltdbm","type":"text"}],"coverImageUrl":"https://awakilofiles.nyc3.digitaloceanspaces.com/SPX-Insights/policy/eb12a8a6-a11c-49b6-855b-b25d38c40b0b/eb12a8a6-a11c-49b6-855b-b25d38c40b0b-policy-brief-1766754520274.png","createdAt":"2025-12-29T05:04:19.957Z","id":122,"isPublished":true,"publicId":"a9162c02-728c-484f-abf4-4240c3269409","publishedAt":null,"slug":"data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap","summary":"Digital sovereignty is a major priority in the new roadmap through homegrown platforms, sovereign cloud, data localization, and regional interoperability.","tags":[{"id":26,"name":"Policy","slug":"policy"}],"title":"Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap","type":"policy-brief","updatedAt":"2025-12-29T05:04:19.957Z"}
+[00:05:48.385] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:05:48.385] Browser LOG     [2;38;2;124;124;124m%s[0m [API Client] Adding Authorization header with token length: 237
+[00:05:48.766] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:05:53.370] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&page=1&limit=6"
+[00:05:53.610] Server  LOG     Response status: 200
+[00:05:53.756] Server  LOG     Fetched insights count: 6
+[00:06:05.435] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&type=policy-brief&page=1&limit=6"
+[00:06:05.988] Server  LOG     Response status: 200
+[00:06:06.022] Server  LOG     Fetched insights count: 6
+[00:06:15.571] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:06:15.572] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:06:15.574] Server  LOG     API_KEY available: true
+[00:06:15.579] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:06:16.121] Server  LOG     Response status: 200
+[00:06:16.160] Server  LOG     Response status: 200
+[00:06:16.176] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:06:16.204] Server  LOG     Fetched insights count: 5
+[00:09:35.969] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:09:35.978] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:09:35.981] Server  LOG     API_KEY available: true
+[00:09:35.987] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:09:36.496] Server  LOG     Response status: 200
+[00:09:36.508] Server  LOG     Response status: 200
+[00:09:36.522] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:09:36.532] Server  LOG     Fetched insights count: 5
+[00:09:36.816] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -18,7 +123,7 @@ It can also happen if the client has a browser extension installed which messes 
         <ReplaySsrOnlyErrors>
         <DevRootHTTPAccessFallbackBoundary>
           <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/admin/login" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+            <HTTPAccessFallbackErrorBoundary pathname="/insights/..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
               <RedirectBoundary>
                 <RedirectErrorBoundary router={{...}}>
                   <Head>
@@ -37,22 +142,578 @@ It can also happen if the client has a browser extension installed which messes 
                           >
                   ...
 
-[00:00:14.513] Browser LOG     Login attempt for: dave@spx.com
-[00:00:14.707] Browser LOG     Login successful: {"user":"dave@spx.com"}
-[00:00:18.643] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:00:18.643] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:00:18.643] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:00:18.643] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:00:18.643] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:00:29.462] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:00:37.549] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&page=1&limit=6"
-[00:00:37.942] Server  LOG     Response status: 200
-[00:00:38.024] Server  LOG     Fetched insights count: 6
-[00:00:49.742] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
-[00:00:49.744] Server  LOG     Using slug exactly as provided: "test-blog"
-[00:00:49.748] Server  LOG     API_KEY available: true
-[00:00:49.755] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
-[00:00:51.130] Server  LOG     Response status: 200
-[00:00:51.185] Server  LOG     Response status: 200
-[00:00:51.200] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
-[00:00:51.223] Server  LOG     Fetched insights count: 5
+[00:11:57.899] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:11:57.899] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:11:57.900] Server  LOG     API_KEY available: true
+[00:11:57.905] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:11:57.913] Server  LOG     Response status: 200
+[00:11:57.914] Server  LOG     Response status: 200
+[00:11:57.918] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:11:57.919] Server  LOG     Fetched insights count: 5
+[00:11:57.998] Server  LOG      ✓ Compiled in 407ms
+[00:12:01.238] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:12:01.239] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:12:01.239] Server  LOG     API_KEY available: true
+[00:12:01.241] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:12:01.246] Server  LOG     Response status: 200
+[00:12:01.247] Server  LOG     Response status: 200
+[00:12:01.249] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:12:01.249] Server  LOG     Fetched insights count: 5
+[00:12:02.583] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:12:02.583] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:12:02.584] Server  LOG     API_KEY available: true
+[00:12:02.586] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:12:02.592] Server  LOG     Response status: 200
+[00:12:02.593] Server  LOG     Response status: 200
+[00:12:02.596] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:12:02.597] Server  LOG     Fetched insights count: 5
+[00:12:18.151] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:12:18.151] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:12:18.151] Server  LOG     API_KEY available: true
+[00:12:18.154] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:12:18.159] Server  LOG     Response status: 200
+[00:12:18.160] Server  LOG     Response status: 200
+[00:12:18.162] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:12:18.162] Server  LOG     Fetched insights count: 5
+[00:12:23.471] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:12:23.472] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:12:23.472] Server  LOG     API_KEY available: true
+[00:12:23.474] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:12:23.477] Server  LOG     Response status: 200
+[00:12:23.478] Server  LOG     Response status: 200
+[00:12:23.480] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:12:23.481] Server  LOG     Fetched insights count: 5
+[00:12:23.568] Server  LOG      ✓ Compiled in 278ms
+[00:12:29.104] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:12:29.105] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:12:29.105] Server  LOG     API_KEY available: true
+[00:12:29.108] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:12:29.115] Server  LOG     Response status: 200
+[00:12:29.116] Server  LOG     Response status: 200
+[00:12:29.121] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:12:29.121] Server  LOG     Fetched insights count: 5
+[00:12:37.206] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:12:37.206] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:12:37.206] Server  LOG     API_KEY available: true
+[00:12:37.208] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:12:37.212] Server  LOG     Response status: 200
+[00:12:37.212] Server  LOG     Response status: 200
+[00:12:37.214] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:12:37.214] Server  LOG     Fetched insights count: 5
+[00:13:55.109] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:13:55.111] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:13:55.113] Server  LOG     API_KEY available: true
+[00:13:55.116] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:13:55.833] Server  LOG     Response status: 200
+[00:13:55.843] Server  LOG     Response status: 200
+[00:13:55.850] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:13:55.860] Server  LOG     Fetched insights count: 5
+[00:13:56.069] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/insights/..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" suppressHydrationWarning={true}>
+                          <body
+                            className="montserrat_2cd33e48-module__aZ667G__className bg-white text-slateText"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:14:18.568] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&page=1&limit=6"
+[00:14:19.025] Server  LOG     Response status: 200
+[00:14:19.038] Server  LOG     Fetched insights count: 6
+[00:14:21.204] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:14:21.205] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:14:21.206] Server  LOG     API_KEY available: true
+[00:14:21.211] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:14:21.298] Server  LOG     Response status: 200
+[00:14:21.314] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:14:21.333] Server  LOG     Response status: 200
+[00:14:21.342] Server  LOG     Fetched insights count: 5
+[00:14:39.868] Server  LOG      ✓ Compiled in 177ms
+[00:14:40.163] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:14:40.164] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:14:40.165] Server  LOG     API_KEY available: true
+[00:14:40.171] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:14:40.189] Server  LOG     Response status: 200
+[00:14:40.193] Server  LOG     Response status: 200
+[00:14:40.200] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:14:40.201] Server  LOG     Fetched insights count: 5
+[00:15:59.957] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:15:59.958] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:15:59.958] Server  LOG     API_KEY available: true
+[00:15:59.960] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:15:59.965] Server  LOG     Response status: 200
+[00:15:59.967] Server  LOG     Response status: 200
+[00:15:59.969] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:15:59.969] Server  LOG     Fetched insights count: 5
+[00:16:05.075] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:16:05.076] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:16:05.076] Server  LOG     API_KEY available: true
+[00:16:05.078] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:16:05.081] Server  LOG     Response status: 200
+[00:16:05.082] Server  LOG     Response status: 200
+[00:16:05.084] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:16:05.084] Server  LOG     Fetched insights count: 5
+[00:16:31.512] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:16:31.513] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:16:31.513] Server  LOG     API_KEY available: true
+[00:16:31.514] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:16:32.001] Server  LOG     Response status: 200
+[00:16:32.008] Server  LOG     Response status: 200
+[00:16:32.023] Server  LOG     Fetched insights count: 5
+[00:16:32.025] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:16:40.060] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&page=1&limit=6"
+[00:16:40.143] Server  LOG     Response status: 200
+[00:16:40.155] Server  LOG     Fetched insights count: 6
+[00:16:42.253] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:16:42.254] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:16:42.256] Server  LOG     API_KEY available: true
+[00:16:42.260] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:16:42.349] Server  LOG     Response status: 200
+[00:16:42.363] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:16:42.381] Server  LOG     Response status: 200
+[00:16:42.394] Server  LOG     Fetched insights count: 5
+[00:16:59.372] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:16:59.372] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:16:59.372] Server  LOG     API_KEY available: true
+[00:16:59.374] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:16:59.379] Server  LOG     Response status: 200
+[00:16:59.380] Server  LOG     Response status: 200
+[00:16:59.382] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:16:59.383] Server  LOG     Fetched insights count: 5
+[00:17:12.297] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:17:12.297] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:17:12.297] Server  LOG     API_KEY available: true
+[00:17:12.299] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:17:12.302] Server  LOG     Response status: 200
+[00:17:12.303] Server  LOG     Response status: 200
+[00:17:12.304] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:17:12.304] Server  LOG     Fetched insights count: 5
+[00:17:17.830] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:17:17.830] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:17:17.830] Server  LOG     API_KEY available: true
+[00:17:17.832] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:17:17.835] Server  LOG     Response status: 200
+[00:17:17.836] Server  LOG     Response status: 200
+[00:17:17.837] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:17:17.838] Server  LOG     Fetched insights count: 5
+[00:17:24.130] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:17:24.130] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:17:24.131] Server  LOG     API_KEY available: true
+[00:17:24.134] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:17:24.138] Server  LOG     Response status: 200
+[00:17:24.139] Server  LOG     Response status: 200
+[00:17:24.141] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:17:24.141] Server  LOG     Fetched insights count: 5
+[00:18:03.239] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:18:03.240] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:18:03.240] Server  LOG     API_KEY available: true
+[00:18:03.246] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:18:03.253] Server  LOG     Response status: 200
+[00:18:03.255] Server  LOG     Response status: 200
+[00:18:03.261] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:18:03.262] Server  LOG     Fetched insights count: 5
+[00:18:08.281] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:18:08.282] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:18:08.283] Server  LOG     API_KEY available: true
+[00:18:08.291] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:18:08.303] Server  LOG     Response status: 200
+[00:18:08.306] Server  LOG     Response status: 200
+[00:18:08.310] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:18:08.312] Server  LOG     Fetched insights count: 5
+[00:18:08.398] Server  LOG      ✓ Compiled in 519ms
+[00:18:39.761] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:18:39.761] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:18:39.761] Server  LOG     API_KEY available: true
+[00:18:39.763] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:18:39.768] Server  LOG     Response status: 200
+[00:18:39.769] Server  LOG     Response status: 200
+[00:18:39.770] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:18:39.770] Server  LOG     Fetched insights count: 5
+[00:18:56.701] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:18:56.701] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:18:56.701] Server  LOG     API_KEY available: true
+[00:18:56.703] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:18:56.707] Server  LOG     Response status: 200
+[00:18:56.708] Server  LOG     Response status: 200
+[00:18:56.710] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:18:56.710] Server  LOG     Fetched insights count: 5
+[00:19:05.022] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:19:05.023] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:19:05.023] Server  LOG     API_KEY available: true
+[00:19:05.025] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:19:05.029] Server  LOG     Response status: 200
+[00:19:05.029] Server  LOG     Response status: 200
+[00:19:05.031] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:19:05.032] Server  LOG     Fetched insights count: 5
+[00:19:21.144] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:19:21.144] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:19:21.144] Server  LOG     API_KEY available: true
+[00:19:21.146] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:19:21.149] Server  LOG     Response status: 200
+[00:19:21.150] Server  LOG     Response status: 200
+[00:19:21.152] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:19:21.152] Server  LOG     Fetched insights count: 5
+[00:19:27.459] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:19:27.460] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:19:27.460] Server  LOG     API_KEY available: true
+[00:19:27.462] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:19:27.466] Server  LOG     Response status: 200
+[00:19:27.466] Server  LOG     Response status: 200
+[00:19:27.468] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:19:27.468] Server  LOG     Fetched insights count: 5
+[00:19:57.141] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:19:57.142] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:19:57.142] Server  LOG     API_KEY available: true
+[00:19:57.144] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:19:57.150] Server  LOG     Response status: 200
+[00:19:57.150] Server  LOG     Response status: 200
+[00:19:57.152] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:19:57.152] Server  LOG     Fetched insights count: 5
+[00:20:09.590] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&page=1&limit=6"
+[00:20:10.140] Server  LOG     Response status: 200
+[00:20:10.148] Server  LOG     Fetched insights count: 6
+[00:20:12.165] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:20:12.166] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:20:12.167] Server  LOG     API_KEY available: true
+[00:20:12.172] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:20:12.275] Server  LOG     Response status: 200
+[00:20:12.292] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:20:12.320] Server  LOG     Response status: 200
+[00:20:12.333] Server  LOG     Fetched insights count: 5
+[00:20:25.676] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:20:25.676] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:20:25.676] Server  LOG     API_KEY available: true
+[00:20:25.680] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:20:25.685] Server  LOG     Response status: 200
+[00:20:25.685] Server  LOG     Response status: 200
+[00:20:25.687] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:20:25.687] Server  LOG     Fetched insights count: 5
+[00:20:31.937] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:20:31.937] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:20:31.938] Server  LOG     API_KEY available: true
+[00:20:31.940] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:20:31.943] Server  LOG     Response status: 200
+[00:20:31.944] Server  LOG     Response status: 200
+[00:20:31.945] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:20:31.946] Server  LOG     Fetched insights count: 5
+[00:20:38.151] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:20:38.151] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:20:38.151] Server  LOG     API_KEY available: true
+[00:20:38.154] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:20:38.159] Server  LOG     Response status: 200
+[00:20:38.160] Server  LOG     Response status: 200
+[00:20:38.162] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:20:38.162] Server  LOG     Fetched insights count: 5
+[00:20:45.685] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:20:45.686] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:20:45.686] Server  LOG     API_KEY available: true
+[00:20:45.688] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:20:45.692] Server  LOG     Response status: 200
+[00:20:45.693] Server  LOG     Response status: 200
+[00:20:45.695] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:20:45.695] Server  LOG     Fetched insights count: 5
+[00:20:56.863] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:20:56.864] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:20:56.864] Server  LOG     API_KEY available: true
+[00:20:56.866] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:20:56.870] Server  LOG     Response status: 200
+[00:20:56.871] Server  LOG     Response status: 200
+[00:20:56.874] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:20:56.874] Server  LOG     Fetched insights count: 5
+[00:21:44.759] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:21:44.760] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:21:44.760] Server  LOG     API_KEY available: true
+[00:21:44.765] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:21:44.786] Server  LOG     Response status: 200
+[00:21:44.788] Server  LOG     Response status: 200
+[00:21:44.790] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:21:44.790] Server  LOG     Fetched insights count: 5
+[00:21:52.837] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:21:52.837] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:21:52.838] Server  LOG     API_KEY available: true
+[00:21:52.838] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:21:53.379] Server  LOG     Response status: 200
+[00:21:53.390] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:21:53.398] Server  LOG     Response status: 200
+[00:21:53.418] Server  LOG     Fetched insights count: 5
+[00:23:23.699] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:23:23.699] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:23:23.700] Server  LOG     API_KEY available: true
+[00:23:23.705] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:23:23.716] Server  LOG     Response status: 200
+[00:23:23.718] Server  LOG     Response status: 200
+[00:23:23.723] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:23:23.724] Server  LOG     Fetched insights count: 5
+[00:29:27.845] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:29:27.846] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:29:27.847] Server  LOG     API_KEY available: true
+[00:29:27.857] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:29:27.880] Server  LOG     Response status: 200
+[00:29:27.883] Server  LOG     Response status: 200
+[00:29:27.887] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:29:27.890] Server  LOG     Fetched insights count: 5
+[00:29:29.054] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:29:29.055] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:29:29.055] Server  LOG     API_KEY available: true
+[00:29:29.064] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:29:29.076] Server  LOG     Response status: 200
+[00:29:29.079] Server  LOG     Response status: 200
+[00:29:29.083] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:29:29.084] Server  LOG     Fetched insights count: 5
+[00:30:59.114] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:30:59.114] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:30:59.114] Server  LOG     API_KEY available: true
+[00:30:59.117] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:30:59.123] Server  LOG     Response status: 200
+[00:30:59.124] Server  LOG     Response status: 200
+[00:30:59.128] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:30:59.129] Server  LOG     Fetched insights count: 5
+[00:33:49.510] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:33:49.510] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:33:49.511] Server  LOG     API_KEY available: true
+[00:33:49.517] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:33:49.539] Server  LOG     Response status: 200
+[00:33:49.543] Server  LOG     Response status: 200
+[00:33:49.553] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:33:49.554] Server  LOG     Fetched insights count: 5
+[00:34:11.633] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&page=1&limit=6"
+[00:34:12.095] Server  LOG     Response status: 200
+[00:34:12.103] Server  LOG     Fetched insights count: 6
+[00:34:17.149] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:34:17.150] Server  LOG     Using slug exactly as provided: "data-sovereignty-tech-savvy-civil-servants-1-million-it-jobs-unpacking-ethiopias-2030-digital-roadmap"
+[00:34:17.150] Server  LOG     API_KEY available: true
+[00:34:17.153] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:34:17.206] Server  LOG     Response status: 200
+[00:34:17.217] Server  LOG     Response status: 200
+[00:34:17.222] Server  LOG     Successfully fetched insight: "Data Sovereignty, Tech-Savvy Civil Servants & 1 million IT jobs: Unpacking Ethiopia’s 2030 Digital Roadmap"
+[00:34:17.230] Server  LOG     Fetched insights count: 5
+[00:34:27.174] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&page=1&limit=6"
+[00:34:27.638] Server  LOG     Response status: 200
+[00:34:27.652] Server  LOG     Fetched insights count: 6
+[00:34:33.439] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&type=blog&page=1&limit=6"
+[00:34:33.502] Server  LOG     Response status: 200
+[00:34:33.514] Server  LOG     Fetched insights count: 6
+[00:35:47.309] Server  LOG      ✓ Compiled in 215ms
+[00:35:48.622] Server  LOG      ✓ Compiled in 120ms
+[00:35:52.436] Server  LOG      ✓ Compiled in 222ms
+[00:38:24.659] Server  LOG      ✓ Compiled in 179ms
+[00:42:18.781] Server  LOG      ✓ Compiled in 154ms
+[00:42:21.703] Server  LOG      ✓ Compiled in 388ms
+[00:42:23.056] Server  LOG      ✓ Compiled in 207ms
+[00:43:10.444] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:43:10.444] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:44:35.716] Server  LOG      ✓ Compiled in 355ms
+[00:44:44.224] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/approach/..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" suppressHydrationWarning={true}>
+                          <body
+                            className="montserrat_2cd33e48-module__aZ667G__className bg-white text-slateText"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:44:45.685] Browser WARN    Image with src "/images/approach/image5.webp" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:45:35.691] Server  LOG      ✓ Compiled in 71ms
+[00:45:46.956] Server  LOG      ✓ Compiled in 354ms
+[00:46:00.009] Server  LOG      ✓ Compiled in 302ms
+[00:48:43.442] Server  LOG      ✓ Compiled in 87ms
+[00:48:49.587] Server  LOG      ✓ Compiled in 266ms
+[00:49:02.681] Server  LOG      ✓ Compiled in 381ms
+[00:49:21.808] Server  LOG      ✓ Compiled in 97ms
+[00:49:27.108] Server  LOG      ✓ Compiled in 66ms
+[00:49:34.557] Server  LOG      ✓ Compiled in 85ms
+[00:49:41.347] Server  LOG      ✓ Compiled in 90ms
+[00:49:43.821] Server  LOG      ✓ Compiled in 76ms
+[00:49:48.609] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/approach/..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" suppressHydrationWarning={true}>
+                          <body
+                            className="montserrat_2cd33e48-module__aZ667G__className bg-white text-slateText"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:49:49.942] Browser WARN    Image with src "/images/approach/image5.webp" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:50:24.963] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/approach/..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" suppressHydrationWarning={true}>
+                          <body
+                            className="montserrat_2cd33e48-module__aZ667G__className bg-white text-slateText"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:50:26.137] Browser WARN    Image with src "/images/approach/image5.webp" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:50:28.133] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:50:28.133] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:50:43.439] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/approach/..." notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" suppressHydrationWarning={true}>
+                          <body
+                            className="montserrat_2cd33e48-module__aZ667G__className bg-white text-slateText"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:50:44.505] Browser WARN    Image with src "/images/approach/image5.webp" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:51:44.859] Server  LOG      ✓ Compiled in 100ms
+[00:51:56.807] Server  LOG      ✓ Compiled in 275ms
+[00:53:55.273] Server  LOG      ✓ Compiled in 87ms
+[00:53:58.889] Server  LOG      ✓ Compiled in 61ms
+[00:54:37.625] Server  LOG      ✓ Compiled in 81ms
+[00:54:52.552] Server  LOG      ✓ Compiled in 307ms
+[00:55:04.841] Server  LOG      ✓ Compiled in 112ms
+[00:55:37.238] Server  LOG      ✓ Compiled in 111ms
+[00:55:44.001] Server  LOG      ✓ Compiled in 80ms
+[00:55:47.703] Server  LOG      ✓ Compiled in 132ms
+[00:56:57.669] Server  LOG      ✓ Compiled in 175ms
+[00:57:36.140] Server  LOG      ✓ Compiled in 119ms
+[02:00:08.064] Server  LOG      ✓ Compiled in 674ms
+[02:00:36.175] Server  LOG      ✓ Compiled in 189ms
+[02:01:17.820] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&page=1&limit=6"
+[02:01:18.648] Server  LOG     Response status: 200
+[02:01:18.662] Server  LOG     Fetched insights count: 6

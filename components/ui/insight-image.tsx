@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ImageSkeleton } from './image-skeleton';
 import { cn } from '@/lib/utils';
 
@@ -12,52 +12,64 @@ interface InsightImageProps {
 }
 
 export function InsightImage({ src, alt, className = '', loading = 'lazy' }: InsightImageProps) {
-  const [imgSrc, setImgSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
+    // Reset state when src changes
     setIsLoading(true);
     setHasError(false);
-    setImgSrc(src);
+    setIsImageLoaded(false);
+
+    // Check if image is already loaded (cached)
+    if (imgRef.current?.complete && imgRef.current?.naturalHeight !== 0) {
+      setIsLoading(false);
+      setIsImageLoaded(true);
+    }
   }, [src]);
 
   const handleLoad = () => {
     setIsLoading(false);
+    setIsImageLoaded(true);
   };
 
   const handleError = () => {
     setIsLoading(false);
-    if (!hasError) {
-      // Try without crossOrigin
-      setHasError(true);
-      setImgSrc(src);
-    }
+    setHasError(true);
   };
 
+  // If no src, show placeholder
+  if (!src) {
+    return (
+      <div className={cn('bg-muted flex items-center justify-center', className)}>
+        <span className="text-muted-foreground text-sm">No image</span>
+      </div>
+    );
+  }
+
   return (
-    <div className="relative">
-      {isLoading && (
-        <ImageSkeleton className={cn('absolute inset-0', className)} />
+    <div className={cn('relative overflow-hidden', className)}>
+      {isLoading && !hasError && (
+        <ImageSkeleton className="absolute inset-0 z-10" />
       )}
       {!hasError && (
         <img
-          src={imgSrc}
+          ref={imgRef}
+          src={src}
           alt={alt}
           className={cn(
-            'transition-opacity duration-300',
-            isLoading ? 'opacity-0' : 'opacity-100',
-            className
+            'w-full h-full object-cover transition-opacity duration-300',
+            isImageLoaded ? 'opacity-100' : 'opacity-0'
           )}
           loading={loading}
-          crossOrigin={hasError ? undefined : 'anonymous'}
-          referrerPolicy="no-referrer"
           onLoad={handleLoad}
           onError={handleError}
         />
       )}
       {hasError && (
-        <div className={cn('bg-muted flex items-center justify-center', className)}>
+        <div className={cn('bg-muted flex items-center justify-center h-full', className)}>
           <span className="text-muted-foreground text-sm">Failed to load image</span>
         </div>
       )}

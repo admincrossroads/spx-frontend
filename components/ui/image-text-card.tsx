@@ -81,10 +81,10 @@ export default function ImageTextCard({
       viewport={{ once: true }}
       className={cn("text-lg leading-relaxed", contentClassName || "space-y-8")}
     >
+      {title && (
+        <h2 className="text-3xl font-semibold mb-8">{title}</h2>
+      )}
       <div className="text-justify-custom text-muted-foreground">
-        {title && (
-          <h2 className="text-3xl font-semibold mb-8">{title}</h2>
-        )}
         {content}
       </div>
     </motion.div>

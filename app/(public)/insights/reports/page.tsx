@@ -1,6 +1,9 @@
 import { getPublicInsights } from '@/lib/api/public-insights';
 import { InsightsGrid } from '@/components/insights/InsightsGrid';
 
+// Mark this page as dynamic to allow server-side data fetching
+export const dynamic = 'force-dynamic';
+
 export default async function ReportsPage() {
   // Fetch initial 6 insights for the grid
   const { insights, pagination } = await getPublicInsights({

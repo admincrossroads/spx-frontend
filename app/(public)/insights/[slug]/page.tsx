@@ -153,7 +153,7 @@ export default async function InsightDetailPage({
   };
 
   return (
-    <div className="main-container py-24">
+    <div className="container mx-auto px-6 md:px-6 min-[1300px]:px-4 py-24">
       <Link
         href="/insights"
         className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6"
@@ -162,36 +162,36 @@ export default async function InsightDetailPage({
         Back to Insights
       </Link>
 
-      <div className="grid lg:grid-cols-3 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-7 gap-8">
         {/* Main Content */}
-        <article className="lg:col-span-2">
+        <article className="lg:col-span-5 order-1">
         {/* Header */}
         <header className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-4">
             <Badge
-              className={`${typeColors[insight.type] || 'bg-gray-500'} text-white capitalize px-4 py-1.5 text-sm`}
+              className={`${typeColors[insight.type] || 'bg-gray-500'} text-white capitalize px-3 md:px-4 py-1 md:py-1.5 text-xs md:text-sm`}
             >
               {typeLabels[insight.type] || insight.type}
             </Badge>
             {insight.publishedAt && (
-              <span className="text-sm text-muted-foreground flex items-center gap-1">
-                <Calendar className="h-4 w-4" />
+              <span className="text-xs md:text-sm text-muted-foreground flex items-center gap-1">
+                <Calendar className="h-3 w-3 md:h-4 md:w-4" />
                 {formatDate(insight.publishedAt)}
               </span>
             )}
           </div>
 
-          <h1 className="text-4xl font-bold mb-4">{insight.title}</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">{insight.title}</h1>
 
-          <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
+          <div className="flex flex-wrap items-center gap-3 md:gap-4 text-xs md:text-sm text-muted-foreground mb-6">
             <div className="flex items-center gap-2">
-              <User className="h-4 w-4" />
+              <User className="h-3 w-3 md:h-4 md:w-4" />
               <span>{insight.author.name}</span>
             </div>
             {insight.tags.length > 0 && (
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {insight.tags.map((tag) => (
-                  <Badge key={tag.id} variant="outline" className="px-3 py-1 text-sm">
+                  <Badge key={tag.id} variant="outline" className="px-2 md:px-3 py-0.5 md:py-1 text-xs md:text-sm">
                     {tag.name}
                   </Badge>
                 ))}
@@ -200,7 +200,7 @@ export default async function InsightDetailPage({
           </div>
 
           {insight.coverImageUrl && (
-            <div className="relative h-96 w-full overflow-hidden rounded-lg mb-8">
+            <div className="relative h-64 md:h-80 lg:h-96 w-full overflow-hidden rounded-lg mb-8">
               <InsightImage
                 src={getImageUrl(insight.coverImageUrl)}
                 alt={insight.title}
@@ -210,7 +210,7 @@ export default async function InsightDetailPage({
             </div>
           )}
 
-          <p className="text-xl text-muted-foreground mb-8 leading-relaxed">{insight.summary}</p>
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">{insight.summary}</p>
         </header>
 
         {/* Content */}
@@ -226,55 +226,67 @@ export default async function InsightDetailPage({
       </article>
 
         {/* Sidebar - Recent Insights */}
-        <aside className="lg:col-span-1">
-          <div className="sticky top-6">
-            <h2 className="text-2xl font-bold mb-6">Recent Insights</h2>
+        <aside className="lg:col-span-2 order-2">
+          <div className="lg:sticky lg:top-6">
+            <h2 className="text-base md:text-lg font-bold mb-2 md:mb-3">Recent Insights</h2>
             {recentInsights.length > 0 ? (
-              <div className="space-y-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-2 md:gap-2.5 lg:gap-3">
                 {recentInsights.map((recentInsight) => (
                   <Link
                     key={recentInsight.id}
                     href={`/insights/${recentInsight.slug}`}
+                    className="block"
                   >
-                    <Card className="hover:shadow-md transition-shadow cursor-pointer my-6">
+                    <Card className="hover:shadow-md transition-shadow cursor-pointer overflow-hidden w-full aspect-square lg:w-[250px] lg:h-[200px] lg:flex-shrink-0">
                       {recentInsight.coverImageUrl && (
-                        <div className="relative h-32 w-full overflow-hidden rounded-t-lg">
+                        <div className="relative w-full h-full overflow-hidden">
                           <InsightImage
                             src={getImageUrl(recentInsight.coverImageUrl)}
                             alt={recentInsight.title}
                             className="w-full h-full object-cover"
                             loading="lazy"
                           />
+                          <div className="absolute top-2 left-2">
+                            <Badge
+                              className={`${
+                                typeColors[recentInsight.type] || 'bg-gray-500'
+                              } text-white capitalize px-1.5 md:px-2 py-0.5 text-[9px] md:text-[10px] lg:text-[10px] w-fit leading-tight`}
+                            >
+                              {typeLabels[recentInsight.type] || recentInsight.type}
+                            </Badge>
+                          </div>
                         </div>
                       )}
-                      <CardContent className="p-4">
-                        <div className="flex items-center gap-2 mb-2">
+                      {!recentInsight.coverImageUrl && (
+                        <div className="relative w-full h-full bg-muted flex items-center justify-center">
                           <Badge
                             className={`${
                               typeColors[recentInsight.type] || 'bg-gray-500'
-                            } text-white capitalize px-3 py-1 text-sm`}
+                            } text-white capitalize px-1.5 md:px-2 py-0.5 text-[9px] md:text-[10px] lg:text-[10px] w-fit leading-tight`}
                           >
                             {typeLabels[recentInsight.type] || recentInsight.type}
                           </Badge>
-                          {recentInsight.publishedAt && (
-                            <span className="text-xs text-muted-foreground">
-                              {formatDate(recentInsight.publishedAt)}
-                            </span>
-                          )}
                         </div>
-                        <h3 className="font-semibold text-sm mb-2 line-clamp-2 hover:text-primary transition-colors">
-                          {recentInsight.title}
-                        </h3>
-                        <p className="text-xs text-muted-foreground line-clamp-2">
-                          {recentInsight.summary}
-                        </p>
-                      </CardContent>
+                      )}
                     </Card>
+                    <div className="mt-2 space-y-1.5 max-w-[250px]">
+                      <h3 className="font-semibold text-xs md:text-sm lg:text-sm leading-tight line-clamp-2 hover:text-primary transition-colors">
+                        {recentInsight.title}
+                      </h3>
+                      <p className="text-[11px] md:text-xs lg:text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                        {recentInsight.summary}
+                      </p>
+                      {recentInsight.publishedAt && (
+                        <span className="text-[10px] md:text-[11px] lg:text-[11px] text-muted-foreground block">
+                          {formatDate(recentInsight.publishedAt)}
+                        </span>
+                      )}
+                    </div>
                   </Link>
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs md:text-sm text-muted-foreground">
                 No other insights available.
               </p>
             )}
@@ -284,4 +296,3 @@ export default async function InsightDetailPage({
     </div>
   );
 }
-

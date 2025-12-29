@@ -10,11 +10,11 @@ export default function Footer() {
   const { openModal } = useContactModal()
 
   return (
-    <footer className="border-t bg-background mt-20 xl:px-20">
+    <footer className="border-t bg-background mt-20">
 
       {/* TOP SECTION */}
       <div className="
-        container mx-auto py-16 
+        container mx-auto px-6 md:px-6 min-[1300px]:px-4 py-16 
         grid grid-cols-1 md:grid-cols-4 gap-12
         text-center md:text-left
       ">
@@ -60,48 +60,50 @@ export default function Footer() {
         </div>
 
         {/* NAV SECTIONS */}
-        <div className="col-span-1 md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-2 items-start align-center">
+        <div className="col-span-1 md:col-span-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-start">
 
-          {NAV_ITEMS.filter(item => ["About SPX", "Insights"].includes(item.label)).map((item) => (
-            <div key={item.label} className="hidden md:block">
-              <p className="font-semibold mb-3 text-foreground">{item.label}</p>
+            {NAV_ITEMS.filter(item => ["About SPX", "Insights"].includes(item.label)).map((item) => (
+              <div key={item.label} className="hidden md:block">
+                <p className="font-semibold mb-3 text-foreground">{item.label}</p>
 
-              <ul className="flex flex-col gap-2">
-                {item.submenu.map((sub) => (
-                  <li key={sub.label}>
-                    <Link
-                      href={sub.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {sub.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                <ul className="flex flex-col gap-2">
+                  {item.submenu.map((sub) => (
+                    <li key={sub.label}>
+                      <Link
+                        href={sub.href}
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {sub.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            {/* CONTACT US SECTION - ALWAYS VISIBLE */}
+            <div className="flex flex-col items-center md:items-start">
+              <p className="font-semibold mb-3 text-foreground hidden md:block">Contact Us</p>
+              <Button 
+                onClick={openModal}
+                className="rounded-full px-8 bg-primary text-white hover:bg-primary/90 w-fit mx-auto md:mx-0"
+              >
+                Get in Touch
+              </Button>
+              <p className="text-xs text-muted-foreground mt-4 max-w-[200px] text-center md:text-left">
+                Have a project or inquiry? Our team is ready to collaborate.
+              </p>
             </div>
-          ))}
 
-          {/* CONTACT US SECTION - ALWAYS VISIBLE */}
-          <div className="flex flex-col items-center md:items-start">
-            <p className="font-semibold mb-3 text-foreground hidden md:block">Contact Us</p>
-            <Button 
-              onClick={openModal}
-              className="rounded-full px-8 bg-primary text-white hover:bg-primary/90 w-fit"
-            >
-              Get in Touch
-            </Button>
-            <p className="text-xs text-muted-foreground mt-4 max-w-[200px] text-center md:text-left">
-              Have a project or inquiry? Our team is ready to collaborate.
-            </p>
           </div>
-
         </div>
 
       </div>
 
       {/* BOTTOM COPYRIGHT */}
       <div className="border-t py-6">
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between gap-4">
+        <div className="container mx-auto px-6 md:px-6 min-[1300px]:px-4 flex flex-col md:flex-row items-center justify-center md:justify-between gap-4">
           
           <p className="text-sm text-muted-foreground text-center">
             © 2026 SPX. All rights reserved.
