@@ -61,16 +61,6 @@ export default function ImageBlock({ data, onChange, publicId, type }: ImageBloc
                 style={{ display: 'block' }}
                 onError={(e) => {
                   const img = e.target as HTMLImageElement;
-                  const errorDetails = {
-                    src: img.src,
-                    originalUrl: data.url,
-                    naturalWidth: img.naturalWidth,
-                    naturalHeight: img.naturalHeight,
-                    complete: img.complete,
-                    error: (e as any).error || 'Unknown error'
-                  };
-                  console.error('Image failed to load:', errorDetails);
-                  
                   // Show error message in the container
                   const container = img.parentElement;
                   if (container) {
@@ -80,19 +70,12 @@ export default function ImageBlock({ data, onChange, publicId, type }: ImageBloc
                     
                     const errorMsg = document.createElement('p');
                     errorMsg.className = 'text-sm text-destructive p-2 image-error-msg';
-                    errorMsg.textContent = `Failed to load image. Check console for details.`;
+                    errorMsg.textContent = `Failed to load image.`;
                     container.appendChild(errorMsg);
                   }
                 }}
                 onLoad={(e) => {
                   const img = e.target as HTMLImageElement;
-                  console.log('Image loaded successfully:', {
-                    url: data.url,
-                    naturalWidth: img.naturalWidth,
-                    naturalHeight: img.naturalHeight,
-                    width: img.width,
-                    height: img.height
-                  });
                   img.style.display = 'block';
                   // Remove any error messages
                   const container = img.parentElement;

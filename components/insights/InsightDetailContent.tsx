@@ -33,7 +33,8 @@ function renderContentBlock(block: {
     case 'text':
       return (
         <div
-          className="prose prose-sm max-w-none"
+          className="insight-text-block prose prose-sm max-w-none text-left overflow-hidden break-words [&_p]:text-left [&_p]:text-indent-0 [&_p]:!text-indent-0 [&_p]:mb-8 [&_p:last-child]:mb-0 [&_*]:text-left [&_*]:text-indent-0 [&_*]:!text-indent-0 [&_*]:break-words [&_*]:overflow-wrap-anywhere"
+          style={{ textIndent: 0, wordWrap: 'break-word', overflowWrap: 'break-word' }}
           dangerouslySetInnerHTML={{ __html: block.data.html || '' }}
         />
       );
@@ -174,7 +175,7 @@ export function InsightDetailContent({ slug, initialInsight, initialRecentInsigh
 
       <div className="grid grid-cols-1 lg:grid-cols-7 gap-8">
         {/* Main Content */}
-        <article className="lg:col-span-5 order-1">
+        <article className="lg:col-span-5 order-1 min-w-0 overflow-hidden">
           {/* Header */}
           <header className="mb-8">
             <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-4">
@@ -221,11 +222,14 @@ export function InsightDetailContent({ slug, initialInsight, initialRecentInsigh
               </div>
             )}
 
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">{insight.summary}</p>
+            {/* <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">{insight.summary}</p> */}
           </header>
 
           {/* Content */}
-          <div className="prose prose-lg max-w-none">
+          <div 
+            className="insight-detail-content prose prose-lg max-w-none text-left overflow-hidden break-words [&_p]:text-left [&_p]:text-indent-0 [&_p]:!text-indent-0 [&_p]:!text-indent-[0] [&_p]:mb-8 [&_p:last-child]:mb-0 [&_*]:text-left [&_*]:text-indent-0 [&_*]:!text-indent-0 [&_*]:!text-indent-[0] [&_*]:break-words [&_*]:overflow-wrap-anywhere" 
+            style={{ textIndent: 0, wordWrap: 'break-word', overflowWrap: 'break-word' }}
+          >
             {insight.content && insight.content.length > 0 ? (
               insight.content.map((block) => (
                 <div key={block.id} className="mb-8 last:mb-0">{renderContentBlock(block)}</div>

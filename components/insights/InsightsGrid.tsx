@@ -123,9 +123,9 @@ export function InsightsGrid({ type, initialInsights = [], initialTotal = 0 }: I
       
       // Update displayed count
       setDisplayedCount(prev => prev + LOAD_MORE_LIMIT);
-    } catch (error) {
-      console.error('Failed to load more insights:', error);
-    } finally {
+      } catch (error) {
+        // Failed to load more insights
+      } finally {
       setLoading(false);
     }
   };

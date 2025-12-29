@@ -107,7 +107,6 @@ export default function InsightsPage() {
       queryClient.invalidateQueries({ queryKey: adminInsightKeys.all });
       refetch();
     } catch (error: any) {
-      console.error('Failed to toggle publish status:', error);
       const errorMessage = error?.data?.message || error?.message || 'Failed to update publish status';
       alert(errorMessage);
     }
@@ -122,7 +121,7 @@ export default function InsightsPage() {
       queryClient.invalidateQueries({ queryKey: adminInsightKeys.all });
       refetch();
     } catch (error) {
-      console.error('Failed to delete insight:', error);
+      // Failed to delete insight
     }
   };
 

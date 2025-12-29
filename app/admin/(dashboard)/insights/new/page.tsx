@@ -123,17 +123,28 @@ export default function CreateInsightPage() {
     setIsSubmitting(true);
     try {
       // Prepare data exactly as API expects
+      // Ensure all blocks have proper structure, especially text blocks with html property
+      const contentBlocks = blocks.map((block) => {
+        const blockData: any = { ...block.data };
+        
+        // Ensure text blocks always have html property
+        if (block.type === 'text') {
+          blockData.html = blockData.html || '';
+        }
+        
+        return {
+          id: block.id || `${block.type}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+          type: block.type,
+          data: blockData,
+        };
+      });
+
       const data = {
         title: values.title,
         slug: values.slug,
         summary: values.summary,
         type: values.type,
-        // Keep block ids if present; backend may expect them
-        content: blocks.map((block) => ({
-          id: block.id || `${block.type}-${Date.now()}`,
-          type: block.type,
-          data: block.data,
-        })),
+        content: contentBlocks,
         authorId: values.authorId,
         tags: values.tags || [],
         coverImageUrl: values.coverImageUrl || undefined,
@@ -141,16 +152,11 @@ export default function CreateInsightPage() {
         publicId,
       };
 
-      console.log('Submitting data:', JSON.stringify(data, null, 2));
-
-      const response = await api.post('/admin/insights', data);
-      console.log('Response:', response);
+      await api.post('/admin/insights', data);
 
       router.push('/admin/insights');
       router.refresh();
     } catch (error: any) {
-      console.error('Failed to create insight:', error);
-      console.error('Error details:', error?.data);
 
       if (error?.status === 400) {
         const errors = error?.data?.errors;
@@ -303,7 +309,7 @@ export default function CreateInsightPage() {
                             field.onChange(id);
                           }}
                           value={
-                            typeof field.value === 'number' && field.value !== 0
+                            (typeof field.value === 'number' && field.value > 0)
                               ? field.value.toString()
                               : ''
                           }

@@ -5,9 +5,9 @@ import { Label } from '@/components/ui/label';
 import { TextBlockData } from '@/types/insights';
 import dynamic from 'next/dynamic';
 
-// Dynamically import Quill to avoid SSR issues
-const QuillEditor = dynamic(
-  () => import('./QuillEditorComponent'),
+// Dynamically import Tiptap to avoid SSR issues
+const TiptapEditor = dynamic(
+  () => import('./TiptapEditorComponent'),
   { 
     ssr: false,
     loading: () => <div className="min-h-[150px] border rounded-md p-4 bg-muted/20 animate-pulse">Loading editor...</div>
@@ -145,41 +145,57 @@ function splitLongText(html: string): string {
 }
 
 export default function TextBlock({ data, onChange }: TextBlockProps) {
-  const [value, setValue] = useState(data.html || '');
+  // Initialize with data.html, defaulting to empty string if undefined/null
+  const [value, setValue] = useState(data?.html || '');
 
   // Update local state when data.html changes externally
   useEffect(() => {
-    if (data.html !== value) {
-      setValue(data.html || '');
+    const newHtml = data?.html || '';
+    if (newHtml !== value) {
+      setValue(newHtml);
     }
-  }, [data.html]);
+  }, [data?.html]);
 
   const handleChange = (content: string) => {
     setValue(content);
-    // Update parent immediately during editing
+    // Update parent immediately during editing - always pass html property
+    // Pass the content as-is - the API should handle it
     onChange({ html: content });
   };
 
   const handleBlur = () => {
     // Apply auto-paragraph splitting when editor loses focus
-    const processedHtml = splitLongText(value);
+    // Only process if there's actual content (not just empty paragraphs)
+    const hasContent = value && 
+      value.trim() !== '' && 
+      value.trim() !== '<p><br></p>' && 
+      value.trim() !== '<p></p>' &&
+      value.replace(/<[^>]*>/g, '').trim() !== ''; // Check if there's actual text content
     
-    if (processedHtml !== value) {
-      setValue(processedHtml);
-      onChange({ html: processedHtml });
+    if (hasContent) {
+      const processedHtml = splitLongText(value);
+      
+      if (processedHtml !== value) {
+        setValue(processedHtml);
+        onChange({ html: processedHtml });
+      } else {
+        // Ensure we save the current value even if no processing is needed
+        onChange({ html: value });
+      }
+    } else {
+      // Even if empty, ensure we save the structure
+      onChange({ html: value || '' });
     }
   };
 
   return (
     <div className="space-y-3">
       <Label>Text Content</Label>
-      <div className="border rounded-md overflow-hidden">
-        <QuillEditor
-          value={value}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </div>
+      <TiptapEditor
+        value={value}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
       <div className="text-xs text-muted-foreground">
         Rich text editor. Text longer than 500 characters will automatically split into paragraphs at the nearest full stop.
       </div>

@@ -129,10 +129,35 @@
   }
   
   /* Paragraph indentation - only for content paragraphs in articles, sections, and prose */
-  article p:not(:first-child),
-  section p:not(:first-child),
-  .prose p:not(:first-child) {
+  /* Exclude insight detail content from indentation */
+  article:not([class*="insight"]) p:not(:first-child),
+  section:not([class*="insight"]) p:not(:first-child),
+  .prose:not(.insight-detail-content) p:not(:first-child) {
     text-indent: 1.5em;
+  }
+  
+  /* Force no indentation for insight detail content */
+  .insight-detail-content p,
+  .insight-detail-content p:not(:first-child),
+  .insight-text-block p,
+  .insight-text-block p:not(:first-child) {
+    text-indent: 0 !important;
+  }
+  
+  /* Prevent text overflow in insight detail content */
+  .insight-detail-content,
+  .insight-text-block {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+  }
+  
+  .insight-detail-content *,
+  .insight-text-block * {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
   
   /* Don't indent first paragraph after headings, lists, blockquotes, images, etc. */

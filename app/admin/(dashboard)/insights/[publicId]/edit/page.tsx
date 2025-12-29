@@ -39,11 +39,14 @@ import Link from 'next/link';
 import { useAuthors } from '@/lib/hooks/queries/useAuthors';
 import { useTags } from '@/lib/hooks/queries/useTags';
 import { useAdminInsight } from '@/lib/hooks/queries/useAdminInsights';
+import { useQueryClient } from '@tanstack/react-query';
+import { adminInsightKeys } from '@/lib/hooks/queries/useAdminInsights';
 
 export default function EditInsightPage() {
   const router = useRouter();
   const params = useParams();
   const publicId = params.publicId as string;
+  const queryClient = useQueryClient();
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [blocks, setBlocks] = useState<InsightBlock[]>([]);
@@ -76,24 +79,46 @@ export default function EditInsightPage() {
 
   // Set form values when insight data loads
   useEffect(() => {
-    if (insight) {
+    if (insight && authors.length > 0) {
+      // Get the author ID - prefer insight.author.id, fallback to insight.authorId, then 0
+      const authorId = insight.author?.id ?? insight.authorId ?? 0;
+      
       form.reset({
         title: insight.title,
         slug: insight.slug,
         summary: insight.summary,
         type: insight.type,
-        authorId: insight.author?.id ?? insight.authorId ?? 0,
+        authorId: authorId,
         tags: insight.tags?.map((tag: any) => tag.id) || [],
         coverImageUrl: insight.coverImageUrl || '',
         isPublished: insight.isPublished || false,
       } as InsightFormInput);
-
-      // Set content blocks
+      
+      // Set content blocks - ensure proper structure
       if (insight.content && Array.isArray(insight.content)) {
-        setBlocks(insight.content);
+        // Transform content blocks to ensure they have the correct structure
+        const transformedBlocks = insight.content.map((block: any) => {
+          const transformed = {
+            id: block.id || `${block.type}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+            type: block.type,
+            data: {
+              // Ensure text blocks have html property
+              ...(block.type === 'text' && { html: block.data?.html || block.data?.html || '' }),
+              // For other block types, spread the data as-is
+              ...(block.type !== 'text' ? block.data : {}),
+            },
+          };
+          
+          return transformed;
+        });
+        
+        setBlocks(transformedBlocks);
+      } else {
+        // If no content, initialize with empty array
+        setBlocks([]);
       }
     }
-  }, [insight, form]);
+  }, [insight, authors, form]);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const title = e.target.value;
@@ -123,16 +148,28 @@ export default function EditInsightPage() {
     setIsSubmitting(true);
     try {
       // Prepare data without isPublished - we'll handle publish/unpublish separately
+      // Ensure all blocks have proper structure, especially text blocks with html property
+      const contentBlocks = blocks.map((block) => {
+        const blockData: any = { ...block.data };
+        
+        // Ensure text blocks always have html property
+        if (block.type === 'text') {
+          blockData.html = blockData.html || '';
+        }
+        
+        return {
+          id: block.id || `${block.type}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+          type: block.type,
+          data: blockData,
+        };
+      });
+
       const data = {
         title: values.title,
         slug: values.slug,
         summary: values.summary,
         type: values.type,
-        content: blocks.map((block) => ({
-          id: block.id || `${block.type}-${Date.now()}`,
-          type: block.type,
-          data: block.data,
-        })),
+        content: contentBlocks,
         authorId: values.authorId,
         tags: values.tags || [],
         coverImageUrl: values.coverImageUrl || undefined,
@@ -151,10 +188,13 @@ export default function EditInsightPage() {
         await api.patch(`/admin/insights/${publicId}`, { isPublished: false });
       }
       
+      // Invalidate React Query cache to force refetch
+      queryClient.invalidateQueries({ queryKey: adminInsightKeys.detail(publicId) });
+      queryClient.invalidateQueries({ queryKey: adminInsightKeys.lists() });
+      
       router.push('/admin/insights');
       router.refresh();
     } catch (error: any) {
-      console.error('Failed to update insight:', error);
       const errorMessage = error?.data?.message || error?.message || 'Failed to update insight';
       const errorDetails = error?.data?.errors;
       if (errorDetails && Array.isArray(errorDetails)) {
@@ -196,7 +236,6 @@ export default function EditInsightPage() {
       // Refresh the page data
       router.refresh();
     } catch (error: any) {
-      console.error('Failed to toggle publish:', error);
       const errorMessage = error?.data?.message || error?.message || 'Failed to toggle publish status';
       alert(errorMessage);
     } finally {
@@ -355,29 +394,36 @@ export default function EditInsightPage() {
                   <FormField
                     control={form.control}
                     name="authorId"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Author *</FormLabel>
-                        <Select 
-                          onValueChange={(value) => field.onChange(parseInt(value))} 
-                          value={field.value?.toString()}
-                        >
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select author" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            {authors.map((author) => (
-                              <SelectItem key={author.id} value={author.id.toString()}>
-                                {author.name}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+                    render={({ field }) => {
+                      // Ensure value is a valid number and convert to string for Select
+                      const fieldValue = typeof field.value === 'number' ? field.value : 0;
+                      const selectValue = fieldValue > 0 ? fieldValue.toString() : '';
+                      
+                      return (
+                        <FormItem>
+                          <FormLabel>Author *</FormLabel>
+                          <Select 
+                            onValueChange={(value) => field.onChange(parseInt(value))} 
+                            value={selectValue}
+                            disabled={authors.length === 0}
+                          >
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder={authors.length === 0 ? "Loading authors..." : "Select author"} />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {authors.map((author) => (
+                                <SelectItem key={author.id} value={author.id.toString()}>
+                                  {author.name}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      );
+                    }}
                   />
 
                   <FormField

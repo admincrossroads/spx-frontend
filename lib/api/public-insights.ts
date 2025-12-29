@@ -74,8 +74,6 @@ export async function getPublicInsights(filters: {
     const endpoint = `/insights?${query}`;
     const fullUrl = `${API_URL}${endpoint}`;
     
-    console.log('Fetching public insights from:', fullUrl);
-    
     const headers: HeadersInit = {
       'Content-Type': 'application/json',
     };
@@ -90,20 +88,15 @@ export async function getPublicInsights(filters: {
       headers,
     });
     
-    console.log('Response status:', response.status);
-    
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('API Error Response:', errorText);
       throw new Error(`Failed to fetch insights: ${response.status} - ${errorText}`);
     }
     
     const data = await response.json();
-    console.log('Fetched insights count:', data.insights?.length || 0);
     
     return data;
   } catch (error) {
-    console.error('Failed to fetch public insights:', error);
     return { 
       insights: [], 
       pagination: { total: 0, page: 1, limit: 10, totalPages: 0 } 
@@ -123,17 +116,12 @@ export async function getPublicInsightBySlug(slug: string): Promise<PublicInsigh
     const endpoint = `/insights/${slug}`;
     const fullUrl = `${API_URL}${endpoint}`;
     
-    console.log('Fetching insight by slug from:', fullUrl);
-    console.log('Using slug exactly as provided:', slug);
-    console.log('API_KEY available:', !!API_KEY);
-    
     const headers: HeadersInit = {
       'Content-Type': 'application/json',
     };
     
     // Always add API key - backend requires it for ALL requests
     if (!API_KEY) {
-      console.error('NEXT_PUBLIC_API_KEY is not set! This is required for the API.');
       throw new Error('API key is not configured');
     }
     
@@ -144,31 +132,17 @@ export async function getPublicInsightBySlug(slug: string): Promise<PublicInsigh
       headers,
     });
     
-    console.log('Response status:', response.status);
-    
     if (!response.ok) {
       if (response.status === 404) {
-        console.log('Insight not found for slug:', slug);
         return null;
-      }
-      
-      const errorText = await response.text();
-      console.error('API Error Response:', errorText);
-      console.error('Response status:', response.status);
-      
-      // Log more details for 401 errors
-      if (response.status === 401) {
-        console.error('Unauthorized - Check if API key is correct and backend accepts it');
       }
       
       return null;
     }
     
     const data = await response.json();
-    console.log('Successfully fetched insight:', data.title || 'Unknown');
     return data;
   } catch (error) {
-    console.error(`Failed to fetch insight ${slug}:`, error);
     return null;
   }
 }

@@ -14,7 +14,6 @@ export default async function InsightDetailPage({
   ]);
 
   if (!insight) {
-    console.error('Insight not found for slug:', slug);
     notFound();
   }
 

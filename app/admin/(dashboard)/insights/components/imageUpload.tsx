@@ -103,12 +103,6 @@ export default function ImageUpload({
         ? `/admin/uploads/insights?uuid=${uploadKey || ''}&type=${type || ''}` 
         : `/admin/uploads/${folder}/${uploadKey || 'temp'}`;
       
-      console.error('Upload error:', {
-        endpoint: errorEndpoint,
-        status: err?.status,
-        message: err?.message,
-        error: err
-      });
       setError(err?.data?.message || err?.message || `Upload failed: ${err?.status || 'Unknown error'}`);
       setUploadSuccess(false);
       onUploadError?.();
