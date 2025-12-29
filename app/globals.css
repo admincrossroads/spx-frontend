@@ -241,54 +241,117 @@ button{
     @apply text-justify leading-relaxed;
   }
 
-  /* TipTap Editor Styles */
-  .ProseMirror {
-    @apply outline-none;
+  /* Global paragraph styling for static pages - consistent spacing like insight blocks */
+  .text-justify-custom p {
+    @apply mb-8 last:mb-0;
+    text-indent: 1.5em;
+    text-align: justify;
   }
 
-  .ProseMirror p.is-editor-empty:first-child::before {
-    content: attr(data-placeholder);
-    @apply float-left text-muted-foreground pointer-events-none h-0;
+  /* Don't indent paragraphs that come immediately after headings, lists, blockquotes, images, etc. */
+  .text-justify-custom h1 + p,
+  .text-justify-custom h2 + p,
+  .text-justify-custom h3 + p,
+  .text-justify-custom h4 + p,
+  .text-justify-custom h5 + p,
+  .text-justify-custom h6 + p,
+  .text-justify-custom ul + p,
+  .text-justify-custom ol + p,
+  .text-justify-custom blockquote + p,
+  .text-justify-custom img + p,
+  .text-justify-custom figure + p {
+    text-indent: 0 !important;
   }
 
-  .ProseMirror p {
-    @apply mb-4 last:mb-0;
+  /* Don't indent non-paragraph elements */
+  .text-justify-custom ul,
+  .text-justify-custom ol,
+  .text-justify-custom li,
+  .text-justify-custom blockquote,
+  .text-justify-custom h1,
+  .text-justify-custom h2,
+  .text-justify-custom h3,
+  .text-justify-custom h4,
+  .text-justify-custom h5,
+  .text-justify-custom h6,
+  .text-justify-custom div,
+  .text-justify-custom span {
+    text-indent: 0 !important;
   }
 
-  .ProseMirror h2 {
+  /* Quill Editor Styles */
+  .quill {
+    @apply bg-background;
+  }
+
+  .ql-container {
+    @apply border-0 font-sans;
+    min-height: 150px;
+  }
+
+  .ql-editor {
+    @apply min-h-[150px] text-foreground;
+  }
+
+  .ql-editor.ql-blank::before {
+    @apply text-muted-foreground italic;
+  }
+
+  .ql-toolbar {
+    @apply border-b border-border bg-muted/30 rounded-t-md;
+  }
+
+  .ql-toolbar .ql-stroke {
+    @apply stroke-foreground;
+  }
+
+  .ql-toolbar .ql-fill {
+    @apply fill-foreground;
+  }
+
+  .ql-toolbar button:hover,
+  .ql-toolbar button.ql-active {
+    @apply bg-muted;
+  }
+
+  .ql-toolbar .ql-picker-label {
+    @apply text-foreground;
+  }
+
+  .ql-editor h2 {
     @apply text-2xl font-bold mt-6 mb-4;
   }
 
-  .ProseMirror h3 {
+  .ql-editor h3 {
     @apply text-xl font-bold mt-4 mb-3;
   }
 
-  .ProseMirror ul,
-  .ProseMirror ol {
+  .ql-editor ul,
+  .ql-editor ol {
     @apply my-4 pl-6;
   }
 
-  .ProseMirror ul {
+  .ql-editor ul {
     @apply list-disc;
   }
 
-  .ProseMirror ol {
+  .ql-editor ol {
     @apply list-decimal;
   }
 
-  .ProseMirror li {
+  .ql-editor li {
     @apply mb-2;
   }
 
-  .ProseMirror blockquote {
+  .ql-editor blockquote {
     @apply border-l-4 border-primary pl-4 italic my-4;
   }
 
-  .ProseMirror strong {
+  .ql-editor strong {
     @apply font-bold;
   }
 
-  .ProseMirror em {
+  .ql-editor em {
     @apply italic;
   }
 

@@ -1,6 +1,6 @@
 {
   "node": {
-    "400e46c2f055c43930cafe3a96f4e195027ddd041e": {
+    "402703210032617a538e7d6d8165dd5bdc6c280916": {
       "workers": {
         "app/(public)/insights/[slug]/page": {
           "moduleId": "[project]/.next-internal/server/app/(public)/insights/[slug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -22,7 +22,7 @@
       "filename": "lib/api/public-insights.ts",
       "exportedName": "getPublicInsights"
     },
-    "40a9020227a423cf1faacd9eeba691ac65a6995c80": {
+    "40887a078a3841341e58e6b6e0fb9d25d2285bec39": {
       "workers": {
         "app/(public)/insights/[slug]/page": {
           "moduleId": "[project]/.next-internal/server/app/(public)/insights/[slug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -46,5 +46,5 @@
     }
   },
   "edge": {},
-  "encryptionKey": "1xV2W4dF58gvLaVRZbgNgzpOyh3KbJcFrcUkZc9fHjM="
+  "encryptionKey": "KQasfV+48p3PVJtnMzQ/UqZDI+Ml5S9/18fF6JPs1ZY="
 }

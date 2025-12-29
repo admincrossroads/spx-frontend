@@ -116,10 +116,24 @@ const ActiveIndicator = ({
 export default function NavDesktop({ scrolled }: { scrolled: boolean }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [clickedIndex, setClickedIndex] = useState<number | null>(null) // Track clicked index for tablets
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const itemsRef = useRef<(HTMLDivElement | null)[]>([])
   const { openModal } = useContactModal()
+  
+  // Detect if device supports hover (not a touch device)
+  const [isHoverSupported, setIsHoverSupported] = useState(true)
+  
+  useEffect(() => {
+    // Check if device supports hover
+    const mediaQuery = window.matchMedia('(hover: hover)')
+    setIsHoverSupported(mediaQuery.matches)
+    
+    const handleChange = (e: MediaQueryListEvent) => setIsHoverSupported(e.matches)
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [])
 
   // Track mouse position for glow effect
   useEffect(() => {
@@ -131,17 +145,54 @@ export default function NavDesktop({ scrolled }: { scrolled: boolean }) {
   }, [])
 
   const handleMouseEnter = (index: number) => {
+    if (!isHoverSupported) return // Only handle hover on devices that support it
     if (timeoutRef.current) clearTimeout(timeoutRef.current)
     setOpenIndex(index)
     setHoveredIndex(index)
   }
 
   const handleMouseLeave = () => {
+    if (!isHoverSupported) return
     timeoutRef.current = setTimeout(() => {
       setOpenIndex(null)
       setHoveredIndex(null)
     }, 250)
   }
+
+  const handleClick = (index: number, item: typeof NAV_ITEMS[0], e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Only handle click logic for touch devices (tablets) when item has submenu
+    if (!isHoverSupported && item.submenu.length > 0) {
+      if (clickedIndex === index && openIndex === index) {
+        // Second click - allow navigation (don't prevent default)
+        setClickedIndex(null)
+        setOpenIndex(null)
+        setHoveredIndex(null)
+        // Let the Link handle navigation naturally
+      } else {
+        // First click - open submenu, prevent navigation
+        e.preventDefault()
+        setClickedIndex(index)
+        setOpenIndex(index)
+        setHoveredIndex(index)
+      }
+    }
+  }
+  
+  // Close menu when clicking outside on touch devices
+  useEffect(() => {
+    if (!isHoverSupported && openIndex !== null) {
+      const handleClickOutside = (e: MouseEvent) => {
+        const target = e.target as HTMLElement
+        if (!target.closest(`nav`)) {
+          setOpenIndex(null)
+          setHoveredIndex(null)
+          setClickedIndex(null)
+        }
+      }
+      document.addEventListener('click', handleClickOutside)
+      return () => document.removeEventListener('click', handleClickOutside)
+    }
+  }, [isHoverSupported, openIndex])
 
   return (
     <nav className="flex items-center gap-4 min-[1300px]:gap-8 relative">
@@ -167,9 +218,9 @@ export default function NavDesktop({ scrolled }: { scrolled: boolean }) {
         />
       )}
 
-      {/* Active indicator */}
+      {/* Active indicator - exclude contact button */}
       <ActiveIndicator 
-        hoveredIndex={hoveredIndex} 
+        hoveredIndex={hoveredIndex !== null && NAV_ITEMS[hoveredIndex]?.label !== "Contact Us" ? hoveredIndex : null} 
         itemsRef={itemsRef as React.RefObject<(HTMLDivElement | null)[]>}
       />
 
@@ -214,6 +265,7 @@ export default function NavDesktop({ scrolled }: { scrolled: boolean }) {
               /* NORMAL NAV ITEM */
               <Link
                 href={item.href}
+                onClick={(e) => handleClick(index, item, e)}
                 className={cn(
                   "text-[13px] min-[1290px]:text-sm font-medium transition-colors relative inline-block",
                   scrolled
@@ -222,16 +274,18 @@ export default function NavDesktop({ scrolled }: { scrolled: boolean }) {
                 )}
               >
                 {item.label}
-                {/* Underline animation */}
-                <motion.div
-                  className={cn(
-                    "absolute bottom-0 left-0 h-[2px] rounded-full",
-                    scrolled ? "bg-secondary-foreground" : "bg-foreground"
-                  )}
-                  initial={{ width: 0 }}
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                />
+                {/* Underline animation - only for hover-supported devices */}
+                {isHoverSupported && (
+                  <motion.div
+                    className={cn(
+                      "absolute bottom-0 left-0 h-[2px] rounded-full",
+                      scrolled ? "bg-secondary-foreground" : "bg-foreground"
+                    )}
+                    initial={{ width: 0 }}
+                    whileHover={{ width: "100%" }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  />
+                )}
               </Link>
             )}
 

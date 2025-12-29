@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import { Suspense } from "react";
 import PageTransitionLoader from "@/components/loading/PageTransitionLoader";
 
 const montserrat = Montserrat({
@@ -75,7 +76,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${montserrat.className} bg-white text-slateText`}>
-        <PageTransitionLoader />
+        <Suspense fallback={null}>
+          <PageTransitionLoader />
+        </Suspense>
         {children}
       </body>
     </html>

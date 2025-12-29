@@ -1,21 +1,31 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import SPXLoader from "@/components/ui/loader";
 import ModalLoader from "@/components/ui/modal-loader";
 
 export default function PageTransitionLoader() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [targetPath, setTargetPath] = useState<string | null>(null);
   const prevPathnameRef = useRef<string | null>(null);
   const isInitialMount = useRef(true);
   const loadingTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const navigationStartTimeRef = useRef<number | null>(null);
   
-  // Check if target is home page - check targetPath (where we're going) or new pathname
+  // Check if target is home page
   const isHomePage = targetPath === '/' || (loading && pathname === '/');
+
+  // Clear all timers helper
+  const clearAllTimers = () => {
+    if (loadingTimerRef.current) {
+      clearTimeout(loadingTimerRef.current);
+      loadingTimerRef.current = null;
+    }
+  };
 
   // Intercept link clicks to show loader immediately
   useEffect(() => {
@@ -51,8 +61,12 @@ export default function PageTransitionLoader() {
         return;
       }
 
-      // Set target path to determine loader style (use pathname without hash)
+      // Clear any existing timers
+      clearAllTimers();
+
+      // Set target path and mark navigation start
       setTargetPath(hrefPathname);
+      navigationStartTimeRef.current = Date.now();
       
       // Show loader immediately on click
       setLoading(true);
@@ -63,18 +77,14 @@ export default function PageTransitionLoader() {
       document.body.style.width = '100%';
       window.scrollTo(0, 0);
       
-      // Clear any existing timer
-      if (loadingTimerRef.current) {
-        clearTimeout(loadingTimerRef.current);
-      }
-      
       // For hash navigation, set a timer to close loader since pathname won't change
       if (href.includes('#') && hrefPathname === currentPathname) {
         // Same page with hash - close after short delay
         loadingTimerRef.current = setTimeout(() => {
           setLoading(false);
           setTargetPath(null);
-        }, 800); // Shorter delay for hash navigation
+          navigationStartTimeRef.current = null;
+        }, 800);
       }
     };
 
@@ -95,33 +105,7 @@ export default function PageTransitionLoader() {
     }
   }, [loading]);
 
-  // Listen for page load to close loader (handles hash navigation)
-  useEffect(() => {
-    if (loading) {
-      const handleLoad = () => {
-        // Small delay to ensure page is fully rendered
-        setTimeout(() => {
-          if (loadingTimerRef.current) {
-            clearTimeout(loadingTimerRef.current);
-          }
-          loadingTimerRef.current = setTimeout(() => {
-            setLoading(false);
-            setTargetPath(null);
-          }, 500); // Short delay after page load
-        }, 100);
-      };
-
-      // If page is already loaded
-      if (document.readyState === 'complete') {
-        handleLoad();
-      } else {
-        window.addEventListener('load', handleLoad);
-        return () => window.removeEventListener('load', handleLoad);
-      }
-    }
-  }, [loading]);
-
-  // Handle pathname changes (fallback and to hide loader)
+  // Handle pathname changes - hide loader when navigation completes
   useEffect(() => {
     // Skip on initial mount to avoid showing loader on first page load
     if (isInitialMount.current) {
@@ -130,58 +114,63 @@ export default function PageTransitionLoader() {
       return;
     }
 
-    // If pathname changed and we're loading, hide loader after minimum duration
+    // Only handle pathname changes if we're actually navigating
     if (prevPathnameRef.current && prevPathnameRef.current !== pathname) {
-      // Clear any existing timer
-      if (loadingTimerRef.current) {
-        clearTimeout(loadingTimerRef.current);
-      }
+      clearAllTimers();
 
-      // Update target path if not already set (use new pathname)
-      if (!targetPath) {
-        setTargetPath(pathname);
-      }
-
-      // Ensure loader is shown (in case click handler didn't catch it)
-      setLoading(true);
-      
-      // Hide loader after a minimum duration (for smooth animation)
-      loadingTimerRef.current = setTimeout(() => {
-        setLoading(false);
-        setTargetPath(null);
-        prevPathnameRef.current = pathname;
-      }, 1500); // Minimum 1.5 seconds for loader animation
-
-      return () => {
-        if (loadingTimerRef.current) {
-          clearTimeout(loadingTimerRef.current);
-        }
-      };
-    } else if (loading && prevPathnameRef.current === pathname) {
-      // Handle case where pathname didn't change but we're loading (hash navigation)
-      // Check if we're actually on the target page
-      if (targetPath && targetPath === pathname) {
-        // Clear any existing timer
-        if (loadingTimerRef.current) {
-          clearTimeout(loadingTimerRef.current);
-        }
+      // If we were loading, calculate minimum display time
+      if (loading) {
+        const elapsed = navigationStartTimeRef.current 
+          ? Date.now() - navigationStartTimeRef.current 
+          : 0;
         
-        // Hide loader after a minimum duration
+        // Minimum display time of 800ms, but if navigation was slow, ensure at least 300ms visible
+        const minDisplayTime = Math.max(800 - elapsed, 300);
+        
         loadingTimerRef.current = setTimeout(() => {
           setLoading(false);
           setTargetPath(null);
-        }, 1500);
-        
-        return () => {
-          if (loadingTimerRef.current) {
-            clearTimeout(loadingTimerRef.current);
-          }
-        };
+          navigationStartTimeRef.current = null;
+          prevPathnameRef.current = pathname;
+        }, minDisplayTime);
+      } else {
+        // Pathname changed but we weren't loading - update ref only
+        prevPathnameRef.current = pathname;
       }
+
+      return () => {
+        clearAllTimers();
+      };
     } else {
+      // Same pathname - update ref
       prevPathnameRef.current = pathname;
+      
+      // If we're loading but pathname didn't change, wait a bit then hide
+      if (loading && !targetPath) {
+        clearAllTimers();
+        loadingTimerRef.current = setTimeout(() => {
+          setLoading(false);
+          setTargetPath(null);
+          navigationStartTimeRef.current = null;
+        }, 800);
+      }
     }
-  }, [pathname]);
+  }, [pathname, searchParams]);
+
+  // Fallback: Hide loader if it's been showing for too long (10 seconds)
+  useEffect(() => {
+    if (loading) {
+      const timeout = setTimeout(() => {
+        console.warn('Loader timeout - forcing close');
+        clearAllTimers();
+        setLoading(false);
+        setTargetPath(null);
+        navigationStartTimeRef.current = null;
+      }, 10000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [loading]);
 
   return (
     <AnimatePresence>
@@ -194,7 +183,7 @@ export default function PageTransitionLoader() {
               initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
               className="fixed inset-0 z-[9999]"
             >
               <SPXLoader />
@@ -206,7 +195,7 @@ export default function PageTransitionLoader() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
             >
               <ModalLoader />
             </motion.div>
@@ -216,4 +205,3 @@ export default function PageTransitionLoader() {
     </AnimatePresence>
   );
 }
-

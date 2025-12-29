@@ -79,12 +79,12 @@ export default function ImageTextCard({
       whileInView={animate ? { opacity: 1, x: 0, y: 0 } : {}}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className={cn("text-lg leading-relaxed", contentClassName || "space-y-6")}
+      className={cn("text-lg leading-relaxed", contentClassName || "space-y-8")}
     >
-      {title && (
-        <h2 className="text-3xl font-semibold">{title}</h2>
-      )}
       <div className="text-justify-custom text-muted-foreground">
+        {title && (
+          <h2 className="text-3xl font-semibold mb-8">{title}</h2>
+        )}
         {content}
       </div>
     </motion.div>

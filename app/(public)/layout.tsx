@@ -1,16 +1,7 @@
-import "../globals.css";
-import { Montserrat } from "next/font/google";
 import type { Metadata } from "next";
-
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { ContactModalProvider } from "@/components/contact/ContactModalProvider";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-montserrat",
-});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://spiralytix.com";
 
@@ -96,20 +87,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default function PublicLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={montserrat.className + " bg-white text-slateText"}>
-        <ContactModalProvider>
-          <NavBar />
-          {children}
-          <Footer />
-        </ContactModalProvider>
-      </body>
-    </html>
+    <ContactModalProvider>
+      <NavBar />
+      {children}
+      <Footer />
+    </ContactModalProvider>
   );
 }

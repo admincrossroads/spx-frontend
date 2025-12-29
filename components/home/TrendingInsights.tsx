@@ -178,8 +178,6 @@ export default function TrendingInsights() {
             >
               <Link 
                 href={`/insights/${insights[currentIndex].slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <div className="grid md:grid-cols-2 gap-6 bg-card border rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
                   {/* Image Section */}

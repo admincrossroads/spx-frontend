@@ -1869,8 +1869,6 @@ function TrendingInsights() {
                                 className: "w-full",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                     href: `/insights/${insights[currentIndex].slug}`,
-                                    target: "_blank",
-                                    rel: "noopener noreferrer",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "grid md:grid-cols-2 gap-6 bg-card border rounded-xl overflow-hidden hover:shadow-lg transition-shadow",
                                         children: [
@@ -1883,12 +1881,12 @@ function TrendingInsights() {
                                                     loading: "eager"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/home/TrendingInsights.tsx",
-                                                    lineNumber: 188,
+                                                    lineNumber: 186,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/home/TrendingInsights.tsx",
-                                                lineNumber: 187,
+                                                lineNumber: 185,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1900,7 +1898,7 @@ function TrendingInsights() {
                                                         children: typeLabels[insights[currentIndex].type] || insights[currentIndex].type
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/home/TrendingInsights.tsx",
-                                                        lineNumber: 199,
+                                                        lineNumber: 197,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1908,7 +1906,7 @@ function TrendingInsights() {
                                                         children: insights[currentIndex].title
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/home/TrendingInsights.tsx",
-                                                        lineNumber: 202,
+                                                        lineNumber: 200,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1916,7 +1914,7 @@ function TrendingInsights() {
                                                         children: insights[currentIndex].summary
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/home/TrendingInsights.tsx",
-                                                        lineNumber: 205,
+                                                        lineNumber: 203,
                                                         columnNumber: 21
                                                     }, this),
                                                     insights[currentIndex].author && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1927,7 +1925,7 @@ function TrendingInsights() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/home/TrendingInsights.tsx",
-                                                        lineNumber: 209,
+                                                        lineNumber: 207,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1942,30 +1940,30 @@ function TrendingInsights() {
                                                                     className: "h-4 w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/home/TrendingInsights.tsx",
-                                                                    lineNumber: 215,
+                                                                    lineNumber: 213,
                                                                     columnNumber: 35
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/home/TrendingInsights.tsx",
-                                                            lineNumber: 214,
+                                                            lineNumber: 212,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/home/TrendingInsights.tsx",
-                                                        lineNumber: 213,
+                                                        lineNumber: 211,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/home/TrendingInsights.tsx",
-                                                lineNumber: 198,
+                                                lineNumber: 196,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/home/TrendingInsights.tsx",
-                                        lineNumber: 184,
+                                        lineNumber: 182,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
@@ -1998,12 +1996,12 @@ function TrendingInsights() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/home/TrendingInsights.tsx",
-                                    lineNumber: 233,
+                                    lineNumber: 231,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/home/TrendingInsights.tsx",
-                                lineNumber: 228,
+                                lineNumber: 226,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2014,12 +2012,12 @@ function TrendingInsights() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/home/TrendingInsights.tsx",
-                                    lineNumber: 240,
+                                    lineNumber: 238,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/home/TrendingInsights.tsx",
-                                lineNumber: 235,
+                                lineNumber: 233,
                                 columnNumber: 13
                             }, this)
                         ]
@@ -2032,12 +2030,12 @@ function TrendingInsights() {
                                 "aria-label": `Go to slide ${index + 1}`
                             }, index, false, {
                                 fileName: "[project]/components/home/TrendingInsights.tsx",
-                                lineNumber: 249,
+                                lineNumber: 247,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/home/TrendingInsights.tsx",
-                        lineNumber: 247,
+                        lineNumber: 245,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -2076,12 +2074,12 @@ function TrendingInsights() {
                                             loading: "lazy"
                                         }, void 0, false, {
                                             fileName: "[project]/components/home/TrendingInsights.tsx",
-                                            lineNumber: 283,
+                                            lineNumber: 281,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/home/TrendingInsights.tsx",
-                                        lineNumber: 282,
+                                        lineNumber: 280,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2090,7 +2088,7 @@ function TrendingInsights() {
                                         children: typeLabels[insight.type] || insight.type
                                     }, void 0, false, {
                                         fileName: "[project]/components/home/TrendingInsights.tsx",
-                                        lineNumber: 291,
+                                        lineNumber: 289,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -2098,18 +2096,18 @@ function TrendingInsights() {
                                         children: insight.title
                                     }, void 0, false, {
                                         fileName: "[project]/components/home/TrendingInsights.tsx",
-                                        lineNumber: 294,
+                                        lineNumber: 292,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, insight.id, true, {
                                 fileName: "[project]/components/home/TrendingInsights.tsx",
-                                lineNumber: 272,
+                                lineNumber: 270,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/home/TrendingInsights.tsx",
-                        lineNumber: 264,
+                        lineNumber: 262,
                         columnNumber: 9
                     }, this)
                 ]

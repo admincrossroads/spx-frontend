@@ -8,7 +8,7 @@ export default function Loading() {
 
   useEffect(() => {
     // minimum duration for loader (in ms)
-    const timeout = setTimeout(() => setReady(true), 1200);
+    const timeout = setTimeout(() => setReady(true), 500);
 
     return () => clearTimeout(timeout);
   }, []);

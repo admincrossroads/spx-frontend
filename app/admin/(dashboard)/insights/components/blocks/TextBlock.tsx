@@ -1,22 +1,18 @@
 'use client';
 
-import { useEffect, useCallback } from 'react';
-import { useEditor, EditorContent } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
+import { useState, useEffect, useRef } from 'react';
 import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-import { 
-  Bold, 
-  Italic, 
-  List, 
-  ListOrdered,
-  Heading2,
-  Heading3,
-  Quote,
-  Undo,
-  Redo
-} from 'lucide-react';
 import { TextBlockData } from '@/types/insights';
+import dynamic from 'next/dynamic';
+
+// Dynamically import Quill to avoid SSR issues
+const QuillEditor = dynamic(
+  () => import('./QuillEditorComponent'),
+  { 
+    ssr: false,
+    loading: () => <div className="min-h-[150px] border rounded-md p-4 bg-muted/20 animate-pulse">Loading editor...</div>
+  }
+);
 
 interface TextBlockProps {
   data: TextBlockData;
@@ -24,8 +20,8 @@ interface TextBlockProps {
 }
 
 /**
- * Splits text longer than 200 characters into 2 paragraphs
- * Break occurs at the nearest full stop (period) before 200 chars
+ * Splits text longer than 500 characters into 2 paragraphs
+ * Break occurs at the nearest full stop (period) before 500 chars
  */
 function splitLongText(html: string): string {
   if (typeof window === 'undefined') {
@@ -37,7 +33,7 @@ function splitLongText(html: string): string {
   tempDiv.innerHTML = html;
   const plainText = tempDiv.textContent || tempDiv.innerText || '';
   
-  if (plainText.length <= 200) {
+  if (plainText.length <= 500) {
     return html; // No need to split
   }
   
@@ -52,7 +48,7 @@ function splitLongText(html: string): string {
       const paraDiv = document.createElement('div');
       paraDiv.innerHTML = para.replace(/^<p[^>]*>|<\/p>$/g, '');
       const paraText = paraDiv.textContent || '';
-      if (paraText.length > 200) {
+      if (paraText.length > 500) {
         needsSplitting = true;
         break;
       }
@@ -63,26 +59,26 @@ function splitLongText(html: string): string {
     }
   }
   
-  // Find the best break point (nearest full stop before 200 chars)
+  // Find the best break point (nearest full stop before 500 chars)
   let breakIndex = -1;
-  for (let i = 199; i >= 100; i--) {
+  for (let i = 499; i >= 250; i--) {
     if (plainText[i] === '.' && (i === plainText.length - 1 || plainText[i + 1] === ' ' || plainText[i + 1] === '\n')) {
       breakIndex = i + 1; // Include the period, break after it
       break;
     }
   }
   
-  // If no period found, try to find a space near 200
+  // If no period found, try to find a space near 500
   if (breakIndex === -1) {
-    for (let i = 200; i >= 150; i--) {
+    for (let i = 500; i >= 375; i--) {
       if (plainText[i] === ' ') {
         breakIndex = i + 1;
         break;
       }
     }
-    // Last resort: use 200
+    // Last resort: use 500
     if (breakIndex === -1) {
-      breakIndex = 200;
+      breakIndex = 500;
     }
   }
   
@@ -149,182 +145,43 @@ function splitLongText(html: string): string {
 }
 
 export default function TextBlock({ data, onChange }: TextBlockProps) {
-  const editor = useEditor({
-    extensions: [StarterKit],
-    content: data.html || '',
-    immediatelyRender: false, // Required for SSR/hydration in Next.js
-    onUpdate: ({ editor }) => {
-      // Just update parent with current HTML during editing
-      onChange({ html: editor.getHTML() });
-    },
-    onBlur: ({ editor }) => {
-      // Apply auto-paragraph splitting when editor loses focus
-      const currentHtml = editor.getHTML();
-      const processedHtml = splitLongText(currentHtml);
-      
-      if (processedHtml !== currentHtml) {
-        // Update editor and parent with split content
-        // Use emitUpdate: false to avoid triggering onUpdate again
-        editor.commands.setContent(processedHtml, { emitUpdate: false });
-        onChange({ html: processedHtml });
-      }
-    },
-    editorProps: {
-      attributes: {
-        class: 'prose prose-sm max-w-none focus:outline-none min-h-[150px] px-3 py-2',
-      },
-    },
-  });
-  
+  const [value, setValue] = useState(data.html || '');
 
-  // Update editor content when data.html changes externally
+  // Update local state when data.html changes externally
   useEffect(() => {
-    if (editor && data.html !== editor.getHTML()) {
-      editor.commands.setContent(data.html || '', { emitUpdate: false });
+    if (data.html !== value) {
+      setValue(data.html || '');
     }
-  }, [data.html, editor]);
+  }, [data.html]);
 
-  const setHeading = useCallback((level: 2 | 3) => {
-    editor?.chain().focus().toggleHeading({ level }).run();
-  }, [editor]);
+  const handleChange = (content: string) => {
+    setValue(content);
+    // Update parent immediately during editing
+    onChange({ html: content });
+  };
 
-  const toggleBold = useCallback(() => {
-    editor?.chain().focus().toggleBold().run();
-  }, [editor]);
-
-  const toggleItalic = useCallback(() => {
-    editor?.chain().focus().toggleItalic().run();
-  }, [editor]);
-
-  const toggleBulletList = useCallback(() => {
-    editor?.chain().focus().toggleBulletList().run();
-  }, [editor]);
-
-  const toggleOrderedList = useCallback(() => {
-    editor?.chain().focus().toggleOrderedList().run();
-  }, [editor]);
-
-  const toggleBlockquote = useCallback(() => {
-    editor?.chain().focus().toggleBlockquote().run();
-  }, [editor]);
-
-  const undo = useCallback(() => {
-    editor?.chain().focus().undo().run();
-  }, [editor]);
-
-  const redo = useCallback(() => {
-    editor?.chain().focus().redo().run();
-  }, [editor]);
-
-  if (!editor) {
-    return null;
-  }
+  const handleBlur = () => {
+    // Apply auto-paragraph splitting when editor loses focus
+    const processedHtml = splitLongText(value);
+    
+    if (processedHtml !== value) {
+      setValue(processedHtml);
+      onChange({ html: processedHtml });
+    }
+  };
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <Label>Text Content</Label>
-        <div className="flex gap-1 border rounded-md p-1">
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={toggleBold}
-            className={editor.isActive('bold') ? 'bg-muted' : ''}
-            title="Bold"
-          >
-            <Bold className="h-4 w-4" />
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={toggleItalic}
-            className={editor.isActive('italic') ? 'bg-muted' : ''}
-            title="Italic"
-          >
-            <Italic className="h-4 w-4" />
-          </Button>
-          <div className="w-px bg-border mx-1" />
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={() => setHeading(2)}
-            className={editor.isActive('heading', { level: 2 }) ? 'bg-muted' : ''}
-            title="Heading 2"
-          >
-            <Heading2 className="h-4 w-4" />
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={() => setHeading(3)}
-            className={editor.isActive('heading', { level: 3 }) ? 'bg-muted' : ''}
-            title="Heading 3"
-          >
-            <Heading3 className="h-4 w-4" />
-          </Button>
-          <div className="w-px bg-border mx-1" />
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={toggleBulletList}
-            className={editor.isActive('bulletList') ? 'bg-muted' : ''}
-            title="Bullet List"
-          >
-            <List className="h-4 w-4" />
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={toggleOrderedList}
-            className={editor.isActive('orderedList') ? 'bg-muted' : ''}
-            title="Numbered List"
-          >
-            <ListOrdered className="h-4 w-4" />
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={toggleBlockquote}
-            className={editor.isActive('blockquote') ? 'bg-muted' : ''}
-            title="Quote"
-          >
-            <Quote className="h-4 w-4" />
-          </Button>
-          <div className="w-px bg-border mx-1" />
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={undo}
-            disabled={!editor.can().undo()}
-            title="Undo"
-          >
-            <Undo className="h-4 w-4" />
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={redo}
-            disabled={!editor.can().redo()}
-            title="Redo"
-          >
-            <Redo className="h-4 w-4" />
-          </Button>
-        </div>
-      </div>
-      <div className="border rounded-md">
-        <EditorContent editor={editor} />
+      <Label>Text Content</Label>
+      <div className="border rounded-md overflow-hidden">
+        <QuillEditor
+          value={value}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
       </div>
       <div className="text-xs text-muted-foreground">
-        Rich text editor. Text longer than 200 characters will automatically split into paragraphs at the nearest full stop.
+        Rich text editor. Text longer than 500 characters will automatically split into paragraphs at the nearest full stop.
       </div>
     </div>
   );

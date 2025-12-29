@@ -173,19 +173,21 @@ export default function Identity() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-lg leading-relaxed text-justify space-y-4"
+          className="max-w-4xl mx-auto"
         >
-          <h2 className="text-3xl font-semibold text-center">
+          <h2 className="text-3xl font-semibold text-center mb-8">
             Trusted Local Networks
           </h2>
 
-          <p className="text-justify-custom">
-            SPX’s deep roots in Ethiopia provide strong relationships with farmers, 
-            cooperatives, community leaders, public institutions, private-sector actors, 
-            skills institutions, innovators, and sector experts. These networks enable 
-            SPX to mobilize quickly, coordinate effectively, and deliver programs with 
-            local legitimacy.
-          </p>
+          <div className="text-lg text-justify-custom text-muted-foreground">
+            <p>
+              SPX's deep roots in Ethiopia provide strong relationships with farmers, 
+              cooperatives, community leaders, public institutions, private-sector actors, 
+              skills institutions, innovators, and sector experts. These networks enable 
+              SPX to mobilize quickly, coordinate effectively, and deliver programs with 
+              local legitimacy.
+            </p>
+          </div>
         </motion.div>
 
         {/* SECTION 5 — CTA */}

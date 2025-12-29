@@ -1,6 +1,8 @@
 // Public API functions for fetching published insights (no auth required)
 'use server';
 
+import { unstable_noStore as noStore } from 'next/cache';
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY || '';
 
@@ -53,6 +55,9 @@ export async function getPublicInsights(filters: {
   page?: number;
   limit?: number;
 } = {}): Promise<PublicInsightsResponse> {
+  // Mark this function as dynamic to prevent static generation
+  noStore();
+  
   try {
     const params = new URLSearchParams();
     
@@ -83,7 +88,6 @@ export async function getPublicInsights(filters: {
     const response = await fetch(fullUrl, {
       method: 'GET',
       headers,
-      cache: 'no-store',
     });
     
     console.log('Response status:', response.status);
@@ -110,6 +114,9 @@ export async function getPublicInsights(filters: {
 // Fetch a single published insight by slug (public endpoint, no auth)
 // Backend endpoint: GET /api/v1/insights/:slug
 export async function getPublicInsightBySlug(slug: string): Promise<PublicInsightDetail | null> {
+  // Mark this function as dynamic to prevent static generation
+  noStore();
+  
   try {
     // Use the slug exactly as provided by the API - don't modify it
     // Backend endpoint format: /api/v1/insights/:slug (not /insights/slug/:slug)
@@ -135,7 +142,6 @@ export async function getPublicInsightBySlug(slug: string): Promise<PublicInsigh
     const response = await fetch(fullUrl, {
       method: 'GET',
       headers,
-      cache: 'no-store',
     });
     
     console.log('Response status:', response.status);

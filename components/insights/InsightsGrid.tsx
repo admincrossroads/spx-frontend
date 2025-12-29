@@ -133,8 +133,6 @@ export function InsightsGrid({ type, initialInsights = [], initialTotal = 0 }: I
           <Link 
             key={insight.id} 
             href={`/insights/${insight.slug}`}
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
               {insight.coverImageUrl && (

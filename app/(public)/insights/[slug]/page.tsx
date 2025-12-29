@@ -42,16 +42,41 @@ function renderContentBlock(block: {
     case 'video':
       return (
         <div className="my-6">
-          {block.data.url && (
-            <div className="aspect-video rounded-lg overflow-hidden">
-              <iframe
-                src={block.data.url}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          )}
+          {block.data.url && (() => {
+            // Convert YouTube URLs to embed format
+            let embedUrl = block.data.url;
+            
+            // YouTube URL patterns
+            const youtubeRegex = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/;
+            const youtubeMatch = block.data.url.match(youtubeRegex);
+            
+            if (youtubeMatch) {
+              const videoId = youtubeMatch[1];
+              embedUrl = `https://www.youtube.com/embed/${videoId}`;
+            } else {
+              // Check for Vimeo URLs
+              const vimeoRegex = /(?:vimeo\.com\/)(\d+)/;
+              const vimeoMatch = block.data.url.match(vimeoRegex);
+              
+              if (vimeoMatch) {
+                const videoId = vimeoMatch[1];
+                embedUrl = `https://player.vimeo.com/video/${videoId}`;
+              }
+              // If it's already an embed URL or direct video URL, use as-is
+            }
+            
+            return (
+              <div className="aspect-video rounded-lg overflow-hidden bg-black">
+                <iframe
+                  src={embedUrl}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title="Video player"
+                />
+              </div>
+            );
+          })()}
         </div>
       );
     case 'link':
@@ -192,7 +217,7 @@ export default async function InsightDetailPage({
         <div className="prose prose-lg max-w-none">
           {insight.content && insight.content.length > 0 ? (
             insight.content.map((block) => (
-              <div key={block.id}>{renderContentBlock(block)}</div>
+              <div key={block.id} className="mb-8 last:mb-0">{renderContentBlock(block)}</div>
             ))
           ) : (
             <p className="text-muted-foreground">No content available.</p>
@@ -210,8 +235,6 @@ export default async function InsightDetailPage({
                   <Link
                     key={recentInsight.id}
                     href={`/insights/${recentInsight.slug}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
                     <Card className="hover:shadow-md transition-shadow cursor-pointer my-6">
                       {recentInsight.coverImageUrl && (

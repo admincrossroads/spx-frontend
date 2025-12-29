@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Victus/Documents/Spiralytix/Website/spiralytix-site/app/admin/%28dashboard%29/settings/users/layout.tsx"],"sourcesContent":["export default function UsersLayout({\r\n    children,\r\n  }: {\r\n    children: React.ReactNode;\r\n  }) {\r\n    return <>{children}</>;\r\n  }"],"names":[],"mappings":";;;;;;AAAe,SAAS,YAAY,EAChC,QAAQ,EAGT;IACC,qBAAO;kBAAG;;AACZ"}}]
-}

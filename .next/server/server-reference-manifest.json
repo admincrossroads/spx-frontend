@@ -1,6 +1,6 @@
 {
   "node": {
-    "404fa085d75cd022597f526cabbc7df8c3393db539": {
+    "407a5aa1467bcafcf3e383dcf8799b4cd60e5cdd69": {
       "workers": {
         "app/(public)/insights/[slug]/page": {
           "moduleId": 64820,
@@ -50,7 +50,7 @@
       "filename": "lib/api/public-insights.ts",
       "exportedName": "getPublicInsights"
     },
-    "40cc71f229b7650b957d6979534e2f0936396e1891": {
+    "40f44976d8b7231995edbd02d166c8c2e3fe89254f": {
       "workers": {
         "app/(public)/insights/[slug]/page": {
           "moduleId": 64820,
@@ -102,5 +102,5 @@
     }
   },
   "edge": {},
-  "encryptionKey": "wYYakC1i8Y2j9mAe3FsDSBrM/CcKhlrgyOeCHzlZOdY="
+  "encryptionKey": "1O4HsBoGo0dDKmOEtjA7xZXVZ9V7ijl40wIh3XZnH7A="
 }

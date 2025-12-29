@@ -27,21 +27,25 @@ export default function PrivacyPolicy() {
         <div className="main-container">
           <div className="max-w-4xl mx-auto space-y-12">
             
-            <div className="space-y-4">
+            <div className="space-y-8">
               <h2 className="text-2xl font-semibold">1. Introduction</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                SPX ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy 
-                explains how we collect, use, disclose, and safeguard your information when you visit 
-                our website and engage with our services, including our research, strategy, and 
-                implementation programs across Africa.
-              </p>
+              <div className="text-justify-custom text-muted-foreground">
+                <p>
+                  SPX ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy 
+                  explains how we collect, use, disclose, and safeguard your information when you visit 
+                  our website and engage with our services, including our research, strategy, and 
+                  implementation programs across Africa.
+                </p>
+              </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-8">
               <h2 className="text-2xl font-semibold">2. Information We Collect</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                We may collect information in several ways:
-              </p>
+              <div className="text-justify-custom text-muted-foreground">
+                <p>
+                  We may collect information in several ways:
+                </p>
+              </div>
               <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
                 <li>
                   <strong>Personal Data:</strong> Name, email address, and contact details you provide 
@@ -59,11 +63,13 @@ export default function PrivacyPolicy() {
               </ul>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-8">
               <h2 className="text-2xl font-semibold">3. How We Use Your Information</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                We use the information we collect to:
-              </p>
+              <div className="text-justify-custom text-muted-foreground">
+                <p>
+                  We use the information we collect to:
+                </p>
+              </div>
               <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
                 <li>Provide and improve our advisory, research, and implementation services.</li>
                 <li>Communicate with you about our projects, insights, and opportunities.</li>
@@ -73,11 +79,13 @@ export default function PrivacyPolicy() {
               </ul>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-8">
               <h2 className="text-2xl font-semibold">4. Data Sharing and Disclosure</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                We do not sell your personal data. We may share information with:
-              </p>
+              <div className="text-justify-custom text-muted-foreground">
+                <p>
+                  We do not sell your personal data. We may share information with:
+                </p>
+              </div>
               <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
                 <li>Service providers who assist in our operations (e.g., IT support).</li>
                 <li>Partners and funders, typically in an aggregated and anonymized format for research reporting.</li>
@@ -85,29 +93,35 @@ export default function PrivacyPolicy() {
               </ul>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-8">
               <h2 className="text-2xl font-semibold">5. Data Security</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                We implement appropriate technical and organizational measures to protect your 
-                information. However, no method of transmission over the Internet or electronic 
-                storage is 100% secure.
-              </p>
+              <div className="text-justify-custom text-muted-foreground">
+                <p>
+                  We implement appropriate technical and organizational measures to protect your 
+                  information. However, no method of transmission over the Internet or electronic 
+                  storage is 100% secure.
+                </p>
+              </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-8">
               <h2 className="text-2xl font-semibold">6. Your Rights</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                Depending on your location, you may have rights regarding your personal data, 
-                including the right to access, correct, or delete your information. To exercise 
-                these rights, please contact us.
-              </p>
+              <div className="text-justify-custom text-muted-foreground">
+                <p>
+                  Depending on your location, you may have rights regarding your personal data, 
+                  including the right to access, correct, or delete your information. To exercise 
+                  these rights, please contact us.
+                </p>
+              </div>
             </div>
 
-            <div className="space-y-4 border-t pt-8">
+            <div className="space-y-8 border-t pt-8">
               <h2 className="text-2xl font-semibold">7. Contact Us</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                If you have questions about this Privacy Policy, please contact us at:
-              </p>
+              <div className="text-justify-custom text-muted-foreground">
+                <p>
+                  If you have questions about this Privacy Policy, please contact us at:
+                </p>
+              </div>
               <div className="bg-muted p-6 rounded-xl mt-4">
                 <p className="font-medium text-foreground">SPX Headquarters</p>
                 <p className="text-muted-foreground">Addis Ababa, Ethiopia</p>

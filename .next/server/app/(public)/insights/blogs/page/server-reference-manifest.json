@@ -1,6 +1,6 @@
 {
   "node": {
-    "404fa085d75cd022597f526cabbc7df8c3393db539": {
+    "407a5aa1467bcafcf3e383dcf8799b4cd60e5cdd69": {
       "workers": {
         "app/(public)/insights/blogs/page": {
           "moduleId": 59837,
@@ -15,7 +15,7 @@
       "exportedName": "getPublicInsights",
       "filename": "lib/api/public-insights.ts"
     },
-    "40cc71f229b7650b957d6979534e2f0936396e1891": {
+    "40f44976d8b7231995edbd02d166c8c2e3fe89254f": {
       "workers": {
         "app/(public)/insights/blogs/page": {
           "moduleId": 59837,

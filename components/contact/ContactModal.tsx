@@ -152,17 +152,17 @@ export function ContactModal() {
             transition={{ delay: 0.15, duration: 0.4 }}
             className="mb-6 pb-6 border-b border-gray-700"
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* Phone */}
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400">
+              <div className="flex items-start gap-3 min-w-0">
+                <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400 flex-shrink-0">
                   <Phone className="h-4 w-4" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-sm text-gray-400 mb-1">Phone</p>
                   <a 
                     href="tel:+251911234567" 
-                    className="text-white hover:text-blue-400 transition-colors text-sm font-medium"
+                    className="text-white hover:text-blue-400 transition-colors text-sm font-medium break-all"
                   >
                     +251 911 234 567
                   </a>
@@ -170,15 +170,15 @@ export function ContactModal() {
               </div>
 
               {/* Email */}
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400">
+              <div className="flex items-start gap-3 min-w-0">
+                <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400 flex-shrink-0">
                   <Mail className="h-4 w-4" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-sm text-gray-400 mb-1">Email</p>
                   <a 
                     href="mailto:info@spx.com" 
-                    className="text-white hover:text-blue-400 transition-colors text-sm font-medium"
+                    className="text-white hover:text-blue-400 transition-colors text-sm font-medium break-all"
                   >
                     info@spx.com
                   </a>
@@ -186,13 +186,13 @@ export function ContactModal() {
               </div>
 
               {/* Location */}
-              <div className="flex items-start gap-3">
-                <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400">
+              <div className="flex items-start gap-3 min-w-0 sm:col-span-2 lg:col-span-1">
+                <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400 flex-shrink-0">
                   <MapPin className="h-4 w-4" />
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-sm text-gray-400 mb-1">Location</p>
-                  <p className="text-white text-sm font-medium">
+                  <p className="text-white text-sm font-medium break-words">
                     Addis Ababa, ET
                   </p>
                 </div>

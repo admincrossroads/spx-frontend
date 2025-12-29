@@ -1,11 +1,8 @@
 {
-  "/(public)/about/vision-mission/page": "app/(public)/about/vision-mission/page.js",
-  "/(public)/about/who-we-are/page": "app/(public)/about/who-we-are/page.js",
   "/(public)/insights/[slug]/page": "app/(public)/insights/[slug]/page.js",
   "/(public)/insights/page": "app/(public)/insights/page.js",
   "/(public)/page": "app/(public)/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/admin/(dashboard)/insights/new/page": "app/admin/(dashboard)/insights/new/page.js",
-  "/admin/(dashboard)/insights/page": "app/admin/(dashboard)/insights/page.js",
-  "/admin/(dashboard)/page": "app/admin/(dashboard)/page.js"
+  "/admin/(dashboard)/page": "app/admin/(dashboard)/page.js",
+  "/admin/login/page": "app/admin/login/page.js"
 }

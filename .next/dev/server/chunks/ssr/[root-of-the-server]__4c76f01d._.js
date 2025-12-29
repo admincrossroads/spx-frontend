@@ -299,13 +299,22 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$modal$2d
 ;
 function PageTransitionLoader() {
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
+    const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSearchParams"])();
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [targetPath, setTargetPath] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const prevPathnameRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     const isInitialMount = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(true);
     const loadingTimerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
-    // Check if target is home page - check targetPath (where we're going) or new pathname
+    const navigationStartTimeRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
+    // Check if target is home page
     const isHomePage = targetPath === '/' || loading && pathname === '/';
+    // Clear all timers helper
+    const clearAllTimers = ()=>{
+        if (loadingTimerRef.current) {
+            clearTimeout(loadingTimerRef.current);
+            loadingTimerRef.current = null;
+        }
+    };
     // Intercept link clicks to show loader immediately
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const handleClick = (e)=>{
@@ -326,8 +335,11 @@ function PageTransitionLoader() {
             if (hrefPathname !== '/' && (hrefPathname === pathname || hrefPathname === currentPathname)) {
                 return;
             }
-            // Set target path to determine loader style (use pathname without hash)
+            // Clear any existing timers
+            clearAllTimers();
+            // Set target path and mark navigation start
             setTargetPath(hrefPathname);
+            navigationStartTimeRef.current = Date.now();
             // Show loader immediately on click
             setLoading(true);
             // Prevent body scroll when loading and scroll to top
@@ -335,17 +347,14 @@ function PageTransitionLoader() {
             document.body.style.position = 'fixed';
             document.body.style.width = '100%';
             window.scrollTo(0, 0);
-            // Clear any existing timer
-            if (loadingTimerRef.current) {
-                clearTimeout(loadingTimerRef.current);
-            }
             // For hash navigation, set a timer to close loader since pathname won't change
             if (href.includes('#') && hrefPathname === currentPathname) {
                 // Same page with hash - close after short delay
                 loadingTimerRef.current = setTimeout(()=>{
                     setLoading(false);
                     setTargetPath(null);
-                }, 800); // Shorter delay for hash navigation
+                    navigationStartTimeRef.current = null;
+                }, 800);
             }
         };
         // Add click listener to document
@@ -366,33 +375,7 @@ function PageTransitionLoader() {
     }, [
         loading
     ]);
-    // Listen for page load to close loader (handles hash navigation)
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        if (loading) {
-            const handleLoad = ()=>{
-                // Small delay to ensure page is fully rendered
-                setTimeout(()=>{
-                    if (loadingTimerRef.current) {
-                        clearTimeout(loadingTimerRef.current);
-                    }
-                    loadingTimerRef.current = setTimeout(()=>{
-                        setLoading(false);
-                        setTargetPath(null);
-                    }, 500); // Short delay after page load
-                }, 100);
-            };
-            // If page is already loaded
-            if (document.readyState === 'complete') {
-                handleLoad();
-            } else {
-                window.addEventListener('load', handleLoad);
-                return ()=>window.removeEventListener('load', handleLoad);
-            }
-        }
-    }, [
-        loading
-    ]);
-    // Handle pathname changes (fallback and to hide loader)
+    // Handle pathname changes - hide loader when navigation completes
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         // Skip on initial mount to avoid showing loader on first page load
         if (isInitialMount.current) {
@@ -400,53 +383,58 @@ function PageTransitionLoader() {
             prevPathnameRef.current = pathname;
             return;
         }
-        // If pathname changed and we're loading, hide loader after minimum duration
+        // Only handle pathname changes if we're actually navigating
         if (prevPathnameRef.current && prevPathnameRef.current !== pathname) {
-            // Clear any existing timer
-            if (loadingTimerRef.current) {
-                clearTimeout(loadingTimerRef.current);
-            }
-            // Update target path if not already set (use new pathname)
-            if (!targetPath) {
-                setTargetPath(pathname);
-            }
-            // Ensure loader is shown (in case click handler didn't catch it)
-            setLoading(true);
-            // Hide loader after a minimum duration (for smooth animation)
-            loadingTimerRef.current = setTimeout(()=>{
-                setLoading(false);
-                setTargetPath(null);
-                prevPathnameRef.current = pathname;
-            }, 1500); // Minimum 1.5 seconds for loader animation
-            return ()=>{
-                if (loadingTimerRef.current) {
-                    clearTimeout(loadingTimerRef.current);
-                }
-            };
-        } else if (loading && prevPathnameRef.current === pathname) {
-            // Handle case where pathname didn't change but we're loading (hash navigation)
-            // Check if we're actually on the target page
-            if (targetPath && targetPath === pathname) {
-                // Clear any existing timer
-                if (loadingTimerRef.current) {
-                    clearTimeout(loadingTimerRef.current);
-                }
-                // Hide loader after a minimum duration
+            clearAllTimers();
+            // If we were loading, calculate minimum display time
+            if (loading) {
+                const elapsed = navigationStartTimeRef.current ? Date.now() - navigationStartTimeRef.current : 0;
+                // Minimum display time of 800ms, but if navigation was slow, ensure at least 300ms visible
+                const minDisplayTime = Math.max(800 - elapsed, 300);
                 loadingTimerRef.current = setTimeout(()=>{
                     setLoading(false);
                     setTargetPath(null);
-                }, 1500);
-                return ()=>{
-                    if (loadingTimerRef.current) {
-                        clearTimeout(loadingTimerRef.current);
-                    }
-                };
+                    navigationStartTimeRef.current = null;
+                    prevPathnameRef.current = pathname;
+                }, minDisplayTime);
+            } else {
+                // Pathname changed but we weren't loading - update ref only
+                prevPathnameRef.current = pathname;
             }
+            return ()=>{
+                clearAllTimers();
+            };
         } else {
+            // Same pathname - update ref
             prevPathnameRef.current = pathname;
+            // If we're loading but pathname didn't change, wait a bit then hide
+            if (loading && !targetPath) {
+                clearAllTimers();
+                loadingTimerRef.current = setTimeout(()=>{
+                    setLoading(false);
+                    setTargetPath(null);
+                    navigationStartTimeRef.current = null;
+                }, 800);
+            }
         }
     }, [
-        pathname
+        pathname,
+        searchParams
+    ]);
+    // Fallback: Hide loader if it's been showing for too long (10 seconds)
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        if (loading) {
+            const timeout = setTimeout(()=>{
+                console.warn('Loader timeout - forcing close');
+                clearAllTimers();
+                setLoading(false);
+                setTargetPath(null);
+                navigationStartTimeRef.current = null;
+            }, 10000);
+            return ()=>clearTimeout(timeout);
+        }
+    }, [
+        loading
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AnimatePresence"], {
         children: loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -462,18 +450,18 @@ function PageTransitionLoader() {
                     opacity: 0
                 },
                 transition: {
-                    duration: 0.8,
+                    duration: 0.3,
                     ease: "easeInOut"
                 },
                 className: "fixed inset-0 z-[9999]",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$loader$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/components/loading/PageTransitionLoader.tsx",
-                    lineNumber: 200,
+                    lineNumber: 189,
                     columnNumber: 15
                 }, this)
             }, "fullscreen-loader", false, {
                 fileName: "[project]/components/loading/PageTransitionLoader.tsx",
-                lineNumber: 192,
+                lineNumber: 181,
                 columnNumber: 13
             }, this) : // Modal loader for other pages
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -487,23 +475,23 @@ function PageTransitionLoader() {
                     opacity: 0
                 },
                 transition: {
-                    duration: 0.3,
+                    duration: 0.2,
                     ease: "easeInOut"
                 },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$modal$2d$loader$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/components/loading/PageTransitionLoader.tsx",
-                    lineNumber: 211,
+                    lineNumber: 200,
                     columnNumber: 15
                 }, this)
             }, "modal-loader", false, {
                 fileName: "[project]/components/loading/PageTransitionLoader.tsx",
-                lineNumber: 204,
+                lineNumber: 193,
                 columnNumber: 13
             }, this)
         }, void 0, false)
     }, void 0, false, {
         fileName: "[project]/components/loading/PageTransitionLoader.tsx",
-        lineNumber: 187,
+        lineNumber: 176,
         columnNumber: 5
     }, this);
 }

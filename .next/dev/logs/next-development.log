@@ -1,104 +1,58 @@
-[00:00:01.952] Server  LOG      ✓ Ready in 1574ms
-[00:00:07.611] Server  LOG      ○ Compiling / ...
-[00:00:08.738] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:12.354] Browser WARN    Image with src "/logos/SPX.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:00:15.284] Browser ERROR   Failed to fetch trending insights: {}
-[00:00:15.284] Browser ERROR   Failed to fetch trending insights: {}
-[00:00:25.593] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:00:31.464] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:31.680] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:00:31.680] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:00:31.680] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:00:31.680] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:00:31.680] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:00:34.018] Browser ERROR   Failed to load user: {"data":{},"name":"ApiError","status":0}
-[00:00:39.064] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:39.271] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:00:39.271] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:00:39.450] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:00:39.450] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:02:11.784] Server  LOG      ✓ Compiled in 394ms
-[00:02:32.284] Server  LOG      ✓ Compiled in 308ms
-[00:02:51.606] Server  LOG      ✓ Compiled in 454ms
-[00:03:09.949] Server  LOG      ✓ Compiled in 325ms
-[00:03:22.848] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:22.848] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
-[00:03:24.797] Server  LOG      ✓ Compiled in 678ms
-[00:03:37.299] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:38.551] Browser WARN    Image with src "/images/xtras/image9.webp" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:04:00.707] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:04:00.707] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:04:01.212] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:04:05.224] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:04:05.224] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:04:05.225] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:04:05.225] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:10:42.407] Server  LOG      ✓ Compiled in 1686ms
-[00:10:42.449] Browser ERROR   uncaughtError: Error: Tiptap Error: SSR has been detected, please set `immediatelyRender` explicitly to `false` to avoid hydration mismatches.
-[00:11:13.993] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:11:14.531] Server  LOG      ✓ Compiled in 146ms
-[00:11:14.533] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:11:14.533] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:11:14.533] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:11:14.714] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:11:14.982] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:11:14.982] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:11:15.183] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:11:15.183] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:11:20.348] Server  LOG      ✓ Compiled in 167ms
-[00:11:33.793] Server  LOG      ✓ Compiled in 147ms
-[00:11:38.434] Server  LOG      ✓ Compiled in 177ms
-[00:11:51.339] Server  LOG      ✓ Compiled in 389ms
-[00:12:28.841] Server  LOG      ✓ Compiled in 182ms
-[00:12:52.124] Server  LOG      ✓ Compiled in 149ms
-[00:13:36.911] Browser ERROR   uncaughtError: Error: Tiptap Error: SSR has been detected, please set `immediatelyRender` explicitly to `false` to avoid hydration mismatches.
-[00:14:03.758] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:14:04.244] Server  LOG      ✓ Compiled in 258ms
-[00:14:04.245] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:14:04.245] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:14:04.245] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:14:04.416] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:14:04.622] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:14:04.622] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:14:04.975] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:14:04.975] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:15:32.782] Browser LOG     Submitting data: {
-  "title": "sad",
-  "slug": "sasd",
-  "summary": "asd",
-  "type": "publication",
-  "content": [
-    {
-      "id": "text-1766754455092-x85b52co2",
-      "type": "text",
-      "data": {
-        "html": "<p><strong>Hello <em>World</em></strong><br><br>asdjalskjdaslfkmsad;l;saldngv,mas;ldkcv,nasld,nv;awlsd</p>"
-      }
-    }
-  ],
-  "authorId": 25,
-  "tags": [
-    29
-  ],
-  "isPublished": true,
-  "publicId": "715a0f45-0cb4-4b95-86aa-020dccf27c39"
-}
-[00:15:32.782] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:15:33.308] Browser LOG     Response: {"author":{"bio":"Senior market analyst with 15 years of experience in financial markets and economic research.","id":25,"imageUrl":null,"name":"John Analyst"},"authorId":25,"content":[{"data":{"html":"<p><strong>Hello <em>World</em></strong><br><br>asdjalskjdaslfkmsad;l;saldngv,mas;ldkcv,nasld,nv;awlsd</p>"},"id":"text-1766754455092-x85b52co2","type":"text"}],"coverImageUrl":null,"createdAt":"2025-12-26T13:08:53.146Z","id":121,"isPublished":true,"publicId":"715a0f45-0cb4-4b95-86aa-020dccf27c39","publishedAt":null,"slug":"sasd","summary":"asd","tags":[{"id":29,"name":"Economy","slug":"economy"}],"title":"sad","type":"publication","updatedAt":"2025-12-26T13:08:53.146Z"}
-[00:15:33.614] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:15:33.614] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:15:34.048] Browser LOG     [API Client] Adding Authorization header with token length: 237
-[00:15:42.745] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&page=1&limit=6"
-[00:15:43.024] Server  LOG     Response status: 200
-[00:15:43.055] Server  LOG     Fetched insights count: 6
-[00:15:49.208] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/sasd"
-[00:15:49.209] Server  LOG     Using slug exactly as provided: "sasd"
-[00:15:49.210] Server  LOG     API_KEY available: true
-[00:15:49.212] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
-[00:15:49.684] Server  LOG     Response status: 200
-[00:15:49.687] Server  LOG     Successfully fetched insight: "sad"
-[00:15:49.704] Server  LOG     Response status: 200
-[00:15:49.716] Server  LOG     Fetched insights count: 5
-[00:15:50.181] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:01.170] Server  LOG      ✓ Ready in 903ms
+[00:00:07.753] Server  LOG      ○ Compiling /admin/login ...
+[00:00:12.815] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/admin/login" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" suppressHydrationWarning={true}>
+                          <body
+                            className="montserrat_2cd33e48-module__aZ667G__className bg-white text-slateText"
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:00:14.513] Browser LOG     Login attempt for: dave@spx.com
+[00:00:14.707] Browser LOG     Login successful: {"user":"dave@spx.com"}
+[00:00:18.643] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:00:18.643] Browser WARN    Image with src "http://localhost:3000/logos/SPX.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:18.643] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:00:18.643] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:00:18.643] Browser LOG     [API Client] Adding Authorization header with token length: 237
+[00:00:29.462] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[00:00:37.549] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&page=1&limit=6"
+[00:00:37.942] Server  LOG     Response status: 200
+[00:00:38.024] Server  LOG     Fetched insights count: 6
+[00:00:49.742] Server  LOG     Fetching insight by slug from: "http://localhost:5000/api/v1/insights/test-blog"
+[00:00:49.744] Server  LOG     Using slug exactly as provided: "test-blog"
+[00:00:49.748] Server  LOG     API_KEY available: true
+[00:00:49.755] Server  LOG     Fetching public insights from: "http://localhost:5000/api/v1/insights?isPublished=true&limit=5"
+[00:00:51.130] Server  LOG     Response status: 200
+[00:00:51.185] Server  LOG     Response status: 200
+[00:00:51.200] Server  LOG     Successfully fetched insight: "Leadership Perspectives: Insights from Industry Leaders"
+[00:00:51.223] Server  LOG     Fetched insights count: 5
