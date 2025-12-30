@@ -180,46 +180,30 @@ export default function CreateInsightPage() {
 
   return (
     <div className="container mx-auto py-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Link href="/admin/insights">
-            <Button variant="ghost" size="sm">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Insights
-            </Button>
-          </Link>
-          <div>
-            <h1 className="text-3xl font-bold">Create New Insight</h1>
-            <p className="text-muted-foreground">
-              Add a new insight with block-based content
-            </p>
-          </div>
+      <div className="space-y-4">
+        <Link href="/admin/insights">
+          <Button variant="outline" size="sm">
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back to Insights
+          </Button>
+        </Link>
+        <div>
+          <h1 className="text-3xl font-bold">Create New Insight</h1>
+          <p className="text-muted-foreground">
+            Add a new insight with block-based content
+          </p>
         </div>
       </div>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Content Blocks</CardTitle>
-                  <CardDescription>
-                    Build your insight using different content blocks
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <InsightEditor blocks={blocks} onChange={setBlocks} publicId={publicId} type={form.watch('type') as 'blog' | 'report' | 'publication' | 'policy-brief'} />
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Insight Details</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
+          <div className="space-y-6">
+            {/* Insight Details - First */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Insight Details</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
                   <FormField
                     control={form.control}
                     name="title"
@@ -443,51 +427,63 @@ export default function CreateInsightPage() {
                       </FormItem>
                     )}
                   />
-                </CardContent>
-              </Card>
+              </CardContent>
+            </Card>
 
-              <Card>
-                <CardContent className="pt-6">
-                  <div className="flex flex-col gap-3">
-                    <Button type="submit" disabled={isSubmitting} className="w-full">
-                      {isSubmitting && (
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      )}
-                      Create Insight
-                    </Button>
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex flex-col gap-3">
+                  <Button type="submit" disabled={isSubmitting} className="w-full">
+                    {isSubmitting && (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    )}
+                    Create Insight
+                  </Button>
 
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={async () => {
-                        const isValid = await form.trigger();
-                        if (!isValid) {
-                          return;
-                        }
-                        const currentValues = form.getValues();
-                        form.setValue('isPublished', false);
-                        // Type assertion: form.getValues() returns input type, but after validation/trigger it should match output type
-                        const values: InsightFormValues = {
-                          ...currentValues,
-                          authorId: Number(currentValues.authorId) || 0,
-                          tags: Array.isArray(currentValues.tags) 
-                            ? currentValues.tags.map(t => Number(t)).filter(n => !isNaN(n))
-                            : [],
-                          isPublished: false,
-                        };
-                        await onSubmit(values);
-                      }}
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting && (
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      )}
-                      Save as Draft
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={async () => {
+                      const isValid = await form.trigger();
+                      if (!isValid) {
+                        return;
+                      }
+                      const currentValues = form.getValues();
+                      form.setValue('isPublished', false);
+                      // Type assertion: form.getValues() returns input type, but after validation/trigger it should match output type
+                      const values: InsightFormValues = {
+                        ...currentValues,
+                        authorId: Number(currentValues.authorId) || 0,
+                        tags: Array.isArray(currentValues.tags) 
+                          ? currentValues.tags.map(t => Number(t)).filter(n => !isNaN(n))
+                          : [],
+                        isPublished: false,
+                      };
+                      await onSubmit(values);
+                    }}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting && (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    )}
+                    Save as Draft
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Content Blocks - Second */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Content Blocks</CardTitle>
+                <CardDescription>
+                  Build your insight using different content blocks
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <InsightEditor blocks={blocks} onChange={setBlocks} publicId={publicId} type={form.watch('type') as 'blog' | 'report' | 'publication' | 'policy-brief'} />
+              </CardContent>
+            </Card>
           </div>
         </form>
       </Form>

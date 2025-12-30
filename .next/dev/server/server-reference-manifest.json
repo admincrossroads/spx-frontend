@@ -13,11 +13,18 @@
           "async": false,
           "exportedName": "getPublicInsights",
           "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/reports/page": {
+          "moduleId": "[project]/.next-internal/server/app/(public)/insights/reports/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getPublicInsights",
+          "filename": "lib/api/public-insights.ts"
         }
       },
       "layer": {
         "app/(public)/insights/[slug]/page": "rsc",
-        "app/(public)/insights/page": "rsc"
+        "app/(public)/insights/page": "rsc",
+        "app/(public)/insights/reports/page": "rsc"
       },
       "filename": "lib/api/public-insights.ts",
       "exportedName": "getPublicInsights"
@@ -35,11 +42,18 @@
           "async": false,
           "exportedName": "getPublicInsightBySlug",
           "filename": "lib/api/public-insights.ts"
+        },
+        "app/(public)/insights/reports/page": {
+          "moduleId": "[project]/.next-internal/server/app/(public)/insights/reports/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/api/public-insights.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getPublicInsightBySlug",
+          "filename": "lib/api/public-insights.ts"
         }
       },
       "layer": {
         "app/(public)/insights/[slug]/page": "rsc",
-        "app/(public)/insights/page": "rsc"
+        "app/(public)/insights/page": "rsc",
+        "app/(public)/insights/reports/page": "rsc"
       },
       "filename": "lib/api/public-insights.ts",
       "exportedName": "getPublicInsightBySlug"

@@ -173,9 +173,9 @@ export function InsightDetailContent({ slug, initialInsight, initialRecentInsigh
         Back to Insights
       </Link>
 
-      <div className="grid grid-cols-1 lg:grid-cols-7 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Main Content */}
-        <article className="lg:col-span-5 order-1 min-w-0 overflow-hidden">
+        <article className="lg:col-span-8 order-1 min-w-0 overflow-hidden lg:pr-12">
           {/* Header */}
           <header className="mb-8">
             <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-4">
@@ -241,7 +241,7 @@ export function InsightDetailContent({ slug, initialInsight, initialRecentInsigh
         </article>
 
         {/* Sidebar - Recent Insights */}
-        <aside className="lg:col-span-2 order-2">
+        <aside className="lg:col-span-4 lg:col-start-10 order-2 lg:pl-8">
           <div className="lg:sticky lg:top-6">
             <h2 className="text-base md:text-lg font-bold mb-2 md:mb-3">Recent Insights</h2>
             {recentInsights.length > 0 ? (

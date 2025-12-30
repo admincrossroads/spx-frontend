@@ -25,7 +25,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
-import { LoadingSpinner } from '@/components/ui/loading-spinner';
+import SPXLoader from '@/components/ui/loader';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -163,20 +163,12 @@ export default function LoginPage() {
     } catch (err: any) {
       console.error('Login error:', err);
       setError(err.message || 'Login failed. Please check your credentials.');
-    } finally {
       setIsLoading(false);
     }
   }
 
-  if (isCheckingAuth) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-2 text-sm text-muted-foreground">Checking authentication...</p>
-        </div>
-      </div>
-    );
+  if (isCheckingAuth || isLoading) {
+    return <SPXLoader />;
   }
 
   return (
@@ -265,14 +257,7 @@ export default function LoginPage() {
                 className="w-full"
                 disabled={isLoading}
               >
-                {isLoading ? (
-    <>
-      <LoadingSpinner size="sm" className="mr-2" />
-      Signing in...
-    </>
-  ) : (
-    'Sign In'
-  )}
+                Sign In
               </Button>
 
               <Link

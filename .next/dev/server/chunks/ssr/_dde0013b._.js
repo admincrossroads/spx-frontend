@@ -184,18 +184,8 @@ class ApiClient {
         try {
             const response = await fetch(url, config);
             if (!response.ok) {
-                // Log 401 errors with more details
+                // Handle 401 errors
                 if (response.status === 401) {
-                    const token = ("TURBOPACK compile-time falsy", 0) ? "TURBOPACK unreachable" : null;
-                    console.error('[API Client] 401 Unauthorized:', {
-                        endpoint,
-                        url,
-                        hasToken: !!token,
-                        tokenLength: token?.length || 0,
-                        hasAuthHeader: headers.has('Authorization'),
-                        authHeaderValue: headers.get('Authorization')?.substring(0, 30) + '...',
-                        allHeaders: Object.fromEntries(headers.entries())
-                    });
                     // Clear token and redirect to login on 401
                     if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
                     ;

@@ -14,10 +14,16 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { authApi, User as AuthUser } from '@/lib/api/auth';
+import SPXLoader from '@/components/ui/loader';
 
-export function Topbar() {
+interface TopbarProps {
+  onMenuClick?: () => void;
+}
+
+export function Topbar({ onMenuClick }: TopbarProps) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   useEffect(() => {
     async function loadUser() {
@@ -38,21 +44,25 @@ export function Topbar() {
   const displayName = user?.name || 'Admin';
   const displayRole = user?.role || 'ADMIN';
 
+  if (isLoggingOut) {
+    return <SPXLoader />;
+  }
+
   return (
-    <header className="sticky top-0 z-50 flex h-16 items-center gap-4 border-b bg-background px-6">
-      <Button variant="outline" size="icon" className="md:hidden">
+    <header className="fixed top-0 left-0 right-0 z-50 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+      <Button variant="outline" size="icon" className="md:hidden flex-shrink-0" onClick={onMenuClick}>
         <Menu className="h-4 w-4" />
       </Button>
 
-      <div className="flex flex-1 items-center gap-4">
+      <div className="flex flex-1 items-center gap-4 min-w-0">
         
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-shrink-0">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="gap-2">
-              <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
+              <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                 <User className="h-4 w-4" />
               </div>
               <div className="hidden md:block text-left">
@@ -72,10 +82,19 @@ export function Topbar() {
             <DropdownMenuSeparator />
             <DropdownMenuItem 
               className="text-destructive"
-              onClick={() => {
-                // Clear localStorage, then redirect
-                localStorage.removeItem('token');
-                window.location.href = '/admin/login';
+              onClick={async () => {
+                try {
+                  setIsLoggingOut(true);
+                  await authApi.logout();
+                  // Clear localStorage, then redirect
+                  localStorage.removeItem('token');
+                  window.location.href = '/admin/login';
+                } catch (error) {
+                  console.error('Logout failed:', error);
+                  // Even if logout API fails, clear local state and redirect
+                  localStorage.removeItem('token');
+                  window.location.href = '/admin/login';
+                }
               }}
             >
               Logout

@@ -4,6 +4,7 @@ import { Montserrat } from "next/font/google";
 import { Suspense } from "react";
 import PageTransitionLoader from "@/components/loading/PageTransitionLoader";
 import { QueryProvider } from "@/lib/providers/QueryProvider";
+import ChatWidget from "@/components/chat/ChatWidget";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -87,6 +88,7 @@ export default function RootLayout({
             <PageTransitionLoader />
           </Suspense>
           {children}
+          <ChatWidget />
         </QueryProvider>
       </body>
     </html>

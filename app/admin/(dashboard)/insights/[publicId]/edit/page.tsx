@@ -253,36 +253,36 @@ export default function EditInsightPage() {
 
   return (
     <div className="container mx-auto py-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Link href="/admin/insights">
-            <Button variant="ghost" size="sm">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Insights
-            </Button>
-          </Link>
+      <div className="space-y-4">
+        <Link href="/admin/insights">
+          <Button variant="outline" size="sm">
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back to Insights
+          </Button>
+        </Link>
+        <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold">Edit Insight</h1>
             <p className="text-muted-foreground">Editing: {insight?.title}</p>
           </div>
-        </div>
-        
-        <div className="flex items-center gap-3">
-          <Button
-            type="button"
-            variant={insight?.isPublished ? "outline" : "default"}
-            onClick={handlePublishToggle}
-            disabled={isSubmitting}
-          >
-            <Eye className="h-4 w-4 mr-2" />
-            {insight?.isPublished ? 'Unpublish' : 'Publish Now'}
-          </Button>
           
-          <Link href={`/insights/${insight?.slug}`} target="_blank">
-            <Button variant="outline" size="sm">
-              View Live
+          <div className="flex items-center gap-3">
+            <Button
+              type="button"
+              variant={insight?.isPublished ? "outline" : "default"}
+              onClick={handlePublishToggle}
+              disabled={isSubmitting}
+            >
+              <Eye className="h-4 w-4 mr-2" />
+              {insight?.isPublished ? 'Unpublish' : 'Publish Now'}
             </Button>
-          </Link>
+            
+            <Link href={`/insights/${insight?.slug}`} target="_blank">
+              <Button variant="outline" size="sm">
+                View Live
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
 
